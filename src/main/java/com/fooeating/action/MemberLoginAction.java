@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
+import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.UserDTO;
 
@@ -33,14 +34,13 @@ public class MemberLoginAction implements Action {
 		// result 값에 따른 페이지 이동
 		if(result == -1) {
 			// 비회원 -> 뒤로가기 history.back()
-			
+			JSForward.alertAndBack(response, "회원정보가 없습니다.");
 			return null;
 		}
 		
 		if(result == 0) {
 			// 비밀번호 오류
-			// 경고 글씨 띄우기 -> 제이쿼리
-			
+			JSForward.alertAndBack(response, "비밀번호 오류입니다.");
 			return null;
 		}
 		
@@ -53,7 +53,6 @@ public class MemberLoginAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Main.foo");
 		forward.setRedirect(true);
-		
 		return forward;
 	}
 	

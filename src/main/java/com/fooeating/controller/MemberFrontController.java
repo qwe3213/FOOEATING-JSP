@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.action.MemberLoginAction;
+import com.fooeating.action.MemberLogoutAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
@@ -52,9 +53,13 @@ public class MemberFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
+		
+		
 		/* 패턴1 : 처리작업 x (DB사용x), view 페이지(.foo와 연결된) 이동
-		 * 패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
-		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.foo와 연결된) 이동 + 출력 */
+		   패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
+		           처리작업 o (DB사용x), 페이지(전혀 다른 페이지) 이동
+		   패턴3 : 처리작업 o (DB사용o), view 페이지(.foo와 연결된) 이동 + 출력  */
+		
 		
 		
 		// 1. 회원가입
@@ -103,7 +108,33 @@ public class MemberFrontController extends HttpServlet {
 		}
 		
 		
-
+		
+		// 3. 메인 페이지
+		else if(command.equals("/Main.foo")) {
+			System.out.println(" C : /Main.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/main.jsp");
+			forward.setRedirect(false);
+		}
+		
+		
+		
+		// 4. 로그아웃
+		else if(command.equals("/MemberLogout.foo")) {
+			System.out.println(" C : /MemberLogout.foo 실행");
+			System.out.println(" C : 처리작업o, 페이지 이동 (패턴2)");
+			
+			action = new MemberLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 		
 
 		System.out.println("2. 가상주소 매핑 끝\n");

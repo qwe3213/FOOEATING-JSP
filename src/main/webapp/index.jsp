@@ -20,7 +20,8 @@
 	
 	// 가상주소 바로가기
 // 	response.sendRedirect("./가상주소.foo");
-	response.sendRedirect("./MemberLogin.foo");
+// 	response.sendRedirect("./MemberLogin.foo");
+	response.sendRedirect("./Main.foo");
 
 	
 	
