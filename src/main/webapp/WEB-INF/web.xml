@@ -12,17 +12,17 @@
   
   
   
-  <!-- 기준 매핑 -->
+  <!-- 관리자 매핑 -->
   <servlet>
-  	<servlet-name>PublicFrontController</servlet-name>
-  	<servlet-class>com.fooeating.action.PublicFrontController</servlet-class>
+  	<servlet-name>AdminFrontController</servlet-name>
+  	<servlet-class>com.fooeating.controller.AdminFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>PublicFrontController</servlet-name>
+  	<servlet-name>AdminFrontController</servlet-name>
   	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
-  <!-- 기준 매핑 -->
+  <!-- 관리자 매핑 -->
   
   
   

@@ -68,6 +68,8 @@ public class PublicDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 		
 		return userList;
@@ -113,6 +115,8 @@ public class PublicDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 		
 		return restList;

@@ -30,7 +30,7 @@
 			<td>${dto.owner_user_id}</td>
 			<td>${dto.rest_tel}</td>
 			<td>${dto.regdate}</td>
-			<td><button>상세보기</button></td>
+			<td><button onclick="location.href='readMore.jsp'">상세보기</button></td>
 		</tr>
 		</c:forEach>
 	</table>

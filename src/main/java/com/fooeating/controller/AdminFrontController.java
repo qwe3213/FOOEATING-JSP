@@ -1,4 +1,4 @@
-package com.fooeating.action;
+package com.fooeating.controller;
 
 import java.io.IOException;
 
@@ -8,14 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.RestaurantListAction;
+import com.fooeating.action.UserInfoListAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
-public class PublicFrontController extends HttpServlet {
-	
-	
-	
-	// http://localhost:8088/FOOEATING/가상주소.foo
+public class AdminFrontController extends HttpServlet {
+
 	// http://localhost:8088/FOOEATING/UserInfoList.foo
 	// http://localhost:8088/FOOEATING/RestaurantList.foo
 
@@ -68,8 +67,6 @@ public class PublicFrontController extends HttpServlet {
 			}
 		} 
 		
-		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----
-		
 		else if(command.equals("/RestaurantList.foo")) {
 			System.out.println("  C : /RestaurantList.foo 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
@@ -81,14 +78,7 @@ public class PublicFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----
-		
-		
-		
-		
-		
+
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		
