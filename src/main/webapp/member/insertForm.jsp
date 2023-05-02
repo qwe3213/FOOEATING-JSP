@@ -62,8 +62,6 @@ $(function() {
 		
 
 	
-
-	
 	
 	$('#pw').keyup(function() {
 		let id = document.fr.id.value;
@@ -124,15 +122,7 @@ $(function() {
 	});
 	
 	
-	
-	
-	
-	
-	
-	
-	
 });
-
 
 	
 		function checkData() {
@@ -175,8 +165,6 @@ $(function() {
 			
 		}
 		 
-		
-		
 	
 	</script>
 
@@ -210,10 +198,8 @@ $(function() {
  			 	<input type="submit" value="회원가입">
  			 	
  		
- 		
  			</form>
  		</fieldset>
- 	
  	
  	
  	
