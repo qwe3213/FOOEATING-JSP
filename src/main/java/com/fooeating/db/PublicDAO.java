@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.apache.catalina.User;
+
 public class PublicDAO {
 	
 	// 공통사용 변수
@@ -42,17 +44,36 @@ public class PublicDAO {
 		}
 	}
 	
+	/* ================== < 관리자 관련 메서드 > ======================== */
 	
+	// 관리자 - 회원 목록 getUserList()
+	public List<UserDTO> getUserList() {
+		List<UserDTO> userList = new ArrayList<UserDTO>();
+		
+		try {
+			con = getCon();
+			sql = "select * from user";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				UserDTO dto = new UserDTO();
+				dto.setEmail(rs.getString("email"));
+				dto.setName(rs.getString("name"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setPw(rs.getString("pw"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				dto.setUser_id(rs.getString("user_id"));
+				userList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userList;
+	}
+	// 관리자 - 회원 목록 getUserList()
 	
-	// 페어별 사용할 메서드 정의
+	/* ================== < 관리자 관련 메서드 > ======================== */
 	
-	
-	
-	
-	
-	
-	
-	
-	
-}	
-
+}
