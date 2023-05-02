@@ -53,14 +53,27 @@ public class PublicFrontController extends HttpServlet {
 		 * 패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
 		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.me와 연결된) 이동 + 출력 */
 
-		if(command.equals("/UserInfoList.ad")) {
-			System.out.println("  C : /UserInfoList.ad 실행");
+		
+		if(command.equals("/UserInfoList.foo")) {
+			System.out.println("  C : /UserInfoList.foo 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
-			// 액션 객체 생성하기
-			
-			
-		}
+			action = new UserInfoListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		
+		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----
+		
+		
+		
+		
+		
+		
+		
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		

@@ -3,7 +3,7 @@ package com.fooeating.db;
 import java.sql.Timestamp;
 
 public class UserDTO {
-	private String use_id;
+	private String user_id;
 	private String pw;
 	private String name;
 	private String email;
@@ -11,11 +11,11 @@ public class UserDTO {
 	private Timestamp regdate;
 
 	
-	public String getUse_id() {
-		return use_id;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setUse_id(String use_id) {
-		this.use_id = use_id;
+	public void setUser_id(String use_id) {
+		this.user_id = use_id;
 	}
 	public String getPw() {
 		return pw;
