@@ -18,7 +18,8 @@ public class MemberFrontController extends HttpServlet {
 		
 	// http://localhost:8088/FOOEATING/MemberJoin.foo
 	// http://localhost:8088/FOOEATING/MemberLogin.foo
-
+	// http://localhost:8088/FOOEATING/Main.foo
+	
 	
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,7 +55,6 @@ public class MemberFrontController extends HttpServlet {
 		/* 패턴1 : 처리작업 x (DB사용x), view 페이지(.foo와 연결된) 이동
 		 * 패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
 		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.foo와 연결된) 이동 + 출력 */
-
 		
 		
 		// 1. 회원가입

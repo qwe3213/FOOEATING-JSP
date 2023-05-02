@@ -11,7 +11,6 @@ import com.fooeating.db.UserDTO;
 
 
 // 로그인 정보 처리
-
 public class MemberLoginAction implements Action {
 
 	@Override
@@ -46,11 +45,11 @@ public class MemberLoginAction implements Action {
 		}
 		
 		// result == 1 회원이자 본인
-		// session에 아이디 저장
+		// 1) session에 아이디 저장
 		HttpSession session = request.getSession();
 		session.setAttribute("id", dto.getUser_id());
 		
-		// 페이지 이동
+		// 2) Main.poo 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Main.foo");
 		forward.setRedirect(true);

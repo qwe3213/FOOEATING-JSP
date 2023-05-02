@@ -9,30 +9,34 @@
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 
-// 이름이나 나이 입력안했으면 입력하라고 알림창 띄우기
-// 조건문 -> if(document.fr.id.value == "")
+// ID & PW 유효성 체크
 $(document).ready(function(){
-
-	$("#fr").on("submit", function (e) { 
-		if(fr.id.value == "" && fr.pw.value == ""){
-			$('#divid').html(function(){
-			e.preventDefault();
-			return "<font color='red'>아이디를 입력하세요.</font>";
-			});
-		}else if(fr.id.value == "" && fr.pw.value != ""){
-			$('#divid').html(function(){
-			e.preventDefault();
-			return "<font color='red'>아이디를 입력하세요.</font>";
-			});
-		}else if(fr.pw.value == "" && fr.id.value != ""){
-			$('#divpw').html(function(){
-			e.preventDefault();
-			return "<font color='red'>비밀번호를 입력하세요.</font>";
-			});
-		}
+	
+	$(document).ready(function(){
+	    $('div').css({
+	        'font-size' : '0.7em',
+	        'color' : 'red'
+	    });
+	    
+	     $("#fr").on("submit", function(e) {
+	         if(fr.id.value ==""){
+	             e.preventDefault();
+	             $('#divid').html("아이디를 입력하세요.");
+	         } else{
+	             $('#divid').html("");
+	         }
+	         
+	         if(fr.pw.value ==""){
+	             e.preventDefault();
+	             $('#divpw').html("비밀번호를 입력하세요.");
+	         } else{
+	             $('#divpw').html("");
+	         }
+	         
+	     }); 
 	});
+	
 });
-
 
 </script>
 
@@ -47,9 +51,9 @@ $(document).ready(function(){
 	<legend>FOOEATING 로그인</legend>
 	
 	<form action="./MemberLoginAction.foo" id="fr" method="post">
-		아이디 : <input type="text" name="id"> <br>
+		아이디 : <input type="text" id="id" name="id"> <br>
 		<div id="divid"></div>
-		비밀번호 : <input type="password" name="pw"> <br>
+		비밀번호 : <input type="password" id="pw" name="pw"> <br>
 		<div id="divpw"></div>
 		<hr>
 		<input type="submit" value="로그인">
