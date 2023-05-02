@@ -20,7 +20,8 @@
 	
 	// 가상주소 바로가기
 // 	response.sendRedirect("./가상주소.foo");
-	response.sendRedirect("./MemberLogin.foo");
+	response.sendRedirect("MemberLogin.foo");
+
 	
 	
 	// -> webapp 폴더 밑에 있는 해당 가상주소로 이동
