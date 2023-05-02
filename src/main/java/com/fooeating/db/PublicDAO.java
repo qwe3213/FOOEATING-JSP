@@ -74,6 +74,51 @@ public class PublicDAO {
 	}
 	// 관리자 - 회원 목록 getUserList()
 	
+	// 관리자 - 입점 목록 getRestaurantList()
+	public List<RestaurantDTO> getRestaurantList() {
+		List<RestaurantDTO> restList = new ArrayList<RestaurantDTO>();
+		
+		try {
+			con = getCon();
+			sql = "select * from restaurant";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				RestaurantDTO dto = new RestaurantDTO();
+				dto.setAddr_city(rs.getString("addr_city"));
+				dto.setAddr_district(rs.getString("addr_district"));
+				dto.setAddr_etc(rs.getString("addr_etc"));
+				dto.setCategory(rs.getString("category"));
+				dto.setConvenience(rs.getString("convenience"));
+				dto.setDayoff(rs.getString("dayoff"));
+				dto.setDescriptions(rs.getString("descriptions"));
+				dto.setFile_in(rs.getString("file_in"));
+				dto.setFile_menu(rs.getString("file_menu"));
+				dto.setFile_out(rs.getString("file_out"));
+				dto.setGrade(rs.getInt("grade"));
+				dto.setLike_num(rs.getInt("like_num"));
+				dto.setName(rs.getString("name"));
+				dto.setOn_off(rs.getBoolean("on_off"));
+				dto.setOwner_user_id(rs.getString("owner_user_id"));
+				dto.setRead_count(rs.getInt("read_count"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				dto.setRest_id(rs.getInt("rest_id"));
+				dto.setRest_notice(rs.getString("rest_notice"));
+				dto.setRest_tel(rs.getString("rest_tel"));
+				dto.setRuntime(rs.getString("runtime"));
+				dto.setStatus(rs.getInt("status"));
+				
+				restList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return restList;
+	}
+	// 관리자 - 입점 목록 getRestaurantList()
+	
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
 }
