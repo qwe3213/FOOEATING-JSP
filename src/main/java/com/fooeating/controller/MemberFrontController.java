@@ -1,4 +1,4 @@
-package com.fooeating.action;
+package com.fooeating.controller;
 
 import java.io.IOException;
 
@@ -8,14 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.MemberLoginAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
-public class PublicFrontController extends HttpServlet {
+public class MemberFrontController extends HttpServlet {
 	
 	
-	
-	// http://localhost:8088/FOOEATING/가상주소.foo
+		
+	// http://localhost:8088/FOOEATING/MemberJoin.foo
+	// http://localhost:8088/FOOEATING/MemberLogin.foo
 
 	
 	
@@ -54,23 +56,31 @@ public class PublicFrontController extends HttpServlet {
 		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.foo와 연결된) 이동 + 출력 */
 
 		
-		if(command.equals("/UserInfoList.foo")) {
-			System.out.println(" C : /UserInfoList.foo 실행");
-			System.out.println(" C : DB사용o, view 페이지 이동+출력 (패턴3)");
-
-			action = new UserInfoListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		
+		// 1. 회원가입
+		if(command.equals("/MemberJoin.foo")) {
+			System.out.println("C : /MemberJoin.foo 실행");
+			System.out.println("C : DB사용x, view 페이지 이동 (패턴1");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/insertForm.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 1-1. 회원가입 데이터 처리
+		
+		else if(command.equals("/MemberJoinAction.foo")) {
+			System.out.println("C : /MemberJoinAction.foo 실행");
+			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
+			
+			// 액션객체의 execute() 메서드 사용
+			
 		}
 		
 		
-		/* ===========아래에 else if로 각자 command 가상주소 코드 작성========== */
-
 		
-		else if(command.equals("/MemberLogin.foo")) {
+		// 2. 로그인
+		if(command.equals("/MemberLogin.foo")) {
 			System.out.println(" C : /MemberLogin.foo 실행");
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
 			
@@ -79,6 +89,7 @@ public class PublicFrontController extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		
+		// 2-1. 로그인 데이터 처리
 		else if(command.equals("/MemberLoginAction.foo")) {
 			System.out.println(" C : /MemberLoginAction.foo 실행");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2)");
@@ -92,10 +103,7 @@ public class PublicFrontController extends HttpServlet {
 		}
 		
 		
-		
-		
-		
-		
+
 		
 
 		System.out.println("2. 가상주소 매핑 끝\n");

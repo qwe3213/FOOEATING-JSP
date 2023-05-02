@@ -11,25 +11,19 @@
   </welcome-file-list>
   
   
-  
+
   <!-- 기준 매핑 -->
   <servlet>
-  	<servlet-name>PublicFrontController</servlet-name>
-  	<servlet-class>com.fooeating.action.PublicFrontController</servlet-class>
+  	<servlet-name>MemberFrontController</servlet-name>
+  	<servlet-class>com.fooeating.controller.MemberFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>PublicFrontController</servlet-name>
+  	<servlet-name>MemberFrontController</servlet-name>
   	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
   <!-- 기준 매핑 -->
   
-  
-  
-  
-  
-  
-  
-  
-  
+ 
+
 </web-app>
