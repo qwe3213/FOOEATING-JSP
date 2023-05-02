@@ -17,7 +17,7 @@
 			
 			// response.sendRedirect("./itwill.me");
 			// response.sendRedirect("./MemberJoin.me");
-			response.sendRedirect("./MemberJoin.poo");
+			response.sendRedirect("./MemberJoin.foo");
 		
 		
 		%>
