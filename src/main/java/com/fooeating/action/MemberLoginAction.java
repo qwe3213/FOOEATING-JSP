@@ -34,7 +34,7 @@ public class MemberLoginAction implements Action {
 		// result 값에 따른 페이지 이동
 		if(result == -1) {
 			// 비회원 -> 뒤로가기 history.back()
-		
+			
 			return null;
 		}
 		
@@ -57,7 +57,5 @@ public class MemberLoginAction implements Action {
 		
 		return forward;
 	}
-
-	
 	
 }

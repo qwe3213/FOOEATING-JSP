@@ -83,8 +83,12 @@ public class PublicFrontController extends HttpServlet {
 			System.out.println(" C : /MemberLoginAction.foo 실행");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2)");
 			
-			// MemberLoginAction 객체 생성
-			
+			action = new MemberLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

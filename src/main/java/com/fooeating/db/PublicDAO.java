@@ -92,7 +92,7 @@ public class PublicDAO {
 		try {
 			con = getCon();
 			
-			sql = "select pw from User where id=?";
+			sql = "select pw from User where user_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getUser_id());
 			
@@ -126,10 +126,6 @@ public class PublicDAO {
 	// 로그인 체크 - memberLogin(dto)
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
-	
-	
-	
-	
 	
 	
 	
