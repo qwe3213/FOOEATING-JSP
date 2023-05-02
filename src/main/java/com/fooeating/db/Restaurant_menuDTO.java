@@ -1,18 +1,19 @@
 package com.fooeating.db;
 
 public class Restaurant_menuDTO {
-	private int no;
+	private int rest_nemu_num;
 	private String name;
-	private String profile;
+	private String descriptions;
 	private String price;
 	private String file;
 	private int rest_id;
 	
-	public int getNo() {
-		return no;
+
+	public int getRest_nemu_num() {
+		return rest_nemu_num;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setRest_nemu_num(int rest_nemu_num) {
+		this.rest_nemu_num = rest_nemu_num;
 	}
 	public String getName() {
 		return name;
@@ -20,11 +21,12 @@ public class Restaurant_menuDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getProfile() {
-		return profile;
+	
+	public String getDescriptions() {
+		return descriptions;
 	}
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setDescriptions(String descriptions) {
+		this.descriptions = descriptions;
 	}
 	public String getPrice() {
 		return price;

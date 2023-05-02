@@ -1,16 +1,17 @@
 package com.fooeating.db;
 
 public class FaqDTO {
-	private int bno;
+	private int faq_num;
 	private String category;
 	private String subject;
 	private String content;
 	
-	public int getBno() {
-		return bno;
+	
+	public int getFaq_num() {
+		return faq_num;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setFaq_num(int faq_num) {
+		this.faq_num = faq_num;
 	}
 	public String getCategory() {
 		return category;
@@ -30,4 +31,5 @@ public class FaqDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 }

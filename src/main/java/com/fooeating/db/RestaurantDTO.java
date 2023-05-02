@@ -3,9 +3,9 @@ package com.fooeating.db;
 import java.sql.Timestamp;
 
 public class RestaurantDTO {
-	private int id;
+	private int rest_id;
 	private String name;
-	private String profile;
+	private String descriptions;
 	private String rest_tel;
 	private String convenience;
 	private String file_out;
@@ -18,14 +18,20 @@ public class RestaurantDTO {
 	private String owner_user_id;
 	private boolean on_off;
 	private String category;
-	private String addr;
+	private String addr_city;
+	private String addr_district;
+	private String addr_etc;
 	private Timestamp regdate;
+	private int read_count;
+	private int like_num;
+	private int grade;
 	
-	public int getId() {
-		return id;
+	
+	public int getRest_id() {
+		return rest_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setRest_id(int rest_id) {
+		this.rest_id = rest_id;
 	}
 	public String getName() {
 		return name;
@@ -33,11 +39,11 @@ public class RestaurantDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getProfile() {
-		return profile;
+	public String getDescriptions() {
+		return descriptions;
 	}
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setDescriptions(String descriptions) {
+		this.descriptions = descriptions;
 	}
 	public String getRest_tel() {
 		return rest_tel;
@@ -111,11 +117,23 @@ public class RestaurantDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getAddr() {
-		return addr;
+	public String getAddr_city() {
+		return addr_city;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setAddr_city(String addr_city) {
+		this.addr_city = addr_city;
+	}
+	public String getAddr_district() {
+		return addr_district;
+	}
+	public void setAddr_district(String addr_district) {
+		this.addr_district = addr_district;
+	}
+	public String getAddr_etc() {
+		return addr_etc;
+	}
+	public void setAddr_etc(String addr_etc) {
+		this.addr_etc = addr_etc;
 	}
 	public Timestamp getRegdate() {
 		return regdate;
@@ -123,5 +141,24 @@ public class RestaurantDTO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+	public int getRead_count() {
+		return read_count;
+	}
+	public void setRead_count(int read_count) {
+		this.read_count = read_count;
+	}
+	public int getLike_num() {
+		return like_num;
+	}
+	public void setLike_num(int like_num) {
+		this.like_num = like_num;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	
 	
 }

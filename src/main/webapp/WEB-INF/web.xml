@@ -14,12 +14,12 @@
   
   <!-- 회원정보 매핑 -->
   <servlet>
-  	<servlet-name>MemberFrontController</servlet-name>
-  	<servlet-class>com.itwillbs.member.action.MemberFrontController</servlet-class>
+  	<servlet-name>PublicFrontController</servlet-name>
+  	<servlet-class>com.itwillbs.member.action.PublicFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>MemberFrontController</servlet-name>
+  	<servlet-name>PublicFrontController</servlet-name>
   	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
   <!-- 회원정보 매핑 -->  

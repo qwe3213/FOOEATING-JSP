@@ -11,12 +11,18 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class AdminDAO {
+public class PublicDAO {
+	
+	// 공통사용 변수
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	private String sql = "";
 	
+	
+	
+	// 공통사용 메서드
+	// 1. getCon() 메서드
 	private Connection getCon() throws Exception {
 		Context initCTX = new InitialContext();
 		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/FOOEATING");
@@ -25,6 +31,7 @@ public class AdminDAO {
 		return con;
 	}
 	
+	// 2. closeDB() 메서드
 	public void closeDB() {
 		try {
 			if (rs != null)		rs.close();
@@ -35,38 +42,18 @@ public class AdminDAO {
 		}
 	}
 	
-	public void test() {
-		try {
-			con = getCon();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
-	public List<UserDTO> getUserList() {
-		List<UserDTO> userList = new ArrayList<UserDTO>();
-		
-		try {
-			con = getCon();
-			sql = "select * from user";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				UserDTO dto = new UserDTO();
-				dto.setEmail(rs.getString("email"));
-				dto.setId(rs.getString("id"));
-				dto.setName(rs.getString("name"));
-				dto.setPhone(rs.getString("phone"));
-				dto.setPw(rs.getString("pw"));
-				dto.setRegdate(rs.getTimestamp("regdate"));
-				userList.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return userList;
-	}
 	
-}
+	// 페어별 사용할 메서드 정의
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}	
+
+	

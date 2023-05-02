@@ -3,19 +3,19 @@ package com.fooeating.db;
 import java.sql.Timestamp;
 
 public class UserDTO {
-	private String id;
+	private String use_id;
 	private String pw;
 	private String name;
 	private String email;
 	private String phone;
 	private Timestamp regdate;
-	private String owner_id;
+
 	
-	public String getId() {
-		return id;
+	public String getUse_id() {
+		return use_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUse_id(String use_id) {
+		this.use_id = use_id;
 	}
 	public String getPw() {
 		return pw;
@@ -47,11 +47,5 @@ public class UserDTO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	public String getOwner_id() {
-		return owner_id;
-	}
-	public void setOwner_id(String owner_id) {
-		this.owner_id = owner_id;
-	}
-	
+
 }

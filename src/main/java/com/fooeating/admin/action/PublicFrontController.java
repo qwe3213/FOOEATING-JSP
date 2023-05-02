@@ -11,14 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
-public class AdminFrontController extends HttpServlet {
-	// http://localhost:8088/EX/UserInfoList.ad
+public class PublicFrontController extends HttpServlet {
+	
+	
+	
+	// http://localhost:8088/FOOEATING/가상주소.foo
 
+	
+	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 페이지 정보 전달 방식에 상관 없이(get이든 post든) 한 번에 처리하는 메서드
+
 		System.out.println("doProcess() 호출");
 
 		/* ===================== 1. 가상 주소 계산 ====================== */
+		
 		System.out.println("1. 가상주소 계산 시작");
 
 		String requestURI = request.getRequestURI();
@@ -29,10 +35,15 @@ public class AdminFrontController extends HttpServlet {
 		System.out.println("  command : " + command);
 
 		System.out.println("1. 가상주소 계산 끝");
+		
 		/* ===================== 1. 가상 주소 계산 ====================== */
 
 
+		
+		
+		
 		/* ===================== 2. 가상 주소 매핑 ====================== */
+		
 		System.out.println("\n2. 가상주소 매핑 시작");
 
 		Action action = null;
@@ -46,20 +57,21 @@ public class AdminFrontController extends HttpServlet {
 			System.out.println("  C : /UserInfoList.ad 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
-			// UserInfoAction()
-			action = new UserInfoListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			// 액션 객체 생성하기
+			
+			
 		}
 
 		System.out.println("2. 가상주소 매핑 끝\n");
+		
 		/* ===================== 2. 가상 주소 매핑 ====================== */
 
 
+		
+		
+		
 		/* ===================== 3. 가상 주소 이동 ====================== */
+		
 		System.out.println("3. 가상주소 이동 시작");
 		
 		if(forward != null) {	 //이동정보가 있을때
@@ -73,11 +85,17 @@ public class AdminFrontController extends HttpServlet {
 			}
 		}
 		System.out.println("3. 가상주소 이동 끝");
+		
 		/* ===================== 3. 가상 주소 이동 ====================== */
+		
+		
+		
+		
 		
 		System.out.println("doProcess 끝(컨트롤러 종료)");
 	}	// doProcess()
 
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet() 호출");
