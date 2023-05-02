@@ -48,6 +48,9 @@ public class MemberJoinAction implements Action{
 		forward.setPath("./MemberLogin.foo");
 		forward.setRedirect(true);
 		
+//		response.getWriter().append("결과");
+//		return null;
+		
 		System.out.println(" M : 데이터 처리완료! ");
 		
 		return forward;

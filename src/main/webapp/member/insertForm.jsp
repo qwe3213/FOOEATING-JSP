@@ -31,6 +31,40 @@ $(function() {
 		
 	});
 	
+	
+	
+	$("#fr").on("submit", function (e) { 
+		let id = document.fr.id.value;
+	    let pw = document.fr.pw.value;
+	    let cpw = document.fr.cpw.value;
+	    let number = pw.search(/[0-9]/g);
+	    let english = pw.search(/[a-z]/ig);
+	    let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+	    let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+       
+		  if (pw.length < 8 || pw.length > 20) {
+	    		 e.preventDefault();
+		  } else if (pw.search(/\s/) != -1) {
+	        	e.preventDefault();
+	 	  } else if (number < 0 || english < 0 || spece < 0) {
+	    		e.preventDefault();
+	  	  } else if ((number < 0 && english < 0) || (english < 0 && spece < 0) || (spece < 0 && number < 0)) {
+	    		e.preventDefault();
+	  	  } else if (/(\w)\1\1\1/.test(pw)) {
+	    		e.preventDefault();
+	  	  } else if (pw.search(id) > -1) {
+	    		e.preventDefault();
+	  	  } else if(pw != cpw){
+		     	e.preventDefault();
+	  	  }
+	    });
+		
+		
+
+	
+
+	
+	
 	$('#pw').keyup(function() {
 		let id = document.fr.id.value;
 	    let pw = document.fr.pw.value;
@@ -43,7 +77,6 @@ $(function() {
 	    if (pw.length < 8 || pw.length > 20) {
 	    	$(function(){
 	    	$('#pwd').html("8자리 ~ 20자리 이내로 입력해주세요.");
-	    		
 	    	});
 
 	    } else if (pw.search(/\s/) != -1) {
@@ -156,7 +189,7 @@ $(function() {
  			<legend>team4 회원가입</legend>
  			
  			<!-- action주소가 없으면 자신의 페이지 호출 -->
-	 		<form action="./MemberJoinAction.foo" method="post" name="fr" onsubmit="return checkData()">
+	 		<form action="./MemberJoinAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
  			 	아이디 <br>
  			 	<input type="text" name="id" maxlength="20" id="id" ><br>
  			 	<div id="idd" class="errorDiv"></div>
