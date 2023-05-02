@@ -1,4 +1,4 @@
-package com.fooeating.admin.action;
+package com.fooeating.action;
 
 import java.io.IOException;
 

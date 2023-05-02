@@ -12,17 +12,19 @@
   
   
   
-  <!-- 회원정보 매핑 -->
+  <!-- 기준 매핑 -->
   <servlet>
   	<servlet-name>PublicFrontController</servlet-name>
-  	<servlet-class>com.itwillbs.member.action.PublicFrontController</servlet-class>
+  	<servlet-class>com.fooeating.action.PublicFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
   	<servlet-name>PublicFrontController</servlet-name>
   	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
-  <!-- 회원정보 매핑 -->  
+  <!-- 기준 매핑 -->
+  
+  
   
   
   
