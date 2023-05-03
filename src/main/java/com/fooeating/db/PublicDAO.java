@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 import org.apache.catalina.User;
 
 public class PublicDAO {
@@ -21,10 +22,9 @@ public class PublicDAO {
 	private ResultSet rs = null;
 	private String sql = "";
 	
-	
-	
-	// 공통사용 메서드
+
 	// 1. getCon() 메서드
+
 	private Connection getCon() throws Exception {
 		Context initCTX = new InitialContext();
 		DataSource ds = (DataSource) initCTX.lookup("java:comp/env/jdbc/FOOEATING");
@@ -33,7 +33,9 @@ public class PublicDAO {
 		return con;
 	}
 	
+
 	// 2. closeDB() 메서드
+
 	public void closeDB() {
 		try {
 			if (rs != null)		rs.close();
@@ -44,9 +46,11 @@ public class PublicDAO {
 		}
 	}
 	
+
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
 	// 관리자 - 회원 목록 getUserList()
+
 	public List<UserDTO> getUserList() {
 		List<UserDTO> userList = new ArrayList<UserDTO>();
 		
@@ -72,6 +76,38 @@ public class PublicDAO {
 		
 		return userList;
 	}
+
+	
+	// 회원가입 - MemberJoin()
+		public void MemberJoin(UserDTO dto) {
+			try {
+				// 1.2. 디비연결
+				con = getCon();
+				// 3. sql작성&pstmt 객체
+				sql = "insert into user(user_id,pw,name,email,phone,regdate) "
+						+ " values(?,?,?,?,?,?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, dto.getUser_id());
+				pstmt.setString(2, dto.getPw());
+				pstmt.setString(3, dto.getName());
+				pstmt.setString(4, dto.getEmail());
+				pstmt.setString(5, dto.getPhone());
+				pstmt.setTimestamp(6, dto.getRegdate());
+				
+				// 4. sql 실행
+				pstmt.executeUpdate();
+				System.out.println(" DAO : 회원가입 성공!");
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			
+			
+		}// 회원가입 - MemberJoin()
+
 	// 관리자 - 회원 목록 getUserList()
 	
 	/* ================== < 관리자 관련 메서드 > ======================== */
@@ -130,5 +166,5 @@ public class PublicDAO {
 	
 	
 	
-	
+
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.MemberJoinAction;
 import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
 import com.fooeating.commons.Action;
@@ -39,6 +40,9 @@ public class MemberFrontController extends HttpServlet {
 		System.out.println("  command : " + command);
 
 		System.out.println("1. 가상주소 계산 끝");
+
+
+
 		
 		/* ===================== 1. 가상 주소 계산 ====================== */
 
@@ -48,11 +52,13 @@ public class MemberFrontController extends HttpServlet {
 		
 		/* ===================== 2. 가상 주소 매핑 ====================== */
 		
+
 		System.out.println("\n2. 가상주소 매핑 시작");
 
 		Action action = null;
 		ActionForward forward = null;
 		
+
 		
 		
 		/* 패턴1 : 처리작업 x (DB사용x), view 페이지(.foo와 연결된) 이동
@@ -71,6 +77,7 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/insertForm.jsp");
 			forward.setRedirect(false);
 		}
+
 		
 		// 1-1. 회원가입 데이터 처리
 		
@@ -79,7 +86,13 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
 			
 			// 액션객체의 execute() 메서드 사용
-			
+      action = new MemberJoinAction();
+			try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+      
 		}
 		
 		
@@ -100,12 +113,14 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2)");
 			
 			action = new MemberLoginAction();
+      
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+
 		
 		
 		
@@ -160,6 +175,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 		}
 		System.out.println("3. 가상주소 이동 끝");
+
 		
 		/* ===================== 3. 가상 주소 이동 ====================== */
 		

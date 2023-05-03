@@ -9,6 +9,7 @@
 <body>
 
 
+
 <h1>index.jsp</h1>
 
 
@@ -29,7 +30,6 @@
 	// -> 가상주소는 MemberFrontController.java에서 서블릿으로 매핑했으므로 해당 페이지로 이동.
 	// -> 즉,  컨트롤러로 이동.
 %>
-
 
 
 
