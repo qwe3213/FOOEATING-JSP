@@ -11,15 +11,31 @@
 	
 	<h1>userList.jsp</h1>
 	
-	<c:forEach var="dto" items="${requestScope.userList }">
-	아이디 : ${dto.id}<br>
-	비밀번호 : ${dto.pw}<br>
-	이름 : ${dto.name}<br>
-	이메일 : ${dto.email}<br>
-	전화번호 : ${dto.phone}<br>
-	가입일 : ${dto.regdate}<br>
-	점주 유무 : <br>
-	</c:forEach>
+	<table border="1">
+		<tr>
+			<th>No.</th>
+			<th>아이디</th>
+			<th>비밀번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>전화번호</th>
+			<th>가입일</th>
+			<th>점주유무</th>
+		</tr>
+		
+		<c:forEach var="dto" items="${requestScope.userList }" varStatus="no">
+		<tr>
+			<td>${no.count}</td>
+			<td>${dto.user_id}</td>
+			<td>${dto.pw}</td>
+			<td>${dto.name}</td>
+			<td>${dto.email}</td>
+			<td>${dto.phone}</td>
+			<td>${dto.regdate}</td>
+			<td></td>
+		</tr>
+		</c:forEach>
+	</table>
 	
 </body>
 </html>

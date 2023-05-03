@@ -11,8 +11,8 @@
   </welcome-file-list>
   
   
-  
-  <!-- 회원정보 매핑 -->
+
+  <!-- 기준 매핑 -->
   <servlet>
   	<servlet-name>MemberFrontController</servlet-name>
   	<servlet-class>com.fooeating.controller.MemberFrontController</servlet-class>
@@ -22,12 +22,8 @@
   	<servlet-name>MemberFrontController</servlet-name>
   	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
-  <!-- 회원정보 매핑 -->  
+  <!-- 기준 매핑 -->
   
-  
-  
-  
-  
-  
-  
+ 
+
 </web-app>

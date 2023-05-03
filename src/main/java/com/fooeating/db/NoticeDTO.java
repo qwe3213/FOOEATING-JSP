@@ -3,17 +3,18 @@ package com.fooeating.db;
 import java.sql.Timestamp;
 
 public class NoticeDTO {
-	private int bno;
+	private int notice_num;
 	private String subject;
 	private String content;
 	private String file;
 	private Timestamp regdate;
 	
-	public int getBno() {
-		return bno;
+
+	public int getNotice_num() {
+		return notice_num;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setNotice_num(int notice_num) {
+		this.notice_num = notice_num;
 	}
 	public String getSubject() {
 		return subject;

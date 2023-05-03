@@ -3,18 +3,19 @@ package com.fooeating.db;
 import java.sql.Timestamp;
 
 public class ReivewDTO {
-	private int rno;
+	private int review_num;
 	private String user_id;
 	private String content;
 	private String file;
 	private Timestamp regdate;
 	private int rest_id;
 	
-	public int getRno() {
-		return rno;
+
+	public int getReview_num() {
+		return review_num;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setReview_num(int review_num) {
+		this.review_num = review_num;
 	}
 	public String getUser_id() {
 		return user_id;
