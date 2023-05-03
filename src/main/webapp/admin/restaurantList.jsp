@@ -30,7 +30,12 @@
 			<td>${dto.owner_user_id}</td>
 			<td>${dto.rest_tel}</td>
 			<td>${dto.regdate}</td>
-			<td><button onclick="location.href='readMore.jsp'">상세보기</button></td>
+			<td>
+				<form action="./RestaurantInfo.foo" method="post">
+					<input type="hidden" name="rest_id" value="${dto.rest_id}">
+					<input type="submit" value="상세보기">
+				</form>
+			</td>
 		</tr>
 		</c:forEach>
 	</table>

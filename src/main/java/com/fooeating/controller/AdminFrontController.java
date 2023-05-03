@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.RestaurantInfoAction;
 import com.fooeating.action.RestaurantListAction;
 import com.fooeating.action.UserInfoListAction;
 import com.fooeating.commons.Action;
@@ -17,6 +18,7 @@ public class AdminFrontController extends HttpServlet {
 
 	// http://localhost:8088/FOOEATING/UserInfoList.foo
 	// http://localhost:8088/FOOEATING/RestaurantList.foo
+	// http://localhost:8088/FOOEATING/RestaurantInfo.foo
 
 	
 	
@@ -72,6 +74,18 @@ public class AdminFrontController extends HttpServlet {
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
 			action = new RestaurantListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/RestaurantInfo.foo")) {
+			System.out.println("  C : /RestaurantInfo.foo 실행");
+			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+
+			action = new RestaurantInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
