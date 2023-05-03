@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fooeating.admin.action.UserInfoListAction;
+import com.fooeating.action.UserInfoListAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
