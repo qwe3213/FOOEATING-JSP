@@ -32,7 +32,7 @@
 			<td>${dto.email}</td>
 			<td>${dto.phone}</td>
 			<td>${dto.regdate}</td>
-			<td></td>
+			<td>${dto.owner_id}</td>
 		</tr>
 		</c:forEach>
 	</table>

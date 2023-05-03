@@ -11,8 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import org.apache.catalina.User;
-
 public class PublicDAO {
 	
 	// 공통사용 변수
@@ -52,7 +50,8 @@ public class PublicDAO {
 		
 		try {
 			con = getCon();
-			sql = "select * from user order by regdate desc";
+			sql = "select user.*, if(user_id = owner_user_id, 'o', 'x') as 'owner_id' "
+					+ " from user left join restaurant on user_id = owner_user_id order by regdate desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -64,6 +63,7 @@ public class PublicDAO {
 				dto.setPw(rs.getString("pw"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
 				dto.setUser_id(rs.getString("user_id"));
+				dto.setOwner_id(rs.getString("owner_id"));
 				userList.add(dto);
 			}
 		} catch (Exception e) {
