@@ -158,7 +158,6 @@ $(function() {
 				document.fr.phone.focus();
 				return false;
 			} else {
-				alert('오류 없음');
 				return true;
 			}
 			

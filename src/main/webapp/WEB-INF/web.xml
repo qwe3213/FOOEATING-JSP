@@ -15,7 +15,7 @@
   <!-- 회원정보 매핑 -->
   <servlet>
   	<servlet-name>MemberFrontController</servlet-name>
-  	<servlet-class>com.fooeating.admin.action.MemberFrontController</servlet-class>
+  	<servlet-class>com.fooeating.controller.MemberFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>

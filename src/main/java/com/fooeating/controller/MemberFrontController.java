@@ -1,4 +1,4 @@
-package com.fooeating.admin.action;
+package com.fooeating.controller;
 
 import java.io.IOException;
 
@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.admin.action.MemberJoinAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
-public class AdminFrontController extends HttpServlet {
-	// http://localhost:8088/EX/UserInfoList.ad
+
+public class MemberFrontController extends HttpServlet {
+	// http://localhost:8088/FOOEATING/MemberJoin.foo
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 페이지 정보 전달 방식에 상관 없이(get이든 post든) 한 번에 처리하는 메서드
@@ -38,22 +40,35 @@ public class AdminFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		/* 패턴1 : 처리작업 x (DB사용x), view 페이지(.me와 연결된) 이동
-		 * 패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
-		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.me와 연결된) 이동 + 출력 */
-
-		if(command.equals("/UserInfoList.ad")) {
-			System.out.println("  C : /UserInfoList.ad 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			// UserInfoAction()
-			action = new UserInfoListAction();
+		// 회원가입 - ./MemberJoin.poo
+		if(command.equals("/MemberJoin.foo")) {
+			System.out.println(" C : /MemberJoin.poo 실행");
+			System.out.println(" C : DB사용 X, view페이지 이동(패턴1) ");
+					
+			// 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./member/insertForm.jsp");
+			forward.setRedirect(false);
+		}
+		else if (command.equals("/MemberJoinAction.foo")) {
+			System.out.println(" C : /MemberJoinAction.foo 호출 ");
+			System.out.println(" C : DB사용 O, 페이지 이동O (패턴2)");
+					
+			action = new MemberJoinAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+					
+				
+		
+		/* 패턴1 : 처리작업 x (DB사용x), view 페이지(.me와 연결된) 이동
+		 * 패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
+		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.me와 연결된) 이동 + 출력 */
+
+		
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		/* ===================== 2. 가상 주소 매핑 ====================== */
