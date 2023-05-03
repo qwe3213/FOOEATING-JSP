@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>MVC7</display-name>
+  <display-name>FOOEATING</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -11,23 +11,19 @@
   </welcome-file-list>
   
   
-  
-  <!-- 회원정보 매핑 -->
+
+  <!-- 기준 매핑 -->
   <servlet>
   	<servlet-name>MemberFrontController</servlet-name>
-  	<servlet-class>com.itwillbs.member.action.MemberFrontController</servlet-class>
+  	<servlet-class>com.fooeating.controller.MemberFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
   	<servlet-name>MemberFrontController</servlet-name>
-  	<url-pattern>*.me</url-pattern>
+  	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
-  <!-- 회원정보 매핑 -->  
+  <!-- 기준 매핑 -->
   
-  
-  
-  
-  
-  
-  
+ 
+
 </web-app>
