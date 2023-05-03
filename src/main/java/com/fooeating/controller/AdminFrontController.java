@@ -16,9 +16,9 @@ import com.fooeating.commons.ActionForward;
 
 public class AdminFrontController extends HttpServlet {
 
-	// http://localhost:8088/FOOEATING/UserInfoList.foo
-	// http://localhost:8088/FOOEATING/RestaurantList.foo
-	// http://localhost:8088/FOOEATING/RestaurantInfo.foo
+	// http://localhost:8088/FOOEATING/UserInfoList.ad
+	// http://localhost:8088/FOOEATING/RestaurantList.ad
+	// http://localhost:8088/FOOEATING/RestaurantInfo.ad
 
 	
 	
@@ -58,8 +58,8 @@ public class AdminFrontController extends HttpServlet {
 		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.me와 연결된) 이동 + 출력 */
 
 		
-		if(command.equals("/UserInfoList.foo")) {
-			System.out.println("  C : /UserInfoList.foo 실행");
+		if(command.equals("/UserInfoList.ad")) {
+			System.out.println("  C : /UserInfoList.ad 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
 			action = new UserInfoListAction();
@@ -71,8 +71,8 @@ public class AdminFrontController extends HttpServlet {
 
 		} 
 		
-		else if(command.equals("/RestaurantList.foo")) {
-			System.out.println("  C : /RestaurantList.foo 실행");
+		else if(command.equals("/RestaurantList.ad")) {
+			System.out.println("  C : /RestaurantList.ad 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
 			action = new RestaurantListAction();
@@ -83,8 +83,8 @@ public class AdminFrontController extends HttpServlet {
 			}
 		}
 		
-		else if(command.equals("/RestaurantInfo.foo")) {
-			System.out.println("  C : /RestaurantInfo.foo 실행");
+		else if(command.equals("/RestaurantInfo.ad")) {
+			System.out.println("  C : /RestaurantInfo.ad 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
 			action = new RestaurantInfoAction();

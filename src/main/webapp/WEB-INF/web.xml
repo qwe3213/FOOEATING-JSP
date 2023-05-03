@@ -20,7 +20,7 @@
   
   <servlet-mapping>
   	<servlet-name>AdminFrontController</servlet-name>
-  	 <url-pattern>*.foo</url-pattern>
+  	 <url-pattern>*.ad</url-pattern>
   </servlet-mapping>
    <!-- 관리자 매핑 -->
 

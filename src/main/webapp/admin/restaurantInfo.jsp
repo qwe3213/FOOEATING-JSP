@@ -47,7 +47,7 @@
 		</tr>
 	</table>
 	
-	<button onclick="location.href='./RestaurantList.foo'">입점 목록으로</button>
+	<button onclick="location.href='./RestaurantList.ad'">입점 목록으로</button>
 	
 </body>
 </html>

@@ -31,7 +31,7 @@
 			<td>${dto.rest_tel}</td>
 			<td>${dto.regdate}</td>
 			<td>
-				<form action="./RestaurantInfo.foo" method="post">
+				<form action="./RestaurantInfo.ad" method="post">
 					<input type="hidden" name="rest_id" value="${dto.rest_id}">
 					<input type="submit" value="상세보기">
 				</form>
