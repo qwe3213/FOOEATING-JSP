@@ -20,16 +20,21 @@
   
   <servlet-mapping>
   	<servlet-name>AdminFrontController</servlet-name>
+   <!-- 관리자 매핑 -->
+
+
+  <!-- 회원 매핑 -->
+  <servlet>
+  	<servlet-name>MemberFrontController</servlet-name>
+  	<servlet-class>com.fooeating.controller.MemberFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MemberFrontController</servlet-name>
   	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
-  <!-- 관리자 매핑 -->
+  <!-- 회원 매핑 -->
   
-  
-  
-  
-  
-  
-  
-  
-  
+ 
+
 </web-app>

@@ -1,7 +1,8 @@
 package com.fooeating.commons;
 
 
-public class ActionForward {
+public class ActionForward{
+	
 	private String path;			// 이동할 페이지 주소(목적지)
 	private boolean isRedirect;		// 이동할 방식(직행 or 환승 등...)
 	// 이동방식 설정 (교재 p.143)

@@ -8,18 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fooeating.action.RestaurantInfoAction;
-import com.fooeating.action.RestaurantListAction;
-import com.fooeating.action.UserInfoListAction;
+import com.fooeating.action.MemberJoinAction;
+import com.fooeating.action.MemberLoginAction;
+import com.fooeating.action.MemberLogoutAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
-public class AdminFrontController extends HttpServlet {
-
-	// http://localhost:8088/FOOEATING/UserInfoList.foo
-	// http://localhost:8088/FOOEATING/RestaurantList.foo
-	// http://localhost:8088/FOOEATING/RestaurantInfo.foo
-
+public class MemberFrontController extends HttpServlet {
+	
+	
+		
+	// http://localhost:8088/FOOEATING/MemberJoin.foo
+	// http://localhost:8088/FOOEATING/MemberLogin.foo
+	// http://localhost:8088/FOOEATING/Main.foo
+	
 	
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +29,7 @@ public class AdminFrontController extends HttpServlet {
 		System.out.println("doProcess() 호출");
 
 		/* ===================== 1. 가상 주소 계산 ====================== */
-
+		
 		System.out.println("1. 가상주소 계산 시작");
 
 		String requestURI = request.getRequestURI();
@@ -38,6 +40,9 @@ public class AdminFrontController extends HttpServlet {
 		System.out.println("  command : " + command);
 
 		System.out.println("1. 가상주소 계산 끝");
+
+
+
 		
 		/* ===================== 1. 가상 주소 계산 ====================== */
 
@@ -53,29 +58,90 @@ public class AdminFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		/* 패턴1 : 처리작업 x (DB사용x), view 페이지(.me와 연결된) 이동
-		 * 패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
-		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.me와 연결된) 이동 + 출력 */
 
 		
-		if(command.equals("/UserInfoList.foo")) {
-			System.out.println("  C : /UserInfoList.foo 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+		
+		/* 패턴1 : 처리작업 x (DB사용x), view 페이지(.foo와 연결된) 이동
+		   패턴2 : 처리작업 o (DB사용o), 페이지(전혀 다른 페이지) 이동
+		           처리작업 o (DB사용x), 페이지(전혀 다른 페이지) 이동
+		   패턴3 : 처리작업 o (DB사용o), view 페이지(.foo와 연결된) 이동 + 출력  */
+		
+		
+		
+		// 1. 회원가입
+		if(command.equals("/MemberJoin.foo")) {
+			System.out.println("C : /MemberJoin.foo 실행");
+			System.out.println("C : DB사용x, view 페이지 이동 (패턴1");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/insertForm.jsp");
+			forward.setRedirect(false);
+		}
 
-			action = new UserInfoListAction();
+		
+		// 1-1. 회원가입 데이터 처리
+		
+		else if(command.equals("/MemberJoinAction.foo")) {
+			System.out.println("C : /MemberJoinAction.foo 실행");
+			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
+			
+			// 액션객체의 execute() 메서드 사용
+      action = new MemberJoinAction();
+			try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+      
+		}
+		
+		
+		
+		// 2. 로그인
+		if(command.equals("/MemberLogin.foo")) {
+			System.out.println(" C : /MemberLogin.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/loginForm.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 2-1. 로그인 데이터 처리
+		else if(command.equals("/MemberLoginAction.foo")) {
+			System.out.println(" C : /MemberLoginAction.foo 실행");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2)");
+			
+			action = new MemberLoginAction();
+      
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
 
-		} 
 		
-		else if(command.equals("/RestaurantList.foo")) {
-			System.out.println("  C : /RestaurantList.foo 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			action = new RestaurantListAction();
+		
+		
+		// 3. 메인 페이지
+		else if(command.equals("/Main.foo")) {
+			System.out.println(" C : /Main.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/main.jsp");
+			forward.setRedirect(false);
+		}
+		
+		
+		
+		// 4. 로그아웃
+		else if(command.equals("/MemberLogout.foo")) {
+			System.out.println(" C : /MemberLogout.foo 실행");
+			System.out.println(" C : 처리작업o, 페이지 이동 (패턴2)");
+			
+			action = new MemberLogoutAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -83,18 +149,8 @@ public class AdminFrontController extends HttpServlet {
 			}
 		}
 		
-		else if(command.equals("/RestaurantInfo.foo")) {
-			System.out.println("  C : /RestaurantInfo.foo 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			action = new RestaurantInfoAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
+		
+		
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		
