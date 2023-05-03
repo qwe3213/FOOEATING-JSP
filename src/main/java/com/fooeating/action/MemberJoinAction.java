@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
-import com.fooeating.db.MemberDAO;
+import com.fooeating.db.PublicDAO;
 import com.fooeating.db.UserDTO;
 
 // 회원가입 처리(인코딩, 정보저장, 디비연결, 페이지이동)
@@ -38,7 +38,7 @@ public class MemberJoinAction implements Action{
 		System.out.println(" M : " + dto);
 		
 		// MemberDAO 객체 생성
-		MemberDAO dao = new MemberDAO();
+		PublicDAO dao = new PublicDAO();
 		
 		// 회원가입 메서드
 		dao.MemberJoin(dto);

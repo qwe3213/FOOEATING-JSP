@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
-import com.fooeating.db.AdminDAO;
+import com.fooeating.db.PublicDAO;
 import com.fooeating.db.UserDTO;
 
 public class UserInfoListAction implements Action {
@@ -19,7 +19,7 @@ public class UserInfoListAction implements Action {
 		// 세션 제어
 		
 		// 회원정보 저장
-		AdminDAO dao = new AdminDAO();
+		PublicDAO dao = new PublicDAO();
 		List<UserDTO> userList = dao.getUserList();
 		System.out.println("회원 수 : " + userList.size());
 		
