@@ -169,6 +169,31 @@ $(function() {
 		}
 	 	
 	});
+	$('#id').focusout(function() {
+		let user_id = $('#id').val();
+		
+		$.ajax({
+			url : "./idCheckAction.foo",
+			type : "post",
+			data : {user_id : user_id},
+			dataType : 'json',
+			success : function(result) {
+				if(result == 0){
+					$('#idd').html('사용할 수 없는 아이디입니다.');
+				} else{
+					$('#idd').html('사용할 수 있는 아이디입니다.');
+					$('#idd').css('color','green');
+					
+				}
+			},
+			error : function() {
+				alert("서버요청실패");
+			}
+		})
+		
+	})
+	
+	
 	
 	
 });
@@ -210,6 +235,9 @@ $(function() {
 			
 			
 		}
+		
+		
+		
 		 
 	
 	</script>
@@ -225,8 +253,7 @@ $(function() {
  			<!-- action주소가 없으면 자신의 페이지 호출 -->
 	 		<form action="./MemberJoinAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
  			 	아이디 <br>
- 			 	<input type="text" name="user_id" maxlength="20" id="id" >
- 			 	<button>중복확인</button> <br>
+ 			 	<input type="text" name="user_id" maxlength="20" id="id" ><br>
  			 	<div id="idd" class="errorDiv"></div>
  			 	비밀번호<br>
  			 	<input type="password" name="pw" maxlength="20" id="pw"><br>

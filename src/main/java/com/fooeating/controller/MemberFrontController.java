@@ -86,7 +86,7 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
 			
 			// 액션객체의 execute() 메서드 사용
-      action = new MemberJoinAction();
+			action = new MemberJoinAction();
 			try {
                 forward = action.execute(request, response);
             } catch (Exception e) {

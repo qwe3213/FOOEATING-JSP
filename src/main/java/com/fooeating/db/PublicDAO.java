@@ -255,6 +255,33 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
+	// 회원가입 아이디 중복체크 
+	public int checkId(String id) {
+		int result = 1;
+		try {
+			con = getCon();
+			
+			sql = "select * from user where user_id = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next() || id.equals("")) {
+				result = 0; // 이미 존재하는 경우, 생성 불가능
+			} else {
+				result = 1; // 존재하지 않는 경우, 생성 가능
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return result;
+		
+	}
+	// 회원가입 아이디 중복체크 
+	
 	/* ================== < 회원 관련 메서드 > ======================== */
 	
 	
