@@ -19,7 +19,7 @@ $(document).ready(function(){
 	    });
 	    
 	     $("#fr").on("submit", function(e) {
-	         if(fr.id.value ==""){
+	         if(fr.user_id.value ==""){
 	             e.preventDefault();
 	             $('#divid').html("아이디를 입력하세요.");
 	         } else{
@@ -51,7 +51,7 @@ $(document).ready(function(){
 	<legend>FOOEATING 로그인</legend>
 	
 	<form action="./MemberLoginAction.foo" id="fr" method="post">
-		아이디 : <input type="text" id="id" name="id"> <br>
+		아이디 : <input type="text" id="id" name="user_id"> <br>
 		<div id="divid"></div>
 		비밀번호 : <input type="password" id="pw" name="pw"> <br>
 		<div id="divpw"></div>

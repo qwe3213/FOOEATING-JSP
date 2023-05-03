@@ -20,7 +20,7 @@ $(function() {
 	
 	$('#id').keyup(function() {
 	
-		let id = document.fr.id.value;
+		let id = document.fr.user_id.value;
 		let regIdPw = /^[a-zA-Z0-9]{4,12}$/;
 		if(regIdPw.test(id)){
 		$('#idd').html("");
@@ -34,7 +34,7 @@ $(function() {
 	
 	
 	$("#fr").on("submit", function (e) { 
-		let id = document.fr.id.value;
+		let id = document.fr.user_id.value;
 	    let pw = document.fr.pw.value;
 	    let cpw = document.fr.cpw.value;
 	    let number = pw.search(/[0-9]/g);
@@ -64,7 +64,7 @@ $(function() {
 	
 	
 	$('#pw').keyup(function() {
-		let id = document.fr.id.value;
+		let id = document.fr.user_id.value;
 	    let pw = document.fr.pw.value;
 	    let cpw = document.fr.cpw.value;
 	    let number = pw.search(/[0-9]/g);
@@ -126,7 +126,7 @@ $(function() {
 
 	
 		function checkData() {
-			let id = document.fr.id.value;
+			let id = document.fr.user_id.value;
 			let pw = document.fr.pw.value;
 		    let cpw = document.fr.cpw.value;
 		    let name = document.fr.name.value;
@@ -137,7 +137,7 @@ $(function() {
 		    
 			// 아이디가 입력되어 있는지 체크
 			if(id == ""){
-				document.fr.id.focus();
+				document.fr.user_id.focus();
 				return false;
 			}
 			else if (pw == ""){
@@ -178,7 +178,7 @@ $(function() {
  			<!-- action주소가 없으면 자신의 페이지 호출 -->
 	 		<form action="./MemberJoinAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
  			 	아이디 <br>
- 			 	<input type="text" name="id" maxlength="20" id="id" ><br>
+ 			 	<input type="text" name="user_id" maxlength="20" id="id" ><br>
  			 	<div id="idd" class="errorDiv"></div>
  			 	비밀번호<br>
  			 	<input type="password" name="pw" maxlength="20" id="pw"><br>

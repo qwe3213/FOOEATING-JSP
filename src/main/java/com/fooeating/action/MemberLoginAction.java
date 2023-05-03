@@ -24,7 +24,7 @@ public class MemberLoginAction implements Action {
 		
 		// 전달정보 (id/pw) 저장
 		UserDTO dto =  new UserDTO();
-		dto.setUser_id(request.getParameter("id"));
+		dto.setUser_id(request.getParameter("user_id"));
 		dto.setPw(request.getParameter("pw"));
 		
 		// DAO의 memberLogin(dto) 메서드 호출하여 리턴값 result에 저장
@@ -47,7 +47,7 @@ public class MemberLoginAction implements Action {
 		// result == 1 회원이자 본인
 		// 1) session에 아이디 저장
 		HttpSession session = request.getSession();
-		session.setAttribute("id", dto.getUser_id());
+		session.setAttribute("user_id", dto.getUser_id());
 		
 		// 2) Main.poo 페이지 이동
 		ActionForward forward = new ActionForward();

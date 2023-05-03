@@ -28,7 +28,7 @@ public class MemberJoinAction implements Action{
 		
 		// 전달된 정보 저장
 		
-		dto.setId(reqeuest.getParameter("id"));
+		dto.setUser_id(reqeuest.getParameter("user_id"));
 		dto.setPw(reqeuest.getParameter("pw"));
 		dto.setName(reqeuest.getParameter("name"));
 		dto.setEmail(reqeuest.getParameter("email"));

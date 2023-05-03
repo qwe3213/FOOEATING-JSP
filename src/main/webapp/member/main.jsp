@@ -16,11 +16,11 @@
 
 
 <!-- 로그인 세션 제어 -->
-<c:if test="${empty id }" >
+<c:if test="${empty user_id }" >
 	<c:redirect url="./MemberLogin.foo"/>
 </c:if>
 
-ID : ${id }
+ID : ${user_id }
 
 <hr>
 
