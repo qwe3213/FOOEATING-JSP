@@ -76,4 +76,59 @@ public class PublicDAO {
 	
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
+	
+	
+	
+	
+	/* ================== < 회원 관련 메서드 > ======================== */
+	
+	// 로그인 체크 - memberLogin(dto)
+	// -1 비회원 / 0 비번오류 / 1 회원
+	public int memberLogin(UserDTO dto) {
+		
+		// result 기본 값
+		int result = -1;
+		
+		try {
+			con = getCon();
+			
+			sql = "select pw from User where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()) {
+				// 회원일 때
+				if(dto.getPw().equals(rs.getString("pw"))) {
+					// 본인
+					result = 1;
+				}else {
+					// 비밀번호 오류
+					result = 0;
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+			
+			System.out.println("DAO : 로그인처리 결과 : " + result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return result;
+	}
+	// 로그인 체크 - memberLogin(dto)
+	
+	/* ================== < 회원 관련 메서드 > ======================== */
+	
+	
+	
+	
+	
 }
