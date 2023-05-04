@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 public class PublicDAO {
 	
 	// 공통사용 변수
@@ -337,6 +338,107 @@ public class PublicDAO {
 			return dto;
 		}
 	/* ================== < 가게리스트 > ======================== */
+		
+		
+		/* ================== < 페이지 count > ======================== */
+		public int getBoardCount() {
+			int result = 0;
+			
+			try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. SQL 작성 & pstmt 객체
+			sql = "select count(*) from restaurant";
+			pstmt = con.prepareStatement(sql);
+			// 4. sql 실행	
+			rs = pstmt.executeQuery();
+			// 5. 데이터 처리
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println(" DAO : 전체 글 갯수 - " + result);
+			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+					closeDB();
+				}
+			
+			
+		
+			return result;
+		}
+		/* ================== < 페이지 count > ======================== */
+
+		/* ================== < 페이지 처리 > ======================== */
+		public ArrayList getListForm(int startRow,int pageSize) {
+			
+			//List boardList = new ArrayList();
+			 ArrayList listForm = new ArrayList();
+			 
+			// 1.2. 디비연결
+				try {
+					con = getCon();
+					// 3. sql 작성 (select) & pstmt객체
+			String sql = " select * from restaurant "
+					+ " order by re_ref desc, re_seq asc limit ?,?";
+				//	+ " where bno > 0";
+				//	+ " order by bno desc";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			// ???
+			pstmt.setInt(1, startRow-1);	// 시작위치 -1  // 행은 0부터 시작
+			pstmt.setInt(2, pageSize);	// 개수
+			
+			
+			
+			// 4. sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			// 5. 데이터 처리
+			//		DB(rs) -> DTO -> ArrayList
+			//		1 row -> 1 DTO -> 1 ArrayList
+			while (rs.next()) {
+				// rs -> DTO
+				RestaurantDTO dto = new RestaurantDTO();
+				dto.setRest_tel(rs.getString("rest_tel"));
+				dto.setName(rs.getString("name"));
+				dto.setRest_id(rs.getInt("rest_id"));
+				dto.setConvenience(rs.getString("convenience"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				dto.setDayoff(rs.getString("dayoff"));
+				listForm.add(dto);
+				
+			} // while
+			
+			System.out.println(" DAO : 게시판 글 정보 모두 저장완료 ! ");
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+//				}	finally {
+//					// 예외 발생 여부와 상관없이 반드시 한버 실행하는 구분
+//					// => 자원해제	(디비 연결 정보 해제 - 사용한 객체의 역순 종료)
+//					try {
+//						rs.close();
+//						pstmt.close();
+//						con.close();
+//					} catch (SQLException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+		} finally {		
+			closeDB();
+		}
+			
+			return listForm;
+			
+		}
+		/* ================== < 페이지 처리 > ======================== */
+		
+		
+		
+	
 	
 	
 
