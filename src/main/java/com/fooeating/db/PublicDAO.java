@@ -48,14 +48,17 @@ public class PublicDAO {
 	
 	// 관리자 - 회원 목록 getUserList()
 
-	public List<UserDTO> getUserList() {
+	public List<UserDTO> getUserList(int startRow, int pageSize) {
 		List<UserDTO> userList = new ArrayList<UserDTO>();
 		
 		try {
 			con = getCon();
 			sql = "select user.*, if(user_id = owner_user_id, 'o', 'x') as 'owner_id' "
-					+ " from user left join restaurant on user_id = owner_user_id order by regdate desc";
+					+ " from user left join restaurant on user_id = owner_user_id order by regdate desc "
+					+ " limit ?, ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -81,14 +84,38 @@ public class PublicDAO {
 	
 	
 	
+	// 관리자 - 회원수 카운트 getUserCount()
+	public int getUserCount() {
+		int result = 0;
+		
+		try {
+			con = getCon();
+			sql = "select count(*) from user";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	// 관리자 - 회원수 카운트 getUserCount()
+	
+	
+	
 	// 관리자 - 입점 목록 getRestaurantList()
-	public List<RestaurantDTO> getRestaurantList() {
+	public List<RestaurantDTO> getRestaurantList(int startRow, int pageSize) {
 		List<RestaurantDTO> restList = new ArrayList<RestaurantDTO>();
 		
 		try {
 			con = getCon();
-			sql = "select * from restaurant order by regdate desc";
+			sql = "select * from restaurant order by regdate desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -127,6 +154,28 @@ public class PublicDAO {
 		return restList;
 	}
 	// 관리자 - 입점 목록 getRestaurantList()
+	
+	
+	
+	// 관리자 - 입점 가게수 getRestaurantCount()
+	public int getRestaurantCount() {
+		int result = 0;
+		
+		try {
+			con = getCon();
+			sql = "select count(*) from restaurant";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	// 관리자 - 입점 가게수 getRestaurantCount() 
 	
 	
 	
