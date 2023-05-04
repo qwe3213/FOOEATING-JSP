@@ -1,7 +1,7 @@
 package com.fooeating.db;
 
 public class Restaurant_menuDTO {
-	private int rest_nemu_num;
+	private int rest_menu_num;
 	private String name;
 	private String descriptions;
 	private String price;
@@ -9,11 +9,11 @@ public class Restaurant_menuDTO {
 	private int rest_id;
 	
 
-	public int getRest_nemu_num() {
-		return rest_nemu_num;
+	public int getRest_menu_num() {
+		return rest_menu_num;
 	}
-	public void setRest_nemu_num(int rest_nemu_num) {
-		this.rest_nemu_num = rest_nemu_num;
+	public void setRest_menu_num(int rest_nemu_num) {
+		this.rest_menu_num = rest_nemu_num;
 	}
 	public String getName() {
 		return name;

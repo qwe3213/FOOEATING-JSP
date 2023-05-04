@@ -11,8 +11,21 @@
   </welcome-file-list>
   
   
+  
+  <!-- 관리자 매핑 -->
+  <servlet>
+  	<servlet-name>AdminFrontController</servlet-name>
+  	<servlet-class>com.fooeating.controller.AdminFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>AdminFrontController</servlet-name>
+  	 <url-pattern>*.ad</url-pattern>
+  </servlet-mapping>
+   <!-- 관리자 매핑 -->
 
-  <!-- 기준 매핑 -->
+
+  <!-- 회원 매핑 -->
   <servlet>
   	<servlet-name>MemberFrontController</servlet-name>
   	<servlet-class>com.fooeating.controller.MemberFrontController</servlet-class>
@@ -22,8 +35,34 @@
   	<servlet-name>MemberFrontController</servlet-name>
   	<url-pattern>*.foo</url-pattern>
   </servlet-mapping>
-  <!-- 기준 매핑 -->
+  
+  <!-- 회원 매핑 -->
+  
+
+	 <!-- 리스트 매핑 -->
+<servlet>
+  	<servlet-name>ListFrontController</servlet-name>
+  	<servlet-class>com.fooeating.controller.ListFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ListFrontController</servlet-name>
+  	<url-pattern>*.fd</url-pattern>
+  </servlet-mapping>
+	 <!-- 리스트 매핑 -->
   
  
+
+  <!-- 점주 매핑 -->
+   <servlet>
+  	<servlet-name>RestaurantFrontController</servlet-name>
+  	<servlet-class>com.fooeating.controller.RestaurantFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>RestaurantFrontController</servlet-name>
+  	<url-pattern>*.on</url-pattern>
+  </servlet-mapping>
+<!-- 점주 매핑 -->
 
 </web-app>

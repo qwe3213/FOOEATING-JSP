@@ -8,24 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.ListFormAction;
 import com.fooeating.action.RestaurantInfoAction;
-import com.fooeating.action.RestaurantListAction;
-import com.fooeating.action.UserInfoListAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
-public class AdminFrontController extends HttpServlet {
-
-	// http://localhost:8088/FOOEATING/UserInfoList.ad
-	// http://localhost:8088/FOOEATING/RestaurantList.ad
-	// http://localhost:8088/FOOEATING/RestaurantInfo.ad
-
+public class ListFrontController extends HttpServlet {
 	
-	
+		// http://localhost:8088/FOOEATING/listForm.fd
+		// http://localhost:8088/FOOEATING/restaurantForm.fd
+
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("doProcess() 호출");
-
+		
 		/* ===================== 1. 가상 주소 계산 ====================== */
 
 		System.out.println("1. 가상주소 계산 시작");
@@ -40,10 +36,6 @@ public class AdminFrontController extends HttpServlet {
 		System.out.println("1. 가상주소 계산 끝");
 		
 		/* ===================== 1. 가상 주소 계산 ====================== */
-
-
-		
-		
 		
 		/* ===================== 2. 가상 주소 매핑 ====================== */
 		
@@ -58,32 +50,18 @@ public class AdminFrontController extends HttpServlet {
 		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.me와 연결된) 이동 + 출력 */
 
 		
-		if(command.equals("/UserInfoList.ad")) {
-			System.out.println("  C : /UserInfoList.ad 실행");
+		if(command.equals("/listForm.fd")) {
+			System.out.println("  C : /listForm.fd 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
-			action = new UserInfoListAction();
+			action = new ListFormAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
-		} 
-		
-		else if(command.equals("/RestaurantList.ad")) {
-			System.out.println("  C : /RestaurantList.ad 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			action = new RestaurantListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		else if(command.equals("/RestaurantInfo.ad")) {
+		} else if(command.equals("/restaurantForm.fd")) {
 			System.out.println("  C : /RestaurantInfo.ad 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
@@ -94,16 +72,27 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+//		else if(command.equals("/restaurantForm.fd")) {
+//			System.out.println("  C : /restaurantForm.fd 실행");
+//			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+//
+//			action = new listFormAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+		
+		
 
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		
 		/* ===================== 2. 가상 주소 매핑 ====================== */
+		
 
-
-		
-		
-		
 		/* ===================== 3. 가상 주소 이동 ====================== */
 		
 		System.out.println("3. 가상주소 이동 시작");
@@ -118,6 +107,7 @@ public class AdminFrontController extends HttpServlet {
 				dis.forward(request, response);
 			}
 		}
+		
 		System.out.println("3. 가상주소 이동 끝");
 
 		
@@ -130,17 +120,18 @@ public class AdminFrontController extends HttpServlet {
 		System.out.println("doProcess 끝(컨트롤러 종료)");
 	}	// doProcess()
 
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet() 호출");
+		// TODO Auto-generated method stub
 		doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doPost() 호출");
+		// TODO Auto-generated method stub
 		doProcess(request, response);
 	}
 
+
+	
 }

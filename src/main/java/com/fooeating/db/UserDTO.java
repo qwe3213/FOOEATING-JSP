@@ -9,6 +9,7 @@ public class UserDTO {
 	private String email;
 	private String phone;
 	private Timestamp regdate;
+	private String owner_id;
 
 	
 	public String getUser_id() {
@@ -46,6 +47,12 @@ public class UserDTO {
 	}
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
+	}
+	public String getOwner_id() {
+		return owner_id;
+	}
+	public void setOwner_id(String owner_id) {
+		this.owner_id = owner_id;
 	}
 
 }

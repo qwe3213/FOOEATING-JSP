@@ -8,26 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fooeating.action.RestaurantInfoAction;
-import com.fooeating.action.RestaurantListAction;
-import com.fooeating.action.UserInfoListAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
-public class AdminFrontController extends HttpServlet {
-
-	// http://localhost:8088/FOOEATING/UserInfoList.ad
-	// http://localhost:8088/FOOEATING/RestaurantList.ad
-	// http://localhost:8088/FOOEATING/RestaurantInfo.ad
-
+public class RestaurantFrontController extends HttpServlet {
 	
+	
+	
+	// http://localhost:8088/FOOEATING/ownerChangeForm.on
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("doProcess() 호출");
 
 		/* ===================== 1. 가상 주소 계산 ====================== */
-
+		
 		System.out.println("1. 가상주소 계산 시작");
 
 		String requestURI = request.getRequestURI();
@@ -47,7 +42,6 @@ public class AdminFrontController extends HttpServlet {
 		
 		/* ===================== 2. 가상 주소 매핑 ====================== */
 		
-
 		System.out.println("\n2. 가상주소 매핑 시작");
 
 		Action action = null;
@@ -58,43 +52,34 @@ public class AdminFrontController extends HttpServlet {
 		 * 패턴3 : 처리작업 o (DB사용o), view 페이지(.me와 연결된) 이동 + 출력 */
 
 		
-		if(command.equals("/UserInfoList.ad")) {
-			System.out.println("  C : /UserInfoList.ad 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			action = new UserInfoListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		} 
 		
-		else if(command.equals("/RestaurantList.ad")) {
-			System.out.println("  C : /RestaurantList.ad 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			action = new RestaurantListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----
+		if(command.equals("/ownerChangeForm.on")) {
+			System.out.println("  C : /RestaurantJoin.on 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동");
+			
+			// 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerChangeForm.jsp");
+			forward.setRedirect(false);	
+		} // ownerChangeForm.jsp
 		
-		else if(command.equals("/RestaurantInfo.ad")) {
-			System.out.println("  C : /RestaurantInfo.ad 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			action = new RestaurantInfoAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
+		else if(command.equals("/ownerChangeForm2.on")) {
+			System.out.println("  C : /ownerChangeForm2.on 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동");
+			
+			// 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerChangeForm2.jsp");
+			forward.setRedirect(false);	
+		} // ownerChangeForm2.jsp
+		
+		
+	
+		
+	
+		
+		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		
@@ -119,7 +104,6 @@ public class AdminFrontController extends HttpServlet {
 			}
 		}
 		System.out.println("3. 가상주소 이동 끝");
-
 		
 		/* ===================== 3. 가상 주소 이동 ====================== */
 		
