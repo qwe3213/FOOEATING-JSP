@@ -26,6 +26,13 @@ ID : ${user_id }
 
 <input type="button" value="로그아웃" onclick="location.href='./MemberLogout.foo';">
 
+<hr>
+
+<!-- 관리자 계정(real_admin) 제어 -->
+<c:if test="${!empty user_id && user_id.equals('real_admin')}">
+	<input type="button" value="회원 목록" onclick="location.href='./UserInfoList.ad'">
+	<input type="button" value="입점 가게 목록" onclick="location.href='./RestaurantList.ad'">
+</c:if>
 
 
 </body>

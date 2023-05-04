@@ -50,6 +50,7 @@ public class UserInfoListAction implements Action {
 		request.setAttribute("count", count);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("pno", pno);
 		
 		// 연결된 view에 출력
 		forward.setPath("./admin/userList.jsp");
