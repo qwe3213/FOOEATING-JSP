@@ -41,7 +41,7 @@
   <!-- 점주 매핑 -->
    <servlet>
   	<servlet-name>RestaurantFrontController</servlet-name>
-  	<servlet-class>com.fooeating.action.RestaurantFrontController</servlet-class>
+  	<servlet-class>com.fooeating.controller.RestaurantFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>

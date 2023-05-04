@@ -20,7 +20,7 @@ public class MemberFrontController extends HttpServlet {
 		
 	// http://localhost:8088/FOOEATING/MemberJoin.foo
 	// http://localhost:8088/FOOEATING/MemberLogin.foo
-	// http://localhost:8088/FO                                                               OEATING/Main.foo
+	// http://localhost:8088/FOOEATING/Main.foo
 	
 	
 	

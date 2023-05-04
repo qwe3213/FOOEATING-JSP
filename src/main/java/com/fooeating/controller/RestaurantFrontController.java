@@ -15,7 +15,7 @@ public class RestaurantFrontController extends HttpServlet {
 	
 	
 	
-	// http://localhost:8088/FooeaTing_Test/ownerChangeForm.on
+	// http://localhost:8088/FOOEATING/ownerChangeForm.on
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
