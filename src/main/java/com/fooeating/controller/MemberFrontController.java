@@ -195,6 +195,14 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} 
 		
+		// 5-3 비밀번호 변경 시 팝업창 호출
+		else if (command.equals("/changePw.foo")) {
+			
+			forward = new ActionForward();
+			forward.setPath("./member/changePw.jsp");
+			forward.setRedirect(true);
+		}
+		
 		
 		
 
