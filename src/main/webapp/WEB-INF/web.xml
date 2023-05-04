@@ -38,6 +38,7 @@
   
   <!-- 회원 매핑 -->
   
+
 	 <!-- 리스트 매핑 -->
 <servlet>
   	<servlet-name>ListFrontController</servlet-name>
@@ -51,5 +52,17 @@
 	 <!-- 리스트 매핑 -->
   
  
+
+  <!-- 점주 매핑 -->
+   <servlet>
+  	<servlet-name>RestaurantFrontController</servlet-name>
+  	<servlet-class>com.fooeating.controller.RestaurantFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>RestaurantFrontController</servlet-name>
+  	<url-pattern>*.on</url-pattern>
+  </servlet-mapping>
+<!-- 점주 매핑 -->
 
 </web-app>
