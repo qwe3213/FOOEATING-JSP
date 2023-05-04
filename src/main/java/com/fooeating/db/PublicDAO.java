@@ -257,15 +257,15 @@ public class PublicDAO {
 	
 	// 회원가입 아이디 중복체크 
 	public int checkId(String id) {
-		int result = 1;
+		int result = 0;
 		try {
 			con = getCon();
 			
-			sql = "select * from user where user_id = ?";
+			sql = "select * from user where user_id=?";
 			pstmt = con.prepareStatement(sql);
-			
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			if(rs.next() || id.equals("")) {
+			if(rs.next()) {
 				result = 0; // 이미 존재하는 경우, 생성 불가능
 			} else {
 				result = 1; // 존재하지 않는 경우, 생성 가능
@@ -276,7 +276,6 @@ public class PublicDAO {
 		}finally {
 			closeDB();
 		}
-		
 		return result;
 		
 		

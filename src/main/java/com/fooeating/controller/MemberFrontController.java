@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fooeating.action.MemberJoinAction;
 import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
+import com.fooeating.action.idCheckAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
@@ -93,6 +94,19 @@ public class MemberFrontController extends HttpServlet {
                 e.printStackTrace();
             }
       
+		}
+		
+		// 1-2 회원가입 아이디중복 데이터 처리
+		else if(command.equals("/idCheckAction.foo")) {
+			System.out.println("C : /idCheckAction.foo 실행");
+			
+			action = new idCheckAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

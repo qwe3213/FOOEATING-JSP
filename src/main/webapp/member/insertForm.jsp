@@ -18,6 +18,8 @@ $(function() {
 		'color' : 'red'
 	});
 	
+	
+	
 	$('#id').keyup(function() {
 	
 		let id = document.fr.user_id.value;
@@ -27,7 +29,28 @@ $(function() {
 		
 		}else if(!regIdPw.test(id)){
 		$('#idd').html("4~12자 영문 대소문자, 숫자만 입력하세요.");	
+		$('#idd').css('color', 'red');
 		}
+		
+		$.ajax({
+			url:"./idCheckAction.foo",
+			data : {user_id:id},
+			success: function(data) {
+				if(data ==1 && regIdPw.test(id)){
+					$('#idd').html("사용 가능한 아이디 입니다.");	
+					$('#idd').css('color', 'green');
+				} else if(data ==0 && regIdPw.test(id)){
+					$('#idd').html("이미 존재하는 아이디 입니다.");	
+					$('#idd').css('color', 'red');
+				}
+			
+			},
+			error : function() {
+				alert("서버요청실패");
+			}
+		});
+		
+		
 		
 	});
 	
@@ -169,29 +192,6 @@ $(function() {
 		}
 	 	
 	});
-	$('#id').focusout(function() {
-		let user_id = $('#id').val();
-		
-		$.ajax({
-			url : "./idCheckAction.foo",
-			type : "post",
-			data : {user_id : user_id},
-			dataType : 'json',
-			success : function(result) {
-				if(result == 0){
-					$('#idd').html('사용할 수 없는 아이디입니다.');
-				} else{
-					$('#idd').html('사용할 수 있는 아이디입니다.');
-					$('#idd').css('color','green');
-					
-				}
-			},
-			error : function() {
-				alert("서버요청실패");
-			}
-		})
-		
-	})
 	
 	
 	
