@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.fooeating.action.MemberJoinAction;
 import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
+import com.fooeating.action.MemberUpdateAction;
+import com.fooeating.action.MemberUpdateProAction;
 import com.fooeating.action.idCheckAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -163,6 +165,36 @@ public class MemberFrontController extends HttpServlet {
 			}
 		}
 		
+		// 5-1 회원 정보 수정 정보입력 페이지
+		else if(command.equals("/MemberUpdate.foo")) {
+			System.out.println(" C : /MemberUpdate.foo 호출 ");
+			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+			
+			// MemberUpdateAction() 객체
+			action = new MemberUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 5-2 회원정보 수정 수정버튼 클릭시
+		else if(command.equals("/MemberUpdateProAction.foo")) {
+			System.out.println(" C : /MemberUpdateProAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+			
+			// MemberUpdateProAction() 객체
+			action = new MemberUpdateProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		
 		
 		
 
@@ -195,9 +227,9 @@ public class MemberFrontController extends HttpServlet {
 		
 		
 		
-		
-		
 		System.out.println("doProcess 끝(컨트롤러 종료)");
+		
+		
 	}	// doProcess()
 
 	

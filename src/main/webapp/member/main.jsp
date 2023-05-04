@@ -25,6 +25,7 @@ ID : ${user_id }
 <hr>
 
 <input type="button" value="로그아웃" onclick="location.href='./MemberLogout.foo';">
+<input type="button" value="회원 정보수정" onclick="location.href='./MemberUpdate.foo';">
 
 
 
