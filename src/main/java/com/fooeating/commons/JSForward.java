@@ -43,4 +43,23 @@ public class JSForward {
 		}
 	}
 	
+	// 3. alert 메세지 출력 + 팝업창 닫기
+	public static void alertAndClose(HttpServletResponse response, String msg) {
+		try {
+			// 인코딩
+			response.setContentType("text/html; charset=UTF-8");
+			
+			// 출력문
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('"+ msg +"');");
+			out.println("window.opener.location.reload();");
+			out.println("window.close();");
+			out.println("</script>");
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
