@@ -2,6 +2,9 @@
 
 
 
+img { display: block; margin: 0px auto; }
+
+
 * {
     box-sizing: border-box; /* 길이 계산을 편하게 하기위함. */
   }
@@ -14,12 +17,12 @@
     color: #888;
   }
   a:hover {
-    text-decoration: underline; /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
+    text-decoration: underline; /* 마우스 커서가 올라갔을 때 밑줄 생성 */
   }
   header {
   	background: lightgray;
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
-    width: 1080px;
+/*     width: 1080px; */
     height: 215px;
     display: flex;
     align-items: center; /* 하위 요소들 수직 가운데정렬 */
@@ -40,20 +43,10 @@
   }
   .ft {
   	font-size: 20px;
-    margin:0 0 0 auto;	/* 오른쪽 정렬 */
+    margin:0 auto;	/* 가운데 정렬 */
   }
   
   
-  
-  .img_logo {
-    margin-bottom: 12px;
-    width: 120px;
-    height: 100px;
-    margin: auto;
-    display: block;
-  }
-  
-
 
   /* nav */
   header > nav {
@@ -76,6 +69,8 @@
   .nav_items ul > li {
     display: inline-block;
     margin-left: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
   .nav_items ul > li:nth-child(-n + 7) > a { /* <ul>하위 7번째 <li>까지 각각 내부의 <a> 태그 접근 */
     color: #404040;

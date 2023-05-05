@@ -61,7 +61,6 @@ public class MemberFrontController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		
 
 		
 		
@@ -147,7 +146,7 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
 			
 			forward = new ActionForward();
-			forward.setPath("./member/main.jsp");
+			forward.setPath("./main/main.jsp");
 			forward.setRedirect(false);
 		}
 		
@@ -165,6 +164,8 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		
 		
 		// 5-1 회원 정보 수정 정보입력 페이지
 		else if(command.equals("/MemberUpdate.foo")) {
@@ -222,13 +223,26 @@ public class MemberFrontController extends HttpServlet {
 		} 
 		
 		
-		// 5. 마이페이지
+		
+		// 6. 마이페이지
 		else if(command.equals("/MyPageMember.foo")) {
 			System.out.println(" C : /MyPage.foo 실행");
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
 			
 			forward = new ActionForward();
 			forward.setPath("./member/myPageMember.jsp");
+			forward.setRedirect(false);
+		}
+		
+		
+		
+		// 7. NOTICE
+		else if(command.equals("/Notice.foo")) {
+			System.out.println(" C : /Notice.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./notice/notice.jsp");
 			forward.setRedirect(false);
 		}
 		
