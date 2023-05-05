@@ -14,6 +14,7 @@ import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
 import com.fooeating.action.MemberUpdateAction;
 import com.fooeating.action.MemberUpdateProAction;
+import com.fooeating.action.MyReviewAction;
 import com.fooeating.action.idCheckAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -222,7 +223,7 @@ public class MemberFrontController extends HttpServlet {
 		} 
 		
 		
-		// 5. 마이페이지
+		// 5. 회원 마이페이지
 		else if(command.equals("/MyPageMember.foo")) {
 			System.out.println(" C : /MyPage.foo 실행");
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
@@ -232,6 +233,21 @@ public class MemberFrontController extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		
+		// 6. 회원 마이페이지 - 리뷰 관리 페이지 이동
+		
+		else if(command.equals("/MyReview.foo")) {
+			System.out.println(" C : /MyReview.foo 호출 ");
+			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+			
+			// MyReviewAction() 객체
+			action = new MyReviewAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 

@@ -488,6 +488,32 @@ public class PublicDAO {
 		return result;
 	}
 	
+	public UserDTO getReview(String id) {
+		UserDTO dto = null;
+		try {
+			con = getCon();
+			sql = "select r.name, r.grade, re.regdate, re.content from restaurant r "
+					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			if(rs.next()) {
+				dto = new UserDTO();
+				dto.setEmail(rs.getString("email"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setName(rs.getString("name"));
+				dto.setPw(rs.getString("pw"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 	
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
