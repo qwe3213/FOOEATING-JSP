@@ -8,7 +8,6 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
-import com.fooeating.db.UserDTO;
 
 public class ChangePwAction implements Action {
 
@@ -61,6 +60,7 @@ System.out.println(" M: ChangePwAction_execute() 호출 ");
 			return null; // 컨트롤러에서는 이동X
 		}
 		
+		session.invalidate();
 		// result == 1
 		JSForward.alertAndClose(response, "비밀번호 변경 완료!");
 		

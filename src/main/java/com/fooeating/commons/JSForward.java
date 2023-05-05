@@ -53,6 +53,7 @@ public class JSForward {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('"+ msg +"');");
+			out.println("window.opener.location.reload();");
 			out.println("window.close();");
 			out.println("</script>");
 			out.close();
