@@ -165,6 +165,18 @@ public class MemberFrontController extends HttpServlet {
 		
 		
 		
+		// 5. 마이페이지
+		else if(command.equals("/MyPageMember.foo")) {
+			System.out.println(" C : /MyPage.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/myPageMember.jsp");
+			forward.setRedirect(false);
+		}
+		
+		
+		
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		

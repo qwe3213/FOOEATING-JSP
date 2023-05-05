@@ -23,6 +23,7 @@
 // 	response.sendRedirect("./가상주소.foo");
 // 	response.sendRedirect("./MemberLogin.foo");
 	response.sendRedirect("./Main.foo");
+// 	response.sendRedirect("./MyPageMember.foo");
 
 	
 	
