@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.ChangePwAction;
 import com.fooeating.action.MemberJoinAction;
 import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
@@ -197,11 +198,28 @@ public class MemberFrontController extends HttpServlet {
 		
 		// 5-3 비밀번호 변경 시 팝업창 호출
 		else if (command.equals("/changePw.foo")) {
+			System.out.println(" C : /changePw.foo 호출 ");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
 			
 			forward = new ActionForward();
 			forward.setPath("./member/changePw.jsp");
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 		}
+		
+		// 5-4 비밀번호 수정버튼 클릭시
+		else if(command.equals("/changePwAction.foo")) {
+			System.out.println(" C : /changePwAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+			
+			// MemberUpdateProAction() 객체
+			action = new ChangePwAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 		
 		
 

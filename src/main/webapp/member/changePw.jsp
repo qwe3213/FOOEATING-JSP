@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +105,13 @@ function checkData() {
 </head>
 <body>
 		<h1>changePw.jsp</h1>
-		<form action=""method="post" name="fr" onsubmit="return checkData()" id="fr">
+		
+		<!-- 로그인 세션 제어 -->
+		<c:if test="${empty user_id }" >
+			<c:redirect url="./MemberLogin.foo"/>
+		</c:if>
+		
+		<form action="./changePwAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
 		현재 비밀번호<input type="password" name="pw"><br>
 		새 비밀번호<input type="password" name="newPw" id="newPw"><br>
 		<div id="newPwDiv" class="errorDiv"></div>

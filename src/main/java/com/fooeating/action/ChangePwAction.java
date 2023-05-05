@@ -1,7 +1,5 @@
 package com.fooeating.action;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,13 +10,13 @@ import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.UserDTO;
 
-
-
-public class MemberUpdateProAction implements Action {
+public class ChangePwAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(" M: MemberUpdateProAction_execute() 호출 ");
+	public ActionForward execute(HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		
+System.out.println(" M: ChangePwAction_execute() 호출 ");
 		
 		// 세션정보 제어
 		HttpSession session = request.getSession();
@@ -35,18 +33,16 @@ public class MemberUpdateProAction implements Action {
 		// 한글처리(인코딩)
 		request.setCharacterEncoding("UTF-8");
 		
-		// 전달정보 저장(DTO)
-		UserDTO dto = new UserDTO();
-		dto.setUser_id(request.getParameter("user_id"));
-		dto.setPw(request.getParameter("pw"));
-		dto.setName(request.getParameter("name"));
-		dto.setEmail(request.getParameter("email"));
-		dto.setPhone(request.getParameter("phone"));
+		// 전달정보 저장(변수)
+		String pw = request.getParameter("pw");
+		String newPw = request.getParameter("newPw");
 		
-		// DAO - 정보수정 메서드 호출 - memberUpdate(dto)
+		
+		
+		// DAO - 정보수정 메서드 호출 -changePw(id, pw, newPw)
 		PublicDAO dao = new PublicDAO();
 		
-		int result = dao.memberUpdate(dto);
+		int result = dao.changePw(id, pw, newPw);
 		
 		System.out.println(" M : 정보 수정 결과 " + result);
 		
@@ -66,9 +62,10 @@ public class MemberUpdateProAction implements Action {
 		}
 		
 		// result == 1
-		JSForward.alertAndMove(response, "수정 완료","./Main.foo");
+		JSForward.alertAndClose(response, "비밀번호 변경 완료!");
 		
 		return null;
 	}
+		
 
 }
