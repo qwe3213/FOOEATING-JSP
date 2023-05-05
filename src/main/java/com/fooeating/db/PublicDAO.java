@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 public class PublicDAO {
 	
 	// 공통사용 변수
@@ -337,7 +338,155 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
+	// 3. 회원정보 불러오기
 	
+	public UserDTO getMember(String id) {
+		UserDTO dto = null;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql = "select * from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			if(rs.next()) {
+				dto = new UserDTO();
+				dto.setEmail(rs.getString("email"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setName(rs.getString("name"));
+				dto.setPw(rs.getString("pw"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+			}
+			
+			System.out.println(" DAO : 회원정보 저장완료! ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+	}
+	
+	// 4. 회원 정보 수정
+	
+	public int memberUpdate(UserDTO dto) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select pw from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, dto.getUser_id());
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				if(dto.getPw().equals(rs.getString("pw"))){
+					// 본인(아이디, 비밀번호 동일)
+					
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update user set name=?, phone=? where user_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, dto.getName());
+					pstmt.setString(2, dto.getPhone());
+					pstmt.setString(3, dto.getUser_id());
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+					
+				} else {
+					// 비밀번호 오류
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+				
+			System.out.println(" DAO : 회원 정보 수정 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return result;
+	}
+	
+	// 회원 비밀번호 수정
+	
+	public int changePw(String id, String pw, String newPw) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select pw from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				if(pw.equals(rs.getString("pw"))){
+					// 본인(아이디, 비밀번호 동일)
+					
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update user set pw=? where user_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, newPw);
+					pstmt.setString(2, id);
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+					
+				} else {
+					// 비밀번호 오류
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+				
+			System.out.println(" DAO : 회원 비밀번호 수정 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return result;
+	}
 	
 	
 	

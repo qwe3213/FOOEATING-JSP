@@ -23,18 +23,12 @@ public class idCheckAction implements Action{
         PublicDAO dao = new PublicDAO();
        
         int idCheck = dao.checkId(id);
-        if (idCheck==0) {
-        	ActionForward forward = new ActionForward();
-        	forward.setPath("./member/idCheck.jsp?userid=0");
-        	forward.setRedirect(true);
-        	return forward;
-			
-		}else {
-			ActionForward forward = new ActionForward();
-        	forward.setPath("./member/idCheck.jsp?userid=1");
-        	forward.setRedirect(true);
-        	return forward;
-		}
+        
+        response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(idCheck);
+        
+        return null;
         
     }
     
