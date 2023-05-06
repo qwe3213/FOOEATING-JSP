@@ -33,11 +33,16 @@
 		
 		</table>
 		<form action="reviewUpdate.foo" method="post" >
-		<input type="hidden" name="user_id" value="${user_id }">
-		<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
-		<button>수정</button>
+			<input type="hidden" name="user_id" value="${user_id }">
+			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
+			<button>수정</button>
 		</form>
-		<button onclick="location.href='./reviewDelete.foo">삭제</button>
+		
+		<form action="reviewDelete.foo" method="post" >
+			<input type="hidden" name="user_id" value="${user_id }">
+			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
+			<button>삭제</button>
+		</form>
 		
 		</c:forEach>
 		

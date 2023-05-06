@@ -553,11 +553,56 @@ public class PublicDAO {
 		}
 		
 		return dto;
-	
 		
 	}
 	
-
+	// 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
+	public int changeReview(String id, int review_num, String newContent) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select * from review where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update review set content=? where review_num =?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, newContent);
+					pstmt.setInt(2, review_num);
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+				
+			}else {
+				// 비회원
+				result = -1;
+			}
+		
+				
+			System.out.println(" DAO : 회원 비밀번호 수정 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	
+	}
 	
 	
 	

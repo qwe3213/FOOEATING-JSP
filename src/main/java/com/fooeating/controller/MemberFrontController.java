@@ -16,6 +16,7 @@ import com.fooeating.action.MemberUpdateAction;
 import com.fooeating.action.MemberUpdateProAction;
 import com.fooeating.action.MyReviewAction;
 import com.fooeating.action.idCheckAction;
+import com.fooeating.action.reviewUpdate;
 import com.fooeating.action.reviewUpdateAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -256,7 +257,7 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
 			
 			// MemberUpdateAction() 객체
-			action = new reviewUpdateAction();
+			action = new reviewUpdate();
 			
 			try {
 				forward = action.execute(request, response);
@@ -277,6 +278,19 @@ public class MemberFrontController extends HttpServlet {
 		}
 		
 		// 6-3 회원 마이페이지 - 리뷰관리 완료버튼 클릭시 정보 수정 및 부모창 새로고침
+		else if(command.equals("/reviewUpdateAction.foo")) {
+			System.out.println(" C : /reviewUpdateAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+			
+			// MemberUpdateProAction() 객체
+			action = new reviewUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		
