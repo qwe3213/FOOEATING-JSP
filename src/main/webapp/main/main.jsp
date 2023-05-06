@@ -67,7 +67,7 @@
 	  	  <li><a href="#">ㅤHOMEㅤ</a></li>
 	      <li><a href="#">ㅤCATEGORYㅤ</a></li>
 	      <li><a href="#">ㅤPUDDINGㅤㅤ</a></li>
-	      <li><a href="./Notice.foo">ㅤNOTICEㅤ</a></li>
+	      <li><a href="./NoticeList.foo">ㅤNOTICEㅤ</a></li>
 	    </ul>
 	  </div>
 	</nav>
@@ -101,7 +101,7 @@
 <footer>
 
   <div class="notice_box">
-    <a href="./Notice.foo">공지사항<br></a>
+    <a href="./NoticeList.foo">공지사항<br></a>
   </div>
   
   <div class="aside_box">

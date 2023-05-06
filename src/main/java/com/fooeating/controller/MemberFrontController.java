@@ -14,6 +14,9 @@ import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
 import com.fooeating.action.MemberUpdateAction;
 import com.fooeating.action.MemberUpdateProAction;
+import com.fooeating.action.NoticeListAction;
+import com.fooeating.action.NoticeWriteAction;
+import com.fooeating.action.UserInfoListAction;
 import com.fooeating.action.idCheckAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -170,7 +173,7 @@ public class MemberFrontController extends HttpServlet {
 		// 5-1 회원 정보 수정 정보입력 페이지
 		else if(command.equals("/MemberUpdate.foo")) {
 			System.out.println(" C : /MemberUpdate.foo 호출 ");
-			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3)");
 			
 			// MemberUpdateAction() 객체
 			action = new MemberUpdateAction();
@@ -236,15 +239,46 @@ public class MemberFrontController extends HttpServlet {
 		
 		
 		
-		// 7. NOTICE
-		else if(command.equals("/Notice.foo")) {
-			System.out.println(" C : /Notice.foo 실행");
-			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+		// 7. 공지사항 (리스트)
+		else if(command.equals("/NoticeList.foo")) {
+			System.out.println(" C : /NoticeList.foo 실행");
+			System.out.println(" C : DB사용o, view페이지 이동 & 출력 (패턴3)");
 			
+			action = new NoticeListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 7-1. 공지사항 (글쓰기)
+		else if(command.equals("/NoticeWrite.foo")) {
+			System.out.println(" C : /NoticeWrite.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+		
 			forward = new ActionForward();
-			forward.setPath("./notice/notice.jsp");
+			forward.setPath("./notice/noticeWrite.jsp");
 			forward.setRedirect(false);
 		}
+		
+		// 7-1-1. 공지사항 (글쓰기) - 데이터 처리
+		else if(command.equals("/NoticeWriteAction.foo")) {
+			System.out.println(" C : /NoticeWriteAction.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3) ");
+			
+			action = new NoticeWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+
+		
+		
+		
 		
 		
 		
