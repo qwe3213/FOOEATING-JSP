@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.action.ChangePwAction;
+import com.fooeating.action.MemberDeleteAction;
 import com.fooeating.action.MemberJoinAction;
 import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
@@ -214,9 +215,34 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : /changePwAction.foo 호출 ");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
 			
-			// MemberUpdateProAction() 객체
+			// ChangePwAction() 객체
 			action = new ChangePwAction();
 			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		
+		// 5-5 회원 탈퇴 시 팝엉창 호출
+		else if (command.equals("/memberDelete.foo")) {
+			System.out.println(" C : /memberDelete.foo 호출 ");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+					
+			forward = new ActionForward();
+			forward.setPath("./member/memberDelete.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 5-6 회원 탈퇴 버튼  클릭시
+		else if(command.equals("/MemberDeleteAction.foo")) {
+			System.out.println(" C : /MemberDeleteAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+					
+			// MemberDeleteAction() 객체
+			action = new MemberDeleteAction();
+					
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

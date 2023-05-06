@@ -73,6 +73,14 @@
 			window.open("changePw.foo","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 			
 		}
+		
+		function winopen2(){
+			let popupX = (window.screen.width / 2) - (500 / 2);
+			let popupY= (window.screen.height /2) - (300 / 2);
+			
+			window.open("memberDelete.foo","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+			
+		}
 	
 	</script>
 
@@ -99,6 +107,7 @@
  			 	<div id="phonediv" class="errorDiv"></div>       
  			 	<hr>      
  			 	<input type="submit" value="회원정보 수정">
+ 			 	<input type="button" value="회원 탈퇴" onclick="winopen2()"><br>
  		
  		
  			</form>

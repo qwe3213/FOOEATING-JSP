@@ -488,6 +488,56 @@ public class PublicDAO {
 		return result;
 	}
 	
+	// 회원 탈퇴
+	public int deleteMember(UserDTO dto) {
+		System.out.println(dto.getUser_id());
+		System.out.println(dto.getPw());
+		int result = -1; // -1	0	1
+		try {
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select pw from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+						
+			// ???
+			pstmt.setString(1, dto.getUser_id());
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				if(dto.getPw().equals(rs.getString("pw"))){
+					
+					sql = "delete from user where user_id=?";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, dto.getUser_id());
+					
+				result = pstmt.executeUpdate(); // 1
+				} else {
+					// 비밀번호 오류
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+		
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println(result);
+		return result;
+		
+		
+	} // 회원 탈퇴
+	
 	// 회원 리뷰 정보 모두 가져가기
 	public List<ReivewDTO> getReviewAll(String id) {
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
