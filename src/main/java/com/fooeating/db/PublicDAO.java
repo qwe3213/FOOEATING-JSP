@@ -488,30 +488,33 @@ public class PublicDAO {
 		return result;
 	}
 	
-	public UserDTO getReview(String id) {
-		UserDTO dto = null;
+	public List<ReivewDTO> getReview(String id) {
+		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 		try {
 			con = getCon();
 			sql = "select r.name, r.grade, re.regdate, re.content from restaurant r "
 					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				dto = new UserDTO();
-				dto.setEmail(rs.getString("email"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setName(rs.getString("name"));
-				dto.setPw(rs.getString("pw"));
-				dto.setPhone(rs.getString("phone"));
+			while(rs.next()) {
+				ReivewDTO dto = new ReivewDTO();
+				
+				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-			}
+				
+				dto.setName(rs.getString("name"));
+				dto.setGrade(rs.getInt("grade"));
+				
+				reviewList.add(dto);
+			} // while
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return reviewList;
 	}
 	
 	
