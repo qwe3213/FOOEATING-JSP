@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ 
+
 </head>
 <body>
 		<h1>리뷰 관리</h1>
@@ -14,8 +16,7 @@
 		<c:if test="${empty user_id }" >
 			<c:redirect url="./MemberLogin.foo"/>
 		</c:if>
-		
-		
+
 
 		<c:forEach var="dto" items="${reviewList}" >
 		<table border="1">
@@ -31,7 +32,11 @@
 		</tr>
 		
 		</table>
-		<button onclick="location.href='./reviewUpdate.foo">수정</button>
+		<form action="reviewUpdate.foo" method="post" >
+		<input type="hidden" name="user_id" value="${user_id }">
+		<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
+		<button>수정</button>
+		</form>
 		<button onclick="location.href='./reviewDelete.foo">삭제</button>
 		
 		</c:forEach>

@@ -62,4 +62,22 @@ public class JSForward {
 		}
 	}
 	
+	public static void movePopUp(HttpServletResponse response, String url) {
+		try {
+			// 인코딩
+			response.setContentType("text/html; charset=UTF-8");
+			
+			// 출력문
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("let popupX = (window.screen.width / 2) - (500 / 2);");
+			out.println("let popupY= (window.screen.height /2) - (300 / 2);");
+			out.println("window.open('"+url+"','','width=500, height=300, left='+ popupX +', top='+ popupY + ', screenX=' +popupX+', screenY= '+ popupY);");
+			out.println("</script>");
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

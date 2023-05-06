@@ -16,6 +16,7 @@ import com.fooeating.action.MemberUpdateAction;
 import com.fooeating.action.MemberUpdateProAction;
 import com.fooeating.action.MyReviewAction;
 import com.fooeating.action.idCheckAction;
+import com.fooeating.action.reviewUpdateAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
@@ -248,6 +249,36 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		// 6-1 회원 마이페이지 - 리뷰관리 수정버튼 클릭 시 정보를 저장할 액션페이지 호출
+		else if(command.equals("/reviewUpdate.foo")) {
+			System.out.println(" C : /reviewUpdate.foo 호출 ");
+			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+			
+			// MemberUpdateAction() 객체
+			action = new reviewUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 6-2 회원 마이페이지 - 리뷰관리 수정버튼 클릭 시 수정팝업창 호출
+		
+		else if(command.equals("/reviewUpdatePop.foo")) {
+			System.out.println(" C : /reviewUpdatePop.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/reviewUpdate.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 6-3 회원 마이페이지 - 리뷰관리 완료버튼 클릭시 정보 수정 및 부모창 새로고침
+		
+		
 		
 		
 

@@ -488,11 +488,12 @@ public class PublicDAO {
 		return result;
 	}
 	
-	public List<ReivewDTO> getReview(String id) {
+	// 회원 리뷰 정보 모두 가져가기
+	public List<ReivewDTO> getReviewAll(String id) {
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 		try {
 			con = getCon();
-			sql = "select r.name, r.grade, re.regdate, re.content from restaurant r "
+			sql = "select re.review_num, r.name, r.grade, re.regdate, re.content from restaurant r "
 					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -501,9 +502,9 @@ public class PublicDAO {
 			while(rs.next()) {
 				ReivewDTO dto = new ReivewDTO();
 				
+				dto.setReview_num(rs.getInt("review_num"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-				
 				dto.setName(rs.getString("name"));
 				dto.setGrade(rs.getInt("grade"));
 				
@@ -516,6 +517,47 @@ public class PublicDAO {
 		
 		return reviewList;
 	}
+	
+	// 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
+	public ReivewDTO getReview(String id, int review_num) {
+		ReivewDTO dto = null;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql = "select re.review_num, r.name, r.grade, re.user_id, re.content "
+					+ "from restaurant r " 
+					+ "join review re on r.rest_id  = re.rest_id where re.user_id = ? and re.review_num =?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			pstmt.setInt(2, review_num);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			if(rs.next()) {
+				dto = new ReivewDTO();
+				dto.setReview_num(rs.getInt("review_num"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setName(rs.getString("name"));
+				dto.setContent(rs.getString("content"));
+				dto.setGrade(rs.getInt("grade"));
+			}
+			
+			System.out.println(" DAO : 회원정보 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+	
+		
+	}
+	
+
 	
 	
 	
