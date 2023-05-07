@@ -491,6 +491,219 @@ public class PublicDAO {
 		return result;
 	}
 	
+	// 회원 탈퇴
+	public int deleteMember(UserDTO dto) {
+		System.out.println(dto.getUser_id());
+		System.out.println(dto.getPw());
+		int result = -1; // -1	0	1
+		try {
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select pw from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+						
+			// ???
+			pstmt.setString(1, dto.getUser_id());
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				if(dto.getPw().equals(rs.getString("pw"))){
+					
+					sql = "delete from user where user_id=?";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, dto.getUser_id());
+					
+				result = pstmt.executeUpdate(); // 1
+				} else {
+					// 비밀번호 오류
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+		
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println(result);
+		return result;
+		
+		
+	} // 회원 탈퇴
+	
+	// 회원 리뷰 정보 모두 가져가기
+	public List<ReivewDTO> getReviewAll(String id) {
+		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
+		try {
+			con = getCon();
+			sql = "select re.review_num, r.name, r.grade, re.regdate, re.content from restaurant r "
+					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ReivewDTO dto = new ReivewDTO();
+				
+				dto.setReview_num(rs.getInt("review_num"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				dto.setName(rs.getString("name"));
+				dto.setGrade(rs.getInt("grade"));
+				
+				reviewList.add(dto);
+			} // while
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return reviewList;
+	}
+	
+	// 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
+	public ReivewDTO getReview(String id, int review_num) {
+		ReivewDTO dto = null;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql = "select re.review_num, r.name, r.grade, re.user_id, re.content "
+					+ "from restaurant r " 
+					+ "join review re on r.rest_id  = re.rest_id where re.user_id = ? and re.review_num =?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			pstmt.setInt(2, review_num);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			if(rs.next()) {
+				dto = new ReivewDTO();
+				dto.setReview_num(rs.getInt("review_num"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setName(rs.getString("name"));
+				dto.setContent(rs.getString("content"));
+				dto.setGrade(rs.getInt("grade"));
+			}
+			
+			System.out.println(" DAO : 회원정보 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+		
+	}
+	
+	// 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
+	public int changeReview(String id, int review_num, String newContent) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select * from review where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update review set content=? where review_num =?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, newContent);
+					pstmt.setInt(2, review_num);
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+				
+			}else {
+				// 비회원
+				result = -1;
+			}
+		
+				
+			System.out.println(" DAO : 회원 비밀번호 수정 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	
+	}
+	
+	// 리뷰 삭제 
+	
+	public int deleteReview(String id, int review_num) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select * from review where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "delete from review where review_num =?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, review_num);
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+				
+			}else {
+				// 비회원
+				result = -1;
+			}
+		
+			System.out.println(" DAO : 회원 리뷰 삭제 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	
+	}
+	
 	
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
