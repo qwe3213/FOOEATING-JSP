@@ -7,6 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function deleteReview() {
+		var delConfirm = confirm('정말 삭제하시겠습니까?');
+		if (delConfirm) {
+	  	 return true;
+		}
+		else {
+	  	 alert('삭제가 취소되었습니다.');
+	  	 return false;
+		}	
+	}
+	
+
+	
+
+
+</script>
  
 
 </head>
@@ -38,7 +55,7 @@
 			<button>수정</button>
 		</form>
 		
-		<form action="reviewDelete.foo" method="post" >
+		<form action="reviewDelete.foo" method="post" onsubmit="return deleteReview()" >
 			<input type="hidden" name="user_id" value="${user_id }">
 			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
 			<button>삭제</button>

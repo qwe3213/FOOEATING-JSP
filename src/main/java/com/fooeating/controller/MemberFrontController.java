@@ -17,6 +17,7 @@ import com.fooeating.action.MemberUpdateAction;
 import com.fooeating.action.MemberUpdateProAction;
 import com.fooeating.action.MyReviewAction;
 import com.fooeating.action.idCheckAction;
+import com.fooeating.action.reviewDelete;
 import com.fooeating.action.reviewUpdate;
 import com.fooeating.action.reviewUpdateAction;
 import com.fooeating.commons.Action;
@@ -317,6 +318,20 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		else if(command.equals("/reviewDelete.foo")) {
+			System.out.println(" C : /reviewDelete.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+					
+			// MemberDeleteAction() 객체
+			action = new reviewDelete();
+					
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 		
 		
 		

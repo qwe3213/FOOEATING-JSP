@@ -99,5 +99,23 @@ public class JSForward {
 				e.printStackTrace();
 			}
 		}
+		
+	// 
+		public static void alertAndReload(HttpServletResponse response, String msg) {
+			try {
+				// 인코딩
+				response.setContentType("text/html; charset=UTF-8");
+				
+				// 출력문
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('"+ msg +"');");
+				out.println("location.reload();");
+				out.println("</script>");
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	
 }

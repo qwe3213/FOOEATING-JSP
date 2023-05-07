@@ -654,6 +654,53 @@ public class PublicDAO {
 	
 	}
 	
+	// 리뷰 삭제 
+	
+	public int deleteReview(String id, int review_num) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select * from review where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "delete from review where review_num =?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, review_num);
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+				
+			}else {
+				// 비회원
+				result = -1;
+			}
+		
+			System.out.println(" DAO : 회원 리뷰 삭제 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	
+	}
+	
 	
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
