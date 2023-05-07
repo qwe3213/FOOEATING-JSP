@@ -338,8 +338,9 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
-	// 3. 회원정보 불러오기
 	
+	
+	// 3. 회원정보 불러오기
 	public UserDTO getMember(String id) {
 		UserDTO dto = null;
 		try {
@@ -375,8 +376,9 @@ public class PublicDAO {
 		return dto;
 	}
 	
-	// 4. 회원 정보 수정
 	
+	
+	// 4. 회원 정보 수정
 	public int memberUpdate(UserDTO dto) {
 		int result = -1; // -1	0	1
 		
@@ -431,9 +433,10 @@ public class PublicDAO {
 		
 		return result;
 	}
+
 	
-	// 회원 비밀번호 수정
 	
+	// 4-1. 회원 비밀번호 수정
 	public int changePw(String id, String pw, String newPw) {
 		int result = -1; // -1	0	1
 		
@@ -704,6 +707,121 @@ public class PublicDAO {
 	
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
+	
+	
+	
+	/* ================ < 메인페이지 관련 메서드 > ===================== */
+	
+	// 1. 공지사항 게시판 글쓰기
+	public void insertNotice(NoticeDTO dto){
+		
+		try {
+			// DB연결
+			con = getCon();
+			
+			// 정보저장 & 글쓰기
+			sql = "insert into notice (subject, content, file, regdate)"
+					+ " values(?, ?, ?, now())";
+			pstmt = con.prepareStatement(sql);
+			
+			// value작성
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getFile());
+			
+			// sql실행
+			pstmt.executeUpdate();
+			System.out.println("글쓰기 완료!");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+	}
+	
+	
+	
+	// 1-1. 전체 글 개수
+	public int getBoardCount() {
+		
+		int result = 0;
+		
+		try {
+			con = getCon();
+			
+			// sql작성 & pstmt객체
+			sql = "select count(*) from notice";
+			pstmt = con.prepareStatement(sql);
+			
+			// sql실행
+			rs = pstmt.executeQuery();
+			
+		    // 데이터처리
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println("DAO : 전체 글 개수 - " + result);
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return result;
+	}
+	
+	
+	
+	// 2. 공지사항 게시글 출력 (페이징처리)
+	public List<NoticeDTO> getNoticeList(int startRow, int pageSize) {
+		
+		List<NoticeDTO> noticeList = new ArrayList<NoticeDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from notice order by notice_num desc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				NoticeDTO dto = new NoticeDTO();
+				// while문을 한 바퀴 돌 때마다 객체 새로 생성, 아래 데이터를 저장
+				
+				dto.setNotice_num(rs.getInt("notice_num"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setFile(rs.getString("file"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				
+				noticeList.add(dto);
+			}
+			
+			System.out.println("게시판 글 정보 모두 저장 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return noticeList;
+	}
+
+	
+	
+	
+	
+	/* ================ < 메인페이지 관련 메서드 > ===================== */
+	
+	
 	
 	/* ================== < 가게 리스트 > ======================== */
 

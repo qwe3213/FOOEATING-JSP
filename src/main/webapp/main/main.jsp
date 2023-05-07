@@ -12,6 +12,8 @@
 <link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
 
+
+
 <title>FOOEATING</title>
 
   <!-- 기본 세팅 -->
@@ -38,14 +40,14 @@
 <header>
 	
 	<!-- 로고 -->
-	<a href="#"><img src="./img/logo.png" class="img_logo"/></a> <br><br><br>
+<!-- 	<a href="#"><img src="./img/logo.png" width="200px" height="200px"></a> -->
 	
 	<!-- 로그인 안했을 때 -->
 	<c:if test="${empty user_id }" >
 		<div class="links">
 		  <a href="./MemberLogin.foo" class="link_text">로그인</a>
 		  <a href="./MemberJoin.foo" class="link_text">회원가입</a>
-		  <a href="#" class="link_text">사업자등록</a>
+		  <a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
 		</div>
 	</c:if>
 	
@@ -54,18 +56,18 @@
 		<div class="links">
 		  <a href="./MemberLogout.foo" class="link_text">로그아웃</a>
 		  <a href="./MyPageMember.foo" class="link_text">마이페이지</a>
-		  <a href="#" class="link_text">사업자등록</a>
+		  <a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
 		</div>
-		<div class="ft">${user_id }님, 환영합니다 !ㅤ</div>
+		<div class="ft">${user_id }님, 환영합니다 !</div>
 	</c:if>
 	
 	<nav>
 	  <div class="nav_items">
 	    <ul>
-	  	  <li><a href="#">HOMEㅤㅤ</a></li>
-	      <li><a href="#">CATEGORYㅤㅤ</a></li>
-	      <li><a href="#">PUDDINGㅤㅤㅤ</a></li>
-	      <li><a href="#">NOTICEㅤㅤ</a></li>
+	  	  <li><a href="#">ㅤHOMEㅤ</a></li>
+	      <li><a href="#">ㅤCATEGORYㅤ</a></li>
+	      <li><a href="#">ㅤPUDDINGㅤㅤ</a></li>
+	      <li><a href="./NoticeList.foo">ㅤNOTICEㅤ</a></li>
 	    </ul>
 	  </div>
 	</nav>
@@ -99,7 +101,7 @@
 <footer>
 
   <div class="notice_box">
-    <a href="#">공지사항<br></a>
+    <a href="./NoticeList.foo">공지사항<br></a>
   </div>
   
   <div class="aside_box">
@@ -154,6 +156,10 @@
   
 </footer>
 <!-- footer -->
+
+
+
+
 
 
 
