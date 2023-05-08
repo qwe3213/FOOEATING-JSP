@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link href="./css/sideMenu.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -18,6 +21,7 @@
 		<input type="button" value="회원 정보 수정" onclick="location.href='./MemberUpdate.foo';">
 		<input type="button" value="리뷰 관리" onclick="location.href='./MyReview.foo';">
 
+<jsp:include page="../inc/sideMenu.jsp" />
 
 </body>
 </html>
