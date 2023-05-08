@@ -49,14 +49,17 @@ public class PublicDAO {
 	
 	// 관리자 - 회원 목록 getUserList()
 
-	public List<UserDTO> getUserList() {
+	public List<UserDTO> getUserList(int startRow, int pageSize) {
 		List<UserDTO> userList = new ArrayList<UserDTO>();
 		
 		try {
 			con = getCon();
 			sql = "select user.*, if(user_id = owner_user_id, 'o', 'x') as 'owner_id' "
-					+ " from user left join restaurant on user_id = owner_user_id order by regdate desc";
+					+ " from user left join restaurant on user_id = owner_user_id order by regdate desc "
+					+ " limit ?, ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -78,48 +81,42 @@ public class PublicDAO {
 		
 		return userList;
 	}
-
-	
-	// 회원가입 - MemberJoin()
-		public void MemberJoin(UserDTO dto) {
-			try {
-				// 1.2. 디비연결
-				con = getCon();
-				// 3. sql작성&pstmt 객체
-				sql = "insert into user(user_id,pw,name,email,phone,regdate) "
-						+ " values(?,?,?,?,?,?)";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, dto.getUser_id());
-				pstmt.setString(2, dto.getPw());
-				pstmt.setString(3, dto.getName());
-				pstmt.setString(4, dto.getEmail());
-				pstmt.setString(5, dto.getPhone());
-				pstmt.setTimestamp(6, dto.getRegdate());
-				
-				// 4. sql 실행
-				pstmt.executeUpdate();
-				System.out.println(" DAO : 회원가입 성공!");
-				
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				closeDB();
-			}
-			
-			
-		}// 회원가입 - MemberJoin()
-
 	// 관리자 - 회원 목록 getUserList()
 	
+	
+	
+	// 관리자 - 회원수 카운트 getUserCount()
+	public int getUserCount() {
+		int result = 0;
+		
+		try {
+			con = getCon();
+			sql = "select count(*) from user";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	// 관리자 - 회원수 카운트 getUserCount()
+	
+	
+	
 	// 관리자 - 입점 목록 getRestaurantList()
-	public List<RestaurantDTO> getRestaurantList() {
+	public List<RestaurantDTO> getRestaurantList(int startRow, int pageSize) {
 		List<RestaurantDTO> restList = new ArrayList<RestaurantDTO>();
 		
 		try {
 			con = getCon();
-			sql = "select * from restaurant order by regdate desc";
+			sql = "select * from restaurant order by regdate desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -158,6 +155,30 @@ public class PublicDAO {
 		return restList;
 	}
 	// 관리자 - 입점 목록 getRestaurantList()
+	
+	
+	
+	// 관리자 - 입점 가게수 getRestaurantCount()
+	public int getRestaurantCount() {
+		int result = 0;
+		
+		try {
+			con = getCon();
+			sql = "select count(*) from restaurant";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	// 관리자 - 입점 가게수 getRestaurantCount() 
+	
+	
 	
 	// 관리자 - 가게 상세 목록 getRestaurantInfo()
 	public RestaurantDTO getRestaurantInfo(int rest_id) {
@@ -213,7 +234,68 @@ public class PublicDAO {
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
 	
-	// 로그인 체크 - memberLogin(dto)
+	// 1. 회원가입 - MemberJoin()
+	public void MemberJoin(UserDTO dto) {
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql작성&pstmt 객체
+			sql = "insert into user(user_id,pw,name,email,phone,regdate) "
+					+ " values(?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getPw());
+			pstmt.setString(3, dto.getName());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getPhone());
+			pstmt.setTimestamp(6, dto.getRegdate());
+			
+			// 4. sql 실행
+			pstmt.executeUpdate();
+			System.out.println(" DAO : 회원가입 성공!");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		
+	}// 회원가입 - MemberJoin()
+	
+	
+	
+	// 1-1. 회원가입 아이디 중복체크 
+		public int checkId(String id) {
+			int result = 0;
+			try {
+				con = getCon();
+				
+				sql = "select * from user where user_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = 0; // 이미 존재하는 경우, 생성 불가능
+				} else {
+					result = 1; // 존재하지 않는 경우, 생성 가능
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return result;
+			
+			
+		}
+		// 회원가입 아이디 중복체크 
+	
+	
+	
+	// 2. 로그인 체크 - memberLogin(dto)
 	// -1 비회원 / 0 비번오류 / 1 회원
 	public int memberLogin(UserDTO dto) {
 		
@@ -256,6 +338,158 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
+	// 3. 회원정보 불러오기
+	
+	public UserDTO getMember(String id) {
+		UserDTO dto = null;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql = "select * from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			if(rs.next()) {
+				dto = new UserDTO();
+				dto.setEmail(rs.getString("email"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setName(rs.getString("name"));
+				dto.setPw(rs.getString("pw"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+			}
+			
+			System.out.println(" DAO : 회원정보 저장완료! ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+	}
+	
+	// 4. 회원 정보 수정
+	
+	public int memberUpdate(UserDTO dto) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select pw from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, dto.getUser_id());
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				if(dto.getPw().equals(rs.getString("pw"))){
+					// 본인(아이디, 비밀번호 동일)
+					
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update user set name=?, phone=? where user_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, dto.getName());
+					pstmt.setString(2, dto.getPhone());
+					pstmt.setString(3, dto.getUser_id());
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+					
+				} else {
+					// 비밀번호 오류
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+				
+			System.out.println(" DAO : 회원 정보 수정 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return result;
+	}
+	
+	// 회원 비밀번호 수정
+	
+	public int changePw(String id, String pw, String newPw) {
+		int result = -1; // -1	0	1
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select pw from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				if(pw.equals(rs.getString("pw"))){
+					// 본인(아이디, 비밀번호 동일)
+					
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update user set pw=? where user_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, newPw);
+					pstmt.setString(2, id);
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+					
+				} else {
+					// 비밀번호 오류
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+				
+			System.out.println(" DAO : 회원 비밀번호 수정 완료(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return result;
+	}
+	
+	
+	
 	/* ================== < 회원 관련 메서드 > ======================== */
 	
 	/* ================== < 가게 리스트 > ======================== */
@@ -287,6 +521,57 @@ public class PublicDAO {
 			return listForm;
 		}
 
+		
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize) {
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant order by regdate desc limit ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startRow - 1);
+				pstmt.setInt(2, pageSize);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setName(rs.getString("name"));
+					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setDayoff(rs.getString("dayoff"));
+					listForm.add(dto);
+					
+				}System.out.println("마테오 서성찬" + listForm.size());
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return listForm;
+		}
+		
+		
+		public int getListCount() {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		
 
 	/* ================== < 가게리스트 > ======================== */
 		
@@ -340,105 +625,6 @@ public class PublicDAO {
 	/* ================== < 가게리스트 > ======================== */
 		
 		
-		/* ================== < 페이지 count > ======================== */
-		public int getBoardCount() {
-			int result = 0;
-			
-			try {
-			// 1.2. 디비연결
-			con = getCon();
-			// 3. SQL 작성 & pstmt 객체
-			sql = "select count(*) from restaurant";
-			pstmt = con.prepareStatement(sql);
-			// 4. sql 실행	
-			rs = pstmt.executeQuery();
-			// 5. 데이터 처리
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-			System.out.println(" DAO : 전체 글 갯수 - " + result);
-			
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-					closeDB();
-				}
-			
-			
-		
-			return result;
-		}
-		/* ================== < 페이지 count > ======================== */
-
-		/* ================== < 페이지 처리 > ======================== */
-		public ArrayList getListForm(int startRow,int pageSize) {
-			
-			//List boardList = new ArrayList();
-			 ArrayList listForm = new ArrayList();
-			 
-			// 1.2. 디비연결
-				try {
-					con = getCon();
-					// 3. sql 작성 (select) & pstmt객체
-			String sql = " select * from restaurant "
-					+ " order by re_ref desc, re_seq asc limit ?,?";
-				//	+ " where bno > 0";
-				//	+ " order by bno desc";
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			
-			// ???
-			pstmt.setInt(1, startRow-1);	// 시작위치 -1  // 행은 0부터 시작
-			pstmt.setInt(2, pageSize);	// 개수
-			
-			
-			
-			// 4. sql 실행
-			ResultSet rs = pstmt.executeQuery();
-			// 5. 데이터 처리
-			//		DB(rs) -> DTO -> ArrayList
-			//		1 row -> 1 DTO -> 1 ArrayList
-			while (rs.next()) {
-				// rs -> DTO
-				RestaurantDTO dto = new RestaurantDTO();
-				dto.setRest_tel(rs.getString("rest_tel"));
-				dto.setName(rs.getString("name"));
-				dto.setRest_id(rs.getInt("rest_id"));
-				dto.setConvenience(rs.getString("convenience"));
-				dto.setRegdate(rs.getTimestamp("regdate"));
-				dto.setDayoff(rs.getString("dayoff"));
-				listForm.add(dto);
-				
-			} // while
-			
-			System.out.println(" DAO : 게시판 글 정보 모두 저장완료 ! ");
-					
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-//				}	finally {
-//					// 예외 발생 여부와 상관없이 반드시 한버 실행하는 구분
-//					// => 자원해제	(디비 연결 정보 해제 - 사용한 객체의 역순 종료)
-//					try {
-//						rs.close();
-//						pstmt.close();
-//						con.close();
-//					} catch (SQLException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-		} finally {		
-			closeDB();
-		}
-			
-			return listForm;
-			
-		}
-		/* ================== < 페이지 처리 > ======================== */
-		
-		
-		
-	
 	
 	
 

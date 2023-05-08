@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.fooeating.db.RestaurantDTO"%>
 <%@page import="java.util.List"%>
@@ -50,19 +51,16 @@
 	          }
 	         });
 
-			$('#imgbtn').click(function() {
-		    	alert();
-				$("#Board").style.display='block';	
-				alert("성공");
-			});
-			
-			$('#mapbtn').click(function() {
-		    	$("#Map").style.display='block';			
-			});
+			$('#Map').on('click',function(){
+				$('#map').load(location.href="/TestMap.jsp" + '#map')
+			})
 	    
 	    
-			
+	    
 	        });
+		
+	
+
 </script>
 </head>
 <body>
@@ -94,67 +92,13 @@
 	 	<option>좋아요수</option>
 	 </select>
 	 
-	 <br>
-	 <input type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px" id="imgbtn" ;>
-	 
-	 
-	 <div id="Map"> <a href="TestMap.jsp"></a>
-
-	<input type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px" id="mapbtn" ;>
-
-	</div>
+	 <input type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px;" >
+	 <div id="Map">
+<a href="TestMap.jsp"><input type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px;"></a>
+</div>
 	 
 	<hr>
 	
-	<!-----------------------------  페이징 처리  ----------------------------------------------------->
-	
-	<% 	 
-
-		// 전달정보 X
-		
-		// 게시판 정보(DB)를 출력
-		
-		// BoardDAO 생성
-		 PublicDAO dao = new PublicDAO();
-	
-		/*******************************************************************/
-		// 페이징 처리 1
-		
-		// 전체 글의 개수
-		int count = dao.getBoardCount();
-		
-		// 한 페이지에 출력할 글의 갯수
-		int pageSize = 10;
-		
-		// 현 페이지 정보가 몇 페이지 인지 체크
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null ){ // 기본페이지는 1페이지로 저장하겠다.
-			pageNum = "1";
-		}
-		
-		// 시작행 번호 계산 	// 1 	11	  21	31	.... 	
-		int currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage - 1) * pageSize + 1;
-		// 끝행 번호 계산 //  10	 20	 	30 	 	40 		....
-		int endRow = currentPage * pageSize;
-		
-		
-		/*******************************************************************/
-		
-		// DB에서 게시판글 정보를 전부 가져오기
-	 	//ArrayList boardList =dao.getBoardListAll();
-		
-		// 게시판글 일부만 가져오기 (페이징처리)
-		ArrayList boardList = dao.getListForm(startRow, pageSize);
-		
-	%>
-	
-	<!-----------------------------  페이징 처리  ----------------------------------------------------->
-	
-	
-	
-	
-	<div id = "Board">
 	<table border="1">
 		<tr>
 			<th>No.</th>
@@ -166,8 +110,7 @@
 			<th>휴무일</th>
 		</tr>
 		
-		
-		<c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
+		<c:forEach var="dto" items="${requestScope.restList }" varStatus="no">
 	
 		<tr>
 			<td>${no.count}</td>
@@ -184,68 +127,43 @@
 			<td>${dto.dayoff}</td>
 		</tr>
 		</c:forEach>
-		
-		
 	</table>
 	
 	<%
-			/****************************************************************************************************/
-				// 페이징 처리 2단계
-				
-				if(count != 0){
-					// 전체 페이지수 계산 
-					
-					// 전체 : 50, 페이지당 10씩 출력 => 5개 
-					// 전체 : 56, 페이지당 10씩 출력 => 5개
-					int pageCount = count/pageSize + (count%pageSize==0? 0: 1);
-					
-					// 한 화면에 보여줄 페이지 번호의 갯수
-					int pageBlock = 2;
-					
-					// 시작 페이지 번호		1~10 => 1	11 ~ 20 => 11	
-					int startPage = ((currentPage - 1)/pageBlock)*pageBlock + 1;
-					// 끝페이지 번호  1~10 => 10, 11 ~ 20 => 20 
-					int endPage = startPage+pageBlock-1;
-					
-					if(endPage > pageCount){
-					endPage = pageCount ;
-					}
-					// [이전]
-					if(startPage > pageBlock){
-						%>
-							<a href="listForm.jsp?pageNum=<%=startPage-pageBlock%>">[이전]</a>
-						<%
-						
-					}		
-							
-				
-					// 1,2,3,....,10
-					for(int i= startPage ; i<=endPage ;i++){
-					%>
-					<a href="listForm.jsp?pageNum=<%=i%>">[<%=i %>]</a>	
-						<% 
-					}
-					// [다음]
-					if(endPage < pageCount){
-						%>
-							<a href="listForm.jsp?pageNum=<%=startPage+pageBlock %>">[다음]</a>
-						<% 
-					}	
-						
-						
-				}
+		int count = (int)request.getAttribute("count");
+		int pageSize = (int)request.getAttribute("pageSize");
+		int currentPage = (int)request.getAttribute("currentPage");
+		int pno = Integer.parseInt((String)request.getAttribute("pno"));
+		
 	
+		
+		if(count != 0) {
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			int pageBlock = 5;
+			int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
 			
-				
-						
-						
-						
-			/****************************************************************************************************/
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+			if(startPage > pageBlock) {
 	%>
-	
-	</div>
-	
-	
+				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
+	<%
+			}
+			for(int i = startPage; i <= endPage; i++) {
+	%>
+				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a>
+	<%
+			}
+			if(endPage < pageCount) {
+	%>
+				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
+	<%
+			}
+		}
+	%>
 	
                     
 </body>

@@ -19,11 +19,11 @@ public class RestaurantListAction implements Action {
 		
 		// 가게 정보 저장
 		PublicDAO dao = new PublicDAO();
-		List<RestaurantDTO> restList = dao.getRestaurantList();
-		System.out.println("가게 수 : " + restList.size());
+//		List<RestaurantDTO> restList = dao.getRestaurantList();
+//		System.out.println("가게 수 : " + restList.size());
 		
-		request.setAttribute("restList", restList);
-		
+//		request.setAttribute("restList", restList);
+//		
 		ActionForward forward = new ActionForward();
 		// 연결된 view에 출력
 		forward.setPath("./admin/restaurantList.jsp");

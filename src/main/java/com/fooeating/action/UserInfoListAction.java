@@ -20,10 +20,10 @@ public class UserInfoListAction implements Action {
 		
 		// 회원정보 저장
 		PublicDAO dao = new PublicDAO();
-		List<UserDTO> userList = dao.getUserList();
-		System.out.println("회원 수 : " + userList.size());
+//		List<UserDTO> userList = dao.getUserList();
+//		System.out.println("회원 수 : " + userList.size());
 		
-		request.setAttribute("userList", userList);
+//		request.setAttribute("userList", userList);
 		
 		ActionForward forward = new ActionForward();
 		// 연결된 view에 출력
