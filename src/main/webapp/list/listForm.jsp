@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.fooeating.db.RestaurantDTO"%>
 <%@page import="java.util.List"%>
@@ -109,7 +110,7 @@
 			<th>휴무일</th>
 		</tr>
 		
-		<c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
+		<c:forEach var="dto" items="${requestScope.restList }" varStatus="no">
 	
 		<tr>
 			<td>${no.count}</td>
@@ -128,7 +129,41 @@
 		</c:forEach>
 	</table>
 	
+	<%
+		int count = (int)request.getAttribute("count");
+		int pageSize = (int)request.getAttribute("pageSize");
+		int currentPage = (int)request.getAttribute("currentPage");
+		int pno = Integer.parseInt((String)request.getAttribute("pno"));
+		
 	
+		
+		if(count != 0) {
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			int pageBlock = 5;
+			int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+			if(startPage > pageBlock) {
+	%>
+				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
+	<%
+			}
+			for(int i = startPage; i <= endPage; i++) {
+	%>
+				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a>
+	<%
+			}
+			if(endPage < pageCount) {
+	%>
+				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
+	<%
+			}
+		}
+	%>
 	
                     
 </body>

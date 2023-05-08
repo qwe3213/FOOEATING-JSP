@@ -338,9 +338,10 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
-	
-	
+
+
 	// 3. 회원정보 불러오기
+
 	public UserDTO getMember(String id) {
 		UserDTO dto = null;
 		try {
@@ -376,7 +377,7 @@ public class PublicDAO {
 		return dto;
 	}
 	
-	
+
 	
 	// 4. 회원 정보 수정
 	public int memberUpdate(UserDTO dto) {
@@ -433,9 +434,9 @@ public class PublicDAO {
 		
 		return result;
 	}
+	
 
-	
-	
+
 	// 4-1. 회원 비밀번호 수정
 	public int changePw(String id, String pw, String newPw) {
 		int result = -1; // -1	0	1
@@ -491,6 +492,8 @@ public class PublicDAO {
 		return result;
 	}
 	
+
+
 	// 회원 탈퇴
 	public int deleteMember(UserDTO dto) {
 		System.out.println(dto.getUser_id());
@@ -852,6 +855,57 @@ public class PublicDAO {
 			return listForm;
 		}
 
+		
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize) {
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant order by regdate desc limit ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startRow - 1);
+				pstmt.setInt(2, pageSize);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setName(rs.getString("name"));
+					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setDayoff(rs.getString("dayoff"));
+					listForm.add(dto);
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return listForm;
+		}
+		
+		
+		public int getListCount() {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		
 
 	/* ================== < 가게리스트 > ======================== */
 		
@@ -903,6 +957,8 @@ public class PublicDAO {
 			return dto;
 		}
 	/* ================== < 가게리스트 > ======================== */
+		
+		
 	
 	
 

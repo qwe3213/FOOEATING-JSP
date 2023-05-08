@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.action.ListFormAction;
+import com.fooeating.action.MapFormAction;
 import com.fooeating.action.RestaurantInfoAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -72,6 +73,19 @@ public class ListFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		// 지도
+//		else if (command.equals("/TestMap.fd")) {
+//			System.out.println("  C : /TestMap.fd 실행");
+//			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+//			
+//			action = new MapFormAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		
 //		else if(command.equals("/restaurantForm.fd")) {
 //			System.out.println("  C : /restaurantForm.fd 실행");

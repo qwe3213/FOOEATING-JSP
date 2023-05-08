@@ -29,6 +29,14 @@ public class RestaurantListAction implements Action {
 		
 		// 가게 정보 저장
 		PublicDAO dao = new PublicDAO();
+
+//		List<RestaurantDTO> restList = dao.getRestaurantList();
+//		System.out.println("가게 수 : " + restList.size());
+		
+//		request.setAttribute("restList", restList);
+
+		ActionForward forward = new ActionForward();
+
 		// 페이징 처리 -----------------
 		int count = dao.getRestaurantCount(); 		// 전체 가게 수
 		System.out.println("가게 수 : " + count);
@@ -53,6 +61,7 @@ public class RestaurantListAction implements Action {
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pno", pno);
 		
+
 		// 연결된 view에 출력
 		forward.setPath("./admin/restaurantList.jsp");
 		forward.setRedirect(false);
