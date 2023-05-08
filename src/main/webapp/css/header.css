@@ -20,9 +20,9 @@ img { display: block; margin: 0px auto; }
     text-decoration: underline; /* 마우스 커서가 올라갔을 때 밑줄 생성 */
   }
   header {
-  	background: lightgray;
-    margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
-/*     width: 1080px; */
+  	background: #e6e6e6;;
+    margin: auto;		 /* header의 양쪽 여백(margin)을 동등하게 맞춤
+    						 -> 수평가운데정렬 */
     height: 215px;
     display: flex;
     align-items: center; /* 하위 요소들 수직 가운데정렬 */

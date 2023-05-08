@@ -6,10 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>userList</title>
+
+<!-- css 파일 -->
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
+
 </head>
 <body>
 	
-	<h1>userList.jsp</h1>
+<!-- header -->
+<jsp:include page="../inc/header.jsp" />
+<!-- header -->
 	
 	<table border="1">
 		<tr>
@@ -70,6 +77,12 @@
 			}
 		}
 	%>
+	
+	
+	
+<!-- footer -->
+<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
 	
 </body>
 </html>
