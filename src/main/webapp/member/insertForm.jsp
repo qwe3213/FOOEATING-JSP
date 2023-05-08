@@ -5,10 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script src="../js/jquery-3.6.4.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.6.4.js" 
-		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" 
-		crossorigin="anonymous"></script>
+<script src="./js/jquery-3.6.4.js"></script>
 
 <script type="text/javascript">
 
@@ -17,6 +14,8 @@ $(function() {
 		'font-size' : '0.7em',
 		'color' : 'red'
 	});
+	
+	
 	
 	$('#id').keyup(function() {
 	
@@ -27,7 +26,28 @@ $(function() {
 		
 		}else if(!regIdPw.test(id)){
 		$('#idd').html("4~12자 영문 대소문자, 숫자만 입력하세요.");	
+		$('#idd').css('color', 'red');
 		}
+		
+		$.ajax({
+			url:"./idCheckAction.foo",
+			data : {user_id:id},
+			success: function(data) {
+				if(data ==1 && regIdPw.test(id)){
+					$('#idd').html("사용 가능한 아이디 입니다.");	
+					$('#idd').css('color', 'green');
+				} else if(data ==0 && regIdPw.test(id)){
+					$('#idd').html("이미 존재하는 아이디 입니다.");	
+					$('#idd').css('color', 'red');
+				}
+			
+			},
+			error : function() {
+				alert("서버요청실패");
+			}
+		});
+		
+		
 		
 	});
 	
@@ -41,9 +61,18 @@ $(function() {
 	    let english = pw.search(/[a-z]/ig);
 	    let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 	    let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-       
-		  if (pw.length < 8 || pw.length > 20) {
-	    		 e.preventDefault();
+	    let regIdPw = /^[a-zA-Z0-9]{4,12}$/;
+	    let email = document.fr.email.value;
+		let regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		let name = document.fr.name.value;
+		let regName = /^[가-힣a-zA-Z]{2,15}$/;
+		let phone = document.fr.phone.value;
+		let regPhone = /01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;
+		
+		  if(!regMail.test(email)){
+	     		e.preventDefault();
+		  } else if (pw.length < 8 || pw.length > 20) {
+	    		e.preventDefault();
 		  } else if (pw.search(/\s/) != -1) {
 	        	e.preventDefault();
 	 	  } else if (number < 0 || english < 0 || spece < 0) {
@@ -56,7 +85,14 @@ $(function() {
 	    		e.preventDefault();
 	  	  } else if(pw != cpw){
 		     	e.preventDefault();
-	  	  }
+	  	  } else if(!regIdPw.test(id)){
+		  		e.preventDefault();
+		  } else if(!regName.test(name)){
+			  e.preventDefault();
+		  } else if(!regPhone.test(phone)){
+			  e.preventDefault();
+		  }
+		  
 	    });
 		
 		
@@ -114,12 +150,46 @@ $(function() {
 		let pw = document.fr.pw.value;
 	    let cpw = document.fr.cpw.value;
 		if(pw != cpw){
-	     	$('#cpwd').html("비밀번호가 다릅니다.");
+	     	$('#cpwd').html("비밀번호가 일치하지 않습니다.");
 		} else {
 			$('#cpwd').html("");
 		}
 	 	
 	});
+	
+	$('#email').keyup(function(){
+		let eamil = document.fr.email.value;
+		let regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		if(!regMail.test(eamil)){
+	     	$('#emaildiv').html("잘못된 이메일 형식입니다.");
+		} else {
+			$('#emaildiv').html("");
+		}
+	 	
+	});
+	
+	$('#name').keyup(function(){
+		let name = document.fr.name.value;
+		let regName = /^[가-힣a-zA-Z]{2,15}$/;
+		if(!regName.test(name)){
+	     	$('#namediv').html("최소 2글자 이상, 한글과 영어만 입력하세요.");
+		} else {
+			$('#namediv').html("");
+		}
+	 	
+	});
+	
+	$('#phone').keyup(function(){
+		let phone = document.fr.phone.value;
+		let regPhone = /01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;
+		if(!regPhone.test(phone)){
+	     	$('#phonediv').html("연락처 형식에 맞지 않습니다");
+		} else {
+			$('#phonediv').html("");
+		}
+	 	
+	});
+	
 	
 	
 });
@@ -132,8 +202,6 @@ $(function() {
 		    let name = document.fr.name.value;
 		    let email = document.fr.email.value;
 		    let phone = document.fr.phone.value;
-		    let regIdPw = /^[a-zA-Z0-9]{4,12}$/;
-		    let regName = /^[가-힣a-zA-Z]{2,15}$/;
 		    
 			// 아이디가 입력되어 있는지 체크
 			if(id == ""){
@@ -163,6 +231,8 @@ $(function() {
 			
 			
 		}
+		
+		
 		 
 	
 	</script>
@@ -187,12 +257,14 @@ $(function() {
  			 	<input type="password" name="cpw" maxlength="20" id="cpw"><br>
  			 	<div id="cpwd" class="errorDiv"></div>
  			 	이름<br>
- 			 	<input type="text" name="name"><br>
+ 			 	<input type="text" name="name" id="name"><br>
+ 			 	<div id="namediv" class="errorDiv"></div>
  			 	이메일<br>
- 			 	<input type="email" name="email"><br>
+ 			 	<input type="email" name="email" id="email"><br>
+ 			 	<div id="emaildiv" class="errorDiv"></div>
  			 	휴대전화<br>
- 			 	<input type="text" name="phone"><br>
- 			 	       
+ 			 	<input type="text" name="phone" id="phone"><br>
+ 			 	<div id="phonediv" class="errorDiv"></div>       
  			 	<hr>      
  			 	<input type="submit" value="회원가입">
  			 	

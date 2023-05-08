@@ -8,9 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.ChangePwAction;
+import com.fooeating.action.MemberDeleteAction;
 import com.fooeating.action.MemberJoinAction;
 import com.fooeating.action.MemberLoginAction;
 import com.fooeating.action.MemberLogoutAction;
+import com.fooeating.action.MemberUpdateAction;
+import com.fooeating.action.MemberUpdateProAction;
+import com.fooeating.action.MyReviewAction;
+import com.fooeating.action.NoticeListAction;
+import com.fooeating.action.NoticeWriteAction;
+import com.fooeating.action.UserInfoListAction;
+import com.fooeating.action.idCheckAction;
+import com.fooeating.action.reviewDelete;
+import com.fooeating.action.reviewUpdate;
+import com.fooeating.action.reviewUpdateAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
@@ -57,7 +69,6 @@ public class MemberFrontController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		
 
 		
 		
@@ -86,13 +97,26 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
 			
 			// 액션객체의 execute() 메서드 사용
-      action = new MemberJoinAction();
+			action = new MemberJoinAction();
 			try {
                 forward = action.execute(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }
       
+		}
+		
+		// 1-2 회원가입 아이디중복 데이터 처리
+		else if(command.equals("/idCheckAction.foo")) {
+			System.out.println("C : /idCheckAction.foo 실행");
+			
+			action = new idCheckAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
@@ -130,7 +154,7 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
 			
 			forward = new ActionForward();
-			forward.setPath("./member/main.jsp");
+			forward.setPath("./main/main.jsp");
 			forward.setRedirect(false);
 		}
 		
@@ -148,6 +172,214 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		
+		
+		// 5-1 회원 정보 수정 정보입력 페이지
+		else if(command.equals("/MemberUpdate.foo")) {
+			System.out.println(" C : /MemberUpdate.foo 호출 ");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3)");
+			
+			// MemberUpdateAction() 객체
+			action = new MemberUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 5-2 회원정보 수정 수정버튼 클릭시
+		else if(command.equals("/MemberUpdateProAction.foo")) {
+			System.out.println(" C : /MemberUpdateProAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+			
+			// MemberUpdateProAction() 객체
+			action = new MemberUpdateProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		
+		// 5-3 비밀번호 변경 시 팝업창 호출
+		else if (command.equals("/changePw.foo")) {
+			System.out.println(" C : /changePw.foo 호출 ");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/changePw.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 5-4 비밀번호 수정버튼 클릭시
+		else if(command.equals("/changePwAction.foo")) {
+			System.out.println(" C : /changePwAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+			
+			// ChangePwAction() 객체
+			action = new ChangePwAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		
+		// 5-5 회원 탈퇴 시 팝엉창 호출
+		else if (command.equals("/memberDelete.foo")) {
+			System.out.println(" C : /memberDelete.foo 호출 ");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+					
+			forward = new ActionForward();
+			forward.setPath("./member/memberDelete.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 5-6 회원 탈퇴 버튼  클릭시
+		else if(command.equals("/MemberDeleteAction.foo")) {
+			System.out.println(" C : /MemberDeleteAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+					
+			// MemberDeleteAction() 객체
+			action = new MemberDeleteAction();
+					
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		
+		
+		// 6. 마이페이지
+		else if(command.equals("/MyPageMember.foo")) {
+			System.out.println(" C : /MyPage.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/myPageMember.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 6. 회원 마이페이지 - 리뷰 관리 페이지 이동
+		
+		else if(command.equals("/MyReview.foo")) {
+			System.out.println(" C : /MyReview.foo 호출 ");
+			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+			
+			// MyReviewAction() 객체
+			action = new MyReviewAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 6-1 회원 마이페이지 - 리뷰관리 수정버튼 클릭 시 정보를 저장할 액션페이지 호출
+		else if(command.equals("/reviewUpdate.foo")) {
+			System.out.println(" C : /reviewUpdate.foo 호출 ");
+			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+			
+			// MemberUpdateAction() 객체
+			action = new reviewUpdate();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 6-2 회원 마이페이지 - 리뷰관리 수정버튼 클릭 시 수정팝업창 호출
+		
+		else if(command.equals("/reviewUpdatePop.foo")) {
+			System.out.println(" C : /reviewUpdatePop.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./member/reviewUpdate.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 6-3 회원 마이페이지 - 리뷰관리 완료버튼 클릭시 정보 수정 및 부모창 새로고침
+		else if(command.equals("/reviewUpdateAction.foo")) {
+			System.out.println(" C : /reviewUpdateAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+			
+			// MemberUpdateProAction() 객체
+			action = new reviewUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/reviewDelete.foo")) {
+			System.out.println(" C : /reviewDelete.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
+					
+			// MemberDeleteAction() 객체
+			action = new reviewDelete();
+					
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		
+		
+		
+		
+		// 7. 공지사항 (리스트)
+		else if(command.equals("/NoticeList.foo")) {
+			System.out.println(" C : /NoticeList.foo 실행");
+			System.out.println(" C : DB사용o, view페이지 이동 & 출력 (패턴3)");
+			
+			action = new NoticeListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 7-1. 공지사항 (글쓰기)
+		else if(command.equals("/NoticeWrite.foo")) {
+			System.out.println(" C : /NoticeWrite.foo 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+		
+			forward = new ActionForward();
+			forward.setPath("./notice/noticeWrite.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 7-1-1. 공지사항 (글쓰기) - 데이터 처리
+		else if(command.equals("/NoticeWriteAction.foo")) {
+			System.out.println(" C : /NoticeWriteAction.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3) ");
+			
+			action = new NoticeWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+
+		
+		
+		
 		
 		
 		
@@ -181,9 +413,9 @@ public class MemberFrontController extends HttpServlet {
 		
 		
 		
-		
-		
 		System.out.println("doProcess 끝(컨트롤러 종료)");
+		
+		
 	}	// doProcess()
 
 	
