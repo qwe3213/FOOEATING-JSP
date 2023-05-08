@@ -31,10 +31,6 @@ public class UserInfoListAction implements Action {
 		// 회원정보 저장
 		PublicDAO dao = new PublicDAO();
 
-//		List<UserDTO> userList = dao.getUserList();
-//		System.out.println("회원 수 : " + userList.size());
-		
-//		request.setAttribute("userList", userList);
 
 		// 페이징 처리 -----------------
 		int count = dao.getUserCount(); 			// 전체 회원 수
