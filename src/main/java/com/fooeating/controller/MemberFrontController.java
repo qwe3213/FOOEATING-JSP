@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.action.ChangePwAction;
+import com.fooeating.action.FaqList;
 import com.fooeating.action.MemberDeleteAction;
 import com.fooeating.action.MemberJoinAction;
 import com.fooeating.action.MemberLoginAction;
@@ -376,8 +377,19 @@ public class MemberFrontController extends HttpServlet {
 			}
 		}
 
-
+		// FaqList 페이지 이동
 		
+		else if(command.equals("/FaqList.foo")) {
+			System.out.println(" C : /FaqList.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3) ");
+			
+			action = new FaqList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

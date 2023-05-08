@@ -817,6 +817,42 @@ public class PublicDAO {
 		
 		return noticeList;
 	}
+	
+	// 3. faq 리스트 가져가기
+	public List<FaqDTO> getFaqList() {
+		
+		List<FaqDTO> faqList = new ArrayList<FaqDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from faq";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				FaqDTO dto = new FaqDTO();
+				// while문을 한 바퀴 돌 때마다 객체 새로 생성, 아래 데이터를 저장
+				
+				dto.setFaq_num(rs.getInt("faq_num"));
+				dto.setCategory(rs.getString("category"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				
+				faqList.add(dto);
+			}
+			
+			System.out.println("faq 글 정보 모두 저장 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return faqList;
+	}
 
 	
 	
