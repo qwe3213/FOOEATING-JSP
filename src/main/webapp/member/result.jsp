@@ -8,8 +8,11 @@
 </head>
 <body>
 	
-	<h1>결과 : 정창원 입니다.</h1>
-	<img src="ㅈㅊㅇ.jpg">
+	<%
+		String[] keys = request.getParameterValues("keys");
+	%>
+	
+	<h1><%=keys %></h1>
 	<button onclick="location.href='question.jsp'">다시하기</button>
     <button onclick="location.href='#'">예약하러 가기</button>
 	
