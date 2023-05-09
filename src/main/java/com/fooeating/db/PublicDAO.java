@@ -816,14 +816,13 @@ public class PublicDAO {
 			con = getCon();
 			
 			// 정보저장 & 글쓰기
-			sql = "insert into notice (subject, content, file, regdate)"
-					+ " values(?, ?, ?, now())";
+			sql = "insert into notice (subject, content, regdate)"
+					+ " values(?, ?, now())";
 			pstmt = con.prepareStatement(sql);
 			
 			// value작성
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getFile());
 			
 			// sql실행
 			pstmt.executeUpdate();
@@ -894,7 +893,6 @@ public class PublicDAO {
 				dto.setNotice_num(rs.getInt("notice_num"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
-				dto.setFile(rs.getString("file"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
 				
 				noticeList.add(dto);
@@ -909,6 +907,96 @@ public class PublicDAO {
 		}
 		
 		return noticeList;
+	}
+	
+	
+	
+	// 3. 공지사항 게시글 내용 보기
+	public NoticeDTO getNoticeContent(int notice_num) {
+		
+		NoticeDTO dto = null;
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from notice where notice_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, notice_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new NoticeDTO();
+				
+				dto.setNotice_num(rs.getInt("notice_num"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				
+				System.out.println(notice_num + "번 글 정보 저장완료.");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			closeDB();
+		}
+		
+		return dto;
+	}
+	
+	
+	
+	// 4. 공지수항 게시글 수정
+	public void updateNoticeContent(NoticeDTO dto) {
+		
+		try {
+			con = getCon();
+			
+			sql = "update notice set subject=?, content=? where notice_num=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setInt(3, dto.getNotice_num());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("글 수정 완료!");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+	}
+	
+	
+	
+	// 5. 공지사항 게시글 삭제
+	public void deleteNoticeContent(NoticeDTO dto) {
+		
+		try {
+			con = getCon();
+			
+			sql = "delete from notice where notice_num=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, dto.getNotice_num());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("글 삭제 완료!");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		
 	}
 
 	

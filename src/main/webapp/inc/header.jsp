@@ -20,6 +20,7 @@
 		<div class="links">
 		  <a href="./MemberLogout.foo" class="link_text">로그아웃</a>
 		  
+		  <!-- 마이페이지 (관리자 || 회원) -->
 		  <c:choose>
 		  	<c:when test="${user_id.equals('real_admin')}" >
 		  		<a href="./UserInfoList.ad" class="link_text">마이페이지</a>

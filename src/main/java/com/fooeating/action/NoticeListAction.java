@@ -45,6 +45,8 @@ public class NoticeListAction implements Action {
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageNum", pageNum);
 		
+		System.out.println(noticeList);
+		
 		// 페이지 이동 (출력)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./notice/notice.jsp");
