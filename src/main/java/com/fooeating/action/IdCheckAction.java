@@ -14,6 +14,8 @@ public class IdCheckAction implements Action{
     @Override
     public ActionForward execute(HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
+    	
+    	System.out.println(" M : IdCheckAction_execute 실행");
         
         // 인코딩
         request.setCharacterEncoding("UTF-8");
