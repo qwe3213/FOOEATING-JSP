@@ -49,7 +49,7 @@
 		</tr>
 		
 		</table>
-		<form action="reviewUpdate.foo" method="post" >
+		<form action="ReviewUpdate.foo" method="post" >
 			<input type="hidden" name="user_id" value="${user_id }">
 			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
 			<button>수정</button>

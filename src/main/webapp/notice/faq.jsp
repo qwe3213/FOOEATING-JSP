@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -49,6 +53,13 @@
 
 </head>
 <body>
+	<!-- header -->
+	<jsp:include page="../inc/header.jsp" />
+	<!-- header -->
+
+<!-- main -->
+<main>
+
 
 	<h1> F A Q </h1>
 	<!-- 첫 번째 Modal을 여는 클래스 -->
@@ -66,8 +77,15 @@
 		</div>
 		<hr>
 	</c:forEach>
+	
+	
+	</main>
+<!-- main -->
+	
 
-
+<!-- footer -->
+<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
 
 
 </body>

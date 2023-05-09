@@ -10,7 +10,7 @@ import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
 
 
-public class reviewDelete implements Action{
+public class ReviewDelete implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, 

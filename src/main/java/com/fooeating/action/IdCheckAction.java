@@ -9,7 +9,7 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 
-public class idCheckAction implements Action{
+public class IdCheckAction implements Action{
 
     @Override
     public ActionForward execute(HttpServletRequest request, 

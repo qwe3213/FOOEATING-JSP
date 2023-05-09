@@ -27,7 +27,7 @@
 		
 		</table>
 		
-		<form action="./reviewUpdateAction.foo" method="post">
+		<form action="./ReviewUpdateAction.foo" method="post">
 			<input type="hidden" name="user_id" value="${user_id }">
 			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
 			<input type="text" name="newContent" value="${dto.content}"><br>
