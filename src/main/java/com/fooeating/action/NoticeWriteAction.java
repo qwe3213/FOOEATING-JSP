@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
+import com.fooeating.commons.JSForward;
 import com.fooeating.db.NoticeDTO;
 import com.fooeating.db.PublicDAO;
 import com.oreilly.servlet.MultipartRequest;
@@ -18,41 +19,22 @@ public class NoticeWriteAction implements Action {
 			HttpServletResponse response) throws Exception {
 		
 		
-		// 1) 파일업로드 처리
-		// 글쓰기 + 파일업로드
-		String realPath = request.getRealPath("/upload");
+		// 0. 한글처리
+		request.setCharacterEncoding("UTF-8");
 		
-		// 파일의 크기 제한 (10mb)
-		int maxSize = 10 * 1024 * 1024;
-		
-		// MultipartRequest객체 생성 (업로드)
-		MultipartRequest mlti = new MultipartRequest(
-				request,
-				realPath,	// 경로
-				maxSize,	// 저장시킬 사이즈
-				"UTF-8",	// 인코딩
-				new DefaultFileRenamePolicy()	// 객체
-				);
-		
-		
-		
-		// 2) 글쓰기
+		// 1. noticeWrite.jsp에서 전달된 정보 dto 객체에 저장
+		// -> subject, content
 		NoticeDTO dto = new NoticeDTO();
+		dto.setSubject(request.getParameter("subject"));
+		dto.setContent(request.getParameter("content"));
 		
-		// 객체에 정보 저장
-		dto.setSubject(mlti.getParameter("subject"));
-		dto.setContent(mlti.getParameter("content"));
-		
-		// DB에 객체 정보 전달하기
+		// 2. dao의 메서드 실행
 		PublicDAO dao = new PublicDAO();
 		dao.insertNotice(dto);
 		
-		// 페이지 이동
-		ActionForward forward = new ActionForward();
-		forward.setPath("./NoticeList.foo");
-		forward.setRedirect(true);
-		
-		return forward;
+		// 3. 페이지 이동
+		JSForward.alertAndMove(response, "게시글 작성이 완료되었습니다.", "./NoticeList.foo");
+		return null;
 	}
 
 }

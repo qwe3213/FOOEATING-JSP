@@ -36,9 +36,13 @@ $(function() {
 				if(data ==1 && regIdPw.test(id)){
 					$('#idd').html("사용 가능한 아이디 입니다.");	
 					$('#idd').css('color', 'green');
+					$('#fr').unbind();
 				} else if(data ==0 && regIdPw.test(id)){
 					$('#idd').html("이미 존재하는 아이디 입니다.");	
 					$('#idd').css('color', 'red');
+					$("#fr").on("submit", function (e) { 
+                        e.preventDefault();
+                   });
 				}
 			
 			},

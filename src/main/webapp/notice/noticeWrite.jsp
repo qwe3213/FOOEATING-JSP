@@ -12,7 +12,7 @@
 <h3>관리자 전용</h3>
 
 <fieldset>
-	<form action="./NoticeWriteAction.foo" method="post" enctype="multipart/form-data">
+	<form action="./NoticeWriteAction.foo" method="post" >
 
 	제목 : <input type="text" name="subject"> <br>
 	내용 : <textarea rows="20" cols="100" name="content"></textarea> <br>

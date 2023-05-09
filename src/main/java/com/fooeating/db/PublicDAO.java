@@ -817,14 +817,13 @@ public class PublicDAO {
 			con = getCon();
 			
 			// 정보저장 & 글쓰기
-			sql = "insert into notice (subject, content, file, regdate)"
-					+ " values(?, ?, ?, now())";
+			sql = "insert into notice (subject, content, regdate)"
+					+ " values(?, ?, now())";
 			pstmt = con.prepareStatement(sql);
 			
 			// value작성
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getFile());
 			
 			// sql실행
 			pstmt.executeUpdate();
@@ -895,7 +894,6 @@ public class PublicDAO {
 				dto.setNotice_num(rs.getInt("notice_num"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
-				dto.setFile(rs.getString("file"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
 				
 				noticeList.add(dto);

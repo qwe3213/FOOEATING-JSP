@@ -8,20 +8,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+
+<!-- css 파일 -->
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/footer.css" rel="stylesheet">
+
+
 <title>NOTICE</title>
 </head>
 <body>
 
-<h1>공지사항</h1>
-왼쪽에는 '공지사항, 회사소개, 직원소개, FAQ 항목 <br>
-메인에는 보드리스트 띄어줘야 함 <br><hr>
 
+<!-- header -->
+	<jsp:include page="../inc/header.jsp" />
+<!-- header -->
+
+
+
+
+
+<!-- side menu -->
+	<jsp:include page="../inc/sideMenu.jsp" />
+<!-- side menu -->
+
+
+
+
+
+<!-- main -->
+<main>
+<br><br>
 
 
 <!-- 관리자일 때만 글쓰기 버튼 활성화  -->
 <c:if test="${!empty user_id && user_id.equals('real_admin')}">
 	<input type="button" value="글 작성하기" onclick="location.href='./NoticeWrite.foo';">
 </c:if>
+
+
 
 
 <%
@@ -90,6 +117,15 @@
 %>
 
 
+
+</main>
+<!-- main -->
+
+
+
+<!-- footer -->
+	<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
 
 </body>
 </html>
