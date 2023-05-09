@@ -15,7 +15,7 @@ public class ReviewUpdateAction implements Action {
 	public ActionForward execute(HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 		
-System.out.println(" M: ChangePwAction_execute() 호출 ");
+		System.out.println(" M: ReviewUpdateAction_execute() 호출 ");
 		
 		// 세션정보 제어
 		HttpSession session = request.getSession();
