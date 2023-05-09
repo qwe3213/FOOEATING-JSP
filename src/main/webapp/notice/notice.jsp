@@ -24,6 +24,11 @@
 </c:if>
 
 
+<%
+	String pageNum = request.getParameter("pageNum");
+%>
+
+
 
 <!-- 공지사항 리스트 출력-->
 <table border="1">
@@ -36,7 +41,13 @@
 	<c:forEach var="dto" items="${requestScope.noticeList }" >
 		<tr>
 			<td>${dto.notice_num }</td>
-			<td>${dto.subject }</td>
+			<td>
+				<form action="./NoticeContentAction.foo" method="post">
+					<input type="hidden" name="pageNum" value="${pageNum}">
+					<input type="hidden" name="notice_num" value="${dto.notice_num}">
+					<input type="submit" value="${dto.subject} ">
+				</form>
+			</td>
 			<td>${dto.regdate }</td>
 		</tr>
 	</c:forEach>
@@ -49,7 +60,6 @@
 	int count = (int)request.getAttribute("count");
 	int pageSize = (int)request.getAttribute("pageSize");
 	int currentPage = (int)request.getAttribute("currentPage");
-	String pageNum = (String)request.getAttribute("pageNum");
 	
 	if(count != 0) {
 		int pageCount = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);

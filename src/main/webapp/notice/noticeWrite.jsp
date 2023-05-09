@@ -16,7 +16,6 @@
 
 	제목 : <input type="text" name="subject"> <br>
 	내용 : <textarea rows="20" cols="100" name="content"></textarea> <br>
-	첨부파일 : <input type="file" name="file">
 	<hr>
 	
 	<input type="submit" value="작성하기">

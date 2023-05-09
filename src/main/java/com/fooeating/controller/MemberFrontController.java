@@ -16,7 +16,11 @@ import com.fooeating.action.MemberLogoutAction;
 import com.fooeating.action.MemberUpdateAction;
 import com.fooeating.action.MemberUpdateProAction;
 import com.fooeating.action.MyReviewAction;
+import com.fooeating.action.NoticeContentAction;
+import com.fooeating.action.NoticeContentActionPro;
+import com.fooeating.action.NoticeDeleteAction;
 import com.fooeating.action.NoticeListAction;
+import com.fooeating.action.NoticeUpdateAction;
 import com.fooeating.action.NoticeWriteAction;
 import com.fooeating.action.UserInfoListAction;
 import com.fooeating.action.idCheckAction;
@@ -375,7 +379,58 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
+		
+		// 7-2. 공지사항 (컨텐츠 보기)
+		else if(command.equals("/NoticeContentAction.foo")) {
+			System.out.println(" C : /NoticeContentAction.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3)");
+			
+			action = new NoticeContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 7-3. 공지사항 (수정)
+		else if(command.equals("/NoticeUpdateAction.foo")) {
+			System.out.println("/NoticeUpdateAction.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3)");
+			
+			action = new NoticeUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 7-3-1. 공지사항 (수정) - 데이터처리
+		else if(command.equals("/NoticeContentActionPro.foo")) {
+			System.out.println("/NoticeContentActionPro.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3)");
+			
+			action = new NoticeContentActionPro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 7-4. 공지사항 (삭제)
+		else if(command.equals("/NoticeDeleteAction.foo")) {
+			System.out.println("/NoticeDeleteAction.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 (패턴2)");
+			
+			action = new NoticeDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		
 		
