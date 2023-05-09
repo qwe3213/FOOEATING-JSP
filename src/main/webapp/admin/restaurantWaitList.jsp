@@ -5,16 +5,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>restaurantList</title>
+<title>restaurantWaitList</title>
 
 <!-- css 파일 -->
 <link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/sideMenu.css" rel="stylesheet">
 
+<script type="text/javascript">
+	function winopen(rest_id){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height / 2) - (300 / 2);
+		
+		window.open("ApprovalCheck.ad?rest_id=" + rest_id, "", 
+		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		 ',screenY= '+ popupY);
+	}
+</script>
+
 </head>
 <body>
-	
+		
 <!-- header -->
 <jsp:include page="../inc/header.jsp" />
 <!-- header -->
@@ -31,10 +42,11 @@
 			<th>점주 아이디</th>
 			<th>전화번호</th>
 			<th>등록일</th>
+			<th>승인/반려</th>
 			<th>상세</th>
 		</tr>
 		
-		<c:forEach var="dto" items="${requestScope.restList}" varStatus="no">
+		<c:forEach var="dto" items="${restWaitList}" varStatus="no">
 		<tr>
 			<td>${no.count}</td>
 			<td>${dto.name}</td>
@@ -42,6 +54,9 @@
 			<td>${dto.owner_user_id}</td>
 			<td>${dto.rest_tel}</td>
 			<td>${dto.regdate}</td>
+			<td>
+				<button type="submit" onclick="winopen('${dto.rest_id}');">승인/반려</button>
+			</td>
 			<td>
 				<form action="./RestaurantInfo.ad" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">

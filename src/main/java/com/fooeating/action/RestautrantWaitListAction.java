@@ -11,11 +11,13 @@ import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.RestaurantDTO;
 
-public class RestaurantListAction implements Action {
+public class RestautrantWaitListAction implements Action {
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(" UserInfoListAction_execute() 호출");
+		System.out.println(" RestaurantWaitListAction_execute() 호출");
 		
+
 		// 세션 제어
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
@@ -32,7 +34,7 @@ public class RestaurantListAction implements Action {
 
 
 		// 페이징 처리 -----------------
-		int count = dao.getRestaurantCount(); 		// 전체 가게 수
+		int count = dao.getRestaurantWaitCount(); 		// 전체 가게 수
 		System.out.println("가게 수 : " + count);
 		
 		int pageSize = 10;							// 한 페이지에 출력할 가게 수
@@ -47,9 +49,9 @@ public class RestaurantListAction implements Action {
 		int endRow = currentPage * pageSize;				// 끝행 번호 계산
 		// 페이징 처리 -----------------
 		
-		List<RestaurantDTO> restList = dao.getRestaurantList(startRow, pageSize);
+		List<RestaurantDTO> restWaitList = dao.getRestaurantWaitList(startRow, pageSize);
 		
-		request.setAttribute("restList", restList);
+		request.setAttribute("restWaitList", restWaitList);
 		request.setAttribute("count", count);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);
@@ -57,9 +59,10 @@ public class RestaurantListAction implements Action {
 		
 
 		// 연결된 view에 출력
-		forward.setPath("./admin/restaurantList.jsp");
+		forward.setPath("./admin/restaurantWaitList.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
 	}
+
 }
