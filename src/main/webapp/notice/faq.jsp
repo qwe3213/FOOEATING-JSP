@@ -86,7 +86,7 @@
 			<div id="list">
 				<ul>
 					<li class="${dto.category}">
-						<h2 class="btn">${dto.subject }</h2>
+						<h2 class="btn">Q.${dto.subject }</h2>
 					</li>
 				</ul>
 			</div>
@@ -130,11 +130,13 @@
 			btns[num].onclick = function() {
 				modals[num].style.display = "block";
 				console.log(num);
+				document.body.style.overflow = 'hidden';
 			};
 
 			// <span> 태그(X 버튼)를 클릭하면 Modal이 닫습니다.
 			spanes[num].onclick = function() {
 				modals[num].style.display = "none";
+				document.body.style.removeProperty('overflow');
 			};
 		};
 	}
@@ -153,6 +155,7 @@
 	window.onclick = function(event) {
 		if (event.target.className == "modal") {
 			event.target.style.display = "none";
+			document.body.style.removeProperty('overflow');
 		}
 	};
 </script>
