@@ -19,9 +19,9 @@ import com.fooeating.action.MemberUpdateProAction;
 import com.fooeating.action.MyReviewAction;
 import com.fooeating.action.NoticeListAction;
 import com.fooeating.action.NoticeWriteAction;
+import com.fooeating.action.ReviewDelete;
 import com.fooeating.action.UserInfoListAction;
 import com.fooeating.action.IdCheckAction;
-import com.fooeating.action.ReviewDelete;
 import com.fooeating.action.ReviewUpdate;
 import com.fooeating.action.ReviewUpdateAction;
 import com.fooeating.commons.Action;
@@ -330,7 +330,7 @@ public class MemberFrontController extends HttpServlet {
 					
 			// MemberDeleteAction() 객체
 			action = new ReviewDelete();
-					
+			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

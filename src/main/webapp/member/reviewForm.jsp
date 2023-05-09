@@ -55,7 +55,7 @@
 			<button>수정</button>
 		</form>
 		
-		<form action="reviewDelete.foo" method="post" onsubmit="return deleteReview()" >
+		<form action="ReviewDelete.foo" method="post" onsubmit="return deleteReview()" >
 			<input type="hidden" name="user_id" value="${user_id }">
 			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
 			<button>삭제</button>
