@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.ApprovalCheckProAction;
 import com.fooeating.action.RestaurantInfoAction;
 import com.fooeating.action.RestaurantListAction;
+import com.fooeating.action.RestautrantWaitListAction;
 import com.fooeating.action.UserInfoListAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -88,6 +90,39 @@ public class AdminFrontController extends HttpServlet {
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
 			action = new RestaurantInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/RestaurantWaitList.ad")) {
+			System.out.println("  C : /RestaurantWaitList.ad 실행");
+			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+			
+			action = new RestautrantWaitListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/ApprovalCheck.ad")) {
+			System.out.println("  C : /ApprovalCheck.ad 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동(패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./admin/approvalCheck.jsp");
+			forward.setRedirect(false);
+		}
+		
+		else if(command.equals("/ApprovalCheckPro.ad")) {
+			System.out.println("  C : /ApprovalCheck.ad 실행");
+			System.out.println("  C : DB사용o, 페이지 이동(패턴2)");
+			
+			action = new ApprovalCheckProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

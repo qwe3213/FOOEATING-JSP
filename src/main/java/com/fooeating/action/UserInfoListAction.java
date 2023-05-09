@@ -38,10 +38,10 @@ public class UserInfoListAction implements Action {
 		
 		int pageSize = 10;							// 한 페이지에 출력할 회원 수
 		
-		String pno = request.getParameter("pno");
-		if(pno == null) { pno = "1"; }				// 현재 페이지 정보 체크
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) { pageNum = "1"; }				// 현재 페이지 정보 체크
 		
-		int currentPage = Integer.parseInt(pno);
+		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;	// 시작행 번호 계산
 		int endRow = currentPage * pageSize;				// 끝행 번호 계산
 		// 페이징 처리 -----------------
@@ -52,7 +52,7 @@ public class UserInfoListAction implements Action {
 		request.setAttribute("count", count);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);
-		request.setAttribute("pno", pno);
+		request.setAttribute("pageNum", pageNum);
 
 		
 		// 연결된 view에 출력

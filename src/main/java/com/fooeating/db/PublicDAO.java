@@ -113,7 +113,7 @@ public class PublicDAO {
 		
 		try {
 			con = getCon();
-			sql = "select * from restaurant order by regdate desc limit ?, ?";
+			sql = "select * from restaurant where status = 1 order by regdate desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
@@ -164,7 +164,7 @@ public class PublicDAO {
 		
 		try {
 			con = getCon();
-			sql = "select count(*) from restaurant";
+			sql = "select count(*) from restaurant where status = 1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -225,6 +225,99 @@ public class PublicDAO {
 		return dto;
 	}
 	// 관리자 - 가게 상세 목록 getRestaurantInfo()
+	
+	
+	
+	// 관리자 - 대기 가게수 getRestaurantWaitCount()
+		public int getRestaurantWaitCount() {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where status = 0";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		// 관리자 - 대기 가게수 getRestaurantWaitCount()
+		
+		
+		
+		// 관리자 - 입점 목록 getRestaurantWaitList()
+		public List<RestaurantDTO> getRestaurantWaitList(int startRow, int pageSize) {
+			List<RestaurantDTO> restWaitList = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant where status = 0 order by regdate desc limit ?, ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startRow - 1);
+				pstmt.setInt(2, pageSize);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setAddr_city(rs.getString("addr_city"));
+					dto.setAddr_district(rs.getString("addr_district"));
+					dto.setAddr_etc(rs.getString("addr_etc"));
+					dto.setCategory(rs.getString("category"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setDayoff(rs.getString("dayoff"));
+					dto.setDescriptions(rs.getString("descriptions"));
+					dto.setFile_in(rs.getString("file_in"));
+					dto.setFile_menu(rs.getString("file_menu"));
+					dto.setFile_out(rs.getString("file_out"));
+					dto.setGrade(rs.getInt("grade"));
+					dto.setLike_num(rs.getInt("like_num"));
+					dto.setName(rs.getString("name"));
+					dto.setOn_off(rs.getBoolean("on_off"));
+					dto.setOwner_user_id(rs.getString("owner_user_id"));
+					dto.setRead_count(rs.getInt("read_count"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_notice(rs.getString("rest_notice"));
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setRuntime(rs.getString("runtime"));
+					dto.setStatus(rs.getInt("status"));
+					
+					restWaitList.add(dto);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return restWaitList;
+		}
+		// 관리자 - 입점 목록 getRestaurantWaitList()
+		
+		
+		// 관리자 - 입점 대기 전환 getRestaurantStatus()
+		public int getRestaurantStatus(int rest_id) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "update restaurant set status = 1 where rest_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, rest_id);
+				
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		// 관리자 - 입점 대기 전환 getRestaurantStatus()
 	
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
