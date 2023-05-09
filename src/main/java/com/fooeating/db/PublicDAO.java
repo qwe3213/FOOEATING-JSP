@@ -808,7 +808,8 @@ public class PublicDAO {
 	
 	/* ================ < 메인페이지 관련 메서드 > ===================== */
 	
-	// 1. 공지사항 게시판 글쓰기
+  
+  // 1. 공지사항 게시판 글쓰기
 	public void insertNotice(NoticeDTO dto){
 		
 		try {
@@ -816,13 +817,14 @@ public class PublicDAO {
 			con = getCon();
 			
 			// 정보저장 & 글쓰기
-			sql = "insert into notice (subject, content, regdate)"
-					+ " values(?, ?, now())";
+			sql = "insert into notice (subject, content, file, regdate)"
+					+ " values(?, ?, ?, now())";
 			pstmt = con.prepareStatement(sql);
 			
 			// value작성
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getFile());
 			
 			// sql실행
 			pstmt.executeUpdate();
@@ -835,10 +837,10 @@ public class PublicDAO {
 		}
 		
 	}
-	
-	
-	
-	// 1-1. 전체 글 개수
+  
+  
+  
+  // 1-1. 전체 글 개수
 	public int getBoardCount() {
 		
 		int result = 0;
@@ -893,6 +895,7 @@ public class PublicDAO {
 				dto.setNotice_num(rs.getInt("notice_num"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
+				dto.setFile(rs.getString("file"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
 				
 				noticeList.add(dto);
@@ -908,10 +911,10 @@ public class PublicDAO {
 		
 		return noticeList;
 	}
-	
-	
-	
-	// 3. 공지사항 게시글 내용 보기
+  
+  
+  
+  // 3. 공지사항 게시글 내용 보기
 	public NoticeDTO getNoticeContent(int notice_num) {
 		
 		NoticeDTO dto = null;
@@ -994,11 +997,50 @@ public class PublicDAO {
 		} finally {
 			closeDB();
 		}
-		
-		
-		
 	}
+  
+  
+  
+  // 6. faq 리스트 가져가기
+  public List<FaqDTO> getFaqList() {
 
+  List<FaqDTO> faqList = new ArrayList<FaqDTO>();
+
+  try {
+    con = getCon();
+
+    sql = "select * from faq";
+    pstmt = con.prepareStatement(sql);
+
+    rs = pstmt.executeQuery();
+
+    while(rs.next()) {
+      FaqDTO dto = new FaqDTO();
+      // while문을 한 바퀴 돌 때마다 객체 새로 생성, 아래 데이터를 저장
+
+      dto.setFaq_num(rs.getInt("faq_num"));
+      dto.setCategory(rs.getString("category"));
+      dto.setSubject(rs.getString("subject"));
+      dto.setContent(rs.getString("content"));
+
+      faqList.add(dto);
+    }
+
+    System.out.println("faq 글 정보 모두 저장 완료");
+
+  } catch (Exception e) {
+    e.printStackTrace();
+  } finally {
+    closeDB();
+  }
+
+  return faqList;
+}
+
+  
+  
+  
+	
 	
 	
 	

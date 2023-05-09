@@ -111,7 +111,7 @@ function checkData() {
 			<c:redirect url="./MemberLogin.foo"/>
 		</c:if>
 		
-		<form action="./changePwAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
+		<form action="./ChangePwAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
 		현재 비밀번호<input type="password" name="pw"><br>
 		새 비밀번호<input type="password" name="newPw" id="newPw"><br>
 		<div id="newPwDiv" class="errorDiv"></div>

@@ -30,7 +30,7 @@ $(function() {
 		}
 		
 		$.ajax({
-			url:"./idCheckAction.foo",
+			url:"./IdCheckAction.foo",
 			data : {user_id:id},
 			success: function(data) {
 				if(data ==1 && regIdPw.test(id)){

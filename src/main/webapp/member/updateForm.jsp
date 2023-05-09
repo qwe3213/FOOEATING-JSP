@@ -70,7 +70,7 @@
 			let popupX = (window.screen.width / 2) - (500 / 2);
 			let popupY= (window.screen.height /2) - (300 / 2);
 			
-			window.open("changePw.foo","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+			window.open("ChangePw.foo","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 			
 		}
 		
@@ -78,7 +78,7 @@
 			let popupX = (window.screen.width / 2) - (500 / 2);
 			let popupY= (window.screen.height /2) - (300 / 2);
 			
-			window.open("memberDelete.foo","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+			window.open("MemberDelete.foo","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 			
 		}
 	

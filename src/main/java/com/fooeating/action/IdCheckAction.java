@@ -9,11 +9,13 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 
-public class idCheckAction implements Action{
+public class IdCheckAction implements Action{
 
     @Override
     public ActionForward execute(HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
+    	
+    	System.out.println(" M : IdCheckAction_execute 실행");
         
         // 인코딩
         request.setCharacterEncoding("UTF-8");
