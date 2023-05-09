@@ -113,7 +113,7 @@ public class PublicDAO {
 		
 		try {
 			con = getCon();
-			sql = "select * from restaurant order by regdate desc limit ?, ?";
+			sql = "select * from restaurant where status = 1 order by regdate desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
@@ -164,7 +164,7 @@ public class PublicDAO {
 		
 		try {
 			con = getCon();
-			sql = "select count(*) from restaurant";
+			sql = "select count(*) from restaurant where status = 1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -225,6 +225,99 @@ public class PublicDAO {
 		return dto;
 	}
 	// 관리자 - 가게 상세 목록 getRestaurantInfo()
+	
+	
+	
+	// 관리자 - 대기 가게수 getRestaurantWaitCount()
+		public int getRestaurantWaitCount() {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where status = 0";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		// 관리자 - 대기 가게수 getRestaurantWaitCount()
+		
+		
+		
+		// 관리자 - 입점 목록 getRestaurantWaitList()
+		public List<RestaurantDTO> getRestaurantWaitList(int startRow, int pageSize) {
+			List<RestaurantDTO> restWaitList = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant where status = 0 order by regdate desc limit ?, ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startRow - 1);
+				pstmt.setInt(2, pageSize);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setAddr_city(rs.getString("addr_city"));
+					dto.setAddr_district(rs.getString("addr_district"));
+					dto.setAddr_etc(rs.getString("addr_etc"));
+					dto.setCategory(rs.getString("category"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setDayoff(rs.getString("dayoff"));
+					dto.setDescriptions(rs.getString("descriptions"));
+					dto.setFile_in(rs.getString("file_in"));
+					dto.setFile_menu(rs.getString("file_menu"));
+					dto.setFile_out(rs.getString("file_out"));
+					dto.setGrade(rs.getInt("grade"));
+					dto.setLike_num(rs.getInt("like_num"));
+					dto.setName(rs.getString("name"));
+					dto.setOn_off(rs.getBoolean("on_off"));
+					dto.setOwner_user_id(rs.getString("owner_user_id"));
+					dto.setRead_count(rs.getInt("read_count"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_notice(rs.getString("rest_notice"));
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setRuntime(rs.getString("runtime"));
+					dto.setStatus(rs.getInt("status"));
+					
+					restWaitList.add(dto);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return restWaitList;
+		}
+		// 관리자 - 입점 목록 getRestaurantWaitList()
+		
+		
+		// 관리자 - 입점 대기 전환 getRestaurantStatus()
+		public int getRestaurantStatus(int rest_id) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "update restaurant set status = 1 where rest_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, rest_id);
+				
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		// 관리자 - 입점 대기 전환 getRestaurantStatus()
 	
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
@@ -715,7 +808,8 @@ public class PublicDAO {
 	
 	/* ================ < 메인페이지 관련 메서드 > ===================== */
 	
-	// 1. 공지사항 게시판 글쓰기
+  
+  // 1. 공지사항 게시판 글쓰기
 	public void insertNotice(NoticeDTO dto){
 		
 		try {
@@ -743,10 +837,10 @@ public class PublicDAO {
 		}
 		
 	}
-	
-	
-	
-	// 1-1. 전체 글 개수
+  
+  
+  
+  // 1-1. 전체 글 개수
 	public int getBoardCount() {
 		
 		int result = 0;
@@ -817,43 +911,136 @@ public class PublicDAO {
 		
 		return noticeList;
 	}
-	
-	// 3. faq 리스트 가져가기
-	public List<FaqDTO> getFaqList() {
+  
+  
+  
+  // 3. 공지사항 게시글 내용 보기
+	public NoticeDTO getNoticeContent(int notice_num) {
 		
-		List<FaqDTO> faqList = new ArrayList<FaqDTO>();
+		NoticeDTO dto = null;
 		
 		try {
 			con = getCon();
 			
-			sql = "select * from faq";
+			sql = "select * from notice where notice_num=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, notice_num);
 			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				FaqDTO dto = new FaqDTO();
-				// while문을 한 바퀴 돌 때마다 객체 새로 생성, 아래 데이터를 저장
+			if(rs.next()) {
+				dto = new NoticeDTO();
 				
-				dto.setFaq_num(rs.getInt("faq_num"));
-				dto.setCategory(rs.getString("category"));
+				dto.setNotice_num(rs.getInt("notice_num"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
 				
-				faqList.add(dto);
+				System.out.println(notice_num + "번 글 정보 저장완료.");
 			}
 			
-			System.out.println("faq 글 정보 모두 저장 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			closeDB();
+		}
+		
+		return dto;
+	}
+	
+	
+	
+	// 4. 공지수항 게시글 수정
+	public void updateNoticeContent(NoticeDTO dto) {
+		
+		try {
+			con = getCon();
+			
+			sql = "update notice set subject=?, content=? where notice_num=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setInt(3, dto.getNotice_num());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("글 수정 완료!");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		
-		return faqList;
-	}
 
+	}
+	
+	
+	
+	// 5. 공지사항 게시글 삭제
+	public void deleteNoticeContent(NoticeDTO dto) {
+		
+		try {
+			con = getCon();
+			
+			sql = "delete from notice where notice_num=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, dto.getNotice_num());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("글 삭제 완료!");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+  
+  
+  
+  // 6. faq 리스트 가져가기
+  public List<FaqDTO> getFaqList() {
+
+  List<FaqDTO> faqList = new ArrayList<FaqDTO>();
+
+  try {
+    con = getCon();
+
+    sql = "select * from faq";
+    pstmt = con.prepareStatement(sql);
+
+    rs = pstmt.executeQuery();
+
+    while(rs.next()) {
+      FaqDTO dto = new FaqDTO();
+      // while문을 한 바퀴 돌 때마다 객체 새로 생성, 아래 데이터를 저장
+
+      dto.setFaq_num(rs.getInt("faq_num"));
+      dto.setCategory(rs.getString("category"));
+      dto.setSubject(rs.getString("subject"));
+      dto.setContent(rs.getString("content"));
+
+      faqList.add(dto);
+    }
+
+    System.out.println("faq 글 정보 모두 저장 완료");
+
+  } catch (Exception e) {
+    e.printStackTrace();
+  } finally {
+    closeDB();
+  }
+
+  return faqList;
+}
+
+  
+  
+  
+	
 	
 	
 	

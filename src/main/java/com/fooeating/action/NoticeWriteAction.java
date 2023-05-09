@@ -42,7 +42,6 @@ public class NoticeWriteAction implements Action {
 		// 객체에 정보 저장
 		dto.setSubject(mlti.getParameter("subject"));
 		dto.setContent(mlti.getParameter("content"));
-		dto.setFile(mlti.getFilesystemName("file"));
 		
 		// DB에 객체 정보 전달하기
 		PublicDAO dao = new PublicDAO();

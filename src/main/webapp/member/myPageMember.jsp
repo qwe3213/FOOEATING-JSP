@@ -40,9 +40,8 @@
 
 <!-- main -->
 <main>
-	<br><br><br>
-	<input type="button" value="회원 정보 수정" onclick="location.href='./MemberUpdate.foo';">
-	<input type="button" value="리뷰 관리" onclick="location.href='./MyReview.foo';">
+
+
 </main>
 <!-- main -->
 
