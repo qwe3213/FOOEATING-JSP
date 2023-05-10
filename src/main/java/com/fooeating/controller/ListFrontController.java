@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.action.ListFormAction;
 import com.fooeating.action.MapFormAction;
+import com.fooeating.action.RestaurantFormAction;
 import com.fooeating.action.RestaurantInfoAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -55,25 +56,29 @@ public class ListFrontController extends HttpServlet {
 			System.out.println("  C : /listForm.fd 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
-			action = new ListFormAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		} else if(command.equals("/restaurantForm.fd")) {
-			System.out.println("  C : /RestaurantInfo.ad 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-
-			action = new RestaurantInfoAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			forward = new ActionForward();
+			forward.setPath("./list/listForm.jsp");
+			forward.setRedirect(false);
 		}
-		
+//			action = new ListFormAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+
+//		} else if(command.equals("/restaurantForm.fd")) {
+//			System.out.println("  C : /RestaurantInfo.ad 실행");
+//			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+//
+//			action = new RestaurantFormAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
 		// 지도
 //		else if (command.equals("/TestMap.fd")) {
 //			System.out.println("  C : /TestMap.fd 실행");
@@ -99,7 +104,29 @@ public class ListFrontController extends HttpServlet {
 //			}
 //		}
 		
+		else if (command.equals("/ListGallery.fd")) {
+			System.out.println("  C : /RestaurantInfo.ad 실행");
+			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+			
+			action = new ListFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
+		else if(command.equals("/restaurantForm.fd")) {
+			System.out.println("  C : /RestaurantForm.ad 실행");
+			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+
+			action = new RestaurantFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 
 
 		System.out.println("2. 가상주소 매핑 끝\n");

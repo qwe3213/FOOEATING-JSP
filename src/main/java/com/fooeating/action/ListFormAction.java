@@ -52,7 +52,7 @@ public class ListFormAction implements Action {
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pno", pno);
 		// 연결된 view에 출력
-		forward.setPath("./list/listForm.jsp");
+		forward.setPath("./list/gallery.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

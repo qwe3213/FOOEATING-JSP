@@ -8,7 +8,7 @@ import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.RestaurantDTO;
 
-public class restaurantFormAction implements Action {
+public class RestaurantFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,10 +20,10 @@ public class restaurantFormAction implements Action {
 		int rest_id = Integer.parseInt(request.getParameter("rest_id"));
 		
 		PublicDAO dao = new PublicDAO();
-		RestaurantDTO restForm = dao.getRestaurantInfo(rest_id);
+		RestaurantDTO restForm = dao.getRestaurantForm(rest_id);
 		System.out.println("출력할 가게 : " + restForm);
 		
-		request.setAttribute("restInfo", restForm);
+		request.setAttribute("restForm", restForm);
 		
 		ActionForward forward = new ActionForward();
 		// 연결된 view에 출력
