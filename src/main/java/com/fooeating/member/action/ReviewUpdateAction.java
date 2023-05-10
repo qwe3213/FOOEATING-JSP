@@ -1,6 +1,4 @@
-package com.fooeating.action;
-
-import java.io.PrintWriter;
+package com.fooeating.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,15 +8,14 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
-import com.fooeating.db.UserDTO;
 
-
-
-public class MemberUpdateProAction implements Action {
+public class ReviewUpdateAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(" M: MemberUpdateProAction_execute() 호출 ");
+	public ActionForward execute(HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		
+		System.out.println(" M: ReviewUpdateAction_execute() 호출 ");
 		
 		// 세션정보 제어
 		HttpSession session = request.getSession();
@@ -35,18 +32,16 @@ public class MemberUpdateProAction implements Action {
 		// 한글처리(인코딩)
 		request.setCharacterEncoding("UTF-8");
 		
-		// 전달정보 저장(DTO)
-		UserDTO dto = new UserDTO();
-		dto.setUser_id(request.getParameter("user_id"));
-		dto.setPw(request.getParameter("pw"));
-		dto.setName(request.getParameter("name"));
-		dto.setEmail(request.getParameter("email"));
-		dto.setPhone(request.getParameter("phone"));
+		// 전달정보 저장(변수)
+		int review_num = Integer.parseInt(request.getParameter("review_num"));
+		String newContent = request.getParameter("newContent");
 		
-		// DAO - 정보수정 메서드 호출 - memberUpdate(dto)
+		
+		
+		// DAO - 정보수정 메서드 호출 -changePw(id, pw, newPw)
 		PublicDAO dao = new PublicDAO();
 		
-		int result = dao.memberUpdate(dto);
+		int result = dao.changeReview(id, review_num, newContent);
 		
 		System.out.println(" M : 정보 수정 결과 " + result);
 		
@@ -58,17 +53,13 @@ public class MemberUpdateProAction implements Action {
 			return null; // 컨트롤러에서는 이동X
 		}
 		
-		if (result == 0 ) { // 비밀번호 오류
-			// JS이동 처리 객체 동작 호출
-			JSForward.alertAndBack(response, "비밀번호 오류!!");
-			
-			return null; // 컨트롤러에서는 이동X
-		}
 		
+		session.removeAttribute("dto");
 		// result == 1
-		JSForward.alertAndMove(response, "수정 완료","./Main.foo");
+		JSForward.alertAndCloseAndMove(response, "리뷰 수정 완료!","./MyReview.foo");
 		
 		return null;
 	}
+		
 
 }
