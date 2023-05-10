@@ -11,25 +11,25 @@
 		
 		<table border="1">
 		<tr>
-			<td rowspan="8">${restInfo.file_out}</td>
+			<td rowspan="8">${restForm.file_out}</td>
 			<th>상호명</th>
-			<td>${restInfo.name}</td>
+			<td>${restForm.name}</td>
 		</tr>
 		<tr>
 			<th>주소</th>
-			<td>${restInfo.addr_city} ${restInfo.addr_district} ${restInfo.addr_etc}</td>
+			<td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td>
 		</tr>
 		<tr>
 			<th>전화번호</th>
-			<td>${restInfo.rest_tel}</td>
+			<td>${restForm.rest_tel}</td>
 		</tr>
 		<tr>
 			<th>업종</th>
-			<td>${restInfo.category}</td>
+			<td>${restForm.category}</td>
 		</tr>
 		<tr>
 			<th>영업 시간</th>
-			<td>${restInfo.runtime}</td>
+			<td>${restForm.runtime}</td>
 		</tr>
 		<tr>
 			<th>메뉴</th>
@@ -37,11 +37,11 @@
 		</tr>
 		<tr>
 			<th>편의시설</th>
-			<td>${restInfo.convenience}</td>
+			<td>${restForm.convenience}</td>
 		</tr>
 		<tr>
 			<th>가게 공지사항</th>
-			<td>${restInfo.rest_notice}</td>
+			<td>${restForm.rest_notice}</td>
 		</tr>
 	</table>
 	

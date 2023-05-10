@@ -12,6 +12,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"/></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
 	
 		$('document').ready(function(){
@@ -59,11 +60,36 @@
 	    
 	        });
 		
+		$(document).ready(function(){
+			$("#kakao").click(function(){
+				$.ajax({
+					url:"./list/kakaoapi.html",
+					type:"GET",
+					success: function(data){
+						$("#result").html(data);
+					}
+				});
+			});
+		
+		$("#gallery").click(function(){
+			$.ajax({
+				url: "./ListGallery.fd",
+				type:"GET",
+				success: function(data){
+					$("#result").html(data);
+				}
+			});
+		});
+		
+	});
+		
 	
 
 </script>
 </head>
 <body>
+
+	  
 
 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	
 	 <input type="text" placeholder="매장을 검색해 보세요"> <input type="submit" value="검색">	<br><br> 
@@ -92,78 +118,26 @@
 	 	<option>좋아요수</option>
 	 </select>
 	 
-	 <input type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px;" >
-	 <div id="Map">
-<a href="TestMap.jsp"><input type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px;"></a>
-</div>
+	 <input id="kakao" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
+	  <input id="gallery" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
+ 	  <div id="result"></div>
+
 	 
 	<hr>
 	
-	<table border="1">
-		<tr>
-			<th>No.</th>
-			<th>가게이름</th>
-			<th>전화번호</th>
-			<th>편의사항</th>
-			<th>id</th>
-			<th>등록일</th>
-			<th>휴무일</th>
-		</tr>
-		
-		<c:forEach var="dto" items="${requestScope.restList }" varStatus="no">
+
 	
-		<tr>
-			<td>${no.count}</td>
-			<td>
-			<form action="./restaurantForm.fd" method="post" >
-					<input type="hidden" name="rest_id" value="${dto.rest_id}">
-					<input type="submit" value="${dto.name}">
-				</form>
-			</td>
-			<td>${dto.rest_tel}</td>
-			<td>${dto.convenience}</td>
-			<td>${dto.rest_id}</td>
-			<td>${dto.regdate}</td>
-			<td>${dto.dayoff}</td>
-		</tr>
-		</c:forEach>
-	</table>
 	
-	<%
-		int count = (int)request.getAttribute("count");
-		int pageSize = (int)request.getAttribute("pageSize");
-		int currentPage = (int)request.getAttribute("currentPage");
-		int pno = Integer.parseInt((String)request.getAttribute("pno"));
-		
+		<div id="map" style="width:100%;height:350px;">
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
+<script>
+
+</script>
+
+</div>
 	
-		
-		if(count != 0) {
-			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-			int pageBlock = 5;
-			int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
-			int endPage = startPage + pageBlock - 1;
-			
-			if(endPage > pageCount) {
-				endPage = pageCount;
-			}
-			
-			if(startPage > pageBlock) {
-	%>
-				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
-	<%
-			}
-			for(int i = startPage; i <= endPage; i++) {
-	%>
-				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a>
-	<%
-			}
-			if(endPage < pageCount) {
-	%>
-				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
-	<%
-			}
-		}
-	%>
 	
                     
 </body>
