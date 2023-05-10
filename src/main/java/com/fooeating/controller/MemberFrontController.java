@@ -447,6 +447,13 @@ public class MemberFrontController extends HttpServlet {
 		
 		
 		
+		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		
+		
+		
+		// 1. 예약
+		
+		
 		
 		
 
