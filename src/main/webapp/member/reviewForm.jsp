@@ -25,10 +25,29 @@
 
 </script>
  
+ 
+<!-- css 파일 -->
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+
 
 </head>
 <body>
-		<h1>리뷰 관리</h1>
+
+
+<!-- header -->
+	<jsp:include page="../inc/header.jsp" />
+<!-- header -->
+
+<!-- sideMenu -->
+	<jsp:include page="../inc/sideMenu.jsp" />
+<!-- sideMenu -->
+
+<!-- main -->
+<main>
+		리뷰관리
 		<!-- 로그인 세션 제어 -->
 		<c:if test="${empty user_id }" >
 			<c:redirect url="./MemberLogin.foo"/>
@@ -62,8 +81,17 @@
 		</form>
 		
 		</c:forEach>
+</main>
+<!-- main -->
 		
 		
-		
+
+
+
+<!-- footer -->
+	<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
+
+
 </body>
 </html>

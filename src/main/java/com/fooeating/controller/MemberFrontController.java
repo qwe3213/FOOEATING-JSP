@@ -177,7 +177,7 @@ public class MemberFrontController extends HttpServlet {
 		
 		
 		
-		// 5-1 회원 정보 수정 정보입력 페이지
+		// 5-1. 회원 정보 수정 정보입력 페이지
 		else if(command.equals("/MemberUpdate.foo")) {
 			System.out.println(" C : /MemberUpdate.foo 호출 ");
 			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3)");
@@ -192,7 +192,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 		}
 		
-		// 5-2 회원정보 수정 수정버튼 클릭시
+		// 5-2. 회원정보 수정 수정버튼 클릭시
 		else if(command.equals("/MemberUpdateProAction.foo")) {
 			System.out.println(" C : /MemberUpdateProAction.foo 호출 ");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
@@ -207,7 +207,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} 
 		
-		// 5-3 비밀번호 변경 시 팝업창 호출
+		// 5-3. 비밀번호 변경 시 팝업창 호출
 		else if (command.equals("/ChangePw.foo")) {
 			System.out.println(" C : /ChangePw.foo 호출 ");
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
@@ -217,7 +217,7 @@ public class MemberFrontController extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		
-		// 5-4 비밀번호 수정버튼 클릭시
+		// 5-4. 비밀번호 수정버튼 클릭시
 		else if(command.equals("/ChangePwAction.foo")) {
 			System.out.println(" C : /ChangePwAction.foo 호출 ");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
@@ -232,7 +232,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} 
 		
-		// 5-5 회원 탈퇴 시 팝엉창 호출
+		// 5-5. 회원 탈퇴 시 팝엉창 호출
 		else if (command.equals("/MemberDelete.foo")) {
 			System.out.println(" C : /MemberDelete.foo 호출 ");
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
@@ -242,7 +242,7 @@ public class MemberFrontController extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		
-		// 5-6 회원 탈퇴 버튼  클릭시
+		// 5-6. 회원 탈퇴 버튼  클릭시
 		else if(command.equals("/MemberDeleteAction.foo")) {
 			System.out.println(" C : /MemberDeleteAction.foo 호출 ");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
@@ -258,6 +258,7 @@ public class MemberFrontController extends HttpServlet {
 		} 
 		
 		
+		
 		// 6. 마이페이지
 		else if(command.equals("/MyPageMember.foo")) {
 			System.out.println(" C : /MyPage.foo 실행");
@@ -268,8 +269,7 @@ public class MemberFrontController extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		
-		// 6. 회원 마이페이지 - 리뷰 관리 페이지 이동
-		
+		// 6-1. 마이페이지 - 리뷰 관리
 		else if(command.equals("/MyReview.foo")) {
 			System.out.println(" C : /MyReview.foo 호출 ");
 			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
@@ -284,7 +284,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 		}
 		
-		// 6-1 회원 마이페이지 - 리뷰관리 수정버튼 클릭 시 정보를 저장할 액션페이지 호출
+		// 6-2. 마이페이지 - 리뷰관리 수정버튼 클릭 시 정보를 저장할 액션페이지 호출
 		else if(command.equals("/ReviewUpdate.foo")) {
 			System.out.println(" C : /ReviewUpdate.foo 호출 ");
 			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
@@ -299,8 +299,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 		}
 		
-		// 6-2 회원 마이페이지 - 리뷰관리 수정버튼 클릭 시 수정팝업창 호출
-		
+		// 6-3. 마이페이지 - 리뷰관리 수정버튼 클릭 시 수정팝업창 호출
 		else if(command.equals("/ReviewUpdatePop.foo")) {
 			System.out.println(" C : /ReviewUpdatePop.foo 실행");
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
@@ -310,7 +309,7 @@ public class MemberFrontController extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		
-		// 6-3 회원 마이페이지 - 리뷰관리 완료버튼 클릭시 정보 수정 및 부모창 새로고침
+		// 6-4. 마이페이지 - 리뷰관리 완료버튼 클릭시 정보 수정 및 부모창 새로고침
 		else if(command.equals("/ReviewUpdateAction.foo")) {
 			System.out.println(" C : /ReviewUpdateAction.foo 호출 ");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
@@ -325,6 +324,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 		}
 		
+		// 6-5. 마이페이지 - 리뷰삭제
 		else if(command.equals("/ReviewDelete.foo")) {
 			System.out.println(" C : /ReviewDelete.foo 호출 ");
 			System.out.println(" C : DB사용o, 페이지 이동 (패턴2) ");
@@ -338,7 +338,6 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} 
-		
 		
 		
 		
@@ -444,6 +443,16 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
+		
+		
+		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		
+		
+		
+		// 1. 예약
+		
+		
 		
 		
 		
