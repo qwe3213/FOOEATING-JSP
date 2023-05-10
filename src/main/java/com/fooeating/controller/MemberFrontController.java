@@ -1,35 +1,32 @@
 package com.fooeating.controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.fooeating.action.ChangePwAction;
-import com.fooeating.action.FaqList;
-import com.fooeating.action.MemberDeleteAction;
-import com.fooeating.action.MemberJoinAction;
-import com.fooeating.action.MemberLoginAction;
-import com.fooeating.action.MemberLogoutAction;
-import com.fooeating.action.MemberUpdateAction;
-import com.fooeating.action.MemberUpdateProAction;
-import com.fooeating.action.MyReviewAction;
-import com.fooeating.action.NoticeContentAction;
-import com.fooeating.action.NoticeContentActionPro;
-import com.fooeating.action.NoticeDeleteAction;
-import com.fooeating.action.NoticeListAction;
-import com.fooeating.action.NoticeUpdateAction;
-import com.fooeating.action.NoticeWriteAction;
-import com.fooeating.action.ReviewDelete;
-import com.fooeating.action.UserInfoListAction;
-import com.fooeating.action.IdCheckAction;
-import com.fooeating.action.ReviewUpdate;
-import com.fooeating.action.ReviewUpdateAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
+import com.fooeating.member.action.ChangePwAction;
+import com.fooeating.member.action.FaqList;
+import com.fooeating.member.action.IdCheckAction;
+import com.fooeating.member.action.MemberDeleteAction;
+import com.fooeating.member.action.MemberJoinAction;
+import com.fooeating.member.action.MemberLoginAction;
+import com.fooeating.member.action.MemberLogoutAction;
+import com.fooeating.member.action.MemberUpdateAction;
+import com.fooeating.member.action.MemberUpdateProAction;
+import com.fooeating.member.action.MyReviewAction;
+import com.fooeating.member.action.NoticeContentAction;
+import com.fooeating.member.action.NoticeContentActionPro;
+import com.fooeating.member.action.NoticeDeleteAction;
+import com.fooeating.member.action.NoticeListAction;
+import com.fooeating.member.action.NoticeUpdateAction;
+import com.fooeating.member.action.NoticeWriteAction;
+import com.fooeating.member.action.ReviewDelete;
+import com.fooeating.member.action.ReviewUpdate;
+import com.fooeating.member.action.ReviewUpdateAction;
 
 public class MemberFrontController extends HttpServlet {
 	

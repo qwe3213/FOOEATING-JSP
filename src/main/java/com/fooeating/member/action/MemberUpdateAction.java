@@ -1,4 +1,4 @@
-package com.fooeating.action;
+package com.fooeating.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,23 +6,20 @@ import javax.servlet.http.HttpSession;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
-import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
-import com.fooeating.db.ReivewDTO;
 import com.fooeating.db.UserDTO;
 
-public class ReviewUpdate implements Action {
+public class MemberUpdateAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, 
+	public ActionForward execute(HttpServletRequest reqeuest, 
 			HttpServletResponse response) throws Exception {
 		
-System.out.println(" M: reviewUpdate_execute() 호출 ");
+		System.out.println(" M : MemberUpdateAction_execute() 호출 ");
 		
 		// 세션정보 제어
-		HttpSession session = request.getSession();
+		HttpSession session = reqeuest.getSession();
 		String id = (String)session.getAttribute("user_id");
-		int review_num = Integer.parseInt(request.getParameter("review_num"));
 		
 		ActionForward forward = new ActionForward();
 		
@@ -32,23 +29,23 @@ System.out.println(" M: reviewUpdate_execute() 호출 ");
 			return forward;
 		}
 		
-		// 한글처리(인코딩)
-		request.setCharacterEncoding("UTF-8");
-		
 		// 기존의 회원정보를 가져오기(DB)
 		PublicDAO dao = new PublicDAO();
-			
-		ReivewDTO dto =  dao.getReview(id,review_num);
-				
-		// 정보저장 (request영역)
-		session.setAttribute("dto", dto);
-		System.out.println(dto.getName());
-				
-		// ./member/updateForm.jsp 출력
-		JSForward.movePopUp(response,"./ReviewUpdatePop.foo");
-				
-		return null;
-	}
+	
+		UserDTO dto =  dao.getMember(id);
+		// System.out.println(dto);
 		
+		// 정보저장 (request영역)
+		reqeuest.setAttribute("dto", dto);
+		
+		// ./member/updateForm.jsp 출력
+		forward.setPath("./member/updateForm.jsp");
+		forward.setRedirect(false);
+		
+		System.out.println(" M : 정보조회 저장, 처리 끝");
+		
+		return forward;
+	}
+	
 
 }
