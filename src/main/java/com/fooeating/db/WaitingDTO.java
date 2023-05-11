@@ -1,18 +1,15 @@
 package com.fooeating.db;
 
+import java.sql.Timestamp;
+
 public class WaitingDTO {
 
 	private int wait_num;
 	private String user_id;
 	private String rest_id;
-	private String rest_name;
+	private int status;
+	private Timestamp regdate;
 	
-	public String getRest_name() {
-		return rest_name;
-	}
-	public void setRest_name(String rest_name) {
-		this.rest_name = rest_name;
-	}
 	public int getWait_num() {
 		return wait_num;
 	}
@@ -31,5 +28,17 @@ public class WaitingDTO {
 	public void setRest_id(String rest_id) {
 		this.rest_id = rest_id;
 	}
-
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
+	
 }

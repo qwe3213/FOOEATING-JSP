@@ -39,7 +39,7 @@
 	  <div class="nav_items">
 	    <ul>
 	  	  <li><a href="./Main.foo">ㅤHOMEㅤ</a></li>
-	      <li><a href="#">ㅤCATEGORYㅤ</a></li>
+	      <li><a href="./listForm.fd">ㅤCATEGORYㅤ</a></li>
 	      <li><a href="#">ㅤPUDDINGㅤㅤ</a></li>
 	      <li><a href="./NoticeList.foo">ㅤNOTICEㅤ</a></li>
 	    </ul>
