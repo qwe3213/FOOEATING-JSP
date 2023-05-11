@@ -9,11 +9,20 @@
 
 <link href="./css/header.css" rel="stylesheet">
 <script type="text/javascript">
-	function winopen(user_id, rest_id){
+	function winopen1(rest_id){
 		let popupX = (window.screen.width / 2) - (500 / 2);
 		let popupY= (window.screen.height / 2) - (300 / 2);
 		
-		window.open("WaitingCheck.fd?user_id=" + user_id + "&rest_id=" + rest_id, "", 
+		window.open("WaitingCheck.fd?rest_id=" + rest_id, "", 
+		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		 ',screenY= '+ popupY);
+	}
+	
+	function winopen2(){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height / 2) - (300 / 2);
+		
+		window.open("WaitingCheckResult.fd", "", 
 		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
 		 ',screenY= '+ popupY);
 	}
@@ -66,7 +75,15 @@
 	
 	<br>
 	
-	<button onclick="winopen('${user_id}','${restForm.rest_id}');">대기하기</button>
+	${sessionScope.wdto.user_id} ${sessionScope.wdto.rest_id} ${sessionScope.wdto.wait_num} <br>
+	
+	<c:if test="${wdto == null}">
+		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+	</c:if>
+	
+	<c:if test="${wdto != null}">
+		<button onclick="winopen2();">대기하기</button>
+	</c:if>
 	
 	<button onclick="location.href='./listForm.fd'">가게 리스트로</button>
 </body>

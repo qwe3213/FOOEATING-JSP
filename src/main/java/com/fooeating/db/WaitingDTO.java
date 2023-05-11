@@ -7,6 +7,7 @@ public class WaitingDTO {
 	private int wait_num;
 	private String user_id;
 	private String rest_id;
+	private int status;
 	private Timestamp regdate;
 	
 	public int getWait_num() {
@@ -29,6 +30,12 @@ public class WaitingDTO {
 	}
 	public Timestamp getRegdate() {
 		return regdate;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;

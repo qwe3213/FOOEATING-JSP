@@ -12,7 +12,7 @@ import com.fooeating.action.ListFormAction;
 import com.fooeating.action.MapFormAction;
 import com.fooeating.action.RestaurantFormAction;
 import com.fooeating.action.RestaurantInfoAction;
-import com.fooeating.action.WaitingCheckAction;
+import com.fooeating.action.WaitingCheckProAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
@@ -134,19 +134,29 @@ public class ListFrontController extends HttpServlet {
 			System.out.println("  C : DB사용x, view 페이지 이동(패턴1)");
 			
 			forward = new ActionForward();
-			forward.setPath("./list/l")
+			forward.setPath("./list/waitingCheck.jsp");
+			forward.setRedirect(false);
 		}
 		
 		else if(command.equals("/WaitingCheckPro.fd")) {
 			System.out.println("  C : /WaitingCheckPro.fd 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
+			System.out.println("  C : DB사용o, 페이지 이동(패턴2)");
 			
-			action = new WaitingCheckAction();
+			action = new WaitingCheckProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		
+		else if(command.equals("/WaitingCheckResult.fd")) {
+			System.out.println("  C : /WaitingCheckResult.fd 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동(패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./list/waitingCheckResult.jsp");
+			forward.setRedirect(false);
 		}
 
 
