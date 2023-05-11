@@ -45,9 +45,10 @@ System.out.println(" M: reviewUpdate_execute() 호출 ");
 		System.out.println(dto.getName());
 				
 		// ./member/updateForm.jsp 출력
-		JSForward.movePopUp(response,"./ReviewUpdatePop.foo");
+		forward.setPath("./ReviewUpdatePop.foo");
+		forward.setRedirect(true);
 				
-		return null;
+		return forward;
 	}
 		
 

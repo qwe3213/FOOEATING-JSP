@@ -19,35 +19,22 @@
 		}	
 	}
 	
-
+	function winopen(review_num){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height /2) - (300 / 2);
+		
+		window.open("ReviewUpdate.foo?review_num="+review_num+"","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		
+	}
 	
 
 
 </script>
  
- 
-<!-- css 파일 -->
-<link href="./css/header.css" rel="stylesheet">
-<link href="./css/footer.css" rel="stylesheet">
-<link href="./css/sideMenu.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
-
 
 </head>
 <body>
-
-
-<!-- header -->
-	<jsp:include page="../inc/header.jsp" />
-<!-- header -->
-
-<!-- sideMenu -->
-	<jsp:include page="../inc/sideMenu.jsp" />
-<!-- sideMenu -->
-
-<!-- main -->
-<main>
-		리뷰관리
+		<h1>리뷰 관리</h1>
 		<!-- 로그인 세션 제어 -->
 		<c:if test="${empty user_id }" >
 			<c:redirect url="./MemberLogin.foo"/>
@@ -68,10 +55,10 @@
 		</tr>
 		
 		</table>
-		<form action="ReviewUpdate.foo" method="post" >
+		<form action="" method="post" >
 			<input type="hidden" name="user_id" value="${user_id }">
 			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
-			<button>수정</button>
+			<button onclick="winopen(${dto.review_num });">수정</button>
 		</form>
 		
 		<form action="ReviewDelete.foo" method="post" onsubmit="return deleteReview()" >
@@ -81,17 +68,8 @@
 		</form>
 		
 		</c:forEach>
-</main>
-<!-- main -->
 		
 		
-
-
-
-<!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
-<!-- footer -->
-
-
+		
 </body>
 </html>
