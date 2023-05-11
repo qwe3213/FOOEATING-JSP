@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.action.ListFormAction;
+import com.fooeating.action.ListSearchAction;
 import com.fooeating.action.MapFormAction;
 import com.fooeating.action.RestaurantFormAction;
 import com.fooeating.action.RestaurantInfoAction;
@@ -127,7 +128,21 @@ public class ListFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} 
-
+		else if(command.equals("/listForm.fd")) {
+			System.out.println(" C : /BoardContent.bo 호출 ");
+			System.out.println(" C : 패턴3 - DB사용O, view 페이지 출력");
+			
+			// BoardContentAction() 객체
+			action = new ListSearchAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		

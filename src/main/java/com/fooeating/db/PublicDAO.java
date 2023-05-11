@@ -318,6 +318,9 @@ public class PublicDAO {
 			return result;
 		}
 		// 관리자 - 입점 대기 전환 getRestaurantStatus()
+		
+		
+		
 	
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
@@ -1108,7 +1111,7 @@ public class PublicDAO {
 			return listForm;
 		}
 		
-		
+		// getListCount()
 		public int getListCount() {
 			int result = 0;
 			
@@ -1125,7 +1128,7 @@ public class PublicDAO {
 			}
 			
 			return result;
-		}
+		} // getListCount()
 		
 		public RestaurantDTO getRestaurantForm(int rest_id) {
 			RestaurantDTO dto = null;
@@ -1170,6 +1173,65 @@ public class PublicDAO {
 			
 			return dto;
 		}
+		
+		// getListCount(search)
+		public int getListCount(String search) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where name like ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+search+"%"); // %검색어%
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return result;
+		}
+		// getListCount(search)
+		
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize ,String search) {
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where name like ? "
+						+ " order by regdate desc limit ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(2, startRow - 1);
+				pstmt.setInt(3, pageSize);
+				pstmt.setString(1, "%"+search+"%");
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setName(rs.getString("name"));
+					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setDayoff(rs.getString("dayoff"));
+					listForm.add(dto);
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return listForm;
+		}
+		
+		
 		
 		
 

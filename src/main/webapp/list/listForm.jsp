@@ -71,16 +71,17 @@
 				});
 			});
 		
-		$("#gallery").click(function(){
-			$.ajax({
-				url: "./ListGallery.fd",
-				type:"GET",
-				success: function(data){
-					$("#result").html(data);
-				}
-			});
-		});
-		
+			
+	 		$("#gallery").click(function(){
+	 			$.ajax({
+	 				url: "./ListGallery.fd",
+	 				type:"GET",
+	 				success: function(data){
+	 					$("#result").html(data);
+	 				}
+	 			});
+	 		});
+			
 	});
 		
 	
@@ -91,11 +92,18 @@
 
 	  
 
-	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	
-	 <input type="text" placeholder="매장을 검색해 보세요"> <input type="submit" value="검색">	<br><br> 
+<!-- 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	 -->
+<!-- 	 <input type="text" placeholder="매장을 검색해 보세요"> <input type="submit" value="검색">	<br><br>  -->
 	 
-	
+		<div id="table_search">
+			<form action="./listForm.fd" method="get">
+				<input type="text" name="search" class="input_box">
+				<input type="submit" value="search" class="btn"> 
+			</form>
+		</div>
 	 
+	 
+	 	
 	
 	
 	 
@@ -104,11 +112,11 @@
 	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select>
 	 
 	 
-	 <input type="checkbox" checked=""> 한식 
-	 <input type="checkbox" checked=""> 양식 
-	 <input type="checkbox" checked=""> 중식 
-	 <input type="checkbox" checked=""> 일식 
-	 <input type="checkbox" checked=""> 디저트 
+	 <input type="checkbox" > 한식 
+	 <input type="checkbox" > 양식 
+	 <input type="checkbox" > 중식 
+	 <input type="checkbox" > 일식 
+	 <input type="checkbox" > 디저트 
 	 
 	 <hr>
 	 
@@ -132,11 +140,10 @@
 
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
-<script>
 
-</script>
 
 </div>
+	
 	
 	
                     
