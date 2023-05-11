@@ -27,6 +27,7 @@ import com.fooeating.member.action.NoticeWriteAction;
 import com.fooeating.member.action.ReviewDelete;
 import com.fooeating.member.action.ReviewUpdate;
 import com.fooeating.member.action.ReviewUpdateAction;
+import com.fooeating.member.action.MemberWaitingList;
 
 public class MemberFrontController extends HttpServlet {
 	
@@ -437,6 +438,21 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3) ");
 			
 			action = new FaqList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 9. memberWaitingList 페이지 이동
+		
+		else if(command.equals("/MemberWaitingList.foo")) {
+			System.out.println(" C : /MemberWaitingList.foo 실행");
+			System.out.println(" C : DB사용o, view 페이지 이동 & 출력 (패턴3) ");
+			
+			action = new MemberWaitingList();
+			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

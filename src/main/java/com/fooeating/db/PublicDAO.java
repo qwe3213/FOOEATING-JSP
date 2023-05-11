@@ -799,6 +799,110 @@ public class PublicDAO {
 		return result;
 	
 	}
+	// 멤버 현재 대기중인 가게 대기번호
+	public WaitingDTO getWaiting(String id) {
+		WaitingDTO dto = null;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql ="select w.wait_num ,w.rest_id, r.name from waiting w "
+					+ " join restaurant r on w.rest_id = r.rest_id where w.user_id = ? "
+					+ " and w.status ='1'";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			if(rs.next()) {
+				dto = new WaitingDTO();
+				dto.setWait_num(rs.getInt("w.wait_num"));
+				dto.setRest_id(rs.getString("w.rest_id"));
+				dto.setRest_name(rs.getString("r.name"));
+			}
+			
+			System.out.println(" DAO : 회원정보 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+		
+	}
+	
+	// 멤버 현재 대기중인 가게 대기팀 수
+		public WaitingDTO getQueue(String rest_id, int wait_num) {
+			WaitingDTO dto = null;
+			try {
+				// 1.2. 디비연결
+				con = getCon();
+				// 3. sql & pstmt
+				sql = "select count(status) from waiting where rest_id =? and status ='1' and wait_num< ?";
+				pstmt = con.prepareStatement(sql);
+				// ??
+				pstmt.setString(1, rest_id);
+				pstmt.setInt(2, wait_num);
+				// 4. sql 실행
+				rs = pstmt.executeQuery();
+				// 5. 데이터처리
+				
+				if(rs.next()) {
+					dto = new WaitingDTO();
+					dto.setWait_team(rs.getInt("count(status)"));
+				}
+				
+				System.out.println(" DAO : 회원정보 저장완료! ");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return dto;
+			
+		}
+	
+	
+	// 멤버 대기내역
+	public List<WaitingDTO> getMemberQueueHistory(String id) {
+		List<WaitingDTO> queueHistory = new ArrayList<WaitingDTO>();
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql = "select w.user_id,r.name, w.regdate from waiting w join restaurant r on w.rest_id = r.rest_id "
+					+ " where w.user_id = ? and w.status ='2' ";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			
+			while(rs.next()) {
+				WaitingDTO dto = new WaitingDTO();
+				
+				dto.setRest_name(rs.getString("name"));
+				dto.setRegdate(rs.getDate("regdate"));
+				
+				queueHistory.add(dto);
+			} // while
+			
+			System.out.println(" DAO : 대기리스트 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return queueHistory;
+		
+	}
 	
 	
 	
