@@ -12,6 +12,8 @@ import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
+import ownerMainPage_rstcareAction.OwnerMainPagerstcareAction;
+
 public class RestaurantFrontController extends HttpServlet {
 	
 	
@@ -106,6 +108,19 @@ public class RestaurantFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 			 
+		}
+		else if(command.equals("/OwnerMainPagerstcareAction.on")) {
+			 System.out.println(" /OwnerMainPagerstcareAction.on");
+			 System.out.println(" 패턴 3 ");
+             
+	         action = new OwnerMainPagerstcareAction();
+	         try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   
 		}
 		
 	

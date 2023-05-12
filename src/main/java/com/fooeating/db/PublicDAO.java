@@ -1486,6 +1486,51 @@ public class PublicDAO {
 		// 회원id와 가게id, status가 1인 대기 번호가 있는지 확인 - getWaitingCheck()
 		
 		
+		public RestaurantDTO getRestaurantallow(String user_id) {
+			RestaurantDTO dto = null;
+			
+		    try {
+		    	// 1,2 디비연결
+		    	con = getCon();
+		 
+		     	// sql 연결
+      		    sql = "select * from restaurant where user_id = ?" ;
+      		    pstmt = con.prepareStatement(sql);
+      		    pstmt.setString(1,user_id);
+      		    rs = pstmt.executeQuery();
+      		    
+      		    if(rs.next()) {
+      		    	dto = new RestaurantDTO();
+      		    	dto.setAddr_city(rs.getString("addr_city"));
+    				dto.setAddr_district(rs.getString("addr_district"));
+    				dto.setAddr_etc(rs.getString("addr_etc"));
+    				dto.setCategory(rs.getString("category"));
+    				dto.setConvenience(rs.getString("convenience"));
+    				dto.setDayoff(rs.getString("dayoff"));
+    				dto.setDescriptions(rs.getString("descriptions"));
+    				dto.setGrade(rs.getInt("grade"));
+    				dto.setLike_num(rs.getInt("like_num"));
+    				dto.setName(rs.getString("name"));
+    				dto.setOn_off(rs.getBoolean("on_off"));
+    				dto.setOwner_user_id(rs.getString("owner_user_id"));
+    				dto.setRead_count(rs.getInt("read_count"));
+    				dto.setRegdate(rs.getTimestamp("regdate"));
+    				dto.setRest_id(rs.getString("rest_id"));
+    				dto.setRest_notice(rs.getString("rest_notice"));
+    				dto.setRest_tel(rs.getString("rest_tel"));
+    				dto.setRuntime(rs.getString("runtime"));
+    				dto.setStatus(rs.getInt("status"));
+      		    }
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+		    return dto;
+		}
+		
+		//getRestaurantallow
 		
 		/* ================== < 가게리스트 > ======================== */
 		
