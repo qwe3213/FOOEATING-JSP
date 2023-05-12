@@ -1,12 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link href="./css/header.css" rel="stylesheet">
+<script type="text/javascript">
+	function winopen1(rest_id){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height / 2) - (300 / 2);
+		
+		window.open("WaitingCheck.fd?rest_id=" + rest_id, "", 
+		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		 ',screenY= '+ popupY);
+	}
+	
+	function winopen2(){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height / 2) - (300 / 2);
+		
+		window.open("WaitingCheckResult.fd", "", 
+		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		 ',screenY= '+ popupY);
+	}
+</script>
+
 </head>
 <body>
+
+<!-- header -->
+<jsp:include page="../inc/header.jsp" />
+<!-- header -->
+
 		<h1>상세페이지</h1>
 		
 		<table border="1">
@@ -46,6 +74,16 @@
 	</table>
 	
 	<br>
+	
+<%-- 	${sessionScope.wdto.user_id} ${sessionScope.wdto.rest_id} ${sessionScope.wdto.wait_num} <br> --%>
+	
+	<c:if test="${wdto == null}">
+		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+	</c:if>
+	
+	<c:if test="${wdto != null}">
+		<button onclick="winopen2();">대기하기</button>
+	</c:if>
 	
 	<button onclick="location.href='./listForm.fd'">가게 리스트로</button>
 </body>

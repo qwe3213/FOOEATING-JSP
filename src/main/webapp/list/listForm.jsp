@@ -86,10 +86,15 @@
 	
 
 </script>
+
+<link href="./css/header.css" rel="stylesheet">
+
 </head>
 <body>
 
-	  
+<!-- header -->
+<jsp:include page="../inc/header.jsp" />
+<!-- header -->
 
 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	
 	 <input type="text" placeholder="매장을 검색해 보세요"> <input type="submit" value="검색">	<br><br> 
