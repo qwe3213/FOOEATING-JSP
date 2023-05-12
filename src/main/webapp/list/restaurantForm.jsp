@@ -75,7 +75,7 @@
 	
 	<br>
 	
-	${sessionScope.wdto.user_id} ${sessionScope.wdto.rest_id} ${sessionScope.wdto.wait_num} <br>
+<%-- 	${sessionScope.wdto.user_id} ${sessionScope.wdto.rest_id} ${sessionScope.wdto.wait_num} <br> --%>
 	
 	<c:if test="${wdto == null}">
 		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
