@@ -179,14 +179,14 @@ public class PublicDAO {
 	
 	
 	// 관리자 - 가게 상세 목록 getRestaurantInfo()
-	public RestaurantDTO getRestaurantInfo(int rest_id) {
+	public RestaurantDTO getRestaurantInfo(String rest_id) {
 		RestaurantDTO dto = null;
 		
 		try {
 			con = getCon();
 			sql = "select * from restaurant where rest_id = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, rest_id);
+			pstmt.setString(1, rest_id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -293,14 +293,14 @@ public class PublicDAO {
 		
 		
 		// 관리자 - 입점 대기 전환 getRestaurantStatus()
-		public int getRestaurantStatus(int rest_id) {
+		public int getRestaurantStatus(String rest_id) {
 			int result = 0;
 			
 			try {
 				con = getCon();
 				sql = "update restaurant set status = 1 where rest_id = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rest_id);
+				pstmt.setString(1, rest_id);
 				
 				result = pstmt.executeUpdate();
 			} catch (Exception e) {
@@ -1281,14 +1281,14 @@ public class PublicDAO {
 			return result;
 		}
 		
-		public RestaurantDTO getRestaurantForm(int rest_id) {
+		public RestaurantDTO getRestaurantForm(String rest_id) {
 			RestaurantDTO dto = null;
 			
 			try {
 				con = getCon();
 				sql = "select * from restaurant where rest_id = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rest_id);
+				pstmt.setString(1, rest_id);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
@@ -1324,14 +1324,14 @@ public class PublicDAO {
 		
 		
 		
-		public RestaurantDTO getRestrauntForm(int rest_id) {
+		public RestaurantDTO getRestrauntForm(String rest_id) {
 			RestaurantDTO dto = null;
 			
 			try {
 				con = getCon();
 				sql = "select * from restaurant where rest_id = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rest_id);
+				pstmt.setString(1, rest_id);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
@@ -1429,9 +1429,6 @@ public class PublicDAO {
 			}
 			 
 		}
-
-		
-=======
 		
 		
 		

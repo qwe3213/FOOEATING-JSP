@@ -25,7 +25,6 @@
 	
 	<table border="1">
 		<tr>
-			<td rowspan="8">${restInfo.file_out}</td>
 			<th>상호명</th>
 			<td>${restInfo.name}</td>
 		</tr>
