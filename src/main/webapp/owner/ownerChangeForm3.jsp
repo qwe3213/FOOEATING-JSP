@@ -88,6 +88,7 @@ $(document).ready(function(){
     		   }   		   
     	   }
        }
+         String rest_id = multis.getParameter("rest_id");
          String descriptions = multis.getParameter("descriptions");
          String file_out = multis.getFilesystemName("file_out");
          String file_in = multis.getFilesystemName("file_in");
@@ -101,7 +102,7 @@ $(document).ready(function(){
          String runtime = multis.getParameter("runtime");  
          String dayoff = multis.getParameter("dayoff"); 
          %>  
-         
+          <%=rest_id %>
           <%=file_out %>
           <%=file_in %>
           <%=file_menu %>
@@ -109,6 +110,7 @@ $(document).ready(function(){
           <%=category %>
           <%=addr_city %>
           <%=addr_district %>
+          <%=addr_etc %>
           <%=rest_tel %>
           <%=runtime %>
           <%=dayoff %>
@@ -130,23 +132,11 @@ $(document).ready(function(){
 		<legend>step3</legend>
 		<form action="./ownerChangeForm4.on" method="post" enctype="multipart/form-data" name="fr" id="fr">
 			1. <br>
-			메뉴 이름 : <input type="text" name="menu_name1"> <br>
-			메뉴 소개 : <input type="text" name="menu_descriptions1"> <br>
-			메뉴 가격 : <input type="text" name="price1"> <br>
-			<input type="file" name="file1"> <br>
-			<br>
-			2. <br>
-			메뉴 이름 : <input type="text" name="menu_name2"> <br>
-			메뉴 소개 : <input type="text" name="menu_descriptions2"> <br>
-			메뉴 가격 : <input type="text" name="price2"> <br>
-			<input type="file" name="file2"> <br>
-			<br>
-			3. <br>
-			메뉴 이름 : <input type="text" name="menu_name3"> <br>
-			메뉴 소개 : <input type="text" name="menu_descriptions3"> <br>
-			메뉴 가격 : <input type="text" name="price3"> <br>
-			<input type="file" name="file3"> <br>
-			<br>
+			메뉴 이름 : <input type="text" name="menu_name"> <br>
+			메뉴 소개 : <input type="text" name="menu_descriptions"> <br>
+			메뉴 가격 : <input type="text" name="price"> <br>
+			<input type="file" name="file"> <br>
+		
 			<input type="hidden" name="dayoff" value="<%=dayoff %>">
 		    <input type="hidden" name="runtime" value="<%=runtime %>">
 	  	    <input type="hidden" name="category" value="<%=category %>">
@@ -158,7 +148,8 @@ $(document).ready(function(){
 		    <input type="hidden" name="file_out" value="<%=file_out %>">
 		    <input type="hidden" name="file_in" value="<%=file_in %>">
 		    <input type="hidden" name="file_menu" value="<%=file_menu %>">
-		    <input type="hidden" name="name" value="<%=name%>">	    
+		    <input type="hidden" name="name" value="<%=name%>">	  
+		    <input type="hidden" name="rest_id" value="<%=rest_id%>">	  		      
 			<input type="submit" value="다음" >
 		</form>
 	</fieldset>
