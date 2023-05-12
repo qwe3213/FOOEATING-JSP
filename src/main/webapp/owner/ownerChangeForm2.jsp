@@ -1,4 +1,4 @@
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+	<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -75,6 +75,7 @@
             
        
           // private String name;
+          String rest_id = multi.getParameter("rest_id"); 
           String name = multi.getParameter("name");  
           String category = multi.getParameter("category");  
           String addr_city = multi.getParameter("addr_city");  
@@ -84,7 +85,7 @@
           String runtime = multi.getParameter("runtime");  
           String dayoff = multi.getParameter("dayoff");  
     	%> 
-    	
+    	  <%=rest_id %>
 		  <%=name %>
 		  <%=category %>
 		  <%=addr_city %>
@@ -115,6 +116,7 @@
 		<input type="hidden" name="addr_district" value="<%=addr_district %>">
 		<input type="hidden" name="addr_etc" value="<%=addr_etc %>">
 		<input type="hidden" name="rest_tel" value="<%=rest_tel %>">
+		<input type="hidden" name="rest_id" value="<%=rest_id %>">		
 		<input type="checkbox" name="convenience" value="parking" > 주차 공간
 		<input type="checkbox" name="convenience" value="toilet" > 화장실 (남/여) <br>
 		<input type="checkbox" name="convenience" value="nokidszone" > 노키즈존

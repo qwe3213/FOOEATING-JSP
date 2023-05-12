@@ -1,5 +1,6 @@
 package com.fooeating.db;
 
+import java.awt.Menu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -790,6 +791,168 @@ public class PublicDAO {
 		return result;
 	
 	}
+	// 멤버 현재 대기중인 가게 대기번호
+	public WaitingDTO getWaiting(String id) {
+		WaitingDTO dto = null;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql ="select w.wait_num ,w.rest_id, r.name from waiting w "
+					+ " join restaurant r on w.rest_id = r.rest_id where w.user_id = ? "
+					+ " and w.status ='1'";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			if(rs.next()) {
+				dto = new WaitingDTO();
+				dto.setWait_num(rs.getInt("w.wait_num"));
+				dto.setRest_id(rs.getString("w.rest_id"));
+				dto.setRest_name(rs.getString("r.name"));
+			}
+			
+			System.out.println(" DAO : 회원정보 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+		
+	}
+	
+	// 멤버 현재 대기중인 가게 대기팀 수
+		public WaitingDTO getQueue(String rest_id, int wait_num) {
+			WaitingDTO dto = null;
+			try {
+				// 1.2. 디비연결
+				con = getCon();
+				// 3. sql & pstmt
+				sql = "select count(status) from waiting where rest_id =? and status ='1' and wait_num< ?";
+				pstmt = con.prepareStatement(sql);
+				// ??
+				pstmt.setString(1, rest_id);
+				pstmt.setInt(2, wait_num);
+				// 4. sql 실행
+				rs = pstmt.executeQuery();
+				// 5. 데이터처리
+				
+				if(rs.next()) {
+					dto = new WaitingDTO();
+					dto.setWait_team(rs.getInt("count(status)"));
+				}
+				
+				System.out.println(" DAO : 회원정보 저장완료! ");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return dto;
+			
+		}
+	
+	
+	// 멤버 대기내역
+	public List<WaitingDTO> getMemberQueueHistory(String id) {
+		List<WaitingDTO> queueHistory = new ArrayList<WaitingDTO>();
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql = "select w.user_id,r.name, w.regdate from waiting w join restaurant r on w.rest_id = r.rest_id "
+					+ " where w.user_id = ? and w.status ='2' ";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			
+			while(rs.next()) {
+				WaitingDTO dto = new WaitingDTO();
+				
+				dto.setRest_name(rs.getString("name"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				
+				queueHistory.add(dto);
+			} // while
+			
+			System.out.println(" DAO : 대기리스트 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return queueHistory;
+		
+	}
+	
+	// 맴버 대기 취소
+	
+	public int memberCancelWaiting(WaitingDTO dto) {
+		int result = -1; // -1	0	1
+		
+		System.out.println(dto.getUser_id());
+		System.out.println(dto.getWait_num());
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select wait_num from waiting where user_id = ? and status =1";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, dto.getUser_id());
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				if(dto.getWait_num() == (rs.getInt("wait_num"))){
+					// 본인(아이디, 대기번호 동일)
+					System.out.println(rs.getInt("wait_num"));
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update waiting set status=3 where wait_num=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, dto.getWait_num());
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+					
+				} else {
+					// 대기번호 다름
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+				
+			System.out.println(" DAO : 회원 대기번호 취소 완료!(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return result;
+	}
 	
 	
 	
@@ -1203,6 +1366,72 @@ public class PublicDAO {
 			
 			return dto;
 		}
+
+		/* ================== < 가게리스트 > ======================== */
+		
+		public void getRestaurant(RestaurantDTO dto) {
+			try {
+				// 1,2 디비연결
+				con = getCon();
+				// 3 sql문 작성
+				sql = "insert into restaurant (rest_id,name,category,addr_city,addr_district,addr_etc,rest_tel,runtime,dayoff,descriptions,convenience,regdate,status)"
+						+" values(?,?,?,?,?,?,?,?,?,?,?,now(),0)";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, dto.getRest_id());
+				pstmt.setString(2, dto.getName());
+				pstmt.setString(3, dto.getCategory());
+				pstmt.setString(4, dto.getAddr_city());
+				pstmt.setString(5, dto.getAddr_district());
+				pstmt.setString(6, dto.getAddr_etc());
+				pstmt.setString(7, dto.getRest_tel());
+				pstmt.setString(8, dto.getRuntime());
+				pstmt.setString(9, dto.getDayoff());
+				pstmt.setString(10, dto.getDescriptions());
+				pstmt.setString(11, dto.getConvenience());
+		  	    // 4. sql 실행
+				pstmt.executeUpdate();
+				System.out.println("DAO 레스토랑 정보 저장 성공");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+		
+		} //gereatlist
+		
+		public void getRestaurantMenu(Restaurant_menuDTO menudto) {
+			Restaurant_menuDTO dto = new Restaurant_menuDTO();
+			
+			try {
+				 //1,2 DB연결
+				con = getCon();
+				
+				// 3. sql 작성
+				sql = "insert into restaurant_menu (menu_name,menu_descriptions,price,rest_id) "
+						+ " values(?,?,?,?)";
+				
+				pstmt= con.prepareStatement(sql);
+				pstmt.setString(1, menudto.getMenu_name());
+				pstmt.setString(2, menudto.getMenu_descriptions());
+				pstmt.setString(3, menudto.getPrice());
+				pstmt.setString(4, menudto.getRest_id());
+				//4. sql실행
+				pstmt.executeUpdate();
+				
+				System.out.println("DAO 레스토랑 메뉴 정보 저장 성공");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			 
+		}
+
+		
+=======
 		
 		
 		
@@ -1261,8 +1490,7 @@ public class PublicDAO {
 		
 		
 		
-	/* ================== < 가게리스트 > ======================== */
-		
+		/* ================== < 가게리스트 > ======================== */
 		
 	
 	

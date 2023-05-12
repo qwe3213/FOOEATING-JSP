@@ -7,8 +7,23 @@ public class WaitingDTO {
 	private int wait_num;
 	private String user_id;
 	private String rest_id;
+	private String rest_name;
 	private int status;
 	private Timestamp regdate;
+	private int wait_team;
+	
+	public int getWait_team() {
+		return wait_team;
+	}
+	public void setWait_team(int wait_team) {
+		this.wait_team = wait_team;
+	}
+	public String getRest_name() {
+		return rest_name;
+	}
+	public void setRest_name(String rest_name) {
+		this.rest_name = rest_name;
+	}
 	
 	public int getWait_num() {
 		return wait_num;

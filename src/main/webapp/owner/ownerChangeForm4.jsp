@@ -69,25 +69,11 @@
            //  String file_out = multi.getFilesystemName("file_out");
       /*  String convenience = "";
           String[] conveniences = multis.getParameterValues("convenience"); */
-       
-         String menu_name1 = multis.getParameter("menu_name1");
-         String menu_name2 = multis.getParameter("menu_name2");
-         String menu_name3 = multis.getParameter("menu_name3");
-         String menu_descriptions1 = multis.getParameter("menu_descriptions1");
-         String menu_descriptions2 = multis.getParameter("menu_descriptions2");
-         String menu_descriptions3 = multis.getParameter("menu_descriptions3");
-         String price1 = multis.getParameter("price1");
-         String price2 = multis.getParameter("price2");
-         String price3 = multis.getParameter("price3");
-         String file1 = multis.getFilesystemName("file1");
-         String file2 = multis.getFilesystemName("file2");
-         String file3 = multis.getFilesystemName("file3");
+         String rest_id = multis.getParameter("rest_id");
+         String menu_name = multis.getParameter("menu_name");
+         String menu_descriptions = multis.getParameter("menu_descriptions");
+         String price = multis.getParameter("price");
          String descriptions = multis.getParameter("descriptions");
-         
-         String file_out = multis.getFilesystemName("file_out");
-         String file_in = multis.getFilesystemName("file_in");
-         String file_menu = multis.getFilesystemName("file_menu"); 
-         
          String name = multis.getParameter("name");  
          String category = multis.getParameter("category");  
          String addr_city = multis.getParameter("addr_city");  
@@ -98,9 +84,7 @@
          String dayoff = multis.getParameter("dayoff"); 
          String convenience = multis.getParameter("convenience");
          %>  
-          <%=file_out %>
-          <%=file_in %>
-          <%=file_menu %>
+          <%=rest_id %>
           <%=name %>
 		  <%=category %>
 		  <%=addr_city %>
@@ -110,22 +94,13 @@
 		  <%=runtime %>
 		  <%=dayoff %>
           <%=descriptions %>
-		  <%=menu_name1 %>
-          <%=menu_name2 %>
-          <%=menu_name3 %>
-          <%=menu_descriptions1 %>
-          <%=menu_descriptions2 %>
-          <%=menu_descriptions3 %>
-          <%=price1 %>
-          <%=price2 %>
-          <%=price3 %>
-          <%=file1 %>
-          <%=file2 %>
-          <%=file3 %> 
+		  <%=menu_name %>  
+          <%=menu_descriptions %>   
+          <%=price%>      
     <h1>ownerChangeForm4.jsp</h1>
     <fieldset>
         <legend>step4</legend>
-        <form id="terms_form" action="./ownerRequestSuccess.on" method="post">
+        <form id="terms_form" action="./ownerRequestSuccessAction.on" method="post">
             <textarea rows="5" cols="50">약관 내용</textarea><br>
             약관에 동의합니다. <input type="checkbox" id="check_1"><br>
             <textarea rows="5" cols="50">약관 내용</textarea><br>
@@ -133,6 +108,20 @@
             <textarea rows="5" cols="50">약관 내용</textarea><br>
             약관에 동의합니다. <input type="checkbox" id="check_3"><br>
             <br>
+            <input type="hidden" name="dayoff" value="<%=dayoff %>">
+		    <input type="hidden" name="runtime" value="<%=runtime %>">
+	  	    <input type="hidden" name="category" value="<%=category %>">
+		    <input type="hidden" name="addr_city" value="<%=addr_city %>">
+		    <input type="hidden" name="addr_district" value="<%=addr_district %>">
+		    <input type="hidden" name="addr_etc" value="<%=addr_etc %>">
+		    <input type="hidden" name="rest_tel" value="<%=rest_tel %>">
+		    <input type="hidden" name="descriptions" value="<%=descriptions %>">
+		    <input type="hidden" name="name" value="<%=name%>">	  
+		    <input type="hidden" name="rest_id" value="<%=rest_id%>">
+		    <input type="hidden" name="menu_name" value="<%=menu_name%>">
+		    <input type="hidden" name="menu_descriptions" value="<%=menu_descriptions%>">
+		    <input type="hidden" name="price" value="<%=price%>">
+		    
             <input type="button" value="다음" id="nextBtn">
         </form>
     </fieldset>
