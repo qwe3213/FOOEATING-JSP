@@ -12,6 +12,18 @@
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/sideMenu.css" rel="stylesheet">
 
+<script type="text/javascript">
+	function winopen(rest_id){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height / 2) - (300 / 2);
+		
+		window.open("ApprovalCheck.ad?rest_id=" + rest_id, "", 
+		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		 ',screenY= '+ popupY);
+	}
+</script>
+
+
 </head>
 <body>
 	
@@ -57,6 +69,10 @@
 			<td>${restInfo.rest_notice}</td>
 		</tr>
 	</table>
+	
+	<c:if test="${user_id.equals(dto.owner_user_id)}">
+		<button onclick="winopen(${rest_id})">입점 승인</button>
+	</c:if>
 	
 	<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'">입점 목록으로</button>
 	
