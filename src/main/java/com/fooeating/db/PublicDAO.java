@@ -879,7 +879,7 @@ public class PublicDAO {
 				WaitingDTO dto = new WaitingDTO();
 				
 				dto.setRest_name(rs.getString("name"));
-				dto.setRegdate(rs.getDate("regdate"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
 				
 				queueHistory.add(dto);
 			} // while
