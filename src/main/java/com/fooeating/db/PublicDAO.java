@@ -1081,7 +1081,7 @@ public class PublicDAO {
 
 		
 		public List<RestaurantDTO> getListInfo(int startRow, int pageSize) {
-			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			List<RestaurantDTO> listForm1 = new ArrayList<RestaurantDTO>();
 			
 			try {
 				con = getCon();
@@ -1099,7 +1099,7 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
-					listForm.add(dto);
+					listForm1.add(dto);
 					
 				}
 			} catch (Exception e) {
@@ -1108,7 +1108,7 @@ public class PublicDAO {
 				closeDB();
 			}
 			
-			return listForm;
+			return listForm1;
 		}
 		
 		// getListCount()
@@ -1202,7 +1202,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select count(*) from restaurant where name like ? "
+				sql = "select * from restaurant where name like ? "
 						+ " order by regdate desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(2, startRow - 1);

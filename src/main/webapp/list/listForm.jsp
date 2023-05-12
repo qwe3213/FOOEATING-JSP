@@ -60,31 +60,31 @@
 	    
 	        });
 		
-		$(document).ready(function(){
-			$("#kakao").click(function(){
-				$.ajax({
-					url:"./list/kakaoapi.html",
-					type:"GET",
-					success: function(data){
-						$("#result").html(data);
-					}
-				});
-			});
+		
+// 		$(document).ready(function(){
+// 			$("#kakao").click(function(){
+// 				$.ajax({
+// 					url:"./list/kakaoapi.html",
+// 					type:"GET",
+// 					success: function(data){
+// 						$("#result").html(data);
+// 					}
+// 				});
+// 			});
 		
 			
-	 		$("#gallery").click(function(){
-	 			$.ajax({
-	 				url: "./ListGallery.fd",
-	 				type:"GET",
-	 				success: function(data){
-	 					$("#result").html(data);
-	 				}
-	 			});
-	 		});
+// 	 		$("#gallery").click(function(){
+// 	 			$.ajax({
+// 	 				url: "./ListGallery.fd",
+// 	 				type:"GET",
+// 	 				success: function(data){
+// 	 					$("#result").html(data);
+// 	 				}
+// 	 			});
+// 	 		});
 			
-	});
+// 	});
 		
-	
 
 </script>
 </head>
@@ -95,17 +95,12 @@
 <!-- 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	 -->
 <!-- 	 <input type="text" placeholder="매장을 검색해 보세요"> <input type="submit" value="검색">	<br><br>  -->
 	 
-		<div id="table_search">
-			<form action="./listForm.fd" method="get">
-				<input type="text" name="search" class="input_box">
-				<input type="submit" value="search" class="btn"> 
-			</form>
-		</div>
-	 
-	 
-	 	
-	
-	
+<!-- 		<div id="table_search"> -->
+<!-- 			<form action="./listForm.fd" method="get"> -->
+<!-- 				<input type="text" name="search" class="input_box"> -->
+<!-- 				<input type="submit" value="search" class="btn">  -->
+<!-- 			</form> -->
+<!-- 		</div> -->
 	 
 	
 	<select name="sido1" id="sido1" style="width:500x; height:50px;"></select>
@@ -126,26 +121,204 @@
 	 	<option>좋아요수</option>
 	 </select>
 	 
-	 <input id="kakao" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
-	  <input id="gallery" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
- 	  <div id="result"></div>
-
+	 <div id="table_search">
+        <form action="./listForm.fd" method="get">
+        <input type="text" name="search" class="input_box">
+        <input type="submit" value="search" class="btn">
+        </form>
+    </div>
 	 
-	<hr>
+	 
+<!-- 	 <input id="kakao" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
+<!-- 	 <input id="gallery" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 	
 
-	
-	
-		<div id="map" style="width:100%;height:350px;">
+	<style>
+    .button1-content {
+      display: block;
+    }
 
+    .button2-content {
+      display: none;
+    }	
+	</style>
+	
+	<script>
+    window.onload = function() {
+        showButton1Content(); // 페이지 로드 시 버튼 1의 내용을 미리 보이도록 설정
+      };
+
+      function showButton1Content() {
+        document.getElementById("button1-content").style.display = "block";
+        document.getElementById("button2-content").style.display = "none";
+      }
+
+      function showButton2Content() {
+        document.getElementById("button1-content").style.display = "none";
+        document.getElementById("button2-content").style.display = "block";
+      }
+	</script>
+	
+	<button onclick="showButton1Content">리스트</button>
+	<button onclick="showButton2Content">갤러리</button>
+	
+	
+	
+	<!-- 카카오맵 API 시작-->
+	
+	
+<div id="button2-content">	
+<div id="map" style="width:100%;height:350px;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(35.1584952142483, 129.06199399191797), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
 
+// 지도를 생성 
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색
+geocoder.addressSearch('부산 부산진구 중앙대로 672', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">삼정타워</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+    } 
+});    
+
+geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">롯데백화점</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+    } 
+});
+
+</script>
 
 </div>
+</div>
+	
+	<!-- 카카오맵 API 끝 -->
+
 	
 	
+	<!-- 카카오맵 API -->
 	
-                    
+		<!-- 가게 리스트 시작-->
+		
+		<div id="button1-content">
+		<table border="1">
+		<tr>
+			<th>No.</th>
+			<th>가게이름</th>
+			<th>전화번호</th>
+			<th>편의사항</th>
+			<th>id</th>
+			<th>등록일</th>
+			<th>휴무일</th>
+		</tr>
+		
+		<c:forEach var="dto" items="${requestScope.listForm1 }" varStatus="no">
+	
+		<tr>
+			<td>${no.count}</td>
+			<td>
+			<%-- <form action="./restaurantForm.fd" method="post" >
+					<input type="hidden" name="rest_id" value="${dto.rest_id}">
+					<input type="submit" value="${dto.name}">
+				</form> --%>
+				<a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno={pno }">${dto.name }</a>
+			</td>
+			<td>${dto.rest_tel}</td>
+			<td>${dto.convenience}</td>
+			<td>${dto.rest_id}</td>
+			<td>${dto.regdate}</td>
+			<td>${dto.dayoff}</td>
+		</tr>
+		</c:forEach>
+	</table>
+<%
+		int count = (int)request.getAttribute("count");
+		int pageSize = (int)request.getAttribute("pageSize");
+		int currentPage = (int)request.getAttribute("currentPage");
+		int pno = Integer.parseInt((String)request.getAttribute("pno"));
+		
+	
+		
+		if(count != 0) {
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			int pageBlock = 5;
+			int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+			if(startPage > pageBlock) {
+	%>
+				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
+	<%
+			}
+			for(int i = startPage; i <= endPage; i++) {
+	%>
+				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a>
+	<%
+			}
+			if(endPage < pageCount) {
+	%>
+				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
+	<%
+			}
+		}
+	%>
+	
+	</div>
+	
+	<!-- 가게 리스트 끝 -->
+	
+
+
+                 
 </body>
 </html>

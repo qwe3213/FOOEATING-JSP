@@ -27,29 +27,28 @@ public class ListFormAction implements Action {
 		
 		PublicDAO dao = new PublicDAO();
 		
-		int count1 = 0;
+		int count = 0;
 
 		if(search != null) { // 검색어 있을 때
-			count1 = dao.getListCount(search.trim());
+			count = dao.getListCount(search.trim());
 		} else {// 검색어 없을 때
-			count1 = dao.getListCount();
+			count = dao.getListCount();
 		}
 		
-		System.out.println("M : 총 글의 수 : " + count1);
+		System.out.println("M : 총 글의 수 : " + count);
 		
 		
 		
 		
-		List<RestaurantDTO> listForm = dao.getlistForm();
-		System.out.println("회원 수 : " + listForm.size());
+//		List<RestaurantDTO> listForm = dao.getlistForm();
+//		System.out.println("회원 수 : " + listForm.size());
 		
-		request.setAttribute("listForm", listForm);
 		
 		ActionForward forward = new ActionForward();
 		
 		// 페이징 처리 -----------------
-		int count = dao.getListCount(); 			// 전체 가게 수
-		System.out.println("가게수 : " + count);
+//		int count = dao.getListCount(); 			// 전체 가게 수
+//		System.out.println("가게수 : " + count);
 		
 		int pageSize = 10;							// 한 페이지에 출력할 가게 수
 		
@@ -63,26 +62,27 @@ public class ListFormAction implements Action {
 		
 		
 		// ---------------------------------------------------------------------
-		List restList = null;
+		List<RestaurantDTO> listForm1 = null;
 		
 		if(search != null) {
-			restList = dao.getListInfo(startRow, pageSize, search.trim());
+			listForm1 = dao.getListInfo(startRow, pageSize, search.trim());
 		} else {
-			restList = dao.getListInfo(startRow, pageSize);
+			listForm1 = dao.getListInfo(startRow, pageSize);
 		}
 		
 		
 		// 페이징 처리 -----------------
 		
-//		List<RestaurantDTO> restList = dao.getListInfo(startRow, pageSize);
+		List<RestaurantDTO> listForm = dao.getListInfo(startRow, pageSize, search);
 		
-		request.setAttribute("restList", restList);
+		request.setAttribute("listForm", listForm);
+		request.setAttribute("listForm1", listForm1);
 		request.setAttribute("count", count);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pno", pno);
 		// 연결된 view에 출력
-		forward.setPath("./list/gallery.jsp");
+		forward.setPath("./list/listForm.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
