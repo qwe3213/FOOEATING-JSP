@@ -1325,6 +1325,7 @@ public class PublicDAO {
 		
 		public RestaurantDTO getRestrauntForm(String rest_id) {
 			RestaurantDTO dto = null;
+			WaitingDTO wdto = null;
 			
 			try {
 				con = getCon();
@@ -1354,6 +1355,27 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
+					
+//					sql = "select * from waiting where rest_id = ?";
+//					pstmt = con.prepareStatement(sql);
+//					pstmt.setString(1, rest_id);
+//					rs = pstmt.executeQuery();
+//					
+//					if (rs.next()) {
+//						wdto = new WaitingDTO();
+//						wdto.setWait_num(rs.getInt("wait_num"));
+//						wdto.setUser_id(rs.getString("user_id"));
+//						wdto.setRest_id(rs.getString("rest_id"));
+//						wdto.setRegdate(rs.getTimestamp("regdate"));
+//						wdto.setStatus(rs.getInt("status"));
+//					}
+//					
+//					dto.setWaitdto(wdto);
+//					System.out.println(wdto);
+					
+					// 1단계. 넘어온 가게아이디와 일치하는 가게의 모든 정보 출력
+					// 2단계. 그 중에 웨이팅 테이블에서 웨이팅넘을 가지고 있는
+					// 			가게 아이디를 모두 출력
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

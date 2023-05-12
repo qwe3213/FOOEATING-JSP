@@ -21,7 +21,6 @@
 	// 가상주소 바로가기
 // 	response.sendRedirect("./가상주소.foo");
 	response.sendRedirect("./Main.foo");
-	
 // 	response.sendRedirect("./MyPageMember.foo");
 // 	response.sendRedirect("./NoticeList.foo");
 // 	response.sendRedirect("./FaqList.foo");
