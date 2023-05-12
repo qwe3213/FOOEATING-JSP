@@ -15,22 +15,29 @@
 		</div>
 	</c:if>
 	
+	${owner_user_id }
+	
 	<!-- 로그인 했을 때 -->
 	<c:if test="${!empty user_id }" >
 		<div class="links">
 		  <a href="./MemberLogout.foo" class="link_text">로그아웃</a>
 		  
-		  <!-- 마이페이지 (관리자 || 회원) -->
 		  <c:choose>
 		  	<c:when test="${user_id.equals('real_admin')}" >
 		  		<a href="./UserInfoList.ad" class="link_text">마이페이지</a>
+		  	</c:when>
+		  	<c:when test="${owner_user_id.equals(user_id) }">
+		  		<a href="./Main.foo" class="link_text">마이페이지</a>
 		  	</c:when>
 		  	<c:otherwise>
 		  		<a href="./MyPageMember.foo" class="link_text">마이페이지</a>
 		  	</c:otherwise>
 		  </c:choose>
-
-		  <a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
+		  
+		 <c:if test="${empty owner_user_id }">  
+		 	<a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
+		 </c:if>
+		
 		</div>
 		<div class="ft">${user_id }님, 환영합니다 !</div>
 	</c:if>

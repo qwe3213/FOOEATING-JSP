@@ -423,6 +423,32 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
+	// 2-1. 회원의 점주 유무 체크
+		public String checkOwnerId(String user_id) {
+			
+			String owner_user_id = null;
+			
+			try {
+				con = getCon();
+				
+				sql = "select owner_user_id from restaurant where user_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					owner_user_id = rs.getString("owner_user_id");
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return owner_user_id;
+		}
 
 
 	// 3. 회원정보 불러오기
