@@ -27,7 +27,7 @@ public class ApprovalCheckProAction implements Action {
 		}
 		
 		// 가게 정보
-		int rest_id = Integer.parseInt(request.getParameter("rest_id"));
+		String rest_id = request.getParameter("rest_id");
 		
 		// status 정보 수정
 		PublicDAO dao = new PublicDAO();

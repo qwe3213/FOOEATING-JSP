@@ -3,14 +3,11 @@ package com.fooeating.db;
 import java.sql.Timestamp;
 
 public class RestaurantDTO {
-	private int rest_id;
+	private String rest_id;
 	private String name;
 	private String descriptions;
 	private String rest_tel;
 	private String convenience;
-	private String file_out;
-	private String file_in;
-	private String file_menu;
 	private String runtime;
 	private String rest_notice;
 	private String dayoff;
@@ -25,12 +22,13 @@ public class RestaurantDTO {
 	private int read_count;
 	private int like_num;
 	private int grade;
+	private WaitingDTO waitdto;
 	
 	
-	public int getRest_id() {
+	public String getRest_id() {
 		return rest_id;
 	}
-	public void setRest_id(int rest_id) {
+	public void setRest_id(String rest_id) {
 		this.rest_id = rest_id;
 	}
 	public String getName() {
@@ -56,24 +54,6 @@ public class RestaurantDTO {
 	}
 	public void setConvenience(String convenience) {
 		this.convenience = convenience;
-	}
-	public String getFile_out() {
-		return file_out;
-	}
-	public void setFile_out(String file_out) {
-		this.file_out = file_out;
-	}
-	public String getFile_in() {
-		return file_in;
-	}
-	public void setFile_in(String file_in) {
-		this.file_in = file_in;
-	}
-	public String getFile_menu() {
-		return file_menu;
-	}
-	public void setFile_menu(String file_menu) {
-		this.file_menu = file_menu;
 	}
 	public String getRuntime() {
 		return runtime;
@@ -113,6 +93,12 @@ public class RestaurantDTO {
 	}
 	public String getCategory() {
 		return category;
+	}
+	public WaitingDTO getWaitdto() {
+		return waitdto;
+	}
+	public void setWaitdto(WaitingDTO waitdto) {
+		this.waitdto = waitdto;
 	}
 	public void setCategory(String category) {
 		this.category = category;
@@ -159,6 +145,5 @@ public class RestaurantDTO {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-	
 	
 }

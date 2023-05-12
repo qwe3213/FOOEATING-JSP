@@ -1,4 +1,6 @@
-package com.fooeating.action;
+package com.fooeating.member.action;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,23 +8,22 @@ import javax.servlet.http.HttpSession;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
-import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.ReivewDTO;
+import com.fooeating.db.RestaurantDTO;
 import com.fooeating.db.UserDTO;
 
-public class ReviewUpdate implements Action {
+public class MyReviewAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, 
+	public ActionForward execute(HttpServletRequest requeest, 
 			HttpServletResponse response) throws Exception {
 		
-System.out.println(" M: reviewUpdate_execute() 호출 ");
+		System.out.println(" M : MyReviewAction_execute() 호출 ");
 		
 		// 세션정보 제어
-		HttpSession session = request.getSession();
+		HttpSession session = requeest.getSession();
 		String id = (String)session.getAttribute("user_id");
-		int review_num = Integer.parseInt(request.getParameter("review_num"));
 		
 		ActionForward forward = new ActionForward();
 		
@@ -32,23 +33,23 @@ System.out.println(" M: reviewUpdate_execute() 호출 ");
 			return forward;
 		}
 		
-		// 한글처리(인코딩)
-		request.setCharacterEncoding("UTF-8");
-		
-		// 기존의 회원정보를 가져오기(DB)
+		// 회원 리뷰 목록 가져오기(DB)
 		PublicDAO dao = new PublicDAO();
-			
-		ReivewDTO dto =  dao.getReview(id,review_num);
-				
-		// 정보저장 (request영역)
-		session.setAttribute("dto", dto);
-		System.out.println(dto.getName());
-				
-		// ./member/updateForm.jsp 출력
-		JSForward.movePopUp(response,"./ReviewUpdatePop.foo");
-				
-		return null;
-	}
+	
+		List<ReivewDTO> reviewList =  dao.getReviewAll(id);
+		System.out.println("리뷰 값 : "+reviewList.size());
 		
+		// 정보저장 (request영역)
+		requeest.setAttribute("reviewList", reviewList);
+		
+		// ./member/updateForm.jsp 출력
+		forward.setPath("./member/reviewForm.jsp");
+		forward.setRedirect(false);
+		
+		System.out.println(" M : 정보조회 저장, 처리 끝");
+		
+		return forward;
+	}
+	
 
 }

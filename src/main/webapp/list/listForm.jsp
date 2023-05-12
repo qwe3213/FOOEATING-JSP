@@ -87,10 +87,15 @@
 		
 
 </script>
+
+<link href="./css/header.css" rel="stylesheet">
+
 </head>
 <body>
 
-	  
+<!-- header -->
+<jsp:include page="../inc/header.jsp" />
+<!-- header -->
 
 <!-- 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	 -->
 <!-- 	 <input type="text" placeholder="매장을 검색해 보세요"> <input type="submit" value="검색">	<br><br>  -->
@@ -133,42 +138,85 @@
 <!-- 	 <input id="gallery" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 	
 
-	<style>
-    .button1-content {
-      display: block;
-    }
-
-    .button2-content {
-      display: none;
-    }	
-	</style>
+			<!-- 가게 리스트 시작-->
+		
+		<div id="list" class="content">
+		<table border="1">
+		<tr>
+			<th>No.</th>
+			<th>가게이름</th>
+			<th>전화번호</th>
+			<th>편의사항</th>
+			<th>id</th>
+			<th>등록일</th>
+			<th>휴무일</th>
+		</tr>
+		
+		<c:forEach var="dto" items="${requestScope.listForm1 }" varStatus="no">
 	
-	<script>
-    window.onload = function() {
-        showButton1Content(); // 페이지 로드 시 버튼 1의 내용을 미리 보이도록 설정
-      };
-
-      function showButton1Content() {
-        document.getElementById("button1-content").style.display = "block";
-        document.getElementById("button2-content").style.display = "none";
-      }
-
-      function showButton2Content() {
-        document.getElementById("button1-content").style.display = "none";
-        document.getElementById("button2-content").style.display = "block";
-      }
-	</script>
+		<tr>
+			<td>${no.count}</td>
+			<td>
+			<%-- <form action="./restaurantForm.fd" method="post" >
+					<input type="hidden" name="rest_id" value="${dto.rest_id}">
+					<input type="submit" value="${dto.name}">
+				</form> --%>
+				<a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
+			</td>
+			<td>${dto.rest_tel}</td>
+			<td>${dto.convenience}</td>
+			<td>${dto.rest_id}</td>
+			<td>${dto.regdate}</td>
+			<td>${dto.dayoff}</td>
+		</tr>
+		</c:forEach>
+	</table>
+<%
+		int count = (int)request.getAttribute("count");
+		int pageSize = (int)request.getAttribute("pageSize");
+		int currentPage = (int)request.getAttribute("currentPage");
+		int pno = Integer.parseInt((String)request.getAttribute("pno"));
+		
 	
-	<button onclick="showButton1Content">리스트</button>
-	<button onclick="showButton2Content">갤러리</button>
+		
+		if(count != 0) {
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			int pageBlock = 5;
+			int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+			if(startPage > pageBlock) {
+	%>
+				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
+	<%
+			}
+			for(int i = startPage; i <= endPage; i++) {
+	%>
+				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a>
+	<%
+			}
+			if(endPage < pageCount) {
+	%>
+				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
+	<%
+			}
+		}
+	%>
 	
+	</div>
+	
+	<!-- 가게 리스트 끝 -->
 	
 	
 	<!-- 카카오맵 API 시작-->
 	
 	
-<div id="button2-content">	
-<div id="map" style="width:100%;height:350px;">
+
+<div id="map" style="width:100%;height:350px;" class="content">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
 <script>
@@ -236,86 +284,15 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 </script>
 
 </div>
-</div>
+
 	
 	<!-- 카카오맵 API 끝 -->
 
 	
 	
-	<!-- 카카오맵 API -->
 	
-		<!-- 가게 리스트 시작-->
-		
-		<div id="button1-content">
-		<table border="1">
-		<tr>
-			<th>No.</th>
-			<th>가게이름</th>
-			<th>전화번호</th>
-			<th>편의사항</th>
-			<th>id</th>
-			<th>등록일</th>
-			<th>휴무일</th>
-		</tr>
-		
-		<c:forEach var="dto" items="${requestScope.listForm1 }" varStatus="no">
 	
-		<tr>
-			<td>${no.count}</td>
-			<td>
-			<%-- <form action="./restaurantForm.fd" method="post" >
-					<input type="hidden" name="rest_id" value="${dto.rest_id}">
-					<input type="submit" value="${dto.name}">
-				</form> --%>
-				<a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno={pno }">${dto.name }</a>
-			</td>
-			<td>${dto.rest_tel}</td>
-			<td>${dto.convenience}</td>
-			<td>${dto.rest_id}</td>
-			<td>${dto.regdate}</td>
-			<td>${dto.dayoff}</td>
-		</tr>
-		</c:forEach>
-	</table>
-<%
-		int count = (int)request.getAttribute("count");
-		int pageSize = (int)request.getAttribute("pageSize");
-		int currentPage = (int)request.getAttribute("currentPage");
-		int pno = Integer.parseInt((String)request.getAttribute("pno"));
-		
-	
-		
-		if(count != 0) {
-			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-			int pageBlock = 5;
-			int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
-			int endPage = startPage + pageBlock - 1;
-			
-			if(endPage > pageCount) {
-				endPage = pageCount;
-			}
-			
-			if(startPage > pageBlock) {
-	%>
-				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
-	<%
-			}
-			for(int i = startPage; i <= endPage; i++) {
-	%>
-				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a>
-	<%
-			}
-			if(endPage < pageCount) {
-	%>
-				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
-	<%
-			}
-		}
-	%>
-	
-	</div>
-	
-	<!-- 가게 리스트 끝 -->
+
 	
 
 

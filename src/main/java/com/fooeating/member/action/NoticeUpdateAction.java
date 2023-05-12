@@ -1,4 +1,4 @@
-package com.fooeating.action;
+package com.fooeating.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

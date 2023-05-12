@@ -1,6 +1,4 @@
-package com.fooeating.action;
-
-import java.io.PrintWriter;
+package com.fooeating.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,14 +9,14 @@ import com.fooeating.commons.ActionForward;
 import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.UserDTO;
+import com.fooeating.db.WaitingDTO;
 
-
-
-public class MemberUpdateProAction implements Action {
+public class MemberCancelWaiting implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(" M: MemberUpdateProAction_execute() 호출 ");
+	public ActionForward execute(HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		System.out.println(" M: MemberCancelWaiting_execute() 호출 ");
 		
 		// 세션정보 제어
 		HttpSession session = request.getSession();
@@ -36,17 +34,14 @@ public class MemberUpdateProAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		
 		// 전달정보 저장(DTO)
-		UserDTO dto = new UserDTO();
-		dto.setUser_id(request.getParameter("user_id"));
-		dto.setPw(request.getParameter("pw"));
-		dto.setName(request.getParameter("name"));
-		dto.setEmail(request.getParameter("email"));
-		dto.setPhone(request.getParameter("phone"));
+		WaitingDTO dto = new WaitingDTO();
+		dto.setUser_id(id);
+		dto.setWait_num(Integer.parseInt(request.getParameter("wait_num")));
 		
 		// DAO - 정보수정 메서드 호출 - memberUpdate(dto)
 		PublicDAO dao = new PublicDAO();
 		
-		int result = dao.memberUpdate(dto);
+		int result = dao.memberCancelWaiting(dto);
 		
 		System.out.println(" M : 정보 수정 결과 " + result);
 		
@@ -60,13 +55,14 @@ public class MemberUpdateProAction implements Action {
 		
 		if (result == 0 ) { // 비밀번호 오류
 			// JS이동 처리 객체 동작 호출
-			JSForward.alertAndBack(response, "비밀번호 오류!!");
+			JSForward.alertAndBack(response, "대기번호 오류!");
 			
 			return null; // 컨트롤러에서는 이동X
 		}
 		
 		// result == 1
-		JSForward.alertAndMove(response, "수정 완료","./Main.foo");
+		JSForward.alertAndMove(response, "줄서기 취소 완료!","./MemberWaitingList.foo" );
+		
 		
 		return null;
 	}

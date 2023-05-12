@@ -27,10 +27,10 @@ public class RestaurantInfoAction implements Action {
 		}
 		
 		// 가게 정보 저장
-		int rest_id = Integer.parseInt(request.getParameter("rest_id"));
-		String pno = request.getParameter("pno");
-		if(pno == null) {
-			pno = "1";
+		String rest_id = request.getParameter("rest_id");
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
 		}
 		
 		PublicDAO dao = new PublicDAO();
@@ -38,7 +38,7 @@ public class RestaurantInfoAction implements Action {
 		System.out.println("출력할 가게 : " + restInfo);
 		
 		request.setAttribute("restInfo", restInfo);
-		request.setAttribute("pno", pno);
+		request.setAttribute("pageNum", pageNum);
 		
 		// 연결된 view에 출력
 		forward.setPath("./admin/restaurantInfo.jsp");

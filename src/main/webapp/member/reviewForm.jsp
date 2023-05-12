@@ -19,7 +19,13 @@
 		}	
 	}
 	
-
+	function winopen(review_num){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height /2) - (300 / 2);
+		
+		window.open("ReviewUpdate.foo?review_num="+review_num+"","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		
+	}
 	
 
 
@@ -49,10 +55,10 @@
 		</tr>
 		
 		</table>
-		<form action="ReviewUpdate.foo" method="post" >
+		<form action="" method="post" >
 			<input type="hidden" name="user_id" value="${user_id }">
 			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
-			<button>수정</button>
+			<button onclick="winopen(${dto.review_num });">수정</button>
 		</form>
 		
 		<form action="ReviewDelete.foo" method="post" onsubmit="return deleteReview()" >

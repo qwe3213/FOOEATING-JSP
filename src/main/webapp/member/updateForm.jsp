@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- css 파일 -->
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 
@@ -86,13 +93,24 @@
 
 </head>
 <body>
- 		<h1>updateForm.jsp(team4)</h1>
+
+<!-- header -->
+	<jsp:include page="../inc/header.jsp" />
+<!-- header -->
+
+<!-- sideMenu -->
+	<jsp:include page="../inc/sideMenu.jsp" />
+<!-- sideMenu -->
+
+<!-- main -->
+<main>
+
  		<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }" >
 		<c:redirect url="./MemberLogin.foo"/>
 	</c:if>
  		
- 		
+ 		<br><br>
  		<fieldset>
  			<legend>FOOEATING 회원 정보 수정</legend>
  			
@@ -112,8 +130,12 @@
  		
  			</form>
  		</fieldset>
+ </main>
+ <!-- main -->
  	
- 	
+<!-- footer -->
+	<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
  	
 </body>
 </html>

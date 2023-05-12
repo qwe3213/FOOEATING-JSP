@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 
@@ -74,8 +75,38 @@ public class RestaurantFrontController extends HttpServlet {
 			forward.setRedirect(false);	
 		} // ownerChangeForm2.jsp
 		
+		else if(command.equals("/ownerChangeForm3.on")) {
+			System.out.println("  C : /ownerChangeForm3.on 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동");
+			
+			// 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerChangeForm3.jsp");
+			forward.setRedirect(false);	
+		} // ownerChangeForm3.jsp
 		
+		else if(command.equals("/ownerChangeForm4.on")) {
+			System.out.println("  C : /ownerChangeForm4.on 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동");
+			
+			// 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerChangeForm4.jsp");
+			forward.setRedirect(false);	
+		} // ownerChangeForm4.jsp
+		
+		else if(command.equals("/ownerRequestSuccessAction.on")) {
+			 System.out.println(" C : /ownerRequestSuccessAction.on 실행");
+			 System.out.println(" C : DB사용o , 페이지 이동(패턴2)");
 	
+		  action = new ownerRequestSuccessAction();
+		  try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			 
+		}
 		
 	
 		

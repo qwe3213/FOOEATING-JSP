@@ -73,21 +73,100 @@ function sample4_execDaumPostcode() {
 }
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<title>Insert title here</title>
+
+<script src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	    $('div').css({
+	        'font-size' : '0.7em',
+	        'color' : 'red'
+	    });
+	    
+	  
+	    
+	     $("#rest_id").keyup(function() {
+	    	 let num = /[0-9]{10}$/;
+	    	 let Id = document.fr.rest_id.value; 
+	         if(num.test(Id)){
+	        	 $('#divbpw').html(""); 
+	        	
+	         }else{
+		       $('#divbpw').html("사업자 번호를 똑바로 입력해주세요.");
+		
+	         }
+            
+	     });
+	     
+	     $("#rest_tel").keyup(function() {
+	    	 let num = /[0-9]{7}$/;
+	    	 let tel = document.fr.rest_tel.value; 
+	         if(num.test(tel)){
+	        	 $('#divtel').html(""); 
+	        	
+	         }else{
+		       $('#divtel').html("-빼고 번호를 7자 입력해주세요.");
+		
+	         }
+            
+	     });
+	     
+	     $("#fr").on("submit", function(e){
+	    	 let num = /[0-9]{10}$/;
+	    	 let id = document.fr.rest_id.value;
+	    	 let name = document.fr.name.value;
+	    	 let category = document.fr.category.value;
+	         let addr_district = document.fr.addr_district.value;
+	         let addr_etc = document.fr.addr_etc.value;
+	         let runtime = document.fr.runtime.value;
+	         let dayoff = document.fr.dayoff.value;
+	    	 if(!num.test(id)){
+	    		 document.fr.rest_id.focus();
+	    		 $('#divbpw').html(" - 빼고 10자 입력해주세요.");
+	    		 e.preventDefault();
+	         }else if(name == ""){
+	        	 $('#divrname').html("상호명을 입력해주세요 .");
+	        	 e.preventDefault();
+	         }else if(category == "업종을 선택해주세요."){
+	        	 $('#divrct').html("업종을 입력해주세요 .");
+	        	 e.preventDefault();
+	         }else if(addr_district == "" ){
+	        	 $('#divradrr').html("주소를 입력해주세요.");
+		         e.preventDefault();
+	         }else if(addr_etc == ""){
+	        	 $('#divretcadrr').html("상세주소를 입력해주세요.");
+		         e.preventDefault();
+	         }else if(runtime == ""){
+	        	 $('#divtime').html("영업시간을 입력해주세요.");
+		         e.preventDefault();
+	         }else if(dayoff == ""){
+	        	 $('#divday').html("휴무일을 입력해주세요.");
+		         e.preventDefault();
+	         }
+	    	 
+	    	 
+	     });
+	     
+	     
+});
+	
+</script>
+ 
 </head>
 <body>
 	<h1>ownerChangeform.jsp</h1>
 	<fieldset>
 		<legend><b>step1</b></legend>
-		<form action="./ownerChangeForm2.on" method="post">
+		<form action="./ownerChangeForm2.on" id="fr" name="fr" method="post" enctype="multipart/form-data">
 		사업자등록 번호 <br>
-		<input type="text" name ="rest_id" placeholder="- 빼고 입력해주세요." maxlength="10"><br>
-	
+		<input type="text" id ="rest_id" name ="rest_id" placeholder="- 빼고 입력해주세요." maxlength="10"><br>
+	    <div id="divbpw"></div>
 		상호명 <br>
-		<input type="text" name ="name" placeholder="상호명 입력해주세요."><br>
-		
+		<input type="text" name ="name" id ="name"placeholder="상호명 입력해주세요."><br>
+		<div id="divrname"></div>
 		업종 <br>
-		<select onchange="changeValue(this)" name="category">
+		<select onchange="changeValue(this)" name="category" id="category">
 		    <option>업종을 선택해주세요.</option>
 			<option value="ko">한식</option>
 			<option value="ja">일식</option>
@@ -95,23 +174,25 @@ function sample4_execDaumPostcode() {
 			<option value="we">양식</option>
 			<option value="ds">디저트</option>
 		</select><br>
-		
+		<div id ="divrct"></div>
 		주소 <br>
-		<input type="text" id="sample4_postcode" placeholder="우편번호">
+		<input type="text" id="sample4_postcode" placeholder="우편번호" >
         <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 		<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addr_city">
 		<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="addr_district">
 		<span id="guide" style="color:#999;display:none"></span><br>
 		<input type="text" id="sample4_detailAddress" placeholder="상세주소" name="addr_etc"><br>
-	
+	    <div id="divradrr"></div>
+	     <div id="divretcadrr"></div>
 		대표 전화 <br>
-		<input type="text" name="rest_tel"><br>
-		
+		<input type="text" name="rest_tel" id="rest_tel" maxlength="7" placeholder="- 빼고 입력해주세요."><br>
+		<div id="divtel"></div>
 		영업 시간 <br>
-		<input type="text" name="runtime"><br>
-		
+		<input type="text" name="runtime" id ="runtime"placeholder="영업시간대를 입력해주세요."><br>
+		<div id="divtime"></div>
 		정기 휴일 <br>
-		<input type="text" name="dayoff"><br>
+		<input type="text" name="dayoff" id="dayoff"placeholder="정기휴일을 입력해주세요."><br>
+		<div id="divday"></div>
 		<br>
 		<input type="submit" value="다음">
 		</form>
