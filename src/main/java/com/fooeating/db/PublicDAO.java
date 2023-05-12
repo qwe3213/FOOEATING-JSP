@@ -904,6 +904,64 @@ public class PublicDAO {
 		
 	}
 	
+	// 맴버 대기 취소
+	
+	public int memberCancelWaiting(WaitingDTO dto) {
+		int result = -1; // -1	0	1
+		
+		System.out.println(dto.getUser_id());
+		System.out.println(dto.getWait_num());
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select wait_num from waiting where user_id = ? and status =1";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, dto.getUser_id());
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				if(dto.getWait_num() == (rs.getInt("wait_num"))){
+					// 본인(아이디, 대기번호 동일)
+					System.out.println(rs.getInt("wait_num"));
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update waiting set status=3 where wait_num=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, dto.getWait_num());
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+					
+				} else {
+					// 대기번호 다름
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+				
+			System.out.println(" DAO : 회원 대기번호 취소 완료!(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return result;
+	}
+	
 	
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
