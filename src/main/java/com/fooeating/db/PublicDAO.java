@@ -1,6 +1,5 @@
 package com.fooeating.db;
 
-import java.awt.Menu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -1355,8 +1354,6 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
-					
-					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1367,7 +1364,7 @@ public class PublicDAO {
 			return dto;
 		}
 
-		/* ================== < 가게리스트 > ======================== */
+		
 		
 		public void getRestaurant(RestaurantDTO dto) {
 			try {
