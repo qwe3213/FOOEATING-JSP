@@ -1,4 +1,4 @@
-package com.fooeating.action;
+package com.fooeating.member.action;
 
 import java.io.PrintWriter;
 
@@ -9,11 +9,13 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 
-public class idCheckAction implements Action{
+public class IdCheckAction implements Action{
 
     @Override
     public ActionForward execute(HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
+    	
+    	System.out.println(" M : IdCheckAction_execute 실행");
         
         // 인코딩
         request.setCharacterEncoding("UTF-8");
@@ -23,18 +25,12 @@ public class idCheckAction implements Action{
         PublicDAO dao = new PublicDAO();
        
         int idCheck = dao.checkId(id);
-        if (idCheck==0) {
-        	ActionForward forward = new ActionForward();
-        	forward.setPath("./member/idCheck.jsp?userid=0");
-        	forward.setRedirect(true);
-        	return forward;
-			
-		}else {
-			ActionForward forward = new ActionForward();
-        	forward.setPath("./member/idCheck.jsp?userid=1");
-        	forward.setRedirect(true);
-        	return forward;
-		}
+        
+        response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(idCheck);
+        
+        return null;
         
     }
     

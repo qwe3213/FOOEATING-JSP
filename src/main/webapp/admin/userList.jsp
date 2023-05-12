@@ -6,10 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>userList</title>
+
+<!-- css 파일 -->
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+
 </head>
 <body>
 	
-	<h1>userList.jsp</h1>
+<!-- header -->
+<jsp:include page="../inc/header.jsp" />
+<!-- header -->
+
+<!-- sideMune -->
+<jsp:include page="adminSidMenu.jsp" />
+<!-- sideMune -->
 	
 	<table border="1">
 		<tr>
@@ -36,6 +48,46 @@
 		</tr>
 		</c:forEach>
 	</table>
+	
+		<%
+		int count = (int)request.getAttribute("count");
+		int pageSize = (int)request.getAttribute("pageSize");
+		int currentPage = (int)request.getAttribute("currentPage");
+		String pageNum = (String)request.getAttribute("pageNum");
+		
+		if(count != 0) {
+			int pageCount = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);
+			int pageBlock = 5;
+			int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+			if(startPage > pageBlock) {
+	%>
+				<a href="./UserInfoList.ad?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+	<%
+			}
+			for(int i = startPage; i <= endPage; i++) {
+	%>
+				<a href="./UserInfoList.ad?pageNum=<%=i%>">[<%=i%>]</a>
+	<%
+			}
+			if(endPage < pageCount) {
+	%>
+				<a href="./UserInfoList.ad?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+	<%
+			}
+		}
+	%>
+	
+	
+	
+<!-- footer -->
+<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
 	
 </body>
 </html>

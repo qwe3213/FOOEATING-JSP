@@ -6,7 +6,6 @@ public class NoticeDTO {
 	private int notice_num;
 	private String subject;
 	private String content;
-	private String file;
 	private Timestamp regdate;
 	
 
@@ -27,12 +26,6 @@ public class NoticeDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
 	}
 	public Timestamp getRegdate() {
 		return regdate;

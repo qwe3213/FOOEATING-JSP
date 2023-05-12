@@ -8,7 +8,7 @@ import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.RestaurantDTO;
 
-public class restaurantFormAction implements Action {
+public class MapFormAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,16 +20,17 @@ public class restaurantFormAction implements Action {
 		int rest_id = Integer.parseInt(request.getParameter("rest_id"));
 		
 		PublicDAO dao = new PublicDAO();
-		RestaurantDTO restForm = dao.getRestaurantInfo(rest_id);
-		System.out.println("출력할 가게 : " + restForm);
+		RestaurantDTO MapForm = dao.getRestaurantInfo(rest_id);
+		System.out.println("출력할 가게 : " + MapForm);
 		
-		request.setAttribute("restInfo", restForm);
+		request.setAttribute("restInfo", MapForm);
 		
 		ActionForward forward = new ActionForward();
 		// 연결된 view에 출력
-		forward.setPath("./list/restaurantForm.jsp");
+		forward.setPath("./list/MapForm.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
 	}
+
 }

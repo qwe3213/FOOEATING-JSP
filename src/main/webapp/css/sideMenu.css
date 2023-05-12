@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+
+#sub_menu{width: 238px; float: left;margin: 20px;
+font-family:Verdana,Geneva,sans-serif;font-size:1em  }
+/*너비 238px 정렬 왼쪽 밖여백20px
+글자체 Verdana,Geneva,sans-serif 글자크기 1em*/
+#sub_menu ul{margin: 20px 0 0 10px; list-style: none;
+}/*밖여백 20 0 0 10 리스트스타일none*/
+#sub_menu a{text-decoration: none;color: #666;
+display:block;height: 15px;width: 150px;padding: 7px;
+border-bottom-width: 1px;border-bottom-style: dotted;
+border-bottom-color: #999;
+background-image: url("../images/bullet.gif");
+background-repeat: no-repeat;
+background-position: right center;}
+/*밑줄 none 글자색 #666
+높이 15px 너비150px 안여백7px
+테두리 아래너비 1px 테두리아래스타일 dotted 
+테두리아래색 #999 배경이미지 images/bullet.gif
+반복no 위치right center*/
+#sub_menu a:hover{color: #F90;
+background-image: url("../images/bullet_orange.gif");
+background-repeat: no-repeat;
+background-position: right center;}/*배경이미지 bullet_orange.gif
+반복 no 위치right center 글자색 color#F90 */

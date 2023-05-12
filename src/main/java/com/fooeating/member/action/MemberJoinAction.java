@@ -1,4 +1,4 @@
-package com.fooeating.action;
+package com.fooeating.member.action;
 
 import java.sql.Timestamp;
 

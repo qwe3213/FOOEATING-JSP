@@ -6,10 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>restaurantInfo</title>
+
+<!-- css 파일 -->
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+
 </head>
 <body>
 	
-	<h1>restaurantInfo.jsp</h1>
+<!-- header -->
+<jsp:include page="../inc/header.jsp" />
+<!-- header -->
+
+<!-- sideMune -->
+<jsp:include page="adminSidMenu.jsp" />
+<!-- sideMune -->
 	
 	<table border="1">
 		<tr>
@@ -47,7 +59,11 @@
 		</tr>
 	</table>
 	
-	<button onclick="location.href='./RestaurantList.ad'">입점 목록으로</button>
+	<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'">입점 목록으로</button>
+	
+<!-- footer -->
+<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
 	
 </body>
 </html>

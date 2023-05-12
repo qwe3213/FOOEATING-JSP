@@ -5,10 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script src="../js/jquery-3.6.4.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.6.4.js" 
-		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" 
-		crossorigin="anonymous"></script>
+<script src="./js/jquery-3.6.4.js"></script>
 
 <script type="text/javascript">
 
@@ -33,15 +30,19 @@ $(function() {
 		}
 		
 		$.ajax({
-			url:"./idCheckAction.foo",
+			url:"./IdCheckAction.foo",
 			data : {user_id:id},
 			success: function(data) {
 				if(data ==1 && regIdPw.test(id)){
 					$('#idd').html("사용 가능한 아이디 입니다.");	
 					$('#idd').css('color', 'green');
+					$('#fr').unbind();
 				} else if(data ==0 && regIdPw.test(id)){
 					$('#idd').html("이미 존재하는 아이디 입니다.");	
 					$('#idd').css('color', 'red');
+					$("#fr").on("submit", function (e) { 
+                        e.preventDefault();
+                   });
 				}
 			
 			},
@@ -179,7 +180,7 @@ $(function() {
 		} else {
 			$('#namediv').html("");
 		}
-	 	2
+	 	
 	});
 	
 	$('#phone').keyup(function(){
@@ -234,7 +235,6 @@ $(function() {
 			
 			
 		}
-		
 		
 		
 		 
