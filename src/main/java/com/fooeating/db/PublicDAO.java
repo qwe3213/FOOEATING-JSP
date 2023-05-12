@@ -135,7 +135,7 @@ public class PublicDAO {
 				dto.setOwner_user_id(rs.getString("owner_user_id"));
 				dto.setRead_count(rs.getInt("read_count"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-				dto.setRest_id(rs.getInt("rest_id"));
+				dto.setRest_id(rs.getString("rest_id"));
 				dto.setRest_notice(rs.getString("rest_notice"));
 				dto.setRest_tel(rs.getString("rest_tel"));
 				dto.setRuntime(rs.getString("runtime"));
@@ -178,14 +178,14 @@ public class PublicDAO {
 	
 	
 	// 관리자 - 가게 상세 목록 getRestaurantInfo()
-	public RestaurantDTO getRestaurantInfo(int rest_id) {
+	public RestaurantDTO getRestaurantInfo(String rest_id) {
 		RestaurantDTO dto = null;
 		
 		try {
 			con = getCon();
 			sql = "select * from restaurant where rest_id = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, rest_id);
+			pstmt.setString(1, rest_id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -204,7 +204,7 @@ public class PublicDAO {
 				dto.setOwner_user_id(rs.getString("owner_user_id"));
 				dto.setRead_count(rs.getInt("read_count"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-				dto.setRest_id(rs.getInt("rest_id"));
+				dto.setRest_id(rs.getString("rest_id"));
 				dto.setRest_notice(rs.getString("rest_notice"));
 				dto.setRest_tel(rs.getString("rest_tel"));
 				dto.setRuntime(rs.getString("runtime"));
@@ -272,7 +272,7 @@ public class PublicDAO {
 					dto.setOwner_user_id(rs.getString("owner_user_id"));
 					dto.setRead_count(rs.getInt("read_count"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setRest_notice(rs.getString("rest_notice"));
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
@@ -292,14 +292,14 @@ public class PublicDAO {
 		
 		
 		// 관리자 - 입점 대기 전환 getRestaurantStatus()
-		public int getRestaurantStatus(int rest_id) {
+		public int getRestaurantStatus(String rest_id) {
 			int result = 0;
 			
 			try {
 				con = getCon();
 				sql = "update restaurant set status = 1 where rest_id = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rest_id);
+				pstmt.setString(1, rest_id);
 				
 				result = pstmt.executeUpdate();
 			} catch (Exception e) {
@@ -1054,7 +1054,7 @@ public class PublicDAO {
 					RestaurantDTO dto = new RestaurantDTO();
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setName(rs.getString("name"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
@@ -1083,7 +1083,7 @@ public class PublicDAO {
 					RestaurantDTO dto = new RestaurantDTO();
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setName(rs.getString("name"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
@@ -1118,14 +1118,14 @@ public class PublicDAO {
 			return result;
 		}
 		
-		public RestaurantDTO getRestaurantForm(int rest_id) {
+		public RestaurantDTO getRestaurantForm(String rest_id) {
 			RestaurantDTO dto = null;
 			
 			try {
 				con = getCon();
 				sql = "select * from restaurant where rest_id = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rest_id);
+				pstmt.setString(1, rest_id);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
@@ -1144,7 +1144,7 @@ public class PublicDAO {
 					dto.setOwner_user_id(rs.getString("owner_user_id"));
 					dto.setRead_count(rs.getInt("read_count"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setRest_notice(rs.getString("rest_notice"));
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
@@ -1161,14 +1161,14 @@ public class PublicDAO {
 		
 		
 		
-		public RestaurantDTO getRestrauntForm(int rest_id) {
+		public RestaurantDTO getRestrauntForm(String rest_id) {
 			RestaurantDTO dto = null;
 			
 			try {
 				con = getCon();
 				sql = "select * from restaurant where rest_id = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rest_id);
+				pstmt.setString(1, rest_id);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
@@ -1187,7 +1187,7 @@ public class PublicDAO {
 					dto.setOwner_user_id(rs.getString("owner_user_id"));
 					dto.setRead_count(rs.getInt("read_count"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setRest_notice(rs.getString("rest_notice"));
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));

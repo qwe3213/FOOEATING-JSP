@@ -17,7 +17,7 @@ public class MapFormAction implements Action{
 		// 세션 제어
 		
 		// 가게 정보 저장
-		int rest_id = Integer.parseInt(request.getParameter("rest_id"));
+		String rest_id = request.getParameter("rest_id");
 		
 		PublicDAO dao = new PublicDAO();
 		RestaurantDTO MapForm = dao.getRestaurantInfo(rest_id);
