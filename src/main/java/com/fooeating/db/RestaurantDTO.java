@@ -3,7 +3,7 @@ package com.fooeating.db;
 import java.sql.Timestamp;
 
 public class RestaurantDTO {
-	private int rest_id;
+	private String rest_id;
 	private String name;
 	private String descriptions;
 	private String rest_tel;
@@ -27,10 +27,10 @@ public class RestaurantDTO {
 	private int grade;
 	
 	
-	public int getRest_id() {
+	public String getRest_id() {
 		return rest_id;
 	}
-	public void setRest_id(int rest_id) {
+	public void setRest_id(String rest_id) {
 		this.rest_id = rest_id;
 	}
 	public String getName() {

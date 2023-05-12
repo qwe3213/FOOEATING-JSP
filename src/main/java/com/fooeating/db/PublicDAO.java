@@ -1,5 +1,6 @@
 package com.fooeating.db;
 
+import java.awt.Menu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -138,7 +139,7 @@ public class PublicDAO {
 				dto.setOwner_user_id(rs.getString("owner_user_id"));
 				dto.setRead_count(rs.getInt("read_count"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-				dto.setRest_id(rs.getInt("rest_id"));
+				dto.setRest_id(rs.getString("rest_id"));
 				dto.setRest_notice(rs.getString("rest_notice"));
 				dto.setRest_tel(rs.getString("rest_tel"));
 				dto.setRuntime(rs.getString("runtime"));
@@ -210,7 +211,7 @@ public class PublicDAO {
 				dto.setOwner_user_id(rs.getString("owner_user_id"));
 				dto.setRead_count(rs.getInt("read_count"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-				dto.setRest_id(rs.getInt("rest_id"));
+				dto.setRest_id(rs.getString("rest_id"));
 				dto.setRest_notice(rs.getString("rest_notice"));
 				dto.setRest_tel(rs.getString("rest_tel"));
 				dto.setRuntime(rs.getString("runtime"));
@@ -281,7 +282,7 @@ public class PublicDAO {
 					dto.setOwner_user_id(rs.getString("owner_user_id"));
 					dto.setRead_count(rs.getInt("read_count"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setRest_notice(rs.getString("rest_notice"));
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
@@ -1063,7 +1064,7 @@ public class PublicDAO {
 					RestaurantDTO dto = new RestaurantDTO();
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setName(rs.getString("name"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
@@ -1092,7 +1093,7 @@ public class PublicDAO {
 					RestaurantDTO dto = new RestaurantDTO();
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setName(rs.getString("name"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
@@ -1156,7 +1157,7 @@ public class PublicDAO {
 					dto.setOwner_user_id(rs.getString("owner_user_id"));
 					dto.setRead_count(rs.getInt("read_count"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setRest_notice(rs.getString("rest_notice"));
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
@@ -1208,7 +1209,7 @@ public class PublicDAO {
 					dto.setOwner_user_id(rs.getString("owner_user_id"));
 					dto.setRead_count(rs.getInt("read_count"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
-					dto.setRest_id(rs.getInt("rest_id"));
+					dto.setRest_id(rs.getString("rest_id"));
 					dto.setRest_notice(rs.getString("rest_notice"));
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
@@ -1222,8 +1223,76 @@ public class PublicDAO {
 			
 			return dto;
 		}
-	/* ================== < 가게리스트 > ======================== */
+    	/* ================== < 가게리스트 > ======================== */
+	
 		
+		
+		/* ================== < 가게리스트 > ======================== */
+		
+		public void getRestaurant(RestaurantDTO dto) {
+			try {
+				// 1,2 디비연결
+				con = getCon();
+				// 3 sql문 작성
+				sql = "insert into restaurant (rest_id,name,category,addr_city,addr_district,addr_etc,rest_tel,runtime,dayoff,descriptions,convenience,regdate,status)"
+						+" values(?,?,?,?,?,?,?,?,?,?,?,now(),0)";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, dto.getRest_id());
+				pstmt.setString(2, dto.getName());
+				pstmt.setString(3, dto.getCategory());
+				pstmt.setString(4, dto.getAddr_city());
+				pstmt.setString(5, dto.getAddr_district());
+				pstmt.setString(6, dto.getAddr_etc());
+				pstmt.setString(7, dto.getRest_tel());
+				pstmt.setString(8, dto.getRuntime());
+				pstmt.setString(9, dto.getDayoff());
+				pstmt.setString(10, dto.getDescriptions());
+				pstmt.setString(11, dto.getConvenience());
+		  	    // 4. sql 실행
+				pstmt.executeUpdate();
+				System.out.println("DAO 레스토랑 정보 저장 성공");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+		
+		} //gereatlist
+		
+		public void getRestaurantMenu(Restaurant_menuDTO menudto) {
+			Restaurant_menuDTO dto = new Restaurant_menuDTO();
+			
+			try {
+				 //1,2 DB연결
+				con = getCon();
+				
+				// 3. sql 작성
+				sql = "insert into restaurant_menu (menu_name,menu_descriptions,price,rest_id) "
+						+ " values(?,?,?,?)";
+				
+				pstmt= con.prepareStatement(sql);
+				pstmt.setString(1, menudto.getMenu_name());
+				pstmt.setString(2, menudto.getMenu_descriptions());
+				pstmt.setString(3, menudto.getPrice());
+				pstmt.setString(4, menudto.getRest_id());
+				//4. sql실행
+				pstmt.executeUpdate();
+				
+				System.out.println("DAO 레스토랑 메뉴 정보 저장 성공");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			 
+		}
+
+		
+		
+		/* ================== < 가게리스트 > ======================== */
 		
 	
 	
