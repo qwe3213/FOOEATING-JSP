@@ -5,8 +5,10 @@ public class Restaurant_menuDTO {
 	private String menu_name;
 	private String menu_descriptions;
 	private String price;
+
 	private String file;
 	private String rest_id;
+
 	public int getRest_menu_num() {
 		return rest_menu_num;
 	}
@@ -30,15 +32,6 @@ public class Restaurant_menuDTO {
 	}
 	public void setPrice(String price) {
 		this.price = price;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
-	}
-	public String getRest_id() {
-		return rest_id;
 	}
 	public void setRest_id(String rest_id) {
 		this.rest_id = rest_id;

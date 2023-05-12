@@ -16,13 +16,13 @@ import com.fooeating.db.UserDTO;
 public class MyReviewAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest reqeuest, 
+	public ActionForward execute(HttpServletRequest requeest, 
 			HttpServletResponse response) throws Exception {
 		
 		System.out.println(" M : MyReviewAction_execute() 호출 ");
 		
 		// 세션정보 제어
-		HttpSession session = reqeuest.getSession();
+		HttpSession session = requeest.getSession();
 		String id = (String)session.getAttribute("user_id");
 		
 		ActionForward forward = new ActionForward();
@@ -40,7 +40,7 @@ public class MyReviewAction implements Action {
 		System.out.println("리뷰 값 : "+reviewList.size());
 		
 		// 정보저장 (request영역)
-		reqeuest.setAttribute("reviewList", reviewList);
+		requeest.setAttribute("reviewList", reviewList);
 		
 		// ./member/updateForm.jsp 출력
 		forward.setPath("./member/reviewForm.jsp");

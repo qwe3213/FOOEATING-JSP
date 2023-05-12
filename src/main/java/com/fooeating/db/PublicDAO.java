@@ -129,9 +129,6 @@ public class PublicDAO {
 				dto.setConvenience(rs.getString("convenience"));
 				dto.setDayoff(rs.getString("dayoff"));
 				dto.setDescriptions(rs.getString("descriptions"));
-				dto.setFile_in(rs.getString("file_in"));
-				dto.setFile_menu(rs.getString("file_menu"));
-				dto.setFile_out(rs.getString("file_out"));
 				dto.setGrade(rs.getInt("grade"));
 				dto.setLike_num(rs.getInt("like_num"));
 				dto.setName(rs.getString("name"));
@@ -201,9 +198,6 @@ public class PublicDAO {
 				dto.setConvenience(rs.getString("convenience"));
 				dto.setDayoff(rs.getString("dayoff"));
 				dto.setDescriptions(rs.getString("descriptions"));
-				dto.setFile_in(rs.getString("file_in"));
-				dto.setFile_menu(rs.getString("file_menu"));
-				dto.setFile_out(rs.getString("file_out"));
 				dto.setGrade(rs.getInt("grade"));
 				dto.setLike_num(rs.getInt("like_num"));
 				dto.setName(rs.getString("name"));
@@ -272,9 +266,6 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setDescriptions(rs.getString("descriptions"));
-					dto.setFile_in(rs.getString("file_in"));
-					dto.setFile_menu(rs.getString("file_menu"));
-					dto.setFile_out(rs.getString("file_out"));
 					dto.setGrade(rs.getInt("grade"));
 					dto.setLike_num(rs.getInt("like_num"));
 					dto.setName(rs.getString("name"));
@@ -800,6 +791,168 @@ public class PublicDAO {
 		return result;
 	
 	}
+	// 멤버 현재 대기중인 가게 대기번호
+	public WaitingDTO getWaiting(String id) {
+		WaitingDTO dto = null;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql ="select w.wait_num ,w.rest_id, r.name from waiting w "
+					+ " join restaurant r on w.rest_id = r.rest_id where w.user_id = ? "
+					+ " and w.status ='1'";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			if(rs.next()) {
+				dto = new WaitingDTO();
+				dto.setWait_num(rs.getInt("w.wait_num"));
+				dto.setRest_id(rs.getString("w.rest_id"));
+				dto.setRest_name(rs.getString("r.name"));
+			}
+			
+			System.out.println(" DAO : 회원정보 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+		
+	}
+	
+	// 멤버 현재 대기중인 가게 대기팀 수
+		public WaitingDTO getQueue(String rest_id, int wait_num) {
+			WaitingDTO dto = null;
+			try {
+				// 1.2. 디비연결
+				con = getCon();
+				// 3. sql & pstmt
+				sql = "select count(status) from waiting where rest_id =? and status ='1' and wait_num< ?";
+				pstmt = con.prepareStatement(sql);
+				// ??
+				pstmt.setString(1, rest_id);
+				pstmt.setInt(2, wait_num);
+				// 4. sql 실행
+				rs = pstmt.executeQuery();
+				// 5. 데이터처리
+				
+				if(rs.next()) {
+					dto = new WaitingDTO();
+					dto.setWait_team(rs.getInt("count(status)"));
+				}
+				
+				System.out.println(" DAO : 회원정보 저장완료! ");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return dto;
+			
+		}
+	
+	
+	// 멤버 대기내역
+	public List<WaitingDTO> getMemberQueueHistory(String id) {
+		List<WaitingDTO> queueHistory = new ArrayList<WaitingDTO>();
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			// 3. sql & pstmt
+			sql = "select w.user_id,r.name, w.regdate from waiting w join restaurant r on w.rest_id = r.rest_id "
+					+ " where w.user_id = ? and w.status ='2' ";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, id);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			// 5. 데이터처리
+			
+			
+			while(rs.next()) {
+				WaitingDTO dto = new WaitingDTO();
+				
+				dto.setRest_name(rs.getString("name"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				
+				queueHistory.add(dto);
+			} // while
+			
+			System.out.println(" DAO : 대기리스트 저장완료! ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return queueHistory;
+		
+	}
+	
+	// 맴버 대기 취소
+	
+	public int memberCancelWaiting(WaitingDTO dto) {
+		int result = -1; // -1	0	1
+		
+		System.out.println(dto.getUser_id());
+		System.out.println(dto.getWait_num());
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 객체
+			sql = "select wait_num from waiting where user_id = ? and status =1";
+			pstmt = con.prepareStatement(sql);
+			// ??
+			pstmt.setString(1, dto.getUser_id());
+			
+			// 4. sql 실행(select)
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 회원
+				if(dto.getWait_num() == (rs.getInt("wait_num"))){
+					// 본인(아이디, 대기번호 동일)
+					System.out.println(rs.getInt("wait_num"));
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update waiting set status=3 where wait_num=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, dto.getWait_num());
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();
+					
+				} else {
+					// 대기번호 다름
+					result = 0;
+					
+				}
+			}else {
+				// 비회원
+				result = -1;
+			}
+				
+			System.out.println(" DAO : 회원 대기번호 취소 완료!(" +result +")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return result;
+	}
 	
 	
 	
@@ -1147,9 +1300,6 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setDescriptions(rs.getString("descriptions"));
-					dto.setFile_in(rs.getString("file_in"));
-					dto.setFile_menu(rs.getString("file_menu"));
-					dto.setFile_out(rs.getString("file_out"));
 					dto.setGrade(rs.getInt("grade"));
 					dto.setLike_num(rs.getInt("like_num"));
 					dto.setName(rs.getString("name"));
@@ -1173,12 +1323,6 @@ public class PublicDAO {
 		}
 		
 		
-
-	/* ================== < 가게리스트 > ======================== */
-		
-		
-		
-	/* ================== < 가게리스트 > ======================== */
 		
 		public RestaurantDTO getRestrauntForm(int rest_id) {
 			RestaurantDTO dto = null;
@@ -1199,9 +1343,6 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setDescriptions(rs.getString("descriptions"));
-					dto.setFile_in(rs.getString("file_in"));
-					dto.setFile_menu(rs.getString("file_menu"));
-					dto.setFile_out(rs.getString("file_out"));
 					dto.setGrade(rs.getInt("grade"));
 					dto.setLike_num(rs.getInt("like_num"));
 					dto.setName(rs.getString("name"));
@@ -1214,6 +1355,8 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
+					
+					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1223,10 +1366,7 @@ public class PublicDAO {
 			
 			return dto;
 		}
-    	/* ================== < 가게리스트 > ======================== */
-	
-		
-		
+
 		/* ================== < 가게리스트 > ======================== */
 		
 		public void getRestaurant(RestaurantDTO dto) {
@@ -1290,6 +1430,64 @@ public class PublicDAO {
 			 
 		}
 
+		
+=======
+		
+		
+		
+		// 대기 번호 생성 후 번호 반환 - getWaitingNum()
+		public void getWaitingNum(String user_id, String rest_id) {
+			try {
+				con = getCon();
+				sql = "insert into waiting (user_id, rest_id, status, regdate) "
+						+ " values (?, ?, 1, now())";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, rest_id);
+				
+				pstmt.executeUpdate();
+				
+				System.out.println("DAO : 대기번호 발급 성공");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+		}
+		// 대기 번호 생성 - getWaitingNum()
+		
+		
+		
+		// 회원id와 가게id, status가 1인 대기 번호가 있는지 확인 - getWaitingCheck()
+		public WaitingDTO getWaitingCheck(String user_id, String rest_id) {
+			WaitingDTO dto = null;
+			
+			try {
+				con = getCon();
+				sql = "select * from waiting where user_id = ? and rest_id = ? and status = 1";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, rest_id);
+				
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					dto = new WaitingDTO();
+					dto.setWait_num(rs.getInt("wait_num"));
+					dto.setUser_id(rs.getString("user_id"));
+					dto.setRest_id(rs.getString("rest_id"));
+					dto.setStatus(rs.getInt("status"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return dto;
+		}
+		// 회원id와 가게id, status가 1인 대기 번호가 있는지 확인 - getWaitingCheck()
+		
 		
 		
 		/* ================== < 가게리스트 > ======================== */
