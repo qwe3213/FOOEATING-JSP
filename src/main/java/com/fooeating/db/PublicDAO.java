@@ -128,9 +128,6 @@ public class PublicDAO {
 				dto.setConvenience(rs.getString("convenience"));
 				dto.setDayoff(rs.getString("dayoff"));
 				dto.setDescriptions(rs.getString("descriptions"));
-				dto.setFile_in(rs.getString("file_in"));
-				dto.setFile_menu(rs.getString("file_menu"));
-				dto.setFile_out(rs.getString("file_out"));
 				dto.setGrade(rs.getInt("grade"));
 				dto.setLike_num(rs.getInt("like_num"));
 				dto.setName(rs.getString("name"));
@@ -200,9 +197,6 @@ public class PublicDAO {
 				dto.setConvenience(rs.getString("convenience"));
 				dto.setDayoff(rs.getString("dayoff"));
 				dto.setDescriptions(rs.getString("descriptions"));
-				dto.setFile_in(rs.getString("file_in"));
-				dto.setFile_menu(rs.getString("file_menu"));
-				dto.setFile_out(rs.getString("file_out"));
 				dto.setGrade(rs.getInt("grade"));
 				dto.setLike_num(rs.getInt("like_num"));
 				dto.setName(rs.getString("name"));
@@ -271,9 +265,6 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setDescriptions(rs.getString("descriptions"));
-					dto.setFile_in(rs.getString("file_in"));
-					dto.setFile_menu(rs.getString("file_menu"));
-					dto.setFile_out(rs.getString("file_out"));
 					dto.setGrade(rs.getInt("grade"));
 					dto.setLike_num(rs.getInt("like_num"));
 					dto.setName(rs.getString("name"));
@@ -1146,9 +1137,6 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setDescriptions(rs.getString("descriptions"));
-					dto.setFile_in(rs.getString("file_in"));
-					dto.setFile_menu(rs.getString("file_menu"));
-					dto.setFile_out(rs.getString("file_out"));
 					dto.setGrade(rs.getInt("grade"));
 					dto.setLike_num(rs.getInt("like_num"));
 					dto.setName(rs.getString("name"));
@@ -1192,9 +1180,6 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setDescriptions(rs.getString("descriptions"));
-					dto.setFile_in(rs.getString("file_in"));
-					dto.setFile_menu(rs.getString("file_menu"));
-					dto.setFile_out(rs.getString("file_out"));
 					dto.setGrade(rs.getInt("grade"));
 					dto.setLike_num(rs.getInt("like_num"));
 					dto.setName(rs.getString("name"));
@@ -1207,6 +1192,8 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
+					
+					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
