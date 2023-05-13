@@ -10,14 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
-  <style>
-    .screen {
-      display: none;
-    }
-  </style>
-  
+<title>Insert title here</title>  
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"/></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
@@ -35,7 +28,6 @@
 	        var area9 = ["창원시","김해시","진주시","양산시","거제시","통영시","사천시","밀양시","함안군","거창군","창녕군","고성군","하동군","합천군","남해군","함양군","산청군","의령군"];
 	        var area10 = ["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시","군위군","의성군","청송군","영양군","영덕군","청도군","고령군","성주군","칠곡군","예천군","봉화군","울진군","울릉군"];
 	        var area11 = ["목포시","여수시","순천시","나주시","광양시","담양군","곡성군","구례군","고흥군","보성군","화순군","장흥군","강진군","해남군","영암군","무안군","함평군","영광군","장성군","완도군","진도군","신안군"];
-
 
 	    $("select[name^=sido]").each(function() {
 	          $selsido = $(this);
@@ -61,11 +53,7 @@
 
 			$('#Map').on('click',function(){
 				$('#map').load(location.href="/TestMap.jsp" + '#map')
-			})
-	    
-	    
-	    
-	        });
+			});
 		
 		
 
@@ -93,8 +81,7 @@
 // 	 			});
 // 	 		});
 			
-// 	});
-
+	});
 
 		
 
@@ -149,10 +136,40 @@
 <!-- 	 <input id="kakao" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
 <!-- 	 <input id="gallery" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 		
+		<style>
+		.myDiv{
+			display: none;
+			}
+		</style>
+
+ <script>
+ function toggleDiv(divId) {
+     var mapDiv = document.getElementById("map");
+     var listDiv = document.getElementById("list");
+     
+     
+     if(divId === "map"){
+    	mapDiv.style.display = "block";
+    	listDiv.style.display = "none";
+     } else if(divId === "list"){
+    	 mapDiv.style.display = "none";
+    	 listDiv.style.display = "block";s
+     	}
+     }
+ 
+  window.onload = function() {
+	var listDiv = document.getElementById("list");
+	listDiv.style.display = "block";
+ };
+  </script>
+  
+   <button onclick="toggleDiv('map')">Gallery</button>
+   <button onclick="toggleDiv('list')">API</button>
+
 
 			<!-- 가게 리스트 시작-->
 		
-		<div id="list">
+		<div id="list" class="myDiv">
 		<table border="1">
 		<tr>
 			<th>No.</th>
@@ -223,32 +240,22 @@
 	
 	<!-- 가게 리스트 끝 -->
 	
-  <script>
-    function toggleDiv() {
-      var div = document.getElementById("myDiv");
-      if (div.style.display === "none") {
-        div.style.display = "block";
-      } else {
-        div.style.display = "none";
-      }
-    }
-  </script>
-  
-   <button onclick="toggleDiv()">버튼</button>
+ 
 	
 	
 	<!-- 카카오맵 API 시작-->
 	
-	
 
-<div id="myDiv" style="width:100%;height:350px;display: none;">
+<!-- <div id="myDiv" style="width:100%;height:350px;display: none;"> -->
+
+<div id="map" class="myDiv" style="width:100%;height:350px;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(35.1584952142483, 129.06199399191797), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+//         level: 0 // 지도의 확대 레벨
     };  
 
 // 지도를 생성 
@@ -312,9 +319,6 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 
 	
 	<!-- 카카오맵 API 끝 -->
-
-
-
 
                  
 </body>
