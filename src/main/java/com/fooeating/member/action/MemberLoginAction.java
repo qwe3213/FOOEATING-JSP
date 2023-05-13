@@ -50,11 +50,11 @@ public class MemberLoginAction implements Action {
 		session.setAttribute("user_id", dto.getUser_id());
 		
 		// 2) 회원이 점주인지 체크
-		
 		String owner_user_id = dao.checkOwnerId(request.getParameter("user_id"));
-
+		
 		if(owner_user_id != null) {
 			session.setAttribute("owner_user_id", owner_user_id);
+			System.out.println(owner_user_id);
 		}
 		
 		// 3) Main.poo 페이지 이동

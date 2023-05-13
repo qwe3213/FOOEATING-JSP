@@ -390,7 +390,7 @@ public class PublicDAO {
 		try {
 			con = getCon();
 			
-			sql = "select pw from User where user_id=?";
+			sql = "select pw from user where user_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getUser_id());
 			
@@ -431,7 +431,7 @@ public class PublicDAO {
 			try {
 				con = getCon();
 				
-				sql = "select owner_user_id from restaurant where user_id=?";
+				sql = "select owner_user_id from restaurant where owner_user_id=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user_id);
 				
@@ -451,8 +451,8 @@ public class PublicDAO {
 		}
 
 
+		
 	// 3. 회원정보 불러오기
-
 	public UserDTO getMember(String id) {
 		UserDTO dto = null;
 		try {
@@ -546,8 +546,6 @@ public class PublicDAO {
 		return result;
 	}
 	
-
-
 	// 4-1. 회원 비밀번호 수정
 	public int changePw(String id, String pw, String newPw) {
 		int result = -1; // -1	0	1
@@ -599,13 +597,12 @@ public class PublicDAO {
 			closeDB();
 		}
 		
-		
 		return result;
 	}
 	
 
 
-	// 회원 탈퇴
+	// 5. 회원 탈퇴
 	public int deleteMember(UserDTO dto) {
 		System.out.println(dto.getUser_id());
 		System.out.println(dto.getPw());
@@ -652,10 +649,11 @@ public class PublicDAO {
 		System.out.println(result);
 		return result;
 		
-		
 	} // 회원 탈퇴
 	
-	// 회원 리뷰 정보 모두 가져가기
+	
+	
+	// 6. 회원 리뷰 정보 모두 가져가기
 	public List<ReivewDTO> getReviewAll(String id) {
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 		try {
@@ -685,7 +683,7 @@ public class PublicDAO {
 		return reviewList;
 	}
 	
-	// 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
+	// 6.1 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
 	public ReivewDTO getReview(String id, int review_num) {
 		ReivewDTO dto = null;
 		try {
@@ -723,7 +721,7 @@ public class PublicDAO {
 		
 	}
 	
-	// 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
+	// 6-2. 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
 	public int changeReview(String id, int review_num, String newContent) {
 		int result = -1; // -1	0	1
 		
@@ -771,8 +769,7 @@ public class PublicDAO {
 	
 	}
 	
-	// 리뷰 삭제 
-	
+	// 6.3 리뷰 삭제 
 	public int deleteReview(String id, int review_num) {
 		int result = -1; // -1	0	1
 		
@@ -817,7 +814,10 @@ public class PublicDAO {
 		return result;
 	
 	}
-	// 멤버 현재 대기중인 가게 대기번호
+	
+	
+	
+	// 7. 멤버 현재 대기중인 가게 대기번호
 	public WaitingDTO getWaiting(String id) {
 		WaitingDTO dto = null;
 		try {
@@ -852,7 +852,7 @@ public class PublicDAO {
 		
 	}
 	
-	// 멤버 현재 대기중인 가게 대기팀 수
+	// 7-1. 멤버 현재 대기중인 가게 대기팀 수
 		public WaitingDTO getQueue(String rest_id, int wait_num) {
 			WaitingDTO dto = null;
 			try {
@@ -884,8 +884,7 @@ public class PublicDAO {
 			
 		}
 	
-	
-	// 멤버 대기내역
+	// 7-2. 멤버 대기내역
 	public List<WaitingDTO> getMemberQueueHistory(String id) {
 		List<WaitingDTO> queueHistory = new ArrayList<WaitingDTO>();
 		try {
@@ -922,8 +921,7 @@ public class PublicDAO {
 		
 	}
 	
-	// 맴버 대기 취소
-	
+	// 7-3. 맴버 대기 취소
 	public int memberCancelWaiting(WaitingDTO dto) {
 		int result = -1; // -1	0	1
 		
@@ -975,7 +973,6 @@ public class PublicDAO {
 		} finally {
 			closeDB();
 		}
-		
 		
 		return result;
 	}

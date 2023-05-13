@@ -15,7 +15,6 @@
 		</div>
 	</c:if>
 	
-	${owner_user_id }
 	
 	<!-- 로그인 했을 때 -->
 	<c:if test="${!empty user_id }" >
@@ -26,7 +25,7 @@
 		  	<c:when test="${user_id.equals('real_admin')}" >
 		  		<a href="./UserInfoList.ad" class="link_text">마이페이지</a>
 		  	</c:when>
-		  	<c:when test="${owner_user_id.equals(user_id) }">
+		  	<c:when test="${user_id.equals(owner_user_id) }">
 		  		<a href="./Main.foo" class="link_text">마이페이지</a>
 		  	</c:when>
 		  	<c:otherwise>
@@ -39,7 +38,7 @@
 		 </c:if>
 		
 		</div>
-		<div class="ft">${user_id }님, 환영합니다 !</div>
+		<div class="ft">${user_id }님, 환영합니다 ! ${owner_user_id }</div>
 	</c:if>
 	
 	<nav>
