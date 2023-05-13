@@ -309,6 +309,9 @@ public class PublicDAO {
 			return result;
 		}
 		// 관리자 - 입점 대기 전환 getRestaurantStatus()
+		
+		
+		
 	
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
@@ -389,7 +392,7 @@ public class PublicDAO {
 		try {
 			con = getCon();
 			
-			sql = "select pw from User where user_id=?";
+			sql = "select pw from user where user_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getUser_id());
 			
@@ -422,10 +425,36 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
+	// 2-1. 회원의 점주 유무 체크
+		public String checkOwnerId(String user_id) {
+			
+			String owner_user_id = null;
+			
+			try {
+				con = getCon();
+				
+				sql = "select owner_user_id from restaurant where owner_user_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					owner_user_id = rs.getString("owner_user_id");
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return owner_user_id;
+		}
 
 
+		
 	// 3. 회원정보 불러오기
-
 	public UserDTO getMember(String id) {
 		UserDTO dto = null;
 		try {
@@ -519,8 +548,6 @@ public class PublicDAO {
 		return result;
 	}
 	
-
-
 	// 4-1. 회원 비밀번호 수정
 	public int changePw(String id, String pw, String newPw) {
 		int result = -1; // -1	0	1
@@ -572,13 +599,12 @@ public class PublicDAO {
 			closeDB();
 		}
 		
-		
 		return result;
 	}
 	
 
 
-	// 회원 탈퇴
+	// 5. 회원 탈퇴
 	public int deleteMember(UserDTO dto) {
 		System.out.println(dto.getUser_id());
 		System.out.println(dto.getPw());
@@ -625,10 +651,11 @@ public class PublicDAO {
 		System.out.println(result);
 		return result;
 		
-		
 	} // 회원 탈퇴
 	
-	// 회원 리뷰 정보 모두 가져가기
+	
+	
+	// 6. 회원 리뷰 정보 모두 가져가기
 	public List<ReivewDTO> getReviewAll(String id) {
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 		try {
@@ -658,7 +685,7 @@ public class PublicDAO {
 		return reviewList;
 	}
 	
-	// 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
+	// 6.1 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
 	public ReivewDTO getReview(String id, int review_num) {
 		ReivewDTO dto = null;
 		try {
@@ -696,7 +723,7 @@ public class PublicDAO {
 		
 	}
 	
-	// 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
+	// 6-2. 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
 	public int changeReview(String id, int review_num, String newContent) {
 		int result = -1; // -1	0	1
 		
@@ -744,8 +771,7 @@ public class PublicDAO {
 	
 	}
 	
-	// 리뷰 삭제 
-	
+	// 6.3 리뷰 삭제 
 	public int deleteReview(String id, int review_num) {
 		int result = -1; // -1	0	1
 		
@@ -790,7 +816,10 @@ public class PublicDAO {
 		return result;
 	
 	}
-	// 멤버 현재 대기중인 가게 대기번호
+	
+	
+	
+	// 7. 멤버 현재 대기중인 가게 대기번호
 	public WaitingDTO getWaiting(String id) {
 		WaitingDTO dto = null;
 		try {
@@ -825,7 +854,7 @@ public class PublicDAO {
 		
 	}
 	
-	// 멤버 현재 대기중인 가게 대기팀 수
+	// 7-1. 멤버 현재 대기중인 가게 대기팀 수
 		public WaitingDTO getQueue(String rest_id, int wait_num) {
 			WaitingDTO dto = null;
 			try {
@@ -857,8 +886,7 @@ public class PublicDAO {
 			
 		}
 	
-	
-	// 멤버 대기내역
+	// 7-2. 멤버 대기내역
 	public List<WaitingDTO> getMemberQueueHistory(String id) {
 		List<WaitingDTO> queueHistory = new ArrayList<WaitingDTO>();
 		try {
@@ -895,8 +923,7 @@ public class PublicDAO {
 		
 	}
 	
-	// 맴버 대기 취소
-	
+	// 7-3. 맴버 대기 취소
 	public int memberCancelWaiting(WaitingDTO dto) {
 		int result = -1; // -1	0	1
 		
@@ -948,7 +975,6 @@ public class PublicDAO {
 		} finally {
 			closeDB();
 		}
-		
 		
 		return result;
 	}
@@ -1231,7 +1257,7 @@ public class PublicDAO {
 
 		
 		public List<RestaurantDTO> getListInfo(int startRow, int pageSize) {
-			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			List<RestaurantDTO> listForm1 = new ArrayList<RestaurantDTO>();
 			
 			try {
 				con = getCon();
@@ -1249,7 +1275,7 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
-					listForm.add(dto);
+					listForm1.add(dto);
 					
 				}
 			} catch (Exception e) {
@@ -1258,10 +1284,10 @@ public class PublicDAO {
 				closeDB();
 			}
 			
-			return listForm;
+			return listForm1;
 		}
 		
-		
+		// getListCount()
 		public int getListCount() {
 			int result = 0;
 			
@@ -1278,7 +1304,7 @@ public class PublicDAO {
 			}
 			
 			return result;
-		}
+		} // getListCount()
 		
 		public RestaurantDTO getRestaurantForm(String rest_id) {
 			RestaurantDTO dto = null;
@@ -1320,6 +1346,65 @@ public class PublicDAO {
 			
 			return dto;
 		}
+		
+		// getListCount(search)
+		public int getListCount(String search) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where name like ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+search+"%"); // %검색어%
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return result;
+		}
+		// getListCount(search)
+		
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize ,String search) {
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant where name like ? "
+						+ " order by regdate desc limit ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+search+"%");
+				pstmt.setInt(2, startRow - 1);
+				pstmt.setInt(3, pageSize);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setName(rs.getString("name"));
+					dto.setRest_id(rs.getString("rest_id"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setDayoff(rs.getString("dayoff"));
+					listForm.add(dto);
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return listForm;
+		}
+		
+		
 		
 		
 		
