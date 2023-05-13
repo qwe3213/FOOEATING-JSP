@@ -11,6 +11,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+  <style>
+    .screen {
+      display: none;
+    }
+  </style>
+  
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"/></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
@@ -61,6 +68,9 @@
 	        });
 		
 		
+
+		
+		
 // 		$(document).ready(function(){
 // 			$("#kakao").click(function(){
 // 				$.ajax({
@@ -84,6 +94,8 @@
 // 	 		});
 			
 // 	});
+
+
 		
 
 </script>
@@ -136,11 +148,11 @@
 	 
 <!-- 	 <input id="kakao" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
 <!-- 	 <input id="gallery" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
-	
+		
 
 			<!-- 가게 리스트 시작-->
 		
-		<div id="list" class="content">
+		<div id="list">
 		<table border="1">
 		<tr>
 			<th>No.</th>
@@ -211,12 +223,25 @@
 	
 	<!-- 가게 리스트 끝 -->
 	
+  <script>
+    function toggleDiv() {
+      var div = document.getElementById("myDiv");
+      if (div.style.display === "none") {
+        div.style.display = "block";
+      } else {
+        div.style.display = "none";
+      }
+    }
+  </script>
+  
+   <button onclick="toggleDiv()">버튼</button>
+	
 	
 	<!-- 카카오맵 API 시작-->
 	
 	
 
-<div id="map" style="width:100%;height:350px;" class="content">
+<div id="myDiv" style="width:100%;height:350px;display: none;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
 <script>
@@ -288,12 +313,7 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 	
 	<!-- 카카오맵 API 끝 -->
 
-	
-	
-	
-	
 
-	
 
 
                  
