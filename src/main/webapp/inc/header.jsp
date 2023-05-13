@@ -33,12 +33,12 @@
 		  	</c:otherwise>
 		  </c:choose>
 		  
-		 <c:if test="${empty owner_user_id }">  
+		 <c:if test="${empty owner_user_id && !user_id.equals('real_admin')}">  
 		 	<a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
 		 </c:if>
 		
 		</div>
-		<div class="ft">${user_id }님, 환영합니다 ! ${owner_user_id }</div>
+		<div class="ft">${user_id }님, 환영합니다 !</div>
 	</c:if>
 	
 	<nav>
