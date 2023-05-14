@@ -1389,6 +1389,133 @@ public class PublicDAO {
 			
 			return dto;
 		}
+		
+		// 유저 좋아요 상태 1(꽉찬하트)로 변경
+		public void userHeartAdd(String user_id, String rest_id) {
+			
+			try {
+				con = getCon();
+				sql = "select heart_check from heart where user_id =? and rest_id= ?";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, rest_id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					sql = "update heart set heart_check=1 where user_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, user_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					System.out.println("유저 좋아요 상태 변환");
+				} else {
+					sql = "insert into heart values (1,?,?)";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
+					pstmt.setString(2, user_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					System.out.println("유저 좋아요 상태 추가");
+					
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+		}	
+		// 유저 좋아요 상태 0(빈하트)로 변경
+		public void userHeartRemove(String user_id, String rest_id) {
+			
+			try {
+				con = getCon();
+				sql = "select heart_check from heart where user_id =? and rest_id= ?";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, rest_id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					sql = "update heart set heart_check=0 where user_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, user_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					System.out.println("유저 좋아요 상태 변환");
+				} 
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+		}
+		
+		// 유저가 해당 가게 좋아요를 가지고 있는지 확인
+		public int getUserHeart(String user_id, String rest_id) {
+			int heart_check = 0;
+			
+			try {
+				con = getCon();
+				sql = "select heart_check from heart where rest_id =? and user_id =? ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, rest_id);
+				pstmt.setString(2, user_id);
+				
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					heart_check = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			System.out.println("DAO : 해당 가게의 유저 좋아요 상태 : " + heart_check);		
+			return heart_check;
+		} 
+		
+		
+		// 가게 좋아요 수 리턴
+		public int getHeart(String rest_id) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(heart_check) from heart where rest_id = ? and heart_check = 1 ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, rest_id);
+				
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				} else {
+					result = 0;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			System.out.println("DAO : 해당 가게의 좋아요 수 : " + result);
+			
+			return result;
+		}
 
 		/* ================== < 가게리스트 > ======================== */
 		
