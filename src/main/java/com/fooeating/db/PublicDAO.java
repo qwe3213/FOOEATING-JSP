@@ -979,6 +979,34 @@ public class PublicDAO {
 		return result;
 	}
 	
+	// 8. 회원 찜한 가게 리스트 가져가기
+		public List<RestaurantDTO> getMemberLikeList(String id) {
+			List<RestaurantDTO> likeList = new ArrayList<RestaurantDTO>();
+			try {
+				con = getCon();
+				sql = "select rest_id, name, rest_tel, descriptions from restaurant where rest_id "
+						+ " in (select rest_id from heart where heart_check =1 and user_id =? )";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_id(rs.getString(1));
+					dto.setName(rs.getString(2));
+					dto.setRest_tel(rs.getString(3));
+					dto.setDescriptions(rs.getString(4));
+					
+					likeList.add(dto);
+				} // while
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return likeList;
+		}
+	
 	
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
