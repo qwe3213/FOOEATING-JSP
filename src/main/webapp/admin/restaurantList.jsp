@@ -46,6 +46,7 @@
 				<form action="./RestaurantInfo.ad" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<input type="hidden" name="rest_id" value="${dto.rest_id}">
+					<input type="hidden" name="rstatus" value="yes">
 					<input type="submit" value="상세보기">
 				</form>
 			</td>

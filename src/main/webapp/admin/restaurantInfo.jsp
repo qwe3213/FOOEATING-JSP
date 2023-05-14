@@ -70,11 +70,20 @@
 		</tr>
 	</table>
 	
-	<c:if test="${user_id.equals(dto.owner_user_id)}">
+	<c:set var="rstatus" value="<%=request.getParameter(\"rstatus\")%>" />
+	
+	<!-- 대기 중인 가게 목록에서 진입  -->
+	<c:if test="${rstatus.equals('no')}">
 		<button onclick="winopen(${rest_id})">입점 승인</button>
+		<button onclick="location.href='./RestaurantWaitList.ad?pageNum=${pageNum}'">
+			목록으로</button>
 	</c:if>
 	
-	<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'">입점 목록으로</button>
+	<!-- 입점 중인 가게 목록에서 진입  -->
+	<c:if test="${rstatus.equals('yes')}">
+		<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'">
+			목록으로</button>
+	</c:if>
 	
 <!-- footer -->
 <jsp:include page="../inc/footer.jsp" />
