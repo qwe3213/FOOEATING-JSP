@@ -37,5 +37,11 @@ public class Restaurant_menuDTO {
 	public String getRest_id() {
 		return rest_id;
 	}
+	@Override
+	public String toString() {
+		return "Restaurant_menuDTO [rest_menu_num=" + rest_menu_num + ", menu_name=" + menu_name
+				+ ", menu_descriptions=" + menu_descriptions + ", price=" + price + ", rest_id=" + rest_id + "]";
+	}
+	
 
 }

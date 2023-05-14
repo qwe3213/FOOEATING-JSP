@@ -1374,8 +1374,8 @@ public class PublicDAO {
 				// 1,2 디비연결
 				con = getCon();
 				// 3 sql문 작성
-				sql = "insert into restaurant (rest_id,name,category,addr_city,addr_district,addr_etc,rest_tel,runtime,dayoff,descriptions,convenience,regdate,status)"
-						+" values(?,?,?,?,?,?,?,?,?,?,?,now(),0)";
+				sql = "insert into restaurant (rest_id,name,category,addr_city,addr_district,addr_etc,rest_tel,runtime,dayoff,descriptions,convenience,regdate,status,owner_user_id)"
+						+" values(?,?,?,?,?,?,?,?,?,?,?,now(),0,?)";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, dto.getRest_id());
@@ -1389,6 +1389,7 @@ public class PublicDAO {
 				pstmt.setString(9, dto.getDayoff());
 				pstmt.setString(10, dto.getDescriptions());
 				pstmt.setString(11, dto.getConvenience());
+				pstmt.setString(12, dto.getOwner_user_id());
 		  	    // 4. sql 실행
 				pstmt.executeUpdate();
 				System.out.println("DAO 레스토랑 정보 저장 성공");
@@ -1494,7 +1495,7 @@ public class PublicDAO {
 		    	con = getCon();
 		 
 		     	// sql 연결
-      		    sql = "select * from restaurant where user_id = ?" ;
+      		    sql = "select * from restaurant where owner_user_id=? " ;
       		    pstmt = con.prepareStatement(sql);
       		    pstmt.setString(1,user_id);
       		    rs = pstmt.executeQuery();
@@ -1530,6 +1531,61 @@ public class PublicDAO {
 		    return dto;
 		}
 		
+		public Restaurant_menuDTO getRestaurantmenuallow(String rest_id) {
+			Restaurant_menuDTO dto = null;
+			 try {
+				 // 1, 2 디비연
+				con = getCon();
+			    // 3. sql문 작성
+				
+				sql= "select * from restaurant_menu where rest_id=?";
+			    pstmt = con.prepareStatement(sql);
+      		    pstmt.setString(1,rest_id);
+      		    rs = pstmt.executeQuery();
+      		    if(rs.next()) {
+      		    	dto = new Restaurant_menuDTO();
+      		    	dto.setMenu_descriptions(rs.getString("menu_descriptions"));
+      		    	dto.setMenu_name(rs.getString("menu_name"));
+      		    	dto.setPrice(rs.getString("price"));
+      		    	dto.setRest_id(rs.getString("rest_id"));
+      		    }
+			  
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return dto;
+		}
+		
+		public void getRestaurantUpdate(RestaurantDTO restal) {
+		
+			
+			try {
+				// 1,2 디비연결 
+				con = getCon();
+				// 3.sql문작성
+				sql ="update restaurant set name=?, convenience=?, dayoff=?, runtime=?, descriptions=?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, restal.getName());
+				pstmt.setString(2, restal.getConvenience());
+				pstmt.setString(3, restal.getDayoff());
+				pstmt.setString(4, restal.getRuntime());
+				pstmt.setString(5, restal.getDescriptions());
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+
+		}
 		//getRestaurantallow
 		
 		/* ================== < 가게리스트 > ======================== */

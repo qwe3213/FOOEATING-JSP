@@ -3,6 +3,7 @@ package com.fooeating.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -20,6 +21,11 @@ public class ownerRequestSuccessAction implements Action {
 		// 한글 처리
 		request.setCharacterEncoding("UTF-8");
 		
+		// 세션 정보 저장
+		HttpSession session = request.getSession();
+		
+		String user_id = (String)session.getAttribute("user_id");
+		
 		RestaurantDTO dto = new RestaurantDTO();
 		dto.setRest_id(request.getParameter("rest_id"));
 		dto.setName(request.getParameter("name"));
@@ -32,6 +38,7 @@ public class ownerRequestSuccessAction implements Action {
 		dto.setDayoff(request.getParameter("dayoff"));
 		dto.setDescriptions(request.getParameter("descriptions"));
 		dto.setConvenience(request.getParameter("convenience"));
+		dto.setOwner_user_id(user_id);
 		
 		Restaurant_menuDTO menudto = new Restaurant_menuDTO();
 		

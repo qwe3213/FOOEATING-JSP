@@ -101,6 +101,7 @@ $(document).ready(function(){
          String rest_tel = multis.getParameter("rest_tel");  
          String runtime = multis.getParameter("runtime");  
          String dayoff = multis.getParameter("dayoff"); 
+   
          %>  
           <%=rest_id %>
           <%=file_out %>
@@ -149,7 +150,8 @@ $(document).ready(function(){
 		    <input type="hidden" name="file_in" value="<%=file_in %>">
 		    <input type="hidden" name="file_menu" value="<%=file_menu %>">
 		    <input type="hidden" name="name" value="<%=name%>">	  
-		    <input type="hidden" name="rest_id" value="<%=rest_id%>">	  		      
+		    <input type="hidden" name="rest_id" value="<%=rest_id%>">
+		    <input type="hidden" name="convenience" value="<%=convenience%>">	  		      
 			<input type="submit" value="다음" >
 		</form>
 	</fieldset>

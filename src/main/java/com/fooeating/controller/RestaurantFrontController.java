@@ -8,17 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.OwnerMainPageRstcareAction;
+import com.fooeating.action.RestaurantUpdateAction;
+import com.fooeating.action.RestaurantUpdateProAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
-
-import ownerMainPage_rstcareAction.OwnerMainPagerstcareAction;
 
 public class RestaurantFrontController extends HttpServlet {
 	
 	
 	
-	// http://localhost:8088/FOOEATING/ownerChangeForm.on
+	// http://localhost:8088/FOOEATING/ownerChangeForm4.on
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -109,11 +110,11 @@ public class RestaurantFrontController extends HttpServlet {
 		}
 			 
 		}
-		else if(command.equals("/OwnerMainPagerstcareAction.on")) {
-			 System.out.println(" /OwnerMainPagerstcareAction.on");
+		else if(command.equals("/OwnerMainPageRstcareAction.on")) {
+			 System.out.println(" /OwnerMainPageRstcareAction.on");
 			 System.out.println(" 패턴 3 ");
              
-	         action = new OwnerMainPagerstcareAction();
+	         action = new OwnerMainPageRstcareAction();
 	         try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -123,7 +124,34 @@ public class RestaurantFrontController extends HttpServlet {
 			   
 		}
 		
-	
+		else if(command.equals("/RestaurantUpdateProAction.on")) {
+			System.out.println(" /RestaurantUpdateProActionPro.on");
+			System.out.println(" 패턴 3 ");
+			
+			action = new RestaurantUpdateProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/RestaurantUpdateAction.on")) {
+			System.out.println(" C : RestaurantUpdateAction.on 호출 ");
+			System.out.println("패턴 3 ");
+			
+			action = new RestaurantUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
 		
 		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----
 
