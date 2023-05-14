@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
+import com.fooeating.db.LikeDTO;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.RestaurantDTO;
 import com.fooeating.db.WaitingDTO;
@@ -14,7 +15,7 @@ public class RestaurantFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(" RestaurantInfoAction_execute() 호출");
+		System.out.println(" RestaurantFormAction_execute() 호출");
 		
 		// 세션 제어
 		HttpSession session = request.getSession();
@@ -29,10 +30,21 @@ public class RestaurantFormAction implements Action {
 		WaitingDTO wdto = dao.getWaitingCheck(user_id, rest_id);
 		System.out.println("wdto : " + wdto);
 		
+		int heart_check = 0;
+		
 		request.setAttribute("restForm", restForm);
 		if (wdto != null) {
 			session.setAttribute("wdto", wdto);
 		}
+		if(user_id != null) {
+			PublicDAO udao = new PublicDAO();
+			heart_check = udao.getUserHeart(user_id, rest_id);
+		} 
+		request.setAttribute("heart_check", heart_check);
+		
+		int heartNo = dao.getHeart(rest_id);
+		request.setAttribute("heartNo", heartNo);
+
 		
 		ActionForward forward = new ActionForward();
 		// 연결된 view에 출력
