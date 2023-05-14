@@ -32,7 +32,7 @@
 	<!-- header -->
 
 	<!-- sideMune -->
-	<jsp:include page="../inc/sideMenu.jsp" />
+	<jsp:include page="../inc/sideMenuMember.jsp" />
 	<!-- sideMune -->
 
 	<!-- main -->

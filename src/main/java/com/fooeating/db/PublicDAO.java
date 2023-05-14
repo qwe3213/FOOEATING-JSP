@@ -1571,6 +1571,47 @@ public class PublicDAO {
 		// 회원id와 가게id, status가 1인 대기 번호가 있는지 확인 - getWaitingCheck()
 		
 		
+		// 점주 - 가게 대기 내역 불러오기
+		public List getWaitingList(String owner_user_id) {
+			
+			List waitingList = new ArrayList();
+			
+			try {
+				con = getCon();
+				
+				sql = "SELECT r.rest_id, w.wait_num, u.name, u.phone, w.people "
+						+ "FROM waiting w JOIN user u JOIN restaurant r "
+						+ "ON w.user_id = u.user_id = r.owner_user_id "
+						+ "WHERE r.owner_user_id = ? "
+						+ "ORDER BY wait_num";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, owner_user_id);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					WaitingDTO dto = new WaitingDTO();
+					dto.setRest_id(rs.getString("rest_id"));
+					dto.setWait_num(rs.getInt("wait_num"));
+					dto.setName(rs.getString("name"));
+					dto.setPhone(rs.getString("phone"));
+					dto.setPeople(rs.getInt("people"));
+					waitingList.add(dto);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			System.out.println("M : 대기 예약 내역 저장 완료.");
+			return waitingList;
+			
+		}
+		
+		
 		
 		/* ================== < 가게리스트 > ======================== */
 		
