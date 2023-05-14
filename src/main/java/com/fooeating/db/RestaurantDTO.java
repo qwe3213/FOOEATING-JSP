@@ -94,12 +94,6 @@ public class RestaurantDTO {
 	public String getCategory() {
 		return category;
 	}
-	public WaitingDTO getWaitdto() {
-		return waitdto;
-	}
-	public void setWaitdto(WaitingDTO waitdto) {
-		this.waitdto = waitdto;
-	}
 	public void setCategory(String category) {
 		this.category = category;
 	}
@@ -144,6 +138,12 @@ public class RestaurantDTO {
 	}
 	public void setGrade(int grade) {
 		this.grade = grade;
+	}
+	public WaitingDTO getWaitdto() {
+		return waitdto;
+	}
+	public void setWaitdto(WaitingDTO waitdto) {
+		this.waitdto = waitdto;
 	}
 	
 }

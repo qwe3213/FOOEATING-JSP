@@ -1,6 +1,5 @@
 package com.fooeating.db;
 
-import java.awt.Menu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -1235,7 +1234,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant";
+				sql = "select * from restaurant where status = 1";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
@@ -1262,7 +1261,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant order by regdate desc limit ?,?";
+				sql = "select * from restaurant where status = 1 order by regdate desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, startRow - 1);
 				pstmt.setInt(2, pageSize);
@@ -1294,7 +1293,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select count(*) from restaurant";
+				sql = "select count(*) from restaurant where status = 1";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
@@ -1354,7 +1353,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select count(*) from restaurant where name like ?";
+				sql = "select count(*) from restaurant where name like ? and status = 1";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%"); // %검색어%
 				rs = pstmt.executeQuery();
@@ -1376,7 +1375,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant where name like ? "
+				sql = "select * from restaurant where name like ? and status = 1"
 						+ " order by regdate desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%");
@@ -1411,6 +1410,7 @@ public class PublicDAO {
 		
 		public RestaurantDTO getRestrauntForm(String rest_id) {
 			RestaurantDTO dto = null;
+			WaitingDTO wdto = null;
 			
 			try {
 				con = getCon();
@@ -1440,8 +1440,6 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
-					
-					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1579,7 +1577,7 @@ public class PublicDAO {
 			return result;
 		}
 
-		/* ================== < 가게리스트 > ======================== */
+		
 		
 		public void getRestaurant(RestaurantDTO dto) {
 			try {

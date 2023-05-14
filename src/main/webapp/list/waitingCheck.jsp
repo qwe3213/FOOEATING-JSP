@@ -20,7 +20,7 @@
 		</script>
 	</c:if>
 	
-	<%=request.getParameter("rest_id")%><br>
+<%-- 	<%=request.getParameter("rest_id")%><br> --%>
 	
 	대기 하시겠습니까?
 	<form action="./WaitingCheckPro.fd" method="post">
