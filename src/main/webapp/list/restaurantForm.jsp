@@ -99,6 +99,7 @@
 		<table border="1">
 		<tr>
 			<td rowspan="8"></td>
+
 			<th>상호명</th>
 			<td>${restForm.name}</td>
 		</tr>
