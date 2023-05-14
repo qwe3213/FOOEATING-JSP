@@ -1234,7 +1234,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant";
+				sql = "select * from restaurant where status = 1";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
@@ -1261,7 +1261,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant order by regdate desc limit ?,?";
+				sql = "select * from restaurant where status = 1 order by regdate desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, startRow - 1);
 				pstmt.setInt(2, pageSize);
@@ -1293,7 +1293,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select count(*) from restaurant";
+				sql = "select count(*) from restaurant where status = 1";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
@@ -1353,7 +1353,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select count(*) from restaurant where name like ?";
+				sql = "select count(*) from restaurant where name like ? and status = 1";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%"); // %검색어%
 				rs = pstmt.executeQuery();
@@ -1375,7 +1375,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant where name like ? "
+				sql = "select * from restaurant where name like ? and status = 1"
 						+ " order by regdate desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%");
@@ -1440,27 +1440,6 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
-					
-//					sql = "select * from waiting where rest_id = ?";
-//					pstmt = con.prepareStatement(sql);
-//					pstmt.setString(1, rest_id);
-//					rs = pstmt.executeQuery();
-//					
-//					if (rs.next()) {
-//						wdto = new WaitingDTO();
-//						wdto.setWait_num(rs.getInt("wait_num"));
-//						wdto.setUser_id(rs.getString("user_id"));
-//						wdto.setRest_id(rs.getString("rest_id"));
-//						wdto.setRegdate(rs.getTimestamp("regdate"));
-//						wdto.setStatus(rs.getInt("status"));
-//					}
-//					
-//					dto.setWaitdto(wdto);
-//					System.out.println(wdto);
-					
-					// 1단계. 넘어온 가게아이디와 일치하는 가게의 모든 정보 출력
-					// 2단계. 그 중에 웨이팅 테이블에서 웨이팅넘을 가지고 있는
-					// 			가게 아이디를 모두 출력
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -55,5 +55,10 @@ public class WaitingDTO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+	@Override
+	public String toString() {
+		return "WaitingDTO [wait_num=" + wait_num + ", user_id=" + user_id + ", rest_id=" + rest_id + ", rest_name="
+				+ rest_name + ", status=" + status + ", regdate=" + regdate + ", wait_team=" + wait_team + "]";
+	}
 	
 }
