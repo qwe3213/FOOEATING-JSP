@@ -4,52 +4,76 @@
 
 
 
-<header>
-		
-	<!-- 로그인 안했을 때 -->
-	<c:if test="${empty user_id }" >
-		<div class="links">
-		  <a href="./MemberLogin.foo" class="link_text">로그인</a>
-		  <a href="./MemberJoin.foo" class="link_text">회원가입</a>
-		  <a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
-		</div>
-	</c:if>
-	
-	
-	<!-- 로그인 했을 때 -->
-	<c:if test="${!empty user_id }" >
-		<div class="links">
-		  <a href="./MemberLogout.foo" class="link_text">로그아웃</a>
-		  
-		  <c:choose>
-		  	<c:when test="${user_id.equals('real_admin')}" >
-		  		<a href="./UserInfoList.ad" class="link_text">마이페이지</a>
-		  	</c:when>
-		  	<c:when test="${user_id.equals(owner_user_id) }">
-		  		<a href="./Main.foo" class="link_text">마이페이지</a>
-		  	</c:when>
-		  	<c:otherwise>
-		  		<a href="./MyPageMember.foo" class="link_text">마이페이지</a>
-		  	</c:otherwise>
-		  </c:choose>
-		  
-		 <c:if test="${empty owner_user_id && !user_id.equals('real_admin')}">  
-		 	<a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
-		 </c:if>
-		
-		</div>
-		<div class="ft">${user_id }님, 환영합니다 !</div>
-	</c:if>
-	
-	<nav>
-	  <div class="nav_items">
-	    <ul>
-	  	  <li><a href="./Main.foo">ㅤHOMEㅤ</a></li>
-	      <li><a href="./listForm.fd">ㅤCATEGORYㅤ</a></li>
-	      <li><a href="#">ㅤPUDDINGㅤㅤ</a></li>
-	      <li><a href="./NoticeList.foo">ㅤNOTICEㅤ</a></li>
-	    </ul>
-	  </div>
-	</nav>
-    
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                
+                    <!-- ***** 로고 Start ***** -->
+                    <a href="./Main.foo" class="logo">
+                        <img src="./img/logo.png" width="100px">
+                    </a>
+                    <!-- ***** 로고 End***** -->
+                    
+                    <!-- ***** 메뉴 Start ***** -->
+                    <ul class="nav">
+                        <li class="scroll-to-section"><a href="./Main.foo" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="./listForm.fd">Category</a></li>
+                       		 
+                       		 <!-- 드롭다운 목록 -->
+<!--                             <li class="submenu"> -->
+<!--                                 <a href="javascript:;">Drop Down</a> -->
+<!--                                 <ul> -->
+<!--                                     <li><a href="#">Drop Down Page 1</a></li> -->
+<!--                                     <li><a href="#">Drop Down Page 2</a></li> -->
+<!--                                     <li><a href="#">Drop Down Page 3</a></li> -->
+<!--                                 </ul> -->
+<!--                             </li> -->
+                    
+                        <li class="scroll-to-section"><a href="#">Pudding</a></li>
+                        <li class="scroll-to-section"><a href="./NoticeList.foo">Notice</a></li>
+                    </ul>
+                        
+                        
+                        <!-- 오른쪽 아래에 띄우고 싶은데... ul + li 합쳐야만 css 적용됨 -->
+                        <div>
+                        	<!-- 로그인 안했을 때 -->
+							<c:if test="${empty user_id }" >
+		                        <a href="./MemberLogin.foo">Login</a>
+		                        <a href="./MemberJoin.foo">JoinUs</a>
+		                        <a href="./ownerChangeForm.on">Business registration</a>
+							</c:if>
+							
+							<!-- 로그인 했을 때 -->
+							<c:if test="${!empty user_id }" >
+								<a href="./MemberLogout.foo">Logout</a>
+								
+								<c:choose>
+								   <c:when test="${user_id.equals('real_admin')}" >
+								      <a href="./UserInfoList.ad">MyPage</a>
+								   </c:when>
+								   <c:when test="${user_id.equals(owner_user_id) }">
+								      <a href="./Main.foo">MyPage</a>
+								   </c:when>
+								   <c:otherwise>
+								  	  <a href="./MyPageMember.foo">MyPage</a>
+								   </c:otherwise>
+								</c:choose>
+								
+								<c:if test="${empty owner_user_id && !user_id.equals('real_admin')}">
+								   <a href="./MyPageMember.foo">Business registration</a>
+								</c:if>
+								
+							</c:if>
+						</div>
+                      
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** 메뉴 End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
 </header>

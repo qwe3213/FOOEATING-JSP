@@ -27,13 +27,13 @@
 
 
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="../inc/header.jsp" />
 <!-- header -->
 
 
 
 <!-- sideMenu -->
-<jsp:include page="../inc/sideMenu.jsp" />
+	<jsp:include page="../inc/sideMenu.jsp" />
 <!-- sideMenu -->
 	
 
@@ -48,7 +48,7 @@
 
 
 <!-- footer -->
-<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footer.jsp" />
 <!-- footer -->
 
 
