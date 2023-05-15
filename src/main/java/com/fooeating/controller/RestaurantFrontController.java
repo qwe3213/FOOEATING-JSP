@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.ownerMainPageReviewAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -16,6 +17,7 @@ public class RestaurantFrontController extends HttpServlet {
 	
 	
 	
+	// http://localhost:8088/FOOEATING/ownerChangeForm.on
 	// http://localhost:8088/FOOEATING/ownerChangeForm.on
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -106,8 +108,21 @@ public class RestaurantFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 			 
-		}
+		} // ownerRequestSuccessAction
 		
+		else if(command.equals("/ownerMainPage_review.on")) {
+			System.out.println(" C : ownerMainPage_review.on 호출");
+			System.out.println(" C : DB사용o , 페이지 이동, 출력(패턴3)");
+			
+			// ownerMainPageReviewAction() 객체
+			action = new ownerMainPageReviewAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // ownerMainPage_review
 	
 		
 		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----

@@ -17,7 +17,7 @@
                     <!-- ***** 로고 End***** -->
                     
                     <!-- ***** 메뉴 Start ***** -->
-                    <ul class="nav">
+                    <ul class="nav" style="float: left;">
                         <li class="scroll-to-section"><a href="./Main.foo" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="./listForm.fd">Category</a></li>
                        		 
@@ -37,7 +37,7 @@
                         
                         
                         <!-- 오른쪽 아래에 띄우고 싶은데... ul + li 합쳐야만 css 적용됨 -->
-                        <div>
+                        <div style="float: right; font-size: small;">
                         	<!-- 로그인 안했을 때 -->
 							<c:if test="${empty user_id }" >
 		                        <a href="./MemberLogin.foo">Login</a>
