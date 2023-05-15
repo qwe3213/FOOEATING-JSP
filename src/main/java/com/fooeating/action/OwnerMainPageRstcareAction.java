@@ -33,6 +33,7 @@ public class OwnerMainPageRstcareAction implements Action {
 			forward.setRedirect(true);
 			return forward;
 		}
+		
 		 
 		PublicDAO dao = new PublicDAO();
 		RestaurantDTO restal = dao.getRestaurantallow(user_id);

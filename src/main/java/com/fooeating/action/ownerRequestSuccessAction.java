@@ -1,6 +1,7 @@
 package com.fooeating.action;
 
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,8 @@ import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.RestaurantDTO;
 import com.fooeating.db.Restaurant_menuDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class ownerRequestSuccessAction implements Action {
 
@@ -26,26 +29,49 @@ public class ownerRequestSuccessAction implements Action {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
+//시작
+		 ServletContext ctx = request.getServletContext();
+		 String realPath = ctx.getRealPath("/upload");
+		 
+		 int maxSize = 5 * 1024 * 1024 ;
+		 System.out.println(realPath);
+		 // 파일업로드
+		 
+		 
+		 MultipartRequest multi = new MultipartRequest(
+				 request,
+				 realPath,
+				 maxSize,
+				 "UTF-8",
+				 new DefaultFileRenamePolicy());
+		 
+		 System.out.println(" M : 파일업로드 성공" );
+
+		//끝
+		
 		RestaurantDTO dto = new RestaurantDTO();
-		dto.setRest_id(request.getParameter("rest_id"));
-		dto.setName(request.getParameter("name"));
-		dto.setCategory(request.getParameter("category"));
-		dto.setAddr_city(request.getParameter("addr_city"));
-		dto.setAddr_district(request.getParameter("addr_district"));
-		dto.setAddr_etc(request.getParameter("addr_etc"));
-		dto.setRest_tel(request.getParameter("rest_tel"));
-		dto.setRuntime(request.getParameter("runtime"));
-		dto.setDayoff(request.getParameter("dayoff"));
-		dto.setDescriptions(request.getParameter("descriptions"));
-		dto.setConvenience(request.getParameter("convenience"));
+		dto.setRest_id(multi.getParameter("rest_id"));
+		dto.setName(multi.getParameter("name"));
+		dto.setCategory(multi.getParameter("category"));
+		dto.setAddr_city(multi.getParameter("addr_city"));
+		dto.setAddr_district(multi.getParameter("addr_district"));
+		dto.setAddr_etc(multi.getParameter("addr_etc"));
+		dto.setRest_tel(multi.getParameter("rest_tel"));
+		dto.setRuntime(multi.getParameter("runtime"));
+		dto.setDayoff(multi.getParameter("dayoff"));
+		dto.setDescriptions(multi.getParameter("descriptions"));
+		dto.setConvenience(multi.getParameter("convenience"));
+		dto.setOutfile(multi.getParameter("outfile"));
+		dto.setInfile(multi.getParameter("infile"));
 		dto.setOwner_user_id(user_id);
 		
 		Restaurant_menuDTO menudto = new Restaurant_menuDTO();
 		
-		menudto.setMenu_name(request.getParameter("menu_name"));
-		menudto.setMenu_descriptions(request.getParameter("menu_descriptions"));
-		menudto.setPrice(request.getParameter("price"));
-		menudto.setRest_id(request.getParameter("rest_id"));
+		menudto.setMenu_name(multi.getParameter("menu_name"));
+		menudto.setMenu_descriptions(multi.getParameter("menu_descriptions"));
+		menudto.setPrice(multi.getParameter("price"));
+		menudto.setRest_id(multi.getParameter("rest_id"));
+		menudto.setMeunfile(multi.getParameter("meunfile"));
 		
 		PublicDAO dao = new PublicDAO();
 		dao.getRestaurant(dto);
@@ -58,10 +84,6 @@ public class ownerRequestSuccessAction implements Action {
 		forward.setPath("./owner/ownerRequestSuccess.jsp");
 		forward.setRedirect(false);
 
-
-		
-		
-		
 		return forward;
 	}
 
