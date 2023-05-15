@@ -1052,11 +1052,13 @@ public class PublicDAO {
 			pstmt.executeUpdate();
 			System.out.println("DAO : 리뷰 작성 성공!");
 			
-			sql = "update waiting set review_check = 2 where wait_num = ?"; 
+			sql = "update waiting set review_check=2 where wait_num=?"; 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, dto.getWait_num());
+			// sql 실행
+			pstmt.executeUpdate();
 			
-			rs = pstmt.executeQuery();
+			System.out.println("DAO : 리뷰 작성 후 대기리스트 리뷰작성 버튼 없애기");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
