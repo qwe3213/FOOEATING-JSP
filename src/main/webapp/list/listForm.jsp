@@ -107,15 +107,18 @@
 			<label for="addr_city">시/도</label>
 				<select id="addr_city" name="addr_city" onchange="addrChange(this)">
 					<option>시/도 선택</option>
-					<option value="서울">서울</option>
-					<option value="부산">부산</option>
-					<option value="경남">경남</option>
+					<option value="서울특별시" <c:if test="${param.addr_city.equals('서울특별시')}">selected</c:if>>서울</option>
+					<option value="부산광역시" <c:if test="${param.addr_city.equals('부산광역시')}">selected</c:if>>부산</option>
+					<option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
 				</select>
 			</div>
 			<div>
 			<label for="addr_discrict">구</label>
 				<select id="addr_district" name="addr_district">
 					<option>선택해주세요</option>
+					<c:if test="${param.addr_district != null}">
+						<option value="${param.addr_district}" selected>${param.addr_district}</option>
+					</c:if>
 				</select>
 			</div>
 	        <input type="text" name="search" class="input_box">
@@ -154,19 +157,20 @@
  };
  
  function addrChange(e) {
-		var 서울 = ["강남", "홍대", "여의도"];
-		var 부산 = ["북구", "부산진구", "동래구"];
-		var 경남 = ["김해", "창원", "양산"];
+		var 서울특별시 = ["강남", "홍대", "여의도"];
+		var 부산광역시 = ["북구", "부산진구", "동래구"];
+		var 경상남도 = ["김해", "창원", "양산"];
 		var target = document.getElementById("addr_district")
 		
-		if (e.value == "서울") var addr_d = 서울;
-		else if (e.value == "부산") var addr_d = 부산;
-		else if (e.value == "경남") var addr_d = 경남;
+		if (e.value == "서울특별시") var addr_d = 서울특별시;
+		else if (e.value == "부산광역시") var addr_d = 부산광역시;
+		else if (e.value == "경상남도") var addr_d = 경상남도;
 		
 		target.options.length = 0;
 		
 		for (x in addr_d) {
 			var opt = document.createElement("option");
+			
 			opt.value = addr_d[x];
 			opt.innerHTML = addr_d[x];
 			target.appendChild(opt);
@@ -192,7 +196,7 @@
 			<th>휴무일</th>
 		</tr>
 		
-		<c:forEach var="dto" items="${requestScope.listForm1 }" varStatus="no">
+		<c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
 	
 		<tr>
 			<td>${no.count}</td>
