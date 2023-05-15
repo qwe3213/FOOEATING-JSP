@@ -11,7 +11,14 @@ public class WaitingDTO {
 	private int status;
 	private Timestamp regdate;
 	private int wait_team;
+	private int review_check;
 	
+	public int getReview_check() {
+		return review_check;
+	}
+	public void setReview_check(int review_check) {
+		this.review_check = review_check;
+	}
 	public int getWait_team() {
 		return wait_team;
 	}
