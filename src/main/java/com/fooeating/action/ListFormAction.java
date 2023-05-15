@@ -23,7 +23,9 @@ public class ListFormAction implements Action {
 		// 검색어 search(파라미터) 정보를 저장
 		String search = request.getParameter("search");
 		System.out.println("search : " + search);
-		
+		String addr_city = request.getParameter("addr_city");
+		String addr_district = request.getParameter("addr_district");
+		System.out.println("addr_city + addr_district : " + addr_city + addr_district);
 		
 		PublicDAO dao = new PublicDAO();
 		
@@ -37,6 +39,7 @@ public class ListFormAction implements Action {
 		
 		System.out.println("M : 총 글의 수 : " + count);
 		
+		if ()
 		
 		
 		
@@ -69,6 +72,8 @@ public class ListFormAction implements Action {
 		} else {
 			listForm1 = dao.getListInfo(startRow, pageSize);
 		}
+		// ---------------------------------------------------------------------
+		
 		
 		
 		// 페이징 처리 -----------------
