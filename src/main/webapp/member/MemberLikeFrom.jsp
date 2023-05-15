@@ -22,7 +22,7 @@
 	<!-- header -->
 
 	<!-- sideMenu -->
-	<jsp:include page="../inc/sideMenu.jsp" />
+	<jsp:include page="../inc/sideMenuMember.jsp" />
 	<!-- sideMenu -->
 
 	<!-- main -->
