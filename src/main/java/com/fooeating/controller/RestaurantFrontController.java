@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooeating.action.OwnerWaitingListAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -106,6 +107,30 @@ public class RestaurantFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 			 
+		}
+		
+		
+		// 점주의 마이페이지
+		else if(command.equals("/MyPageOwner.on")) {
+			System.out.println(" C : /MyPageOwner.om 실행");
+			System.out.println(" C : DB사용x, view 페이지 이동(패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./owner/myPageOwner.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 마이페이지 - 대기 관리
+		else if(command.equals("/OwnerWaitingList.on")) {
+			System.out.println("C : /ownerWaitingList.on 실행");
+			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
+			
+			action = new OwnerWaitingListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 	
