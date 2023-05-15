@@ -31,7 +31,7 @@
 
 
 <!-- side menu -->
-	<jsp:include page="../inc/sideMenu.jsp" />
+	<jsp:include page="../inc/sideMenuNotice.jsp" />
 <!-- side menu -->
 
 

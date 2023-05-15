@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
+
 <nav id="sub_menu">
 <ul>
 <li><a href="./MemberWaitingList.foo">대기리스트</a></li>

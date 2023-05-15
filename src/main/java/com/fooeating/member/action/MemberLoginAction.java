@@ -7,6 +7,7 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
+import com.fooeating.db.RestaurantDTO;
 import com.fooeating.db.UserDTO;
 
 
