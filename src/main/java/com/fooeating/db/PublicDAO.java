@@ -660,7 +660,7 @@ public class PublicDAO {
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 		try {
 			con = getCon();
-			sql = "select re.review_num, r.name, r.grade, re.regdate, re.content from restaurant r "
+			sql = "select re.review_num, r.name, re.grade, re.regdate, re.content from restaurant r "
 					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
