@@ -1019,7 +1019,7 @@ public class PublicDAO {
   
   
   
-  // 1-1. 전체 글 개수
+  // 1-1. 공지사항 전체 글 개수
 	public int getBoardCount() {
 		
 		int result = 0;
@@ -1039,6 +1039,36 @@ public class PublicDAO {
 				result = rs.getInt(1);
 			}
 			System.out.println("DAO : 전체 글 개수 - " + result);
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return result;
+	}
+	
+	// 1-2. 점주 - 대기 예약 전체 개수
+	public int getWaitingCount(String owner_user_id) {
+		
+		int result = 0;
+		
+		try {
+			con = getCon();
+			
+			// sql작성 & pstmt객체
+			sql = "select count(*) from waiting rest_id=?";
+			pstmt = con.prepareStatement(sql);
+			
+			// sql실행
+			rs = pstmt.executeQuery();
+			
+		    // 데이터처리
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println("DAO : 전체 대기 내역 수 - " + result);
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1579,11 +1609,12 @@ public class PublicDAO {
 			try {
 				con = getCon();
 				
-				sql = "SELECT r.rest_id, w.wait_num, u.name, u.phone, w.people "
-						+ "FROM waiting w JOIN user u JOIN restaurant r "
-						+ "ON w.user_id = u.user_id = r.owner_user_id "
-						+ "WHERE r.owner_user_id = ? "
-						+ "ORDER BY wait_num";
+				sql = "SELECT w.rest_id, w.wait_num, u.name, u.phone, w.people FROM waiting w "
+						+ "JOIN USER u "
+						+ "ON u.user_id = w.user_id "
+						+ "WHERE rest_id = (SELECT rest_id "
+						+ "                 FROM restaurant "
+						+ "                 WHERE owner_user_id = ?)";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, owner_user_id);

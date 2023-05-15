@@ -33,14 +33,29 @@ public class OwnerWaitingListAction implements Action {
 		// 2. dao 메서드 사용 waitingList 정보 저장
 		List waitingList = dao.getWaitingList(owner_user_id);
 		
-		// 2-1. request 영역에 저장
-		request.setAttribute("waitingList", waitingList);
-		System.out.println("DAO : waitingList 저장 완료.");
 		
-		// 3. 페이징처리
+		// 3. 페이징 처리
+//		int count = dao.getWaitingCount(owner_user_id);
+//		System.out.println("전체 글 수 : " + count);
+		
+//		int pageSize = 10;									// 한 페이지에 출력할 리스트 수
+		
+//		String pageNum = request.getParameter("pageNum");
+//		if(pageNum == null) { pageNum = "1"; }				// 현재 페이지 정보 체크
+		
+//		int currentPage = Integer.parseInt(pageNum);
+//		int startRow = (currentPage - 1) * pageSize + 1;	// 시작행 번호 계산
+//		int endRow = currentPage * pageSize;				// 끝행 번호 계산
+		
+		
+		// 4. request 영역에 저장
+		request.setAttribute("waitingList", waitingList);
+//		request.setAttribute("currentPage", currentPage);
+//		request.setAttribute("pageSize", pageSize);
+//		request.setAttribute("pageNum", pageNum);
 
 		
-		// 4. 페이지 이동 
+		// 5. 페이지 이동 
 		ActionForward forward = new ActionForward();
 		forward.setPath("./owner/ownerWaitingList.jsp");
 		forward.setRedirect(false);

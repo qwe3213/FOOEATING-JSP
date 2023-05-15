@@ -14,38 +14,6 @@
 <link href="./css/sideMenu.css" rel="stylesheet">
 <link href="./css/main.css" rel="stylesheet">
 
-<!-- JavaScript -->
-<script type="text/javascript">
-
-// 1. 호출 버튼
-function call(){
-	var call = confirm('호출하시겠습니까?');
-	if(call){
-		return true;
-	}else{
-		return false;
-	}
-}
-
-// 2. 완료 버튼
-function done(){
-	var done = confirm('호출하시겠습니까?');
-	if(done){
-		return true;
-	}else{
-		return false;
-	}
-}
-
-// 3. on & off 버튼
-function onOff(){
-	var on = confirm('가게를 Open 하시겠습니까?');
-	var off = confirm('가게를 Close 하시겠습니까?');
-
-}
-
-</script>
-
 
 </head>
 <body>
@@ -68,7 +36,7 @@ function onOff(){
 <main>
 <br><br>
 
-<h1></h1>		<!-- 남은 팀 수, 회원대기번호, 회원이름, 회원전화번호, 회원인원수 -->
+<h1></h1>
 
 <table border="1">
 	<tr>
@@ -88,6 +56,7 @@ function onOff(){
 	</c:forEach>
 
 </table>
+
 
 
 </main>
