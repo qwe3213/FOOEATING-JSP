@@ -10,7 +10,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>  
+<title>Insert title here</title> 
+
+<!-- css 파일 -->
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+ 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"/></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
@@ -62,7 +69,7 @@
 
 </script>
 
-<link href="./css/header.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -82,10 +89,12 @@
 <!-- 		</div> -->
 	 
 	
-	<select name="sido1" id="sido1" style="width:500x; height:50px;"></select>
-	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select>
+<!-- 	<select name="sido1" id="sido1" style="width:500x; height:50px;"></select> -->
+<!-- 	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select> -->
 	 
-	 
+<!-- main -->
+<main>
+<br><br>	 
 	 <input type="checkbox" > 한식 
 	 <input type="checkbox" > 양식 
 	 <input type="checkbox" > 중식 
@@ -336,7 +345,12 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 
 	
 	<!-- 카카오맵 API 끝 -->
+</main>
+<!-- main -->
 
+<!-- footer -->
+<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
                  
 </body>
 </html>
