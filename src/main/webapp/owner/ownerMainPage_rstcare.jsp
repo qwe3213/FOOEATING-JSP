@@ -74,6 +74,9 @@
 
 		  <div style="margin-left: 1px">
 		<table>
+		<tr>
+			<td> : ${restal.meunfile}</td>
+			</tr>
 			<tr>
 			<td>상호 : ${restal.name}</td>
 			</tr>

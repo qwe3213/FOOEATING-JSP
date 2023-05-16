@@ -49,6 +49,5 @@ public class Restaurant_menuDTO {
 				+ ", menu_descriptions=" + menu_descriptions + ", price=" + price + ", rest_id=" + rest_id
 				+ ", meunfile=" + meunfile + "]";
 	}
-
-    	
+	
 }

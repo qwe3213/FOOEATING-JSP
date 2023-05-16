@@ -10,6 +10,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('div').css({
+        'font-size' : '0.7em',
+        'color' : 'red'
+    });
+	
+	  $("#fr").on("submit", function(e){
+		  let descriptions = document.fr.descriptions.value;
+		  console.log(descriptions);
+		  if(descriptions == ""){
+	        	 $('#divdes').html("가게소개를 입력해주세요!");
+	        	 alert("빈칸!!");
+	        	 e.preventDefault();
+		  }
+	
+	  });
+}); 
+ 
+</script>
+
 
 <title>onerChangeForm3.jsp</title>
 <body>
@@ -59,6 +82,10 @@
 	<fieldset>
 		<legend>step3</legend>
 		<form action="./ownerRequestSuccessAction.on" method="post" enctype="multipart/form-data" name="fr" id="fr">
+		    가게 소개<br>
+		    <textarea rows="5" cols="50" name="descriptions" placeholder="가게 소개를 적어주세요!"></textarea><br>		
+		    <div id="divdes"></div>
+		    <br>
 			1. <br>
 			메뉴 이름 : <input type="text" name="menu_name"> <br>
 			메뉴 소개 : <input type="text" name="menu_descriptions"> <br>
@@ -74,7 +101,8 @@
 			<input type="hidden" name="addr_district" value="<%=addr_district %>">
 			<input type="hidden" name="addr_etc" value="<%=addr_etc %>">
 			<input type="hidden" name="rest_tel" value="<%=rest_tel %>">
-			<input type="hidden" name="rest_id" value="<%=rest_id %>">			      
+			<input type="hidden" name="rest_id" value="<%=rest_id %>">      
+			<input type="hidden" name="convenience" value="<%=convenience %>">      
 			<input type="submit" value="다음" >
 		</form>
 	</fieldset>

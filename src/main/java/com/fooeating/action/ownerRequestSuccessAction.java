@@ -19,19 +19,20 @@ public class ownerRequestSuccessAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println(" M : ownerRequestSuccessAction_execute() 호출");
+		 System.out.println(" M : ownerRequestSuccessAction_execute() 호출");
 		
-		// 한글 처리
-		request.setCharacterEncoding("UTF-8");
+		 // 한글 처리
+		 request.setCharacterEncoding("UTF-8");
 		
-		// 세션 정보 저장
-		HttpSession session = request.getSession();
+		 // 세션 정보 저장
+	   	 HttpSession session = request.getSession();
 		
-		String user_id = (String)session.getAttribute("user_id");
+		 String user_id = (String)session.getAttribute("user_id");
 		
-//시작
+		 // 파일업로드 + 상품정보 (파라메터)
 		 ServletContext ctx = request.getServletContext();
 		 String realPath = ctx.getRealPath("/upload");
+		 System.out.println(realPath);
 		 
 		 int maxSize = 5 * 1024 * 1024 ;
 		 System.out.println(realPath);
@@ -61,8 +62,8 @@ public class ownerRequestSuccessAction implements Action {
 		dto.setDayoff(multi.getParameter("dayoff"));
 		dto.setDescriptions(multi.getParameter("descriptions"));
 		dto.setConvenience(multi.getParameter("convenience"));
-		dto.setOutfile(multi.getParameter("outfile"));
-		dto.setInfile(multi.getParameter("infile"));
+		dto.setOutfile(multi.getFilesystemName("outfile"));
+		dto.setInfile(multi.getFilesystemName("infile"));
 		dto.setOwner_user_id(user_id);
 		
 		Restaurant_menuDTO menudto = new Restaurant_menuDTO();
@@ -71,7 +72,8 @@ public class ownerRequestSuccessAction implements Action {
 		menudto.setMenu_descriptions(multi.getParameter("menu_descriptions"));
 		menudto.setPrice(multi.getParameter("price"));
 		menudto.setRest_id(multi.getParameter("rest_id"));
-		menudto.setMeunfile(multi.getParameter("meunfile"));
+	    
+		 menudto.setMeunfile(multi.getFilesystemName("meunfile")); 
 		
 		PublicDAO dao = new PublicDAO();
 		dao.getRestaurant(dto);

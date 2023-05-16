@@ -1374,25 +1374,25 @@ public class PublicDAO {
 				// 1,2 디비연결
 				con = getCon();
 				// 3 sql문 작성
-				sql = "insert into restaurant (outfile,infile,rest_id,name,category,addr_city,addr_district,addr_etc,rest_tel,runtime,dayoff,descriptions,convenience,regdate,status,owner_user_id)"
-						+" values(?,?,?,?,?,?,?,?,?,?,?,?,?,now(),0,?)";
+				sql = "insert into restaurant values(?,?,?,?,?,?,?,?,0,?,false,?,?,?,?,now(),0,0,0,?,?)";
 				
 				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setString(1, dto.getOutfile());
-				pstmt.setString(2, dto.getInfile());
-				pstmt.setString(3, dto.getRest_id());
-				pstmt.setString(4, dto.getName());
-				pstmt.setString(5, dto.getCategory());
-				pstmt.setString(6, dto.getAddr_city());
-				pstmt.setString(7, dto.getAddr_district());
-				pstmt.setString(8, dto.getAddr_etc());
-				pstmt.setString(9, dto.getRest_tel());
-				pstmt.setString(10, dto.getRuntime());
-				pstmt.setString(11, dto.getDayoff());
-				pstmt.setString(12, dto.getDescriptions());
-				pstmt.setString(13, dto.getConvenience());
-				pstmt.setString(14, dto.getOwner_user_id());
+			
+				pstmt.setString(1, dto.getRest_id());
+				pstmt.setString(2, dto.getName());
+				pstmt.setString(3, dto.getDescriptions());
+				pstmt.setString(4, dto.getRest_tel());
+				pstmt.setString(5, dto.getConvenience());
+				pstmt.setString(6, dto.getRuntime());
+				pstmt.setString(7, dto.getRest_notice());
+				pstmt.setString(8, dto.getDayoff());
+				pstmt.setString(9, dto.getOwner_user_id());
+				pstmt.setString(10, dto.getCategory());
+				pstmt.setString(11, dto.getAddr_city());
+				pstmt.setString(12, dto.getAddr_district());
+				pstmt.setString(13, dto.getAddr_etc());
+				pstmt.setString(14, dto.getOutfile());
+				pstmt.setString(15, dto.getInfile());
 		  	    // 4. sql 실행
 				pstmt.executeUpdate();
 				System.out.println("DAO 레스토랑 정보 저장 성공");
@@ -1525,6 +1525,8 @@ public class PublicDAO {
     				dto.setRest_tel(rs.getString("rest_tel"));
     				dto.setRuntime(rs.getString("runtime"));
     				dto.setStatus(rs.getInt("status"));
+    				dto.setOutfile(rs.getString("outfile"));
+    				dto.setInfile(rs.getString("infile"));
       		    }
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -1552,6 +1554,7 @@ public class PublicDAO {
       		    	dto.setMenu_name(rs.getString("menu_name"));
       		    	dto.setPrice(rs.getString("price"));
       		    	dto.setRest_id(rs.getString("rest_id"));
+      		    	dto.setMeunfile(rs.getString("menufile"));
       		    }
 			  
 			} catch (Exception e) {
