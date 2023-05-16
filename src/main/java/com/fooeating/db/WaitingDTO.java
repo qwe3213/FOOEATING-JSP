@@ -21,6 +21,7 @@ public class WaitingDTO {
 	}
 	public void setReview_check(int review_check) {
 		this.review_check = review_check;
+	}
 	
 	public int getPeople() {
 		return people;
