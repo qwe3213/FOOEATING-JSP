@@ -2,8 +2,12 @@
 
 
 
-#sub_menu{width: 238px; float: left;margin: 20px;
-font-family:Verdana,Geneva,sans-serif;font-size:1em  }
+#sub_menu{width: 238px; 
+		  height: 700px;
+		  float: left;
+		  margin: 20px;
+		  font-family:Verdana,Geneva,sans-serif;
+		  font-size:1em  }
 /*너비 238px 정렬 왼쪽 밖여백20px
 글자체 Verdana,Geneva,sans-serif 글자크기 1em*/
 #sub_menu ul{margin: 20px 0 0 10px; list-style: none;

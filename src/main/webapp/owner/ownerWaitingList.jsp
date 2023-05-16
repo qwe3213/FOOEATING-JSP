@@ -63,7 +63,7 @@ int currentPage = (int)request.getAttribute("currentPage");
 String pageNum = (String)request.getAttribute("pageNum");
 
 if(count != 0) {
-	int pageBlock = 1;
+	int pageBlock = 5;
 	int pageCount = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);
 	int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
 	int endPage = startPage + pageBlock - 1;
@@ -103,11 +103,6 @@ if(count != 0) {
 
 </main>
 <!-- main -->
-
-
-
-
-
 
 
 

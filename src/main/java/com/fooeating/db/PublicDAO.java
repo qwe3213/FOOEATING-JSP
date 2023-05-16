@@ -477,6 +477,7 @@ public class PublicDAO {
 				closeDB();
 			}
 			
+			System.out.println(rest_id);
 			return rest_id;
 		}
 
@@ -1113,7 +1114,7 @@ public class PublicDAO {
 			con = getCon();
 			
 			// sql작성 & pstmt객체
-			sql = "select count(*) from waiting rest_id=?";
+			sql = "select count(*) from waiting where rest_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, rest_id);
 			
