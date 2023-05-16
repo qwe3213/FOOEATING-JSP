@@ -51,7 +51,7 @@
 
 <!-- main -->
 <main>
-
+<br><br>
 	<h1>리뷰 관리</h1>
 	<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }">

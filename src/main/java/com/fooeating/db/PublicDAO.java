@@ -99,6 +99,8 @@ public class PublicDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			closeDB();
 		}
 		
 		return result;
@@ -169,6 +171,8 @@ public class PublicDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			closeDB();
 		}
 		
 		return result;
@@ -236,6 +240,8 @@ public class PublicDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally {
+				closeDB();
 			}
 			
 			return result;
@@ -304,6 +310,8 @@ public class PublicDAO {
 				result = pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally {
+				closeDB();
 			}
 			
 			return result;
@@ -709,6 +717,8 @@ public class PublicDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 		
 		return reviewList;
@@ -1031,6 +1041,8 @@ public class PublicDAO {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
 			
 			return likeList;
@@ -1338,6 +1350,8 @@ public class PublicDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
 			
 			return listForm;
@@ -1389,6 +1403,8 @@ public class PublicDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
 			
 			return result;
@@ -1950,6 +1966,8 @@ public class PublicDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
 			
 			return dto;

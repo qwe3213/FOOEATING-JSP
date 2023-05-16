@@ -29,8 +29,8 @@
 
 <!-- main -->
 <main>
-
-	<h1>ownerMainPage_rstcare.jsp</h1>
+<br><br>
+	<h1>나의 가게 정보</h1>
 	
 	<fieldset>
 	<div style="height:240px;">
@@ -74,9 +74,11 @@
 </main>
 <!-- main -->
 
+
 <!-- footer -->
 <jsp:include page="../inc/footer.jsp" />
 <!-- footer -->
+	
 	
 </body>
 </html>
