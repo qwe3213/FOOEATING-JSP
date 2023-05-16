@@ -2135,7 +2135,7 @@ public class PublicDAO {
 		public Restaurant_menuDTO getRestaurantmenuallow(String rest_id) {
 			Restaurant_menuDTO dto = null;
 			 try {
-				 // 1, 2 디비연
+				 // 1, 2 디비연결
 				con = getCon();
 			    // 3. sql문 작성
 				
@@ -2255,6 +2255,34 @@ public class PublicDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		//select * from restaurant_menu where rest_id=?
+		public ReivewDTO OwnergetReview(String user_id) {
+			ReivewDTO dto = null;
+			try {
+			    // 1,2 디비연결
+				con = getCon();
+				// sql 작성
+				sql = "select * from review r where rest_id = (select rest_id from restaurant where owner_user_id = ?);";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1,user_id);
+				rs = pstmt.executeQuery();
+                if(rs.next()) {
+                	dto = new ReivewDTO();
+                 dto.setUser_id(rs.getString("user_id"));
+                 dto.setContent(rs.getString("content"));
+                 dto.setGrade(rs.getInt("grade"));
+                 dto.setName(rs.getString("name"));
+                 dto.setWait_num(rs.getInt("wait_num"));
+                }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return dto;
+			
 		}
 		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
 		
