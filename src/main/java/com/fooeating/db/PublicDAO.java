@@ -17,8 +17,11 @@ public class PublicDAO {
 	// 공통사용 변수
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
+	private PreparedStatement pstmt2 = null;
 	private ResultSet rs = null;
+	private ResultSet rs2 = null;
 	private String sql = "";
+	private String sql2 = "";
 	
 
 	// 1. getCon() 메서드
@@ -1453,6 +1456,8 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
+					dto.setLike_num(rs.getInt("like_num"));
+					
 					listForm.add(dto);
 					
 				}
@@ -1573,6 +1578,7 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
+					
 					listForm.add(dto);
 					
 				}
@@ -1769,7 +1775,7 @@ public class PublicDAO {
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					
+					// 유저 상태 변환
 					sql = "update heart set heart_check=1 where user_id=?" ;
 					pstmt = con.prepareStatement(sql);
 					// ???
@@ -1778,8 +1784,19 @@ public class PublicDAO {
 					// 4. sql 실행
 					pstmt.executeUpdate();
 					
+					// 가게 상태 변환
+					sql = "update restaurant set like_num = like_num+1 where rest_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
 					System.out.println("유저 좋아요 상태 변환");
 				} else {
+					
+					// 유저 상태 변환
 					sql = "insert into heart values (1,?,?)";
 					pstmt = con.prepareStatement(sql);
 					// ???
@@ -1788,6 +1805,16 @@ public class PublicDAO {
 					
 					// 4. sql 실행
 					pstmt.executeUpdate();
+					
+					// 가게 상태 변환
+					sql = "update restaurant set like_num = like_num+1 where rest_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
 					System.out.println("유저 좋아요 상태 추가");
 					
 				}
@@ -1812,11 +1839,20 @@ public class PublicDAO {
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					
+					// 유저 상태 변환
 					sql = "update heart set heart_check=0 where user_id=?" ;
 					pstmt = con.prepareStatement(sql);
 					// ???
 					pstmt.setString(1, user_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					// 가게 상태 변환
+					sql = "update restaurant set like_num = like_num-1 where rest_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
 					
 					// 4. sql 실행
 					pstmt.executeUpdate();

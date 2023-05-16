@@ -203,6 +203,7 @@
 			<th>id</th>
 			<th>등록일</th>
 			<th>휴무일</th>
+			<th>좋아요 수</th>
 <!-- 			<th>조회수</th> -->
 		</tr>
 		
@@ -222,6 +223,7 @@
 			<td>${dto.rest_id}</td>
 			<td>${dto.regdate}</td>
 			<td>${dto.dayoff}</td>
+			<td>${dto.like_num}</td>
 <%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>
