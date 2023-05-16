@@ -72,7 +72,6 @@ public class ownerRequestSuccessAction implements Action {
 		menudto.setMenu_descriptions(multi.getParameter("menu_descriptions"));
 		menudto.setPrice(multi.getParameter("price"));
 		menudto.setRest_id(multi.getParameter("rest_id"));
-	    
 		 menudto.setMeunfile(multi.getFilesystemName("meunfile")); 
 		
 		PublicDAO dao = new PublicDAO();

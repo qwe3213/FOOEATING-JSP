@@ -39,9 +39,13 @@
  	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none;">수정</a>
 		<a href="" style="text-decoration: none;">삭제</a>
    	   </div>
-
-		  <div style="margin-left: 1px">
+		<div style="margin-left: 1px">
+		
 		<table>
+        	<tr>
+			<td><img src="./upload/${restal.outfile}" width="100px"></td>
+			</tr>
+		
 			<tr>
 			<td>상호 : ${restal.name}</td>
 			</tr>
