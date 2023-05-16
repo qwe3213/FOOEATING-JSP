@@ -25,7 +25,7 @@
 		  		<a href="./UserInfoList.ad" class="link_text">마이페이지</a>
 		  	</c:when>
 		  	<c:when test="${user_id.equals(owner_user_id) }">
-		  		<a href="./MyPageOwner.on" class="link_text">마이페이지</a>
+		  		<a href="./OwnerWaitingList.on" class="link_text">마이페이지</a>
 		  	</c:when>
 		  	<c:otherwise>
 		  		<a href="./MyPageMember.foo" class="link_text">마이페이지</a>

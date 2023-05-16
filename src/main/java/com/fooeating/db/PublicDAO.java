@@ -425,22 +425,50 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
-	// 2-1. 회원의 점주 유무 체크
-		public String checkOwnerId(String user_id) {
+	// 2-1. 회원이 점주인지 체크
+	public String checkOwnerId(String user_id) {
+		
+		String owner_user_id = null;
+		
+		try {
+			con = getCon();
 			
-			String owner_user_id = null;
+			sql = "select owner_user_id from restaurant where owner_user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				owner_user_id = rs.getString(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return owner_user_id;
+	}
+	
+	
+	// 2-2. 점주의 rest_id 체크
+		public String checkRestId(String user_id) {
+			
+			String rest_id = null;
 			
 			try {
 				con = getCon();
 				
-				sql = "select owner_user_id from restaurant where owner_user_id=?";
+				sql = "select rest_id from restaurant where owner_user_id=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user_id);
 				
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					owner_user_id = rs.getString("owner_user_id");
+					rest_id = rs.getString("rest_id");
 				}
 				
 			} catch (Exception e) {
@@ -449,7 +477,7 @@ public class PublicDAO {
 				closeDB();
 			}
 			
-			return owner_user_id;
+			return rest_id;
 		}
 
 
@@ -1077,7 +1105,7 @@ public class PublicDAO {
 	}
 	
 	// 1-2. 점주 - 대기 예약 전체 개수
-	public int getWaitingCount(String owner_user_id) {
+	public int getWaitingCount(String rest_id) {
 		
 		int result = 0;
 		
@@ -1087,6 +1115,7 @@ public class PublicDAO {
 			// sql작성 & pstmt객체
 			sql = "select count(*) from waiting rest_id=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, rest_id);
 			
 			// sql실행
 			rs = pstmt.executeQuery();
@@ -1704,11 +1733,22 @@ public class PublicDAO {
 		public void getWaitingNum(String user_id, String rest_id) {
 			try {
 				con = getCon();
-				sql = "insert into waiting (user_id, rest_id, status, regdate) "
-						+ " values (?, ?, 1, now())";
+				
+				// 대기 번호 계산
+				int wait_num = 0;
+				sql = "select max(wait_num) from waiting";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, user_id);
-				pstmt.setString(2, rest_id);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					wait_num = rs.getInt(1) + 1;
+				}
+				
+				sql = "insert into waiting (wait_num, user_id, rest_id, status, regdate) "
+						+ " values (?, ?, ?, 1, now())";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, wait_num);
+				pstmt.setString(2, user_id);
+				pstmt.setString(3, rest_id);
 				
 				pstmt.executeUpdate();
 				
@@ -1755,7 +1795,7 @@ public class PublicDAO {
 		
 		
 		// 점주 - 가게 대기 내역 불러오기
-		public List getWaitingList(String owner_user_id) {
+		public List getWaitingList(String owner_user_id, int startRow, int pageSize) {
 			
 			List waitingList = new ArrayList();
 			
@@ -1767,10 +1807,13 @@ public class PublicDAO {
 						+ "ON u.user_id = w.user_id "
 						+ "WHERE rest_id = (SELECT rest_id "
 						+ "                 FROM restaurant "
-						+ "                 WHERE owner_user_id = ?)";
+						+ "                 WHERE owner_user_id = ?)"
+						+ "order by w.wait_num limit ?,?";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, owner_user_id);
+				pstmt.setInt(2, startRow-1);
+				pstmt.setInt(3, pageSize);
 				
 				rs = pstmt.executeQuery();
 				
@@ -1794,6 +1837,8 @@ public class PublicDAO {
 			return waitingList;
 			
 		}
+		
+
 		
 		
 		

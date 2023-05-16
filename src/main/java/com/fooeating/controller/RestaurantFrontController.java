@@ -108,19 +108,25 @@ public class RestaurantFrontController extends HttpServlet {
 		}
 			 
 		}
+
+
 		
-		
-		// 점주의 마이페이지
-		else if(command.equals("/MyPageOwner.on")) {
-			System.out.println(" C : /MyPageOwner.om 실행");
-			System.out.println(" C : DB사용x, view 페이지 이동(패턴1)");
+		// 점주의 마이페이지 - 가게 관리
+		else if(command.equals("/Main.foo")) {
+			System.out.println("C : /Main.foo 실행");
+			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
 			
-			forward = new ActionForward();
-			forward.setPath("./owner/myPageOwner.jsp");
-			forward.setRedirect(false);
+			action = new OwnerWaitingListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
-		// 마이페이지 - 대기 관리
+		
+		
+		// 점주의 마이페이지 - 대기 관리
 		else if(command.equals("/OwnerWaitingList.on")) {
 			System.out.println("C : /ownerWaitingList.on 실행");
 			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
