@@ -34,7 +34,7 @@
 <!-- header -->
 <jsp:include page="../inc/header.jsp" />
 <!-- header -->
-
+		
 		<h1>상세페이지</h1>
 		
 		<table border="1">
@@ -70,6 +70,10 @@
 		<tr>
 			<th>가게 공지사항</th>
 			<td>${restForm.rest_notice}</td>
+		</tr>
+		<tr>
+			<th>조회수</th>
+			<td>${restForm.read_count}</td>
 		</tr>
 	</table>
 	

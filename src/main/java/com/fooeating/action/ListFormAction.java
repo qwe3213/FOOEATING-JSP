@@ -62,21 +62,21 @@ public class ListFormAction implements Action {
 		
 		
 		// ---------------------------------------------------------------------
-		List<RestaurantDTO> listForm1 = null;
+		List<RestaurantDTO> listForm = null;
 		
 		if(search != null) {
-			listForm1 = dao.getListInfo(startRow, pageSize, search.trim());
+			listForm = dao.getListInfo(startRow, pageSize, search.trim());
 		} else {
-			listForm1 = dao.getListInfo(startRow, pageSize);
+			listForm = dao.getListInfo(startRow, pageSize);
 		}
 		
 		
 		// 페이징 처리 -----------------
 		
-		List<RestaurantDTO> listForm = dao.getListInfo(startRow, pageSize, search);
+//		List<RestaurantDTO> listForm = dao.getListInfo(startRow, pageSize, search);
 		
 		request.setAttribute("listForm", listForm);
-		request.setAttribute("listForm1", listForm1);
+//		request.setAttribute("listForm", listForm);
 		request.setAttribute("count", count);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);

@@ -18,8 +18,9 @@ public class RestaurantFormAction implements Action {
 		
 		// 가게 정보 저장
 		String rest_id = request.getParameter("rest_id");
-		
 		PublicDAO dao = new PublicDAO();
+		
+		dao.getUpdateReadCount(rest_id);
 		RestaurantDTO restForm = dao.getRestaurantForm(rest_id);
 		System.out.println("출력할 가게 : " + restForm);
 		

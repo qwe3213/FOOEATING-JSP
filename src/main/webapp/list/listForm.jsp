@@ -150,9 +150,10 @@
 			<th>id</th>
 			<th>등록일</th>
 			<th>휴무일</th>
+<!-- 			<th>조회수</th> -->
 		</tr>
 		
-		<c:forEach var="dto" items="${requestScope.listForm1 }" varStatus="no">
+		<c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
 	
 		<tr>
 			<td>${no.count}</td>
@@ -168,6 +169,7 @@
 			<td>${dto.rest_id}</td>
 			<td>${dto.regdate}</td>
 			<td>${dto.dayoff}</td>
+<%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>
 	</table>
