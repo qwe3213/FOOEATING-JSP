@@ -94,11 +94,13 @@
 	 
 	 <hr>
 	 
-	 <select style="width:300x; height:30px;">
-	 	<option>리뷰수</option>
-	 	<option>평점수</option>
-	 	<option>좋아요수</option>
+	 
+	 <select id="arr" style="width:300x; height:30px;">
+	 	<option value="review">리뷰수</option>
+	 	<option value="grade">평점수</option>
+	 	<option value="like">좋아요수</option>
 	 </select>
+	 
 	 
 	 
 	 <div id="table_search">
@@ -194,6 +196,7 @@
 			<th>id</th>
 			<th>등록일</th>
 			<th>휴무일</th>
+			<th>좋아요수</th>
 <!-- 			<th>조회수</th> -->
 		</tr>
 		
@@ -213,10 +216,14 @@
 			<td>${dto.rest_id}</td>
 			<td>${dto.regdate}</td>
 			<td>${dto.dayoff}</td>
+			<td>${dto.like_num}</td>
 <%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>
 	</table>
+	
+	
+	
 <%
 		int count = (int)request.getAttribute("count");
 		int pageSize = (int)request.getAttribute("pageSize");
@@ -254,6 +261,10 @@
 	%>
 	
 	</div>
+	
+	
+	
+	
 	
 	<!-- 가게 리스트 끝 -->
 	

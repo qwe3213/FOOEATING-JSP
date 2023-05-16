@@ -45,6 +45,18 @@ public class ListFormAction implements Action {
 			}
 		}
 		
+		// --------------- 정렬 순서
+		
+		String rest_id = request.getParameter("rest_id");
+		dao.listArrayHeart(rest_id);
+		
+		
+		
+		// --------------- 정렬 순서
+		
+		
+		
+		
 		
 //		List<RestaurantDTO> listForm = dao.getlistForm();
 //		System.out.println("회원 수 : " + listForm.size());

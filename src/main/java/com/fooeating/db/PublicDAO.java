@@ -1603,6 +1603,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
+				
 				sql = "select * from restaurant where addr_city = ? and addr_district = ? status = 1"
 						+ " order by regdate desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
@@ -1870,7 +1871,24 @@ public class PublicDAO {
 			return result;
 		}
 
-
+		public void listArrayHeart(String rest_id) {
+			
+			try {
+				con = getCon();
+				sql="select count(heart_check) from  "
+						+ " order by heart desc ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, rest_id);
+				rs = pstmt.executeQuery();
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			}
+			
+		}
+		
+		
+		
 		// -----------------조회수------------------------------
 
         public void getUpdateReadCount (String rest_id) {
