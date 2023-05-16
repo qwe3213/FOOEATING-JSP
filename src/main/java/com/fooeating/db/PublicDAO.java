@@ -1790,7 +1790,36 @@ public class PublicDAO {
 			return result;
 		}
 
+
+		// -----------------조회수------------------------------
+
+        public void getUpdateReadCount (String rest_id) {
+
+
+            try {
+                con = getCon();
+                sql="update restaurant set read_count=read_count+1 "
+                        + " where rest_id =?";
+                pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, rest_id);
+
+                int cnt = pstmt.executeUpdate();
+
+                if (cnt == 1) {
+                    System.out.println(" DAO : 글 조회수 1 증가 완료 !");
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }finally {
+                closeDB();
+            }
+        }
+
+        // -----------------조회수------------------------------
 		
+		/* ================== < 가게리스트 > ======================== */
+
 		
 		public void getRestaurant(RestaurantDTO dto) {
 			try {
