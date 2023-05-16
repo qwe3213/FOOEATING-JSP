@@ -1826,21 +1826,25 @@ public class PublicDAO {
 				// 1,2 디비연결
 				con = getCon();
 				// 3 sql문 작성
-				sql = "insert into restaurant (rest_id,name,category,addr_city,addr_district,addr_etc,rest_tel,runtime,dayoff,descriptions,convenience,regdate,status)"
-						+" values(?,?,?,?,?,?,?,?,?,?,?,now(),0)";
+				sql = "insert into restaurant values(?,?,?,?,?,?,?,?,0,?,false,?,?,?,?,now(),0,0,0,?,?)";
 				
 				pstmt = con.prepareStatement(sql);
+			
 				pstmt.setString(1, dto.getRest_id());
 				pstmt.setString(2, dto.getName());
-				pstmt.setString(3, dto.getCategory());
-				pstmt.setString(4, dto.getAddr_city());
-				pstmt.setString(5, dto.getAddr_district());
-				pstmt.setString(6, dto.getAddr_etc());
-				pstmt.setString(7, dto.getRest_tel());
-				pstmt.setString(8, dto.getRuntime());
-				pstmt.setString(9, dto.getDayoff());
-				pstmt.setString(10, dto.getDescriptions());
-				pstmt.setString(11, dto.getConvenience());
+				pstmt.setString(3, dto.getDescriptions());
+				pstmt.setString(4, dto.getRest_tel());
+				pstmt.setString(5, dto.getConvenience());
+				pstmt.setString(6, dto.getRuntime());
+				pstmt.setString(7, dto.getRest_notice());
+				pstmt.setString(8, dto.getDayoff());
+				pstmt.setString(9, dto.getOwner_user_id());
+				pstmt.setString(10, dto.getCategory());
+				pstmt.setString(11, dto.getAddr_city());
+				pstmt.setString(12, dto.getAddr_district());
+				pstmt.setString(13, dto.getAddr_etc());
+				pstmt.setString(14, dto.getOutfile());
+				pstmt.setString(15, dto.getInfile());
 		  	    // 4. sql 실행
 				pstmt.executeUpdate();
 				System.out.println("DAO 레스토랑 정보 저장 성공");
@@ -1861,14 +1865,15 @@ public class PublicDAO {
 				con = getCon();
 				
 				// 3. sql 작성
-				sql = "insert into restaurant_menu (menu_name,menu_descriptions,price,rest_id) "
-						+ " values(?,?,?,?)";
+				sql = "insert into restaurant_menu (menufile,menu_name,menu_descriptions,price,rest_id) "
+						+ " values(?,?,?,?,?)";
 				
 				pstmt= con.prepareStatement(sql);
-				pstmt.setString(1, menudto.getMenu_name());
-				pstmt.setString(2, menudto.getMenu_descriptions());
-				pstmt.setString(3, menudto.getPrice());
-				pstmt.setString(4, menudto.getRest_id());
+				pstmt.setString(1, menudto.getMeunfile());
+				pstmt.setString(2, menudto.getMenu_name());
+				pstmt.setString(3, menudto.getMenu_descriptions());
+				pstmt.setString(4, menudto.getPrice());
+				pstmt.setString(5, menudto.getRest_id());
 				//4. sql실행
 				pstmt.executeUpdate();
 				
@@ -1948,7 +1953,110 @@ public class PublicDAO {
 		}
 		// 회원id와 가게id, status가 1인 대기 번호가 있는지 확인 - getWaitingCheck()
 		
+		public RestaurantDTO getRestaurantallow(String user_id) {
+			RestaurantDTO dto = null;
+			
+		    try {
+		    	// 1,2 디비연결
+		    	con = getCon();
+		 
+		     	// sql 연결
+      		    sql = "select * from restaurant where owner_user_id=? " ;
+      		    pstmt = con.prepareStatement(sql);
+      		    pstmt.setString(1,user_id);
+      		    rs = pstmt.executeQuery();
+      		    
+      		    if(rs.next()) {
+      		    	dto = new RestaurantDTO();
+      		    	dto.setAddr_city(rs.getString("addr_city"));
+    				dto.setAddr_district(rs.getString("addr_district"));
+    				dto.setAddr_etc(rs.getString("addr_etc"));
+    				dto.setCategory(rs.getString("category"));
+    				dto.setConvenience(rs.getString("convenience"));
+    				dto.setDayoff(rs.getString("dayoff"));
+    				dto.setDescriptions(rs.getString("descriptions"));
+    				dto.setGrade(rs.getInt("grade"));
+    				dto.setLike_num(rs.getInt("like_num"));
+    				dto.setName(rs.getString("name"));
+    				dto.setOn_off(rs.getBoolean("on_off"));
+    				dto.setOwner_user_id(rs.getString("owner_user_id"));
+    				dto.setRead_count(rs.getInt("read_count"));
+    				dto.setRegdate(rs.getTimestamp("regdate"));
+    				dto.setRest_id(rs.getString("rest_id"));
+    				dto.setRest_notice(rs.getString("rest_notice"));
+    				dto.setRest_tel(rs.getString("rest_tel"));
+    				dto.setRuntime(rs.getString("runtime"));
+    				dto.setStatus(rs.getInt("status"));
+    				dto.setOutfile(rs.getString("outfile"));
+    				dto.setInfile(rs.getString("infile"));
+      		    }
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+		    return dto;
+		}
 		
+		public Restaurant_menuDTO getRestaurantmenuallow(String rest_id) {
+			Restaurant_menuDTO dto = null;
+			 try {
+				 // 1, 2 디비연
+				con = getCon();
+			    // 3. sql문 작성
+				
+				sql= "select * from restaurant_menu where rest_id=?";
+			    pstmt = con.prepareStatement(sql);
+      		    pstmt.setString(1,rest_id);
+      		    rs = pstmt.executeQuery();
+      		    if(rs.next()) {
+      		    	dto = new Restaurant_menuDTO();
+      		    	dto.setMenu_descriptions(rs.getString("menu_descriptions"));
+      		    	dto.setMenu_name(rs.getString("menu_name"));
+      		    	dto.setPrice(rs.getString("price"));
+      		    	dto.setRest_id(rs.getString("rest_id"));
+      		    	dto.setMeunfile(rs.getString("menufile"));
+      		    }
+			  
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return dto;
+		}
+		
+		public void getRestaurantUpdate(RestaurantDTO restal) {
+		
+			
+			try {
+				// 1,2 디비연결 
+				con = getCon();
+				// 3.sql문작성
+				sql ="update restaurant set name=?, convenience=?, dayoff=?, runtime=?, descriptions=?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, restal.getName());
+				pstmt.setString(2, restal.getConvenience());
+				pstmt.setString(3, restal.getDayoff());
+				pstmt.setString(4, restal.getRuntime());
+				pstmt.setString(5, restal.getDescriptions());
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+
+		}
+		//getRestaurantallow
+
 		// 점주 - 가게 대기 내역 불러오기
 		public List getWaitingList(String owner_user_id, int startRow, int pageSize) {
 			
@@ -1994,8 +2102,6 @@ public class PublicDAO {
 		}
 		
 
-		
-		
 		
 		/* ================== < 가게리스트 > ======================== */
 		
