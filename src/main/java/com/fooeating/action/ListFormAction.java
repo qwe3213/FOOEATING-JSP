@@ -23,21 +23,27 @@ public class ListFormAction implements Action {
 		// 검색어 search(파라미터) 정보를 저장
 		String search = request.getParameter("search");
 		System.out.println("search : " + search);
-		
+		String addr_city = request.getParameter("addr_city");
+		String addr_district = request.getParameter("addr_district");
+		System.out.println("addr : " + addr_city + ", " + addr_district);
 		
 		PublicDAO dao = new PublicDAO();
 		
 		int count = 0;
 
-		if(search != null) { // 검색어 있을 때
+		if(search != null) { // 검색어만 있을 때
 			count = dao.getListCount(search.trim());
-		} else {// 검색어 없을 때
-			count = dao.getListCount();
+			
+			if (addr_city != null && addr_district != null) {	// 검색어가 있으면서 지역까지 있을 때
+				count = dao.getListCount(search.trim(), addr_city, addr_district);
+			}
+		} else {
+			if (addr_city != null && addr_district != null) {	// 검색어는 없고 지역만 있을 때
+				count = dao.getListCount(addr_city, addr_district);
+			} else {	// 검색어도 지역도 없을 때
+				count = dao.getListCount();
+			}
 		}
-		
-		System.out.println("M : 총 글의 수 : " + count);
-		
-		
 		
 		
 //		List<RestaurantDTO> listForm = dao.getlistForm();
@@ -66,21 +72,28 @@ public class ListFormAction implements Action {
 		
 		if(search != null) {
 			listForm = dao.getListInfo(startRow, pageSize, search.trim());
+			
+			if (addr_city != null && addr_district != null) {	// 검색어가 있으면서 지역까지 있을 때
+				listForm = dao.getListInfo(startRow, pageSize, search.trim(), addr_city, addr_district);
+			}
 		} else {
-			listForm = dao.getListInfo(startRow, pageSize);
+			if (addr_city != null && addr_district != null) {	// 지역만 있을 때
+				listForm = dao.getListInfo(startRow, pageSize, addr_city, addr_district);
+			} else {
+				listForm = dao.getListInfo(startRow, pageSize);
+			}
 		}
 		
-		
-		// 페이징 처리 -----------------
-		
-//		List<RestaurantDTO> listForm = dao.getListInfo(startRow, pageSize, search);
+		System.out.println("listForm : " + listForm.toString());
+		// ---------------------------------------------------------------------
+
 		
 		request.setAttribute("listForm", listForm);
-//		request.setAttribute("listForm", listForm);
 		request.setAttribute("count", count);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pno", pno);
+		
 		// 연결된 view에 출력
 		forward.setPath("./list/listForm.jsp");
 		forward.setRedirect(false);

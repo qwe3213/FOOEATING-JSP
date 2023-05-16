@@ -16,6 +16,7 @@ import com.fooeating.member.action.IdCheckAction;
 import com.fooeating.member.action.MemberCancelWaiting;
 import com.fooeating.member.action.MemberDeleteAction;
 import com.fooeating.member.action.MemberJoinAction;
+import com.fooeating.member.action.MemberLikeList;
 import com.fooeating.member.action.MemberLoginAction;
 import com.fooeating.member.action.MemberLogoutAction;
 import com.fooeating.member.action.MemberUpdateAction;
@@ -449,7 +450,23 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		} 
+		// 10 회원 찜한매장 목록 가져가기
+		
+		else if (command.equals("/MemberLike.foo")) {
+			System.out.println(" C : /MemberLike.foo 호출 ");
+			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+
+			// MyReviewAction() 객체
+			action = new MemberLikeList();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 
 		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 

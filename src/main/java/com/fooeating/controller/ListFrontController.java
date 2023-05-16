@@ -12,7 +12,8 @@ import com.fooeating.action.ListFormAction;
 import com.fooeating.action.ListSearchAction;
 import com.fooeating.action.MapFormAction;
 import com.fooeating.action.RestaurantFormAction;
-import com.fooeating.action.RestaurantInfoAction;
+import com.fooeating.action.RestaurantInfoHeartAdd;
+import com.fooeating.action.RestaurantInfoHeartRemove;
 import com.fooeating.action.WaitingCheckProAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -178,6 +179,32 @@ public class ListFrontController extends HttpServlet {
 			forward.setPath("./list/waitingCheckResult.jsp");
 			forward.setRedirect(false);
 		}
+		
+		// 가게 상세페이지 유저가 빈하트 클릭 시 기능
+		else if (command.equals("/RestaurantInfoHeartAdd.fd")) {
+			System.out.println(" C : /RestaurantInfoHeartAdd.fd 실행");
+			
+			action = new RestaurantInfoHeartAdd();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 가게 상세페이지 유저가 꽉찬하트 클릭 시 기능
+				else if (command.equals("/RestaurantInfoHeartRemove.fd")) {
+					System.out.println(" C : /RestaurantInfoHeartRemove.fd 실행");
+					
+					action = new RestaurantInfoHeartRemove();
+
+					try {
+						forward = action.execute(request, response);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 
 
 

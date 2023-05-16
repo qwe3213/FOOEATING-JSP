@@ -61,6 +61,7 @@
 				<form action="./RestaurantInfo.ad" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<input type="hidden" name="rest_id" value="${dto.rest_id}">
+					<input type="hidden" name="rstatus" value="no">
 					<input type="submit" value="상세보기">
 				</form>
 			</td>
@@ -85,17 +86,17 @@
 			
 			if(startPage > pageBlock) {
 	%>
-				<a href="./RestaurantList.ad?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+				<a href="./RestaurantWaitList.ad?pageNum=<%=startPage - pageBlock%>">[이전]</a>
 	<%
 			}
 			for(int i = startPage; i <= endPage; i++) {
 	%>
-				<a href="./RestaurantList.ad?pageNum=<%=i%>">[<%=i%>]</a>
+				<a href="./RestaurantWaitList.ad?pageNum=<%=i%>">[<%=i%>]</a>
 	<%
 			}
 			if(endPage < pageCount) {
 	%>
-				<a href="./RestaurantList.ad?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+				<a href="./RestaurantWaitList.ad?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 	<%
 			}
 		}
