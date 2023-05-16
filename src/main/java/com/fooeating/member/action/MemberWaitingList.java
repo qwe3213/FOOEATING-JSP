@@ -21,25 +21,27 @@ public class MemberWaitingList implements Action {
 				
 				// 세션정보 제어
 				HttpSession session = request.getSession();
-				String id = (String)session.getAttribute("user_id");
+				String user_id = (String)session.getAttribute("user_id");
 				
 				ActionForward forward = new ActionForward();
 				
-				if(id == null) {
+				if(user_id == null) {
 					forward.setPath("./MemberLogin.foo");
 					forward.setRedirect(true);
 					return forward;
 				}
-				// 공지사항 게시글 저장
+				
+				// 대기리스트 정보 저장
+				
 				PublicDAO dao = new PublicDAO();
 				
-				WaitingDTO wDto = dao.getWaiting(id);
+				WaitingDTO wDto = dao.getWaiting(user_id);
 				WaitingDTO qDto = null;
 				if(wDto != null) {
-				qDto = dao.getQueue(wDto.getRest_id(),wDto.getWait_num());
+				qDto = dao.getQueue(wDto.getRest_id(),user_id);
 				}
 				
-				List<WaitingDTO> queueHistory = dao.getMemberQueueHistory(id);
+				List<WaitingDTO> queueHistory = dao.getMemberQueueHistory(user_id);
 				
 				request.setAttribute("queueHistory", queueHistory);
 				request.setAttribute("wDto", wDto);

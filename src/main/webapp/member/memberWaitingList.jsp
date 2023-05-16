@@ -54,6 +54,7 @@
 		 현재 줄서기 중인 가게가 없습니다!
 		</c:if>
 		<c:if test="${!empty wDto.wait_num }">
+			<h2>대기 중인 가게</h2>
 			<table border="1">
 				<tr>
 					<td>가게명</td>
@@ -73,6 +74,7 @@
 		</c:if>
 		<br> <br> <br>
 		<hr>
+		<h2>과거 대기 내역</h2>
 		<c:forEach var="list" items="${queueHistory}">
 			<table border="1">
 				<tr>
@@ -85,9 +87,20 @@
 				</tr>
 			</table>
 			<c:if test="${list.review_check == 1 }">
-				<button onclick="winopen(${list.wait_num})">리뷰 작성</button>			
+			<script>
+   				var currentDate = new Date();  // 현재 날짜
+    			var reviewDate = new Date('${list.regdate}');  // 리뷰 작성 가능한 날짜
+    			var threeDaysLater = new Date(reviewDate.setDate(reviewDate.getDate() + 3));  // 리뷰 작성 가능한 날짜로부터 3일 뒤의 날짜
+
+   				if (currentDate <= threeDaysLater) {
+      				document.write('<button onclick="winopen(${list.wait_num})">리뷰 작성</button>');
+    			} else {
+      			// 작성 가능한 날짜 이전이므로 버튼을 비활성화하거나 보여주지 않음
+    			}
+  			</script>
 			</c:if>
 			<hr>
+		
 		</c:forEach>
 	</main>
 	<!-- main -->
