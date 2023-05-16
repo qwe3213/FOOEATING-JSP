@@ -15,7 +15,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
 	
-		$('document').ready(function(){
+// 		$('document').ready(function(){
 // 	        var area0 = ["시/도 선택", "서울광역시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","강원도","경상남도","경상북도","전라남도"];
 // 	        var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
 // 	        var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
@@ -56,7 +56,7 @@
 // 			});
 
 
-	});
+// 	});
 
 		
 
@@ -82,15 +82,18 @@
 <!-- 		</div> -->
 	 
 	
-	<select name="sido1" id="sido1" style="width:500x; height:50px;"></select>
-	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select>
+<!-- 	<select name="sido1" id="sido1" style="width:500x; height:50px;"></select> -->
+<!-- 	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select> -->
 	 
 	 
-	 <input type="checkbox" > 한식 
-	 <input type="checkbox" > 양식 
-	 <input type="checkbox" > 중식 
-	 <input type="checkbox" > 일식 
-	 <input type="checkbox" > 디저트 
+<!-- 	 <input type="checkbox" > 한식  -->
+<!-- 	 <input type="checkbox" > 양식  -->
+<!-- 	 <input type="checkbox" > 중식  -->
+<!-- 	 <input type="checkbox" > 일식  -->
+<!-- 	 <input type="checkbox" > 디저트  -->
+	 
+	 
+	 
 	 
 	 <hr>
 	 
@@ -108,7 +111,7 @@
 				<select id="addr_city" name="addr_city" onchange="addrChange(this)">
 					<option>시/도 선택</option>
 					<option value="서울특별시" <c:if test="${param.addr_city.equals('서울특별시')}">selected</c:if>>서울</option>
-					<option value="부산광역시" <c:if test="${param.addr_city.equals('부산광역시')}">selected</c:if>>부산</option>
+					<option value="부산" <c:if test="${param.addr_city.equals('부산광역시')}">selected</c:if>>부산</option>
 					<option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
 				</select>
 			</div>
@@ -132,8 +135,7 @@
 		
 		<style>
 		.myDiv{
-			display: none;
-			}
+			display : block;}
 		</style>
 
  <script>
@@ -158,12 +160,12 @@
  
  function addrChange(e) {
 		var 서울특별시 = ["강남", "홍대", "여의도"];
-		var 부산광역시 = ["북구", "부산진구", "동래구"];
+		var 부산 = ["북구", "부산진구", "동래구"];
 		var 경상남도 = ["김해", "창원", "양산"];
 		var target = document.getElementById("addr_district")
 		
 		if (e.value == "서울특별시") var addr_d = 서울특별시;
-		else if (e.value == "부산광역시") var addr_d = 부산광역시;
+		else if (e.value == "부산") var addr_d = 부산;
 		else if (e.value == "경상남도") var addr_d = 경상남도;
 		
 		target.options.length = 0;
@@ -184,7 +186,8 @@
 
 			<!-- 가게 리스트 시작-->
 		
-		<div id="list" class="myDiv">
+<!-- 		<div id="list" class="myDiv"> -->
+		<div id="list" class="myDiv"><script id="list" class="myDiv"></script>
 		<table border="1">
 		<tr>
 			<th>No.</th>
@@ -194,6 +197,7 @@
 			<th>id</th>
 			<th>등록일</th>
 			<th>휴무일</th>
+			<th>외관사진</th>
 <!-- 			<th>조회수</th> -->
 		</tr>
 		
@@ -213,6 +217,7 @@
 			<td>${dto.rest_id}</td>
 			<td>${dto.regdate}</td>
 			<td>${dto.dayoff}</td>
+<%-- 			<td>${dto.outfile}</td> --%>
 <%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>
@@ -265,14 +270,14 @@
 
 <!-- <div id="myDiv" style="width:100%;height:350px;display: none;"> -->
 
-<div id="map" class="myDiv" style="width:100%;height:350px;">
+<div id="map" class="myDiv" style="width:400x;height:300px;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(35.1584952142483, 129.06199399191797), // 지도의 중심좌표
-//         level: 0 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(35.1584952142483, 129.06199399191797)// 지도의 중심좌표
+//         level: 3 // 지도의 확대 레벨
     };  
 
 // 지도를 생성 
@@ -300,10 +305,13 @@ geocoder.addressSearch('부산 부산진구 중앙대로 672', function(result, 
             content: '<div style="width:150px;text-align:center;padding:6px 0;">삼정타워</div>'
         });
         infowindow.open(map, marker);
+        
 
         // 지도의 중심을 결과값으로 받은 위치로 이동
         map.setCenter(coords);
+
     } 
+        map.relayout();
 });    
 
 geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, status) {
@@ -324,17 +332,21 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
             content: '<div style="width:150px;text-align:center;padding:6px 0;">롯데백화점</div>'
         });
         infowindow.open(map, marker);
-
+        
         // 지도의 중심을 결과값으로 받은 위치로 이동
         map.setCenter(coords);
+        
+
+
     } 
+        map.relayout();
 });
 
 </script>
 
 </div>
 
-	
+
 	<!-- 카카오맵 API 끝 -->
 
                  

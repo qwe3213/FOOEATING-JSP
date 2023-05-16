@@ -1541,6 +1541,8 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
+//					dto.setOutfile(rS.GETString("putf"));
+//					
 					listForm.add(dto);
 					
 				}
