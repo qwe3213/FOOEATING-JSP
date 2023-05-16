@@ -697,7 +697,7 @@ public class PublicDAO {
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 		try {
 			con = getCon();
-			sql = "select re.review_num, r.name, r.grade, re.regdate, re.content from restaurant r "
+			sql = "select re.review_num, r.name, re.grade, re.regdate, re.content from restaurant r "
 					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -932,7 +932,7 @@ public class PublicDAO {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
-			sql = "select w.user_id,r.name, w.regdate from waiting w join restaurant r on w.rest_id = r.rest_id "
+			sql = "select w.user_id,r.name, w.regdate, w.wait_num, w.review_check from waiting w join restaurant r on w.rest_id = r.rest_id "
 					+ " where w.user_id = ? and w.status ='2' ";
 			pstmt = con.prepareStatement(sql);
 			// ??
@@ -947,7 +947,8 @@ public class PublicDAO {
 				
 				dto.setRest_name(rs.getString("name"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-				
+				dto.setWait_num(rs.getInt("wait_num"));
+				dto.setReview_check(rs.getInt("review_check"));
 				queueHistory.add(dto);
 			} // while
 			
@@ -1047,6 +1048,68 @@ public class PublicDAO {
 			
 			return likeList;
 		}
+		
+	// 9.회원 리뷰 작성 시 해당 가게 정보 가져가기
+	public WaitingDTO getWaitRestaurant(int wait_num) {
+		WaitingDTO dto = null;
+		try {
+			con = getCon();
+			sql = "select w.rest_id, r.name from waiting w join restaurant r on "
+					+ " w.rest_id = r.rest_id where wait_num =?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,wait_num);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto = new WaitingDTO();
+				dto.setRest_name(rs.getString("name"));
+				dto.setRest_id(rs.getString("rest_id"));
+				dto.setWait_num(wait_num);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+		
+	}
+	
+	// 10. 회원 리뷰 작성 정보 디비에 저장
+	public void reviewWriteAction(ReivewDTO dto) {
+		try {
+			// 1,2 디비연결
+			con = getCon();
+			// 3 sql문 작성
+			sql = "insert into review (user_id, content, regdate, rest_id, wait_num, grade) values "
+					+ " (?,?,now(),?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getRest_id());
+			pstmt.setInt(4, dto.getWait_num());
+			pstmt.setInt(5, dto.getGrade());
+			
+	  	    // 4. sql 실행
+			pstmt.executeUpdate();
+			System.out.println("DAO : 리뷰 작성 성공!");
+			
+			sql = "update waiting set review_check=2 where wait_num=?"; 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getWait_num());
+			// sql 실행
+			pstmt.executeUpdate();
+			
+			System.out.println("DAO : 리뷰 작성 후 대기리스트 리뷰작성 버튼 없애기");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+	
+	}
+	
 	
 	
 	

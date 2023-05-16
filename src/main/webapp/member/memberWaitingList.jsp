@@ -22,6 +22,13 @@
 			return false;
 		}
 	}
+	function winopen(wait_num){
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height /2) - (300 / 2);
+		window.open("ReviewWrite.foo?wait_num="+wait_num+"","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		
+	}
+	
 </script>
 
 </head>
@@ -77,6 +84,10 @@
 					<td>${list.regdate}</td>
 				</tr>
 			</table>
+			<c:if test="${list.review_check == 1 }">
+				<button onclick="winopen(${list.wait_num})">리뷰 작성</button>			
+			</c:if>
+			<hr>
 		</c:forEach>
 	</main>
 	<!-- main -->

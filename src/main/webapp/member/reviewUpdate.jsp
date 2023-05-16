@@ -19,7 +19,7 @@
 		
 		<table border="1">
 		<tr>
-			<td colspan="2">가명 : ${dto.name }</td>
+			<td colspan="2">가게명 : ${dto.name }</td>
 		</tr>	
 		<tr>
 			<td>별점 : ${dto.grade }</td>

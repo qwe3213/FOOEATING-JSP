@@ -11,8 +11,22 @@ public class ReivewDTO {
 	private String rest_id;
 	private String name;
 	private int grade;
+	private int wait_num;
+	public int getWait_num() {
+		return wait_num;
+	}
+	public void setWait_num(int wait_num) {
+		this.wait_num = wait_num;
+	}
+	private int review_check;
 	
 
+	public int getReview_check() {
+		return review_check;
+	}
+	public void setReview_check(int review_check) {
+		this.review_check = review_check;
+	}
 	public String getName() {
 		return name;
 	}
