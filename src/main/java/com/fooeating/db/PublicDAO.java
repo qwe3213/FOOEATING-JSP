@@ -1344,7 +1344,7 @@ public class PublicDAO {
 
 		
 		public List<RestaurantDTO> getListInfo(int startRow, int pageSize) {
-			List<RestaurantDTO> listForm1 = new ArrayList<RestaurantDTO>();
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
 			
 			try {
 				con = getCon();
@@ -1362,7 +1362,7 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
-					listForm1.add(dto);
+					listForm.add(dto);
 					
 				}
 			} catch (Exception e) {
@@ -1371,7 +1371,7 @@ public class PublicDAO {
 				closeDB();
 			}
 			
-			return listForm1;
+			return listForm;
 		}
 		
 		// getListCount()
@@ -1434,7 +1434,7 @@ public class PublicDAO {
 			return dto;
 		}
 		
-		// getListCount(search)
+		// 상호명 검색 - getListCount(search)
 		public int getListCount(String search) {
 			int result = 0;
 			
@@ -1455,9 +1455,10 @@ public class PublicDAO {
 			
 			return result;
 		}
-		// getListCount(search)
+		// 상호명 검색 - getListCount(search)
 		
-		public List<RestaurantDTO> getListInfo(int startRow, int pageSize ,String search) {
+		// 상호명 검색 시 페이징 처리
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize, String search) {
 			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
 			
 			try {
@@ -1490,6 +1491,131 @@ public class PublicDAO {
 			
 			return listForm;
 		}
+		// 상호명 검색 시 페이징 처리
+		
+		// 지역 필터 - getListCount(addr)
+		public int getListCount(String addr_city, String addr_district) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where addr_city = ? and addr_district = ? and status = 1";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, addr_city);
+				pstmt.setString(2, addr_district);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return result;
+		}
+		// 지역 필터 - getListCount(addr)
+		
+		// 지역 필터 시 페이징 처리
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize ,String addr_city, String addr_district) {
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant where addr_city = ? and addr_district = ? status = 1"
+						+ " order by regdate desc limit ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, addr_city);
+				pstmt.setString(2, addr_district);
+				pstmt.setInt(3, startRow - 1);
+				pstmt.setInt(4, pageSize);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setName(rs.getString("name"));
+					dto.setRest_id(rs.getString("rest_id"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setDayoff(rs.getString("dayoff"));
+					listForm.add(dto);
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return listForm;
+		}
+		// 지역 필터 시 페이징 처리
+		
+		// 상호명 검색 + 지역 필터 - getListCount(search, addr)
+		public int getListCount(String search, String addr_city, String addr_district) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where name like ? and addr_city = ? and addr_district = ? and status = 1";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + search + "%");
+				pstmt.setString(2, addr_city);
+				pstmt.setString(3, addr_district);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return result;
+		}
+		// 상호명 검색 + 지역 필터 - getListCount(search, addr)
+		
+		// 상호명 검색 + 지역 필터 페이징 처리
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize, String search, String addr_city, String addr_district) {
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant where name like ? and addr_city = ? and addr_district = ? and status = 1 "
+						+ "order by regdate desc limit ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + search + "%");
+				pstmt.setString(2, addr_city);
+				pstmt.setString(3, addr_district);
+				pstmt.setInt(4, startRow - 1);
+				pstmt.setInt(5, pageSize);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setName(rs.getString("name"));
+					dto.setRest_id(rs.getString("rest_id"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setDayoff(rs.getString("dayoff"));
+					listForm.add(dto);
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return listForm;
+		}
+		// 상호명 검색 + 지역 필터 페이징 처리
 		
 		
 		
