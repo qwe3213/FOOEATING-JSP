@@ -6,21 +6,26 @@
 
 <header class="header-area header-sticky">
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <div class="col-12">
                 <nav class="main-nav">
                 
                     <!-- ***** 로고 Start ***** -->
-                    <a href="./Main.foo" class="logo">
-                        <img src="./img/logo.png" width="100px">
-                    </a>
+<!--                     <a href="./Main.foo" class="logo"> -->
+<!--                         <img src="./img/푸이팅.png" width="113px"> -->
+<!--                     </a> -->
                     <!-- ***** 로고 End***** -->
                     
                     <!-- ***** 메뉴 Start ***** -->
-                    <ul class="nav" style="float: left;">
+                    <ul class="nav">
                         <li class="scroll-to-section"><a href="./Main.foo" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="./listForm.fd">Category</a></li>
-                       		 
+                    </ul>
+                       	<!-- ***** 로고 Start ***** -->
+                       	<a href="./Main.foo" class="logo">
+                        	<img src="./img/푸이팅.png" width="113px">
+	                    </a>
+	                    <!-- ***** 로고 End***** -->
                        		 <!-- 드롭다운 목록 -->
 <!--                             <li class="submenu"> -->
 <!--                                 <a href="javascript:;">Drop Down</a> -->
@@ -30,7 +35,7 @@
 <!--                                     <li><a href="#">Drop Down Page 3</a></li> -->
 <!--                                 </ul> -->
 <!--                             </li> -->
-                    
+                    <ul class="nav" style="margin-left: 0px;">
                         <li class="scroll-to-section"><a href="#">Pudding</a></li>
                         <li class="scroll-to-section"><a href="./NoticeList.foo">Notice</a></li>
                     </ul>

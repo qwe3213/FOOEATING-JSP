@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="logo">
-                    <a href="./Main.foo"><img src="./img/logo.png"  width="100px" alt=""></a>
+                    <a href="./Main.foo"><img src="./img/푸이팅.png"  width="100px" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-4 col-xs-12">
