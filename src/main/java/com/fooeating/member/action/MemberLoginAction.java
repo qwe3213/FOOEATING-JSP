@@ -3,11 +3,11 @@ package com.fooeating.member.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
+import com.fooeating.db.RestaurantDTO;
 import com.fooeating.db.UserDTO;
 
 
@@ -30,6 +30,7 @@ public class MemberLoginAction implements Action {
 		// DAO의 memberLogin(dto) 메서드 호출하여 리턴값 result에 저장
 		PublicDAO dao = new PublicDAO();
 		int result = dao.memberLogin(dto);
+	
 		
 		// result 값에 따른 페이지 이동
 		if(result == -1) {
@@ -49,7 +50,15 @@ public class MemberLoginAction implements Action {
 		HttpSession session = request.getSession();
 		session.setAttribute("user_id", dto.getUser_id());
 		
-		// 2) Main.poo 페이지 이동
+		// 2) 회원이 점주인지 체크
+		String owner_user_id = dao.checkOwnerId(request.getParameter("user_id"));
+		
+		if(owner_user_id != null) {
+			session.setAttribute("owner_user_id", owner_user_id);
+			System.out.println(owner_user_id);
+		}
+		
+		// 3) Main.poo 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Main.foo");
 		forward.setRedirect(true);

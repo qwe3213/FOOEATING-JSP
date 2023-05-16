@@ -11,7 +11,31 @@ public class WaitingDTO {
 	private int status;
 	private Timestamp regdate;
 	private int wait_team;
+	private String name;
+	private String phone;
+	private int people;
 	
+	
+	
+	
+	public int getPeople() {
+		return people;
+	}
+	public void setPeople(int people) {
+		this.people = people;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public int getWait_team() {
 		return wait_team;
 	}
@@ -54,6 +78,11 @@ public class WaitingDTO {
 	}
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
+	}
+	@Override
+	public String toString() {
+		return "WaitingDTO [wait_num=" + wait_num + ", user_id=" + user_id + ", rest_id=" + rest_id + ", rest_name="
+				+ rest_name + ", status=" + status + ", regdate=" + regdate + ", wait_team=" + wait_team + "]";
 	}
 	
 }

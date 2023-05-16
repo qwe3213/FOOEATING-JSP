@@ -157,6 +157,7 @@ public class RestaurantDTO {
 	public void setInfile(String infile) {
 		this.infile = infile;
 	}
+
 	@Override
 	public String toString() {
 		return "RestaurantDTO [rest_id=" + rest_id + ", name=" + name + ", descriptions=" + descriptions + ", rest_tel="
@@ -164,8 +165,7 @@ public class RestaurantDTO {
 				+ ", dayoff=" + dayoff + ", status=" + status + ", owner_user_id=" + owner_user_id + ", on_off="
 				+ on_off + ", category=" + category + ", addr_city=" + addr_city + ", addr_district=" + addr_district
 				+ ", addr_etc=" + addr_etc + ", regdate=" + regdate + ", read_count=" + read_count + ", like_num="
-				+ like_num + ", grade=" + grade + ", waitdto=" + waitdto + ", outfile=" + outfile + ", infile=" + infile
-				+ "]";
+				+ like_num + ", grade=" + grade + ", waitdto=" + waitdto + "]";
 	}
 	
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fooeating.action.OwnerMainPageRstcareAction;
 import com.fooeating.action.RestaurantUpdateAction;
 import com.fooeating.action.RestaurantUpdateProAction;
+import com.fooeating.action.OwnerWaitingListAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -107,6 +108,36 @@ public class RestaurantFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 			 
+		}
+
+
+		
+		// 점주의 마이페이지 - 가게 관리
+		else if(command.equals("/Main.foo")) {
+			System.out.println("C : /Main.foo 실행");
+			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
+			
+			action = new OwnerWaitingListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		// 점주의 마이페이지 - 대기 관리
+		else if(command.equals("/OwnerWaitingList.on")) {
+			System.out.println("C : /ownerWaitingList.on 실행");
+			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
+			
+			action = new OwnerWaitingListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
