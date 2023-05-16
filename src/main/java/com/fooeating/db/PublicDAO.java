@@ -1886,7 +1886,7 @@ public class PublicDAO {
 		
 		
 		// 대기 번호 생성 후 번호 반환 - getWaitingNum()
-		public void getWaitingNum(String user_id, String rest_id) {
+		public void getWaitingNum(String user_id, String rest_id, int people) {
 			try {
 				con = getCon();
 				
@@ -1899,12 +1899,13 @@ public class PublicDAO {
 					wait_num = rs.getInt(1) + 1;
 				}
 				
-				sql = "insert into waiting (wait_num, user_id, rest_id, status, regdate) "
-						+ " values (?, ?, ?, 1, now())";
+				sql = "insert into waiting (wait_num, user_id, rest_id, people, status, regdate) "
+						+ " values (?, ?, ?, ?, 1, now())";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, wait_num);
 				pstmt.setString(2, user_id);
 				pstmt.setString(3, rest_id);
+				pstmt.setInt(4, people);
 				
 				pstmt.executeUpdate();
 				
@@ -1940,6 +1941,7 @@ public class PublicDAO {
 					dto.setRest_id(rs.getString("rest_id"));
 					dto.setStatus(rs.getInt("status"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setPeople(rs.getInt("people"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
