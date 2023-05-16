@@ -731,7 +731,7 @@ public class PublicDAO {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
-			sql = "select re.review_num, r.name, r.grade, re.user_id, re.content "
+			sql = "select re.review_num, r.name, re.grade, re.user_id, re.content "
 					+ "from restaurant r " 
 					+ "join review re on r.rest_id  = re.rest_id where re.user_id = ? and re.review_num =?";
 			pstmt = con.prepareStatement(sql);

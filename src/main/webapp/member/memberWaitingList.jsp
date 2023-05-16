@@ -54,6 +54,7 @@
 		 현재 줄서기 중인 가게가 없습니다!
 		</c:if>
 		<c:if test="${!empty wDto.wait_num }">
+			<h2>대기 중인 가게</h2>
 			<table border="1">
 				<tr>
 					<td>가게명</td>
@@ -73,6 +74,7 @@
 		</c:if>
 		<br> <br> <br>
 		<hr>
+		<h2>과거 대기 내역</h2>
 		<c:forEach var="list" items="${queueHistory}">
 			<table border="1">
 				<tr>
