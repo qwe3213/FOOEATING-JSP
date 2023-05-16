@@ -22,11 +22,12 @@
 	<!-- header -->
 
 	<!-- sideMenu -->
-	<jsp:include page="../inc/sideMenu.jsp" />
+	<jsp:include page="../inc/sideMenuMember.jsp" />
 	<!-- sideMenu -->
 
 	<!-- main -->
 	<main>
+	<br><br>
 
 		<h1>찜한 매장</h1>
 		<!-- 로그인 세션 제어 -->
@@ -38,8 +39,8 @@
 		<c:forEach var="dto" items="${likeList}">
 			<table border="1">
 				<tr>
-					<td colspan="2"><a
-						href="./restaurantForm.fd?rest_id=${dto.rest_id}">${dto.name }</td>
+					<td colspan="2">
+					<a href="./restaurantForm.fd?rest_id=${dto.rest_id}">${dto.name }</a></td>
 				</tr>
 				<tr>
 					<td colspan="2">${dto.rest_tel }</td>

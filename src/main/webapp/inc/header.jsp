@@ -11,7 +11,6 @@
 		<div class="links">
 		  <a href="./MemberLogin.foo" class="link_text">로그인</a>
 		  <a href="./MemberJoin.foo" class="link_text">회원가입</a>
-		  <a href="./ownerChangeForm.on" class="link_text">사업자등록</a>
 		</div>
 	</c:if>
 	
@@ -26,10 +25,10 @@
 		  		<a href="./UserInfoList.ad" class="link_text">마이페이지</a>
 		  	</c:when>
 		  	<c:when test="${user_id.equals(owner_user_id) }">
-		  		<a href="./Main.foo" class="link_text">마이페이지</a>
+		  		<a href="./OwnerWaitingList.on" class="link_text">마이페이지</a>
 		  	</c:when>
 		  	<c:otherwise>
-		  		<a href="./MyPageMember.foo" class="link_text">마이페이지</a>
+		  		<a href="./MemberWaitingList.foo" class="link_text">마이페이지</a>
 		  	</c:otherwise>
 		  </c:choose>
 		  

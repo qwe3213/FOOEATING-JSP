@@ -12,12 +12,33 @@ public class WaitingDTO {
 	private Timestamp regdate;
 	private int wait_team;
 	private int review_check;
-	
+	private String name;
+	private String phone;
+	private int people;
+  
 	public int getReview_check() {
 		return review_check;
 	}
 	public void setReview_check(int review_check) {
 		this.review_check = review_check;
+	
+	public int getPeople() {
+		return people;
+	}
+	public void setPeople(int people) {
+		this.people = people;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public int getWait_team() {
 		return wait_team;

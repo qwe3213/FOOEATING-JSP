@@ -99,7 +99,14 @@
 <!-- header -->
 
 <!-- sideMenu -->
-	<jsp:include page="../inc/sideMenu.jsp" />
+<c:choose>
+	<c:when test="${user_id.equals(owner_user_id) }" >
+		<jsp:include page="../inc/sideMenuOwner.jsp" />
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="../inc/sideMenuMember.jsp" />
+	</c:otherwise>
+</c:choose>
 <!-- sideMenu -->
 
 <!-- main -->

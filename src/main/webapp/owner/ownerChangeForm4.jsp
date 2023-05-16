@@ -97,6 +97,8 @@
 		  <%=menu_name %>  
           <%=menu_descriptions %>   
           <%=price%>      
+          <%=convenience %>
+  
     <h1>ownerChangeForm4.jsp</h1>
     <fieldset>
         <legend>step4</legend>
@@ -121,6 +123,7 @@
 		    <input type="hidden" name="menu_name" value="<%=menu_name%>">
 		    <input type="hidden" name="menu_descriptions" value="<%=menu_descriptions%>">
 		    <input type="hidden" name="price" value="<%=price%>">
+		    <input type="hidden" name="convenience" value="<%=convenience%>">
 		    
             <input type="button" value="다음" id="nextBtn">
         </form>

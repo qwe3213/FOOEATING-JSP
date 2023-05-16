@@ -11,6 +11,7 @@
 <link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
 
 </head>
 <body>
@@ -19,10 +20,13 @@
 <jsp:include page="../inc/header.jsp" />
 <!-- header -->
 
-<!-- sideMune -->
-<jsp:include page="adminSidMenu.jsp" />
-<!-- sideMune -->
-	
+<!-- sideMenu -->
+<jsp:include page="../inc/sideMenuAdmin.jsp" />
+<!-- sideMenu -->
+
+<!-- main -->
+<main>
+<br><br>
 	<table border="1">
 		<tr>
 			<th>No.</th>
@@ -82,6 +86,8 @@
 			}
 		}
 	%>
+</main>
+<!-- main -->
 	
 	
 	

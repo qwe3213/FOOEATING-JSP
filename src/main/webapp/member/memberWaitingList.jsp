@@ -39,12 +39,12 @@
 	<!-- header -->
 
 	<!-- sideMune -->
-	<jsp:include page="../inc/sideMenu.jsp" />
+	<jsp:include page="../inc/sideMenuMember.jsp" />
 	<!-- sideMune -->
 
 	<!-- main -->
 	<main>
-
+	<br><br>
 		<!-- 유저 로그인 제어 -->
 		<c:if test="${empty user_id }">
 			<c:redirect url="./MemberLogin.foo" />
@@ -89,7 +89,6 @@
 			</c:if>
 			<hr>
 		</c:forEach>
-
 	</main>
 	<!-- main -->
 

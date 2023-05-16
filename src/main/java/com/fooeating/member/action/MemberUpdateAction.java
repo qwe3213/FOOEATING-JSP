@@ -12,13 +12,13 @@ import com.fooeating.db.UserDTO;
 public class MemberUpdateAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest reqeuest, 
+	public ActionForward execute(HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 		
 		System.out.println(" M : MemberUpdateAction_execute() 호출 ");
 		
 		// 세션정보 제어
-		HttpSession session = reqeuest.getSession();
+		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("user_id");
 		
 		ActionForward forward = new ActionForward();
@@ -36,7 +36,7 @@ public class MemberUpdateAction implements Action {
 		// System.out.println(dto);
 		
 		// 정보저장 (request영역)
-		reqeuest.setAttribute("dto", dto);
+		request.setAttribute("dto", dto);
 		
 		// ./member/updateForm.jsp 출력
 		forward.setPath("./member/updateForm.jsp");
@@ -47,5 +47,5 @@ public class MemberUpdateAction implements Action {
 		return forward;
 	}
 	
-
+	
 }

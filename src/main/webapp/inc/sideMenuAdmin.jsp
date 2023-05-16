@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
+
 <nav id="sub_menu">
 <ul>
 	<li><a href="./UserInfoList.ad">회원 정보 목록</a></li>

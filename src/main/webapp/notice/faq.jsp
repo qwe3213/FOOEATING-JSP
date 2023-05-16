@@ -6,9 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/main.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+
 <title>Insert title here</title>
 <script src="./js/jquery-3.6.4.js"></script>
 
@@ -54,16 +57,17 @@
 
 </head>
 <body>
-	<!-- header -->
+<!-- header -->
 	<jsp:include page="../inc/header.jsp" />
-	<!-- header -->
+<!-- header -->
 
-	<!-- main -->
-	<main>
+<!-- sideMenu -->
+	<jsp:include page="../inc/sideMenuNotice.jsp" />
+<!-- sideMenu -->
 
-
-
-
+<!-- main -->
+<main>
+<br><br>
 
 		<h1>F A Q</h1>
 		<div id="category">
@@ -103,14 +107,13 @@
 		</c:forEach>
 
 
-	</main>
-	<!-- main -->
+</main>
+<!-- main -->
 
 
 	<!-- footer -->
 	<jsp:include page="../inc/footer.jsp" />
 	<!-- footer -->
-
 
 </body>
 

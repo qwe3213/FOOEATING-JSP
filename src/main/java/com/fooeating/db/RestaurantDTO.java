@@ -23,8 +23,8 @@ public class RestaurantDTO {
 	private int like_num;
 	private int grade;
 	private WaitingDTO waitdto;
-	
-	
+    private String outfile;
+    private String infile;
 	public String getRest_id() {
 		return rest_id;
 	}
@@ -144,6 +144,28 @@ public class RestaurantDTO {
 	}
 	public void setWaitdto(WaitingDTO waitdto) {
 		this.waitdto = waitdto;
+	}
+	public String getOutfile() {
+		return outfile;
+	}
+	public void setOutfile(String outfile) {
+		this.outfile = outfile;
+	}
+	public String getInfile() {
+		return infile;
+	}
+	public void setInfile(String infile) {
+		this.infile = infile;
+	}
+
+	@Override
+	public String toString() {
+		return "RestaurantDTO [rest_id=" + rest_id + ", name=" + name + ", descriptions=" + descriptions + ", rest_tel="
+				+ rest_tel + ", convenience=" + convenience + ", runtime=" + runtime + ", rest_notice=" + rest_notice
+				+ ", dayoff=" + dayoff + ", status=" + status + ", owner_user_id=" + owner_user_id + ", on_off="
+				+ on_off + ", category=" + category + ", addr_city=" + addr_city + ", addr_district=" + addr_district
+				+ ", addr_etc=" + addr_etc + ", regdate=" + regdate + ", read_count=" + read_count + ", like_num="
+				+ like_num + ", grade=" + grade + ", waitdto=" + waitdto + "]";
 	}
 	
 }
