@@ -865,7 +865,7 @@ public class PublicDAO {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
-			sql ="select w.wait_num ,w.rest_id, r.name from waiting w "
+			sql ="select w.rest_id, r.name from waiting w "
 					+ " join restaurant r on w.rest_id = r.rest_id where w.user_id = ? "
 					+ " and w.status ='1'";
 			pstmt = con.prepareStatement(sql);
@@ -877,9 +877,19 @@ public class PublicDAO {
 			
 			if(rs.next()) {
 				dto = new WaitingDTO();
-				dto.setWait_num(rs.getInt("w.wait_num"));
 				dto.setRest_id(rs.getString("w.rest_id"));
 				dto.setRest_name(rs.getString("r.name"));
+			}
+			
+			sql = "select count(wait_num) from waiting where rest_id =? "
+					+ " and wait_num <=(select wait_num from waiting where "
+					+ " user_id = ? and status = '1')";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getRest_id());
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto.setWait_num(rs.getInt(1));
 			}
 			
 			System.out.println(" DAO : 회원정보 저장완료! ");
@@ -894,24 +904,26 @@ public class PublicDAO {
 	}
 	
 	// 7-1. 멤버 현재 대기중인 가게 대기팀 수
-		public WaitingDTO getQueue(String rest_id, int wait_num) {
+		public WaitingDTO getQueue(String rest_id, String user_id) {
 			WaitingDTO dto = null;
 			try {
 				// 1.2. 디비연결
 				con = getCon();
 				// 3. sql & pstmt
-				sql = "select count(status) from waiting where rest_id =? and status ='1' and wait_num< ?";
+				sql = "select count(wait_num) from waiting where "
+						+ " rest_id = ? and status ='1' and wait_num < "
+						+ " (select wait_num from waiting where user_id = ? and status = '1')";
 				pstmt = con.prepareStatement(sql);
 				// ??
 				pstmt.setString(1, rest_id);
-				pstmt.setInt(2, wait_num);
+				pstmt.setString(2, user_id);
 				// 4. sql 실행
 				rs = pstmt.executeQuery();
 				// 5. 데이터처리
 				
 				if(rs.next()) {
 					dto = new WaitingDTO();
-					dto.setWait_team(rs.getInt("count(status)"));
+					dto.setWait_team(rs.getInt(1));
 				}
 				
 				System.out.println(" DAO : 회원정보 저장완료! ");
