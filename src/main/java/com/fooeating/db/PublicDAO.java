@@ -2106,6 +2106,28 @@ public class PublicDAO {
 			
 		}
 		
+		
+		
+		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
+		public void updateRestOnOff(String rest_id, String onoff) {
+			int on_off = onoff.equals("true") ? 0 : 1;
+			System.out.println(rest_id);
+			try {
+				con = getCon();
+				sql = "update restaurant set on_off = ? where rest_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, on_off);
+				pstmt.setString(2, rest_id);
+				
+				pstmt.executeUpdate();
+				System.out.println(" DAO : on_off 변경 완료");
+				System.out.println(" DAO : on_off 상태 = " + on_off);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
+		
 
 		
 		/* ================== < 가게리스트 > ======================== */
