@@ -763,7 +763,7 @@ public class PublicDAO {
 	}
 	
 	// 6-2. 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
-	public int changeReview(String id, int review_num, String newContent) {
+	public int changeReview(String id, int review_num, String newContent, int grade) {
 		int result = -1; // -1	0	1
 		
 		try {
@@ -785,11 +785,12 @@ public class PublicDAO {
 				// 회원
 				
 					// 3. sql 작성(update) & pstmt 객체
-					sql = "update review set content=? where review_num =?" ;
+					sql = "update review set content=?, grade=? where review_num =?" ;
 					pstmt = con.prepareStatement(sql);
 					// ???
 					pstmt.setString(1, newContent);
-					pstmt.setInt(2, review_num);
+					pstmt.setInt(2, grade);
+					pstmt.setInt(3, review_num);
 					// 4. sql 실행
 					result = pstmt.executeUpdate();
 				

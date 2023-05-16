@@ -33,9 +33,37 @@
 		
 	}
 	
-
-
 </script>
+
+<style type="text/css">
+fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+fieldset legend{
+    text-align: right;
+}
+input[type=radio]{
+    display: none;
+}
+label{
+    font-size: 1em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+label:check{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+/* #myform label:hover ~ label{ */
+/*     text-shadow: 0 0 0 rgba(250, 208, 0, 0.99); */
+/* } */
+input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+
+</style>
 
 
 </head>
@@ -65,7 +93,30 @@
 				<td colspan="2">${dto.name }</td>
 			</tr>
 			<tr>
-				<td>${dto.grade }</td>
+				<td>
+				<fieldset>
+				<input type="radio" name="grade" value="5" disabled id="rate1"  
+					<c:if test="${dto.grade == 5 }"> checked </c:if>
+				><label
+					for="rate1">★</label>
+				<input type="radio" name="grade" value="4" disabled id="rate2" 
+					<c:if test="${dto.grade == 4 }"> checked </c:if>
+				><label
+					for="rate2">★</label>
+				<input type="radio" name="grade" value="3" disabled id="rate3" 
+					<c:if test="${dto.grade == 3 }"> checked </c:if>
+				><label
+					for="rate3">★</label>
+				<input type="radio" name="grade" value="2" disabled id="rate4" 
+					<c:if test="${dto.grade == 2 }"> checked </c:if>
+				><label
+					for="rate4">★</label>
+				<input type="radio" name="grade" value="1" disabled id="rate5" 
+					<c:if test="${dto.grade == 1 }"> checked </c:if>
+				><label
+					for="rate5">★</label>
+			</fieldset>
+			</td>
 				<td>${dto.regdate }</td>
 			</tr>
 			<tr>

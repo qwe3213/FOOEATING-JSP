@@ -20,7 +20,7 @@
     display: none;
 }
 #myform label{
-    font-size: 3em;
+    font-size: 2em;
     color: transparent;
     text-shadow: 0 0 0 #f0f0f0;
 }
