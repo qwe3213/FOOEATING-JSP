@@ -142,6 +142,21 @@ public class RestaurantFrontController extends HttpServlet {
 		
 		
 		
+		// 점주의 마이페이지 - 대기 관리 - 완료 처리
+		else if(command.equals("/OwnerWaitingListDone.on")) {
+			System.out.println("C : /OwnerWaitingListDone.on 실행");
+			System.out.println("C : DB사용o, 페이지 이동 & 출력");
+			
+			action = new OwnerWaitingListDone();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
 		
 		
 		
