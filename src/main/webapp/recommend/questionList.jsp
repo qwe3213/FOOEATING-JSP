@@ -7,19 +7,40 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- css 파일 -->
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+<link href="./css/question.css" rel="stylesheet">
+
+
+<title>PUDDING</title>
 <style>
     /* 숨김 처리 */
     .hidden {
         display: none;
     }
+    .visible {
+		display: block;
+	}
 </style>
 </head>
 <body>
+
+<!-- header -->
+<jsp:include page="../inc/header.jsp" />
+<!-- header -->
+
+<!-- main -->
+<main>
 	
 	<%
 		String foodMenu = request.getParameter("foodMenu");
@@ -121,29 +142,30 @@
 		}
 		
 		Collections.shuffle(list);
-
+	%>
+		<br><br><br><br><br>
+	<%
 		for(int i = 0; i < list.size(); i++) {
 	%>
-	
-	<div id="question<%=i + 1%>" class="question hidden">
-        <fieldset>
-            <legend>질문 <%=i + 1%></legend>
-            <%=list.get(i)%><br>
-            <button onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')">Yes</button>
-            <button onclick="answerQuestion(false)">No</button>
-        </fieldset>
+	<div id="questionContainer">
+		<div id="question<%=i + 1%>" class="question hidden">
+	        <fieldset class="field">
+	            <legend>질문 <%=i + 1%></legend>
+	            <%=list.get(i)%><br>
+	            <button onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')">Yes</button>
+	            <button onclick="answerQuestion(false)">No</button>
+	        </fieldset>
+			<div class="box"><button onclick="location.href='./RecommendMain.ad'">다시하기</button></div>
+	    </div>
     </div>
     
 	<%
 		}
 	%>
-		<button onclick="location.href='./RecommendMain.ad'">다시하기</button>
 	
 	
 	<script>
 		
-// 	    const xhr = new XMLHttpRequest();
-//      const url = 'http://example.com/your-api-endpoint';
         var answer = [];
         var arr = [];
         var currentQuestion = 1;
@@ -174,9 +196,8 @@
             	if (answer.length != 0) {
             		// 배열 값을 인코딩하여 queryString 변수에 할당
             		for (var i = 0; i < keys.length; i++) {
-//                     	keysStr += encodeURIComponent(keys[i]) + "&";
                     	keysStr += "param(" + i + ")=" + encodeURIComponent(keys[i]) + "&";
-                    } // %20 ?? 문제?>
+                    } // %20 ?? 문제?
             		// queryString에서 마지막 '&' 문자 제거
             		keysStr = keysStr.substring(0, keysStr.length - 1);
 					reurl = "RecommendResult.ad?"+keysStr;
@@ -207,7 +228,13 @@
         showQuestion(1);
     </script>
     
-
+</main>
+<!-- main -->
+   
+	
+<!-- footer -->
+<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
 	
 </body>
 </html>
