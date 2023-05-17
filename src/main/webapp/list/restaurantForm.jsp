@@ -148,11 +148,11 @@
 <%-- 	${wdto.user_id} ${wdto.rest_id} ${wdto.wait_num} <br> --%>
 <%-- 	${sessionScope.user_id} ${restForm.rest_id} --%>
 	
-	<c:if test="${!wdto.rest_id.equals(restForm.rest_id) || !wdto.user_id.equals(sessionScope.user_id)}">
+	<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
 		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
 	</c:if>
 	
-	<c:if test="${wdto.rest_id.equals(restForm.rest_id) && wdto.user_id.equals(sessionScope.user_id)}">
+	<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
 		<button onclick="winopen2();">대기하기</button>
 	</c:if>
 	
