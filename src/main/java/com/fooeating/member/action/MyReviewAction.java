@@ -43,7 +43,7 @@ public class MyReviewAction implements Action {
 		requeest.setAttribute("reviewList", reviewList);
 		
 		// ./member/updateForm.jsp 출력
-		forward.setPath("./member/reviewForm.jsp");
+		forward.setPath("./ownerMainPage_review.jsp");
 		forward.setRedirect(false);
 		
 		System.out.println(" M : 정보조회 저장, 처리 끝");

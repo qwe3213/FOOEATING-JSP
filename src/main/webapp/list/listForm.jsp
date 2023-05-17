@@ -40,7 +40,7 @@
 <body>
 
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 <!-- 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	 -->
@@ -334,7 +334,7 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 <!-- main -->
 
 <!-- footer -->
-<jsp:include page="../inc/footer.jsp" />
+<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
                  
 </body>

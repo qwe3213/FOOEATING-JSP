@@ -67,7 +67,7 @@
 <!-- main -->
 	
 <!-- footer -->
-<jsp:include page="../inc/footer.jsp" />
+<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
 	
 </body>

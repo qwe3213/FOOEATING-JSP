@@ -6,6 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+import com.fooeating.action.ownerMainPageReviewAction;
+
 import com.fooeating.action.OwnerMainPageRstcareAction;
 import com.fooeating.action.OwnerNoticeAction;
 import com.fooeating.action.OwnerReviewAction;
@@ -14,6 +18,7 @@ import com.fooeating.action.RestaurantUpdateProAction;
 import com.fooeating.action.OwnerWaitingListAction;
 import com.fooeating.action.OwnerWaitingListPopupAction;
 import com.fooeating.action.RestOnOffAction;
+
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -22,6 +27,10 @@ public class RestaurantFrontController extends HttpServlet {
 	
 	
 	
+
+	// http://localhost:8088/FOOEATING/ownerChangeForm.on
+	// http://localhost:8088/FOOEATING/ownerChangeForm.on
+
 	// http://localhost:8088/FOOEATING/ownerChangeForm4.on
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -102,7 +111,7 @@ public class RestaurantFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 			 
-		}
+		} // ownerRequestSuccessAction
 
 		// 점주의 마이페이지 - 가게 관리
 		else if(command.equals("/Main.foo")) {
@@ -116,7 +125,20 @@ public class RestaurantFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+
+		else if(command.equals("/ownerMainPage_review.on")) {
+			System.out.println(" C : ownerMainPage_review.on 호출");
+			System.out.println(" C : DB사용o , 페이지 이동, 출력(패턴3)");
+			
+			// ownerMainPageReviewAction() 객체
+			action = new ownerMainPageReviewAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // ownerMainPage_review
 		
 		
 		// 점주의 마이페이지 - 대기 관리
