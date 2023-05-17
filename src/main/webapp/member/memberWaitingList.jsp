@@ -28,11 +28,11 @@
 <body>
 
 	<!-- header -->
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="../inc/headerDiv.jsp" />
 	<!-- header -->
 
 	<!-- sideMune -->
-	<jsp:include page="../inc/sideMenu.jsp" />
+	<jsp:include page="../inc/sideMenuDiv.jsp" />
 	<!-- sideMune -->
 
 	<!-- main -->
@@ -85,7 +85,7 @@
 
 
 	<!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footerDiv.jsp" />
 	<!-- footer -->
 
 </body>

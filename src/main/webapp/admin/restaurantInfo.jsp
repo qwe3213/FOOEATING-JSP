@@ -16,7 +16,7 @@
 <body>
 	
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 <!-- sideMune -->
@@ -61,7 +61,7 @@
 	<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'">입점 목록으로</button>
 	
 <!-- footer -->
-<jsp:include page="../inc/footer.jsp" />
+<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
 	
 </body>

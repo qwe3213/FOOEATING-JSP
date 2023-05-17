@@ -32,7 +32,7 @@
 <body>
 
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 		<h1>상세페이지</h1>

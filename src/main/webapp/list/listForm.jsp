@@ -93,7 +93,7 @@
 <body>
 
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	
