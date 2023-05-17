@@ -8,24 +8,30 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-<!-- css 파일 -->
-<link href="./css/footer.css" rel="stylesheet">
-<link href="./css/header.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
+<!-- css파일 -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+<link rel="stylesheet" href="assets/css/owl-carousel.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
 <link href="./css/question.css" rel="stylesheet">
 
 
-<title>PUDDING</title>
+<title>GIRING</title>
 </head>
 <body>
 
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 
@@ -62,7 +68,7 @@
 		   	for(int i = 0; i < arrayParam.length; i++) {	
 		   		if(arrayParam[i].equals("매운거 잘 먹어요?")|| arrayParam[i].equals("2차로 가기 좋은 곳 어때요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/닭발.jpg" width="150" height="150" align="left">
 							<div>
@@ -76,7 +82,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("날 것 드실줄 아시나요?")|| arrayParam[i].equals("봄, 가을에 제철 음식 어때요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/게장.jpg" width="150" height="150" align="left">
 							<div>
@@ -90,7 +96,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("나이키 신발을 신을 예정이신가요?")|| arrayParam[i].equals("분위기 있는 장소를 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/갈비찜.jpg" width="150" height="150" align="left">
 							<div>
@@ -104,7 +110,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("가성비를 원하시나요?")|| arrayParam[i].equals("해장을 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/국밥.jpg" width="150" height="150" align="left">
 							<div>
@@ -118,7 +124,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("퓨전 음식 어떠세요??")|| arrayParam[i].equals("부산에 오면 먹어야 하는 음식 어때요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/낙곱새.jpg" width="150" height="150" align="left">
 							<div>
@@ -132,7 +138,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("당신은 인싸이신가요?")|| arrayParam[i].equals("먹어도 살찌는 음식 괜찮으세요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/족발.jpg" width="150" height="150" align="left">
 							<div>
@@ -146,7 +152,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("특별한 날인가요?")|| arrayParam[i].equals("숙면에 불편함이 있으십니까?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/삼겹살.jpg" width="150" height="150" align="left">
 							<div>
@@ -160,7 +166,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("하루하루 즐기며 살고 계신가요?")|| arrayParam[i].equals("호불호 없는 음식 어때?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/치킨.jpg" width="150" height="150" align="left">
 							<div>
@@ -174,7 +180,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("탄단지를 원하시나요?")|| arrayParam[i].equals("쌀밥을 찾으시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/비빔밥.jpg" width="150" height="150" align="left">
 							<div>
@@ -188,7 +194,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("무난한 음식 찾으세요?")|| arrayParam[i].equals("골고루 잘 드시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/찌개.jpg" width="150" height="150" align="left">
 							<div>
@@ -202,7 +208,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("현재 날씨가 흐린가요?")|| arrayParam[i].equals("여러 명에서 드시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/korean_food/탕.jpg" width="150" height="150" align="left">
 							<div>
@@ -221,7 +227,7 @@
 		   	for(int i = 0; i < arrayParam.length; i++) {
 		   		if(arrayParam[i].equals("숙면에 불편함이 있으십니까?")|| arrayParam[i].equals("녹색 음식이 땡기시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/western_food/시저셀러드.jpg" width="150" height="150" align="left">
 							<div>
@@ -235,7 +241,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("당신은 지금 우울하신가요?")|| arrayParam[i].equals("현재 날씨가 흐린가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/western_food/함박스테이크.jpg" width="150" height="150" align="left">
 							<div>
@@ -249,7 +255,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("가성비를 따지시나요?")|| arrayParam[i].equals("해장을 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/western_food/햄버거.jpg" width="150" height="150" align="left">
 							<div>
@@ -263,7 +269,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("여려 명에서 드시나요?")|| arrayParam[i].equals("탄단지를 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/western_food/피자.jpg" width="150" height="150" align="left">
 							<div>
@@ -277,7 +283,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("분위기 있는 장소를 원하시나요?")|| arrayParam[i].equals("특별한 날인가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/western_food/스테이크.jpg" width="150" height="150" align="left">
 							<div>
@@ -291,7 +297,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("하루하루 즐기며 살고 계신가요?")|| arrayParam[i].equals("당신은 인싸이신가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/western_food/스파게티.jpg" width="150" height="150" align="left">
 							<div>
@@ -305,7 +311,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("나이키 신발을 신을 예정이신가요?")|| arrayParam[i].equals("쌀밥을 찾으시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<div><img src="./img/food/western_food/리조또.jpg" width="150" height="150" align="left"></div>
 							<div>
@@ -324,7 +330,7 @@
 		   	for(int i = 0; i < arrayParam.length; i++) {
 		   		if(arrayParam[i].equals("여러 명에서 드시나요?")|| arrayParam[i].equals("탕수육 찍먹 이신가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/탕수육.jpg" width="150" height="150" align="left">
 							<div>
@@ -338,7 +344,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("지금 기분이 좋으신가요?")|| arrayParam[i].equals("하루하루 즐기며 살고 계신가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/짜장면.jpg" width="150" height="150" align="left">
 							<div>
@@ -352,7 +358,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("오늘 맥주 드시나요?")|| arrayParam[i].equals("고기 어떠세요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/양꼬치.jpg" width="150" height="150" align="left">
 							<div>
@@ -366,7 +372,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("당신은 인싸이신가요?")|| arrayParam[i].equals("마라 드실 줄 아시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/마라탕.jpg" width="150" height="150" align="left">
 							<div>
@@ -380,7 +386,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("가성비를 따지시나요?")|| arrayParam[i].equals("해장을 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/짬뽕.jpg" width="150" height="150" align="left">
 							<div>
@@ -394,7 +400,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("골고루 잘 드시나요?")|| arrayParam[i].equals("특별한 날인가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/고추잡채.jpg" width="150" height="150" align="left">
 							<div>
@@ -408,7 +414,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("현재 날씨가 흐린가요?")|| arrayParam[i].equals("탄단지를 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/마파두부.jpg" width="150" height="150" align="left">
 							<div>
@@ -422,7 +428,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("숙면에 불편함이 있으십니까?")|| arrayParam[i].equals("쌀밥을 찾으시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/chinese_food/볶음밥.jpg" width="150" height="150" align="left">
 							<div>
@@ -441,7 +447,7 @@
 		   	for(int i = 0; i < arrayParam.length; i++) {
 		   		if(arrayParam[i].equals("여러 명에서 드시나요?")|| arrayParam[i].equals("오늘 쏘주 드시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/japanese_food/회.jpg" width="150" height="150" align="left">
 							<div>
@@ -455,7 +461,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("쌀밥을 찾으시나요?")|| arrayParam[i].equals("골고루 잘 드시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/japanese_food/텐동.jpg" width="150" height="150" align="left">
 							<div>
@@ -469,7 +475,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("가성비를 따지시나요?")|| arrayParam[i].equals("지금 기분이 좋으신가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/japanese_food/우동.jpg" width="150" height="150" align="left">
 							<div>
@@ -483,7 +489,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("회 드실 줄 아시나요?")|| arrayParam[i].equals("특별한 날인가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/japanese_food/초밥.jpg" width="150" height="150" align="left">
 							<div>
@@ -497,7 +503,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("당신은 인싸이신가요?")|| arrayParam[i].equals("해장을 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/japanese_food/라멘.jpg" width="150" height="150" align="left">
 							<div>
@@ -511,7 +517,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("하루하루 즐기며 살고 계신가요?")|| arrayParam[i].equals("탄단지를 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">	
 							<img src="./img/food/japanese_food/돈카츠.jpg" width="150" height="150" align="left">
 							<div>
@@ -525,7 +531,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("현재 날씨가 더운가요?")|| arrayParam[i].equals("찬 음식도 괜찮아요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/japanese_food/메밀소바.jpg" width="150" height="150" align="left">
 							<div>
@@ -544,7 +550,7 @@
 		   	for(int i = 0; i < arrayParam.length; i++) {
 		   		if(arrayParam[i].equals("당신 다이어트 중이야?")|| arrayParam[i].equals("풀 때기 어때요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/street_food/샐러드.jpg" width="150" height="150" align="left">
 							<div>
@@ -558,7 +564,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("기분이 꿀꿀하신가요?")|| arrayParam[i].equals("매운거 잘 먹어요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/street_food/떡볶이.jpg" width="150" height="150" align="left">
 							<p>&nbsp;&nbsp;&nbsp; "나 떡볶이 먹으면 기분 좋아짐.. 너도 좋아져랏!!"  </p>
@@ -573,7 +579,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("혼밥 가능하신가요?")|| arrayParam[i].equals("쌀밥을 찾으시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/street_food/김밥.jpg" width="150" height="150" align="left">
 							<div>
@@ -587,7 +593,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("가성비를 따지시나요?")|| arrayParam[i].equals("하루하루 즐기며 살고 계신가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/street_food/토스트.jpg" width="150" height="150" align="left">
 							<div>
@@ -601,7 +607,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("당신은 인싸이신가요?")|| arrayParam[i].equals("탄단지를 원하시나요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/street_food/샌드위치.jpg" width="150" height="150" align="left">
 							<div>
@@ -615,7 +621,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("옛날 어머니의 손맛 어떠세요?")|| arrayParam[i].equals("날씨가 꾸리꾸리 한가요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/street_food/칼국수.jpg" width="150" height="150" align="left">
 							<div>
@@ -629,7 +635,7 @@
 		   		}
 		   		else if(arrayParam[i].equals("해장을 원하시나요?")|| arrayParam[i].equals("고냥 간단하게 드실래요?")){
 					%>
-					<div class="container2">
+					<div class="conta2">
 						<div class="box2">
 							<img src="./img/food/street_food/라면.jpg" width="150" height="150" align="left">
 							<div>
@@ -644,7 +650,7 @@
 		   	}
     	}
     %>
-	<div class="container2">
+	<div class="conta2">
 		<div class="box2">
 			<form action="./RecommendMain.ad">
 				<button type="submit"> 다시 추천 받을래!!! </button>
@@ -663,5 +669,44 @@
 <!-- footer -->    
     
       
+<!-- jQuery -->
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/accordions.js"></script>
+<script src="assets/js/datepicker.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script> 
+<script src="assets/js/slick.js"></script> 
+<script src="assets/js/lightbox.js"></script> 
+<script src="assets/js/isotope.js"></script> 
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+<script>
+    $(function() {
+        var selectedClass = "";
+        $("p").click(function(){
+        selectedClass = $(this).attr("data-rel");
+        $("#portfolio").fadeTo(50, 0.1);
+            $("#portfolio div").not("."+selectedClass).fadeOut();
+        setTimeout(function() {
+          $("."+selectedClass).fadeIn();
+          $("#portfolio").fadeTo(50, 1);
+        }, 500);
+            
+        });
+    });
+    </script>
+
+
+
 </body>
 </html>

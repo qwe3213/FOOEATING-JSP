@@ -33,17 +33,12 @@
 
 
 
-<<<<<<< HEAD
-=======
 <!-- side menu -->
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
 <!-- side menu -->
 
 
 
-
-
->>>>>>> branch 'develop' of https://github.com/LingLing23/FOOEATING.git
 <!-- main -->
 <main>
 <br><br>
