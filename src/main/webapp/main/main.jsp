@@ -27,7 +27,8 @@
 
 <body>
     
-<!-- ***** Preloader Start ***** -->
+
+<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
 <div id="preloader">
     <div class="jumper">
         <div></div>
@@ -92,7 +93,6 @@
         });
     });
     </script>
-
 
 
 </body>

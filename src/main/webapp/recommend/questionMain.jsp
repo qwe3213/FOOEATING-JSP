@@ -32,7 +32,7 @@
 <!-- main -->
 <main>
 
-	<br><br><br><br><br>
+<div id="top">
 	<div class="dvh"><h2> 음식의 종류를 선택하세요. </h2></div>
 	<div class="conta">
 		<div class="box">
@@ -66,7 +66,7 @@
 			</form>
 		</div>
 	</div>
-	
+</div>
 
 	
 </main>

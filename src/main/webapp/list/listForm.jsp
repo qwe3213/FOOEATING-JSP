@@ -68,7 +68,7 @@
 <!-- 	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select> -->
 
 <main>
-	<div>
+	<div id="top">
 		 <div>
 			 <select style="width:300x; height:30px;">
 			 	<option>리뷰수</option>
