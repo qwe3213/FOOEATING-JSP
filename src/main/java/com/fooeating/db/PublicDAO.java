@@ -1,6 +1,5 @@
 package com.fooeating.db;
 
-import java.awt.Menu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,8 +17,11 @@ public class PublicDAO {
 	// 공통사용 변수
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
+	private PreparedStatement pstmt2 = null;
 	private ResultSet rs = null;
+	private ResultSet rs2 = null;
 	private String sql = "";
+	private String sql2 = "";
 	
 
 	// 1. getCon() 메서드
@@ -100,6 +102,8 @@ public class PublicDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			closeDB();
 		}
 		
 		return result;
@@ -170,6 +174,8 @@ public class PublicDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			closeDB();
 		}
 		
 		return result;
@@ -237,6 +243,8 @@ public class PublicDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally {
+				closeDB();
 			}
 			
 			return result;
@@ -305,11 +313,16 @@ public class PublicDAO {
 				result = pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally {
+				closeDB();
 			}
 			
 			return result;
 		}
 		// 관리자 - 입점 대기 전환 getRestaurantStatus()
+		
+		
+		
 	
 	/* ================== < 관리자 관련 메서드 > ======================== */
 	
@@ -423,22 +436,50 @@ public class PublicDAO {
 	}
 	// 로그인 체크 - memberLogin(dto)
 	
-	// 2-1. 회원의 점주 유무 체크
-		public String checkOwnerId(String user_id) {
+	// 2-1. 회원이 점주인지 체크
+	public String checkOwnerId(String user_id) {
+		
+		String owner_user_id = null;
+		
+		try {
+			con = getCon();
 			
-			String owner_user_id = null;
+			sql = "select owner_user_id from restaurant where owner_user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				owner_user_id = rs.getString(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return owner_user_id;
+	}
+	
+	
+	// 2-2. 점주의 rest_id 체크
+		public String checkRestId(String user_id) {
+			
+			String rest_id = null;
 			
 			try {
 				con = getCon();
 				
-				sql = "select owner_user_id from restaurant where owner_user_id=?";
+				sql = "select rest_id from restaurant where owner_user_id=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user_id);
 				
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					owner_user_id = rs.getString("owner_user_id");
+					rest_id = rs.getString("rest_id");
 				}
 				
 			} catch (Exception e) {
@@ -447,7 +488,8 @@ public class PublicDAO {
 				closeDB();
 			}
 			
-			return owner_user_id;
+			System.out.println(rest_id);
+			return rest_id;
 		}
 
 
@@ -658,7 +700,7 @@ public class PublicDAO {
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 		try {
 			con = getCon();
-			sql = "select re.review_num, r.name, r.grade, re.regdate, re.content from restaurant r "
+			sql = "select re.review_num, r.name, re.grade, re.regdate, re.content from restaurant r "
 					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -678,6 +720,8 @@ public class PublicDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 		
 		return reviewList;
@@ -690,7 +734,7 @@ public class PublicDAO {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
-			sql = "select re.review_num, r.name, r.grade, re.user_id, re.content "
+			sql = "select re.review_num, r.name, re.grade, re.user_id, re.content "
 					+ "from restaurant r " 
 					+ "join review re on r.rest_id  = re.rest_id where re.user_id = ? and re.review_num =?";
 			pstmt = con.prepareStatement(sql);
@@ -722,7 +766,7 @@ public class PublicDAO {
 	}
 	
 	// 6-2. 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
-	public int changeReview(String id, int review_num, String newContent) {
+	public int changeReview(String id, int review_num, String newContent, int grade) {
 		int result = -1; // -1	0	1
 		
 		try {
@@ -744,11 +788,12 @@ public class PublicDAO {
 				// 회원
 				
 					// 3. sql 작성(update) & pstmt 객체
-					sql = "update review set content=? where review_num =?" ;
+					sql = "update review set content=?, grade=? where review_num =?" ;
 					pstmt = con.prepareStatement(sql);
 					// ???
 					pstmt.setString(1, newContent);
-					pstmt.setInt(2, review_num);
+					pstmt.setInt(2, grade);
+					pstmt.setInt(3, review_num);
 					// 4. sql 실행
 					result = pstmt.executeUpdate();
 				
@@ -824,7 +869,7 @@ public class PublicDAO {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
-			sql ="select w.wait_num ,w.rest_id, r.name from waiting w "
+			sql ="select w.wait_num, w.rest_id, r.name from waiting w "
 					+ " join restaurant r on w.rest_id = r.rest_id where w.user_id = ? "
 					+ " and w.status ='1'";
 			pstmt = con.prepareStatement(sql);
@@ -836,11 +881,22 @@ public class PublicDAO {
 			
 			if(rs.next()) {
 				dto = new WaitingDTO();
-				dto.setWait_num(rs.getInt("w.wait_num"));
+				dto.setWait_num(rs.getInt("wait_num"));
 				dto.setRest_id(rs.getString("w.rest_id"));
 				dto.setRest_name(rs.getString("r.name"));
 			}
-			
+//			
+//			sql = "select count(wait_num) from waiting where rest_id =? "
+//					+ " and wait_num <=(select wait_num from waiting where "
+//					+ " user_id = ? and status = '1')";
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, dto.getRest_id());
+//			pstmt.setString(2, id);
+//			rs = pstmt.executeQuery();
+//			if (rs.next()) {
+//				dto.setWait_num(rs.getInt(1));
+//			}
+//			
 			System.out.println(" DAO : 회원정보 저장완료! ");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -853,24 +909,26 @@ public class PublicDAO {
 	}
 	
 	// 7-1. 멤버 현재 대기중인 가게 대기팀 수
-		public WaitingDTO getQueue(String rest_id, int wait_num) {
+		public WaitingDTO getQueue(String rest_id, String user_id) {
 			WaitingDTO dto = null;
 			try {
 				// 1.2. 디비연결
 				con = getCon();
 				// 3. sql & pstmt
-				sql = "select count(status) from waiting where rest_id =? and status ='1' and wait_num< ?";
+				sql = "select count(wait_num) from waiting where "
+						+ " rest_id = ? and status ='1' and wait_num < "
+						+ " (select wait_num from waiting where user_id = ? and status = '1')";
 				pstmt = con.prepareStatement(sql);
 				// ??
 				pstmt.setString(1, rest_id);
-				pstmt.setInt(2, wait_num);
+				pstmt.setString(2, user_id);
 				// 4. sql 실행
 				rs = pstmt.executeQuery();
 				// 5. 데이터처리
 				
 				if(rs.next()) {
 					dto = new WaitingDTO();
-					dto.setWait_team(rs.getInt("count(status)"));
+					dto.setWait_team(rs.getInt(1));
 				}
 				
 				System.out.println(" DAO : 회원정보 저장완료! ");
@@ -891,7 +949,7 @@ public class PublicDAO {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
-			sql = "select w.user_id,r.name, w.regdate from waiting w join restaurant r on w.rest_id = r.rest_id "
+			sql = "select w.user_id,r.name, w.regdate, w.wait_num, w.review_check from waiting w join restaurant r on w.rest_id = r.rest_id "
 					+ " where w.user_id = ? and w.status ='2' ";
 			pstmt = con.prepareStatement(sql);
 			// ??
@@ -906,7 +964,8 @@ public class PublicDAO {
 				
 				dto.setRest_name(rs.getString("name"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
-				
+				dto.setWait_num(rs.getInt("wait_num"));
+				dto.setReview_check(rs.getInt("review_check"));
 				queueHistory.add(dto);
 			} // while
 			
@@ -977,6 +1036,98 @@ public class PublicDAO {
 		return result;
 	}
 	
+	// 8. 회원 찜한 가게 리스트 가져가기
+		public List<RestaurantDTO> getMemberLikeList(String id) {
+			List<RestaurantDTO> likeList = new ArrayList<RestaurantDTO>();
+			try {
+				con = getCon();
+				sql = "select rest_id, name, rest_tel, descriptions from restaurant where rest_id "
+						+ " in (select rest_id from heart where heart_check =1 and user_id =? )";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_id(rs.getString(1));
+					dto.setName(rs.getString(2));
+					dto.setRest_tel(rs.getString(3));
+					dto.setDescriptions(rs.getString(4));
+					
+					likeList.add(dto);
+				} // while
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return likeList;
+		}
+		
+	// 9.회원 리뷰 작성 시 해당 가게 정보 가져가기
+	public WaitingDTO getWaitRestaurant(int wait_num) {
+		WaitingDTO dto = null;
+		try {
+			con = getCon();
+			sql = "select w.rest_id, r.name from waiting w join restaurant r on "
+					+ " w.rest_id = r.rest_id where wait_num =?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,wait_num);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto = new WaitingDTO();
+				dto.setRest_name(rs.getString("name"));
+				dto.setRest_id(rs.getString("rest_id"));
+				dto.setWait_num(wait_num);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+		
+	}
+	
+	// 10. 회원 리뷰 작성 정보 디비에 저장
+	public void reviewWriteAction(ReivewDTO dto) {
+		try {
+			// 1,2 디비연결
+			con = getCon();
+			// 3 sql문 작성
+			sql = "insert into review (user_id, content, regdate, rest_id, wait_num, grade) values "
+					+ " (?,?,now(),?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getRest_id());
+			pstmt.setInt(4, dto.getWait_num());
+			pstmt.setInt(5, dto.getGrade());
+			
+	  	    // 4. sql 실행
+			pstmt.executeUpdate();
+			System.out.println("DAO : 리뷰 작성 성공!");
+			
+			sql = "update waiting set review_check=2 where wait_num=?"; 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getWait_num());
+			// sql 실행
+			pstmt.executeUpdate();
+			
+			System.out.println("DAO : 리뷰 작성 후 대기리스트 리뷰작성 버튼 없애기");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+	
+	}
+	
+	
 	
 	
 	/* ================== < 회원 관련 메서드 > ======================== */
@@ -1016,7 +1167,7 @@ public class PublicDAO {
   
   
   
-  // 1-1. 전체 글 개수
+  // 1-1. 공지사항 전체 글 개수
 	public int getBoardCount() {
 		
 		int result = 0;
@@ -1036,6 +1187,37 @@ public class PublicDAO {
 				result = rs.getInt(1);
 			}
 			System.out.println("DAO : 전체 글 개수 - " + result);
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return result;
+	}
+	
+	// 1-2. 점주 - 대기 예약 전체 개수
+	public int getWaitingCount(String rest_id) {
+		
+		int result = 0;
+		
+		try {
+			con = getCon();
+			
+			// sql작성 & pstmt객체
+			sql = "select count(*) from waiting where rest_id=? and status=1";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, rest_id);
+			
+			// sql실행
+			rs = pstmt.executeQuery();
+			
+		    // 데이터처리
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println("DAO : 전체 대기 내역 수 - " + result);
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1232,7 +1414,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant";
+				sql = "select * from restaurant where status = 1";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
@@ -1244,10 +1426,13 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
+					dto.setOwner_user_id(rs.getString("owner_user_id"));
 					listForm.add(dto);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
 			
 			return listForm;
@@ -1259,7 +1444,7 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from restaurant order by regdate desc limit ?,?";
+				sql = "select * from restaurant where status = 1 order by regdate desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, startRow - 1);
 				pstmt.setInt(2, pageSize);
@@ -1273,6 +1458,8 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
+					dto.setLike_num(rs.getInt("like_num"));
+					
 					listForm.add(dto);
 					
 				}
@@ -1285,13 +1472,13 @@ public class PublicDAO {
 			return listForm;
 		}
 		
-		
+		// getListCount()
 		public int getListCount() {
 			int result = 0;
 			
 			try {
 				con = getCon();
-				sql = "select count(*) from restaurant";
+				sql = "select count(*) from restaurant where status = 1";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
@@ -1299,10 +1486,12 @@ public class PublicDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
 			
 			return result;
-		}
+		} // getListCount()
 		
 		public RestaurantDTO getRestaurantForm(String rest_id) {
 			RestaurantDTO dto = null;
@@ -1345,10 +1534,72 @@ public class PublicDAO {
 			return dto;
 		}
 		
+		// 상호명 검색 + 지역 필터 - getListCount(search, addr)
+		public int getListCount(String search, String addr_city, String addr_district) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(*) from restaurant where name like ? and addr_city = ? and addr_district = ? and status = 1";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + search + "%");
+				pstmt.setString(2, addr_city);
+				pstmt.setString(3, addr_district);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return result;
+		}
+		// 상호명 검색 + 지역 필터 - getListCount(search, addr)
 		
+		// 상호명 검색 + 지역 필터 페이징 처리
+		public List<RestaurantDTO> getListInfo(int startRow, int pageSize, String search, String addr_city, String addr_district) {
+			List<RestaurantDTO> listForm = new ArrayList<RestaurantDTO>();
+			
+			try {
+				con = getCon();
+				sql = "select * from restaurant where name like ? and addr_city = ? and addr_district = ? and status = 1 "
+						+ "order by regdate desc limit ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + search + "%");
+				pstmt.setString(2, addr_city);
+				pstmt.setString(3, addr_district);
+				pstmt.setInt(4, startRow - 1);
+				pstmt.setInt(5, pageSize);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					RestaurantDTO dto = new RestaurantDTO();
+					dto.setRest_tel(rs.getString("rest_tel"));
+					dto.setName(rs.getString("name"));
+					dto.setRest_id(rs.getString("rest_id"));
+					dto.setConvenience(rs.getString("convenience"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setDayoff(rs.getString("dayoff"));
+					listForm.add(dto);
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return listForm;
+		}
+		// 상호명 검색 + 지역 필터 페이징 처리
 		
 		public RestaurantDTO getRestrauntForm(String rest_id) {
 			RestaurantDTO dto = null;
+			WaitingDTO wdto = null;
 			
 			try {
 				con = getCon();
@@ -1378,8 +1629,6 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
-					
-					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1389,29 +1638,250 @@ public class PublicDAO {
 			
 			return dto;
 		}
+		
+		// 유저 좋아요 상태 1(꽉찬하트)로 변경
+		public void userHeartAdd(String user_id, String rest_id) {
+			
+			try {
+				con = getCon();
+				sql = "select heart_check from heart where user_id =? and rest_id= ?";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, rest_id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					// 유저 상태 변환
+					sql = "update heart set heart_check=1 where user_id=? and rest_id = ?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, user_id);
+					pstmt.setString(2, rest_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					// 가게 상태 변환
+					sql = "update restaurant set like_num = like_num+1 where rest_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					System.out.println("유저 좋아요 상태 변환");
+				} else {
+					
+					// 유저 상태 변환
+					sql = "insert into heart values (1,?,?)";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
+					pstmt.setString(2, user_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					// 가게 상태 변환
+					sql = "update restaurant set like_num = like_num+1 where rest_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					System.out.println("유저 좋아요 상태 추가");
+					
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+		}	
+		// 유저 좋아요 상태 0(빈하트)로 변경
+		public void userHeartRemove(String user_id, String rest_id) {
+			
+			try {
+				con = getCon();
+				sql = "select heart_check from heart where user_id =? and rest_id= ?";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, rest_id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					// 유저 상태 변환
+					sql = "update heart set heart_check=0 where user_id=? and rest_id = ?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, user_id);
+					pstmt.setString(2, rest_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					// 가게 상태 변환
+					sql = "update restaurant set like_num = like_num-1 where rest_id=?" ;
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, rest_id);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					System.out.println("유저 좋아요 상태 변환");
+				} 
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+		}
+		
+		// 유저가 해당 가게 좋아요를 가지고 있는지 확인
+		public int getUserHeart(String user_id, String rest_id) {
+			int heart_check = 0;
+			
+			try {
+				con = getCon();
+				sql = "select heart_check from heart where rest_id =? and user_id =? ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, rest_id);
+				pstmt.setString(2, user_id);
+				
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					heart_check = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			System.out.println("DAO : 해당 가게의 유저 좋아요 상태 : " + heart_check);		
+			return heart_check;
+		} 
+		
+		
+		// 가게 좋아요 수 리턴
+		public int getHeart(String rest_id) {
+			int result = 0;
+			
+			try {
+				con = getCon();
+				sql = "select count(heart_check) from heart where rest_id = ? and heart_check = 1 ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, rest_id);
+				
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				} else {
+					result = 0;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			System.out.println("DAO : 해당 가게의 좋아요 수 : " + result);
+			
+			return result;
+		}
 
+
+		// -----------------조회수------------------------------
+
+        public void getUpdateReadCount (String rest_id) {
+
+
+            try {
+                con = getCon();
+                sql="update restaurant set read_count=read_count+1 "
+                        + " where rest_id =?";
+                pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, rest_id);
+
+                int cnt = pstmt.executeUpdate();
+
+                if (cnt == 1) {
+                    System.out.println(" DAO : 글 조회수 1 증가 완료 !");
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }finally {
+                closeDB();
+            }
+        }
+        
+        public List<ReivewDTO> getReview (String rest_id) {
+        	List<ReivewDTO> re = new ArrayList<ReivewDTO>();
+        	
+        	try {
+				con=getCon();
+				sql = "select user_id,content,file,regdate,grade from review where rest_id=? ";
+				 pstmt = con.prepareStatement(sql);
+	               pstmt.setString(1, rest_id);
+	               rs = pstmt.executeQuery();
+	                while (rs.next()) {
+	                	ReivewDTO dto = new ReivewDTO();
+	                	dto.setGrade(rs.getInt("grade"));
+	                	dto.setContent(rs.getString("content"));
+	                	dto.setFile(rs.getString("file"));
+	                	dto.setUser_id(rs.getString("user_id"));
+	                	dto.setRegdate(rs.getTimestamp("regdate"));
+	                	re.add(dto);
+	                }
+	              
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+        	
+        	return re ;
+        }
+        
+
+        // -----------------조회수------------------------------
+		
 		/* ================== < 가게리스트 > ======================== */
+
 		
 		public void getRestaurant(RestaurantDTO dto) {
 			try {
 				// 1,2 디비연결
 				con = getCon();
 				// 3 sql문 작성
-				sql = "insert into restaurant (rest_id,name,category,addr_city,addr_district,addr_etc,rest_tel,runtime,dayoff,descriptions,convenience,regdate,status)"
-						+" values(?,?,?,?,?,?,?,?,?,?,?,now(),0)";
+				sql = "insert into restaurant values(?,?,?,?,?,?,?,?,0,?,false,?,?,?,?,now(),0,0,0,?,?)";
 				
 				pstmt = con.prepareStatement(sql);
+			
 				pstmt.setString(1, dto.getRest_id());
 				pstmt.setString(2, dto.getName());
-				pstmt.setString(3, dto.getCategory());
-				pstmt.setString(4, dto.getAddr_city());
-				pstmt.setString(5, dto.getAddr_district());
-				pstmt.setString(6, dto.getAddr_etc());
-				pstmt.setString(7, dto.getRest_tel());
-				pstmt.setString(8, dto.getRuntime());
-				pstmt.setString(9, dto.getDayoff());
-				pstmt.setString(10, dto.getDescriptions());
-				pstmt.setString(11, dto.getConvenience());
+				pstmt.setString(3, dto.getDescriptions());
+				pstmt.setString(4, dto.getRest_tel());
+				pstmt.setString(5, dto.getConvenience());
+				pstmt.setString(6, dto.getRuntime());
+				pstmt.setString(7, dto.getRest_notice());
+				pstmt.setString(8, dto.getDayoff());
+				pstmt.setString(9, dto.getOwner_user_id());
+				pstmt.setString(10, dto.getCategory());
+				pstmt.setString(11, dto.getAddr_city());
+				pstmt.setString(12, dto.getAddr_district());
+				pstmt.setString(13, dto.getAddr_etc());
+				pstmt.setString(14, dto.getOutfile());
+				pstmt.setString(15, dto.getInfile());
 		  	    // 4. sql 실행
 				pstmt.executeUpdate();
 				System.out.println("DAO 레스토랑 정보 저장 성공");
@@ -1432,14 +1902,15 @@ public class PublicDAO {
 				con = getCon();
 				
 				// 3. sql 작성
-				sql = "insert into restaurant_menu (menu_name,menu_descriptions,price,rest_id) "
-						+ " values(?,?,?,?)";
+				sql = "insert into restaurant_menu (menufile,menu_name,menu_descriptions,price,rest_id) "
+						+ " values(?,?,?,?,?)";
 				
 				pstmt= con.prepareStatement(sql);
-				pstmt.setString(1, menudto.getMenu_name());
-				pstmt.setString(2, menudto.getMenu_descriptions());
-				pstmt.setString(3, menudto.getPrice());
-				pstmt.setString(4, menudto.getRest_id());
+				pstmt.setString(1, menudto.getMeunfile());
+				pstmt.setString(2, menudto.getMenu_name());
+				pstmt.setString(3, menudto.getMenu_descriptions());
+				pstmt.setString(4, menudto.getPrice());
+				pstmt.setString(5, menudto.getRest_id());
 				//4. sql실행
 				pstmt.executeUpdate();
 				
@@ -1456,14 +1927,26 @@ public class PublicDAO {
 		
 		
 		// 대기 번호 생성 후 번호 반환 - getWaitingNum()
-		public void getWaitingNum(String user_id, String rest_id) {
+		public void getWaitingNum(String user_id, String rest_id, int people) {
 			try {
 				con = getCon();
-				sql = "insert into waiting (user_id, rest_id, status, regdate) "
-						+ " values (?, ?, 1, now())";
+				
+				// 대기 번호 계산
+				int wait_num = 0;
+				sql = "select max(wait_num) from waiting";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, user_id);
-				pstmt.setString(2, rest_id);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					wait_num = rs.getInt(1) + 1;
+				}
+				
+				sql = "insert into waiting (wait_num, user_id, rest_id, people, status, regdate) "
+						+ " values (?, ?, ?, ?, 1, now())";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, wait_num);
+				pstmt.setString(2, user_id);
+				pstmt.setString(3, rest_id);
+				pstmt.setInt(4, people);
 				
 				pstmt.executeUpdate();
 				
@@ -1499,16 +1982,276 @@ public class PublicDAO {
 					dto.setRest_id(rs.getString("rest_id"));
 					dto.setStatus(rs.getInt("status"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setPeople(rs.getInt("people"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
 			
 			return dto;
 		}
 		// 회원id와 가게id, status가 1인 대기 번호가 있는지 확인 - getWaitingCheck()
 		
+		public RestaurantDTO getRestaurantallow(String user_id) {
+			RestaurantDTO dto = null;
+			
+		    try {
+		    	// 1,2 디비연결
+		    	con = getCon();
+		 
+		     	// sql 연결
+      		    sql = "select * from restaurant where owner_user_id=? " ;
+      		    pstmt = con.prepareStatement(sql);
+      		    pstmt.setString(1,user_id);
+      		    rs = pstmt.executeQuery();
+      		    
+      		    if(rs.next()) {
+      		    	dto = new RestaurantDTO();
+      		    	dto.setAddr_city(rs.getString("addr_city"));
+    				dto.setAddr_district(rs.getString("addr_district"));
+    				dto.setAddr_etc(rs.getString("addr_etc"));
+    				dto.setCategory(rs.getString("category"));
+    				dto.setConvenience(rs.getString("convenience"));
+    				dto.setDayoff(rs.getString("dayoff"));
+    				dto.setDescriptions(rs.getString("descriptions"));
+    				dto.setGrade(rs.getInt("grade"));
+    				dto.setLike_num(rs.getInt("like_num"));
+    				dto.setName(rs.getString("name"));
+    				dto.setOn_off(rs.getBoolean("on_off"));
+    				dto.setOwner_user_id(rs.getString("owner_user_id"));
+    				dto.setRead_count(rs.getInt("read_count"));
+    				dto.setRegdate(rs.getTimestamp("regdate"));
+    				dto.setRest_id(rs.getString("rest_id"));
+    				dto.setRest_notice(rs.getString("rest_notice"));
+    				dto.setRest_tel(rs.getString("rest_tel"));
+    				dto.setRuntime(rs.getString("runtime"));
+    				dto.setStatus(rs.getInt("status"));
+    				dto.setOutfile(rs.getString("outfile"));
+    				dto.setInfile(rs.getString("infile"));
+      		    }
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+		    return dto;
+		}
 		
+		public Restaurant_menuDTO getRestaurantmenuallow(String rest_id) {
+			Restaurant_menuDTO dto = null;
+			 try {
+				 // 1, 2 디비연결
+				con = getCon();
+			    // 3. sql문 작성
+				
+				sql= "select * from restaurant_menu where rest_id=?";
+			    pstmt = con.prepareStatement(sql);
+      		    pstmt.setString(1,rest_id);
+      		    rs = pstmt.executeQuery();
+      		    if(rs.next()) {
+      		    	dto = new Restaurant_menuDTO();
+      		    	dto.setMenu_descriptions(rs.getString("menu_descriptions"));
+      		    	dto.setMenu_name(rs.getString("menu_name"));
+      		    	dto.setPrice(rs.getString("price"));
+      		    	dto.setRest_id(rs.getString("rest_id"));
+      		    	dto.setMeunfile(rs.getString("menufile"));
+      		    }
+			  
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return dto;
+		}
+		
+		public void getRestaurantUpdate(RestaurantDTO restal) {
+		
+			
+			try {
+				// 1,2 디비연결 
+				con = getCon();
+				// 3.sql문작성
+				sql ="update restaurant set name=?, convenience=?, dayoff=?, runtime=?, descriptions=? "
+						+ " where owner_user_id = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, restal.getName());
+				pstmt.setString(2, restal.getConvenience());
+				pstmt.setString(3, restal.getDayoff());
+				pstmt.setString(4, restal.getRuntime());
+				pstmt.setString(5, restal.getDescriptions());
+				pstmt.setString(6, restal.getOwner_user_id());
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+
+		}
+		//getRestaurantallow
+
+		// 점주 - 가게 대기 내역 불러오기
+		public List getWaitingList(String owner_user_id, int startRow, int pageSize) {
+			
+			List waitingList = new ArrayList();
+			
+			try {
+				con = getCon();
+				
+				sql = "SELECT w.status, w.rest_id, w.wait_num, u.name, u.phone, w.people, w.regdate FROM waiting w "
+						+ "JOIN USER u "
+						+ "ON u.user_id = w.user_id "
+						+ "WHERE rest_id = (SELECT rest_id "
+						+ "                 FROM restaurant "
+						+ "                 WHERE owner_user_id = ?) and w.status = 1 "
+						+ "order by w.wait_num limit ?,?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, owner_user_id);
+				pstmt.setInt(2, startRow-1);
+				pstmt.setInt(3, pageSize);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					WaitingDTO dto = new WaitingDTO();
+					dto.setRest_id(rs.getString("rest_id"));
+					dto.setWait_num(rs.getInt("wait_num"));
+					dto.setName(rs.getString("name"));
+					dto.setPhone(rs.getString("phone"));
+					dto.setPeople(rs.getInt("people"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setStatus(rs.getInt("status"));
+					waitingList.add(dto);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			System.out.println("M : 대기 예약 내역 저장 완료.");
+			return waitingList;
+			
+		}
+		
+		
+
+		// 점주의 마이페이지 - 대기관리 - 완료버튼 데이터처리
+		public void waitingDone(int wait_num) {
+			
+			try {
+				con = getCon();
+				
+				sql = "update waiting set status=2 where wait_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, wait_num);
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+		}
+
+		
+		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
+		public void updateRestOnOff(String rest_id, String onoff) {
+			int on_off = onoff.equals("true") ? 0 : 1;
+			System.out.println(rest_id);
+			try {
+				con = getCon();
+				sql = "update restaurant set on_off = ? where rest_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, on_off);
+				pstmt.setString(2, rest_id);
+				
+				pstmt.executeUpdate();
+				System.out.println(" DAO : on_off 변경 완료");
+				System.out.println(" DAO : on_off 상태 = " + on_off);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//select * from restaurant_menu where rest_id=?
+		public List<ReivewDTO> OwnergetReview(String user_id) {
+			List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
+			try {
+				System.out.println(user_id);
+			    // 1,2 디비연결
+				con = getCon();
+				// sql 작성
+				sql = "select * from review r where rest_id = (select rest_id from restaurant where owner_user_id = ?)";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1,user_id);
+				rs = pstmt.executeQuery();
+                while(rs.next()) {
+                	ReivewDTO dto = new ReivewDTO();
+                 dto.setUser_id(rs.getString("user_id"));
+                 dto.setContent(rs.getString("content"));
+                 dto.setRegdate(rs.getTimestamp("regdate"));
+                 dto.setGrade(rs.getInt("grade"));
+                 dto.setWait_num(rs.getInt("wait_num"));
+                 
+                 reviewList.add(dto);
+                }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return reviewList;
+			
+		}
+		
+		public void OwnergetNotice(String rest_notice) {
+			
+			try {
+				// 1,2 연결
+				con = getCon();
+				// 3 sql 실행
+				if(rest_notice == null) {
+					sql ="insert into restaurant (rest_notice)"
+							+ "values(?)";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, rest_notice);
+					pstmt.executeUpdate();
+					System.out.println("공지사항쓰기 완료!");
+			     }else {
+			    	 sql="update restaurant set rest_notice=?";
+			    	 
+			    	 pstmt = con.prepareStatement(sql);
+			    	 
+			    	 pstmt.setString(1,rest_notice);
+			    	 pstmt.executeUpdate();
+			    	 System.out.println("공지사항쓰기 완료!");
+			     }
+				
+			}catch (Exception e) {
+					e.printStackTrace();
+				}
+			finally {
+				closeDB();
+			}
+		}
+		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
+		
+
 		
 		/* ================== < 가게리스트 > ======================== */
 		

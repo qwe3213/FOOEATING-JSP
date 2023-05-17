@@ -1,14 +1,24 @@
 package com.fooeating.controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.fooeating.action.ownerMainPageReviewAction;
+
+import com.fooeating.action.OwnerMainPageRstcareAction;
+import com.fooeating.action.OwnerNoticeAction;
+import com.fooeating.action.OwnerReviewAction;
+import com.fooeating.action.RestaurantUpdateAction;
+import com.fooeating.action.RestaurantUpdateProAction;
+import com.fooeating.action.OwnerWaitingListAction;
+import com.fooeating.action.OwnerWaitingListPopupAction;
+import com.fooeating.action.RestOnOffAction;
+
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -17,8 +27,11 @@ public class RestaurantFrontController extends HttpServlet {
 	
 	
 	
+
 	// http://localhost:8088/FOOEATING/ownerChangeForm.on
 	// http://localhost:8088/FOOEATING/ownerChangeForm.on
+
+	// http://localhost:8088/FOOEATING/ownerChangeForm4.on
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -85,17 +98,7 @@ public class RestaurantFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("./owner/ownerChangeForm3.jsp");
 			forward.setRedirect(false);	
-		} // ownerChangeForm3.jsp
-		
-		else if(command.equals("/ownerChangeForm4.on")) {
-			System.out.println("  C : /ownerChangeForm4.on 실행");
-			System.out.println("  C : DB사용x, view 페이지 이동");
-			
-			// 페이지 이동
-			forward = new ActionForward();
-			forward.setPath("./owner/ownerChangeForm4.jsp");
-			forward.setRedirect(false);	
-		} // ownerChangeForm4.jsp
+		} 
 		
 		else if(command.equals("/ownerRequestSuccessAction.on")) {
 			 System.out.println(" C : /ownerRequestSuccessAction.on 실행");
@@ -109,7 +112,20 @@ public class RestaurantFrontController extends HttpServlet {
 		}
 			 
 		} // ownerRequestSuccessAction
-		
+
+		// 점주의 마이페이지 - 가게 관리
+		else if(command.equals("/Main.foo")) {
+			System.out.println("C : /Main.foo 실행");
+			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
+			
+			action = new OwnerWaitingListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		else if(command.equals("/ownerMainPage_review.on")) {
 			System.out.println(" C : ownerMainPage_review.on 호출");
 			System.out.println(" C : DB사용o , 페이지 이동, 출력(패턴3)");
@@ -123,9 +139,135 @@ public class RestaurantFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} // ownerMainPage_review
-	
 		
-		// ----- 여기 아래에 else if로 각자 command 가상주소 코드 작성 -----
+		
+		// 점주의 마이페이지 - 대기 관리
+		else if(command.equals("/OwnerWaitingList.on")) {
+			System.out.println("C : /OwnerWaitingList.on 실행");
+			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
+			
+			action = new OwnerWaitingListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		// 점주의 마이페이지 - 대기 관리 - 팝업
+		else if(command.equals("/OwnerWaitingListPopup.on")) {
+			System.out.println("C : /OwnerWaitingListPopup.on 실행");
+			System.out.println("C : DB사용x, 팝업창 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerWaitingListPopup.jsp");
+			forward.setRedirect(false);
+		}
+		
+		
+		// 점주의 마이페이지 - 대기 관리 - 팝업 처리
+		else if(command.equals("/OwnerWaitingListPopupAction.on")) {
+			System.out.println("C : /OwnerWaitingListPopupAction.on 실행");
+			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
+			
+			action = new OwnerWaitingListPopupAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/OwnerMainPageRstcareAction.on")) {
+			 System.out.println(" /OwnerMainPageRstcareAction.on");
+			 System.out.println(" 패턴 3 ");
+             
+	         action = new OwnerMainPageRstcareAction();
+	         try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   
+		}
+		
+		else if(command.equals("/RestaurantUpdateProAction.on")) {
+			System.out.println(" /RestaurantUpdateProActionPro.on");
+			System.out.println(" 패턴 3 ");
+			
+			action = new RestaurantUpdateProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/RestaurantUpdateAction.on")) {
+			System.out.println(" C : RestaurantUpdateAction.on 호출 ");
+			System.out.println("패턴 3 ");
+			
+			action = new RestaurantUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
+		
+		
+		// 가게 on_off 설정
+		else if (command.equals("/RestOnOffAction.on")) {
+			System.out.println(" C : RestOnOffAction.on 호출 ");
+			System.out.println("패턴 2 ");
+			
+			action = new RestOnOffAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if (command.equals("/RestOnOffResult.on")) {
+			System.out.println(" C : RestOnOffResult.on 호출");
+			System.out.println("패턴 1");
+			
+			forward = new ActionForward();
+			forward.setPath("./owner/restOnOffResult.jsp");
+			forward.setRedirect(false);
+		}
+		
+		else if(command.equals("/ownerReviewPage.on")) {
+			System.out.println(" C : / ownerReviewPage.on 실행");
+			System.out.println(" 패턴3");
+			
+			action = new OwnerReviewAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/OwnerNoticeAction.on")) {
+			System.out.println(" C: / OwnerNoticeAction 실행");
+			System.out.println(" C: / 패턴2");
+        
+		action = new OwnerNoticeAction();
+		  
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		}
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		

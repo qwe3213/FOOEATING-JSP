@@ -129,7 +129,33 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
+		
+		else if(command.equals("/RecommendMain.ad")) {
+			System.out.println("  C : /RecommendMain.ad 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동(패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./recommend/questionMain.jsp");
+			forward.setRedirect(false);
+		}
+		
+		else if(command.equals("/RecommendList.ad")) {
+			System.out.println("  C : /RecommendList.ad 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동(패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./recommend/questionList.jsp");
+			forward.setRedirect(false);
+		}
+		
+		else if(command.equals("/RecommendResult.ad")) {
+			System.out.println("  C : /RecommendResult.ad 실행");
+			System.out.println("  C : DB사용x, view 페이지 이동(패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./recommend/result.jsp");
+			forward.setRedirect(false);
+		}
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		

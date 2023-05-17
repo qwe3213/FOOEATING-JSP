@@ -5,13 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- css파일 -->
+<link href="./css/header.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/footer.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+
 </head>
 <body>
 
+<!-- header -->
+	<jsp:include page="../inc/header.jsp" />
+<!-- header -->
 
+<!-- sideMenu -->
+	<jsp:include page="../inc/sideMenuNotice.jsp" />
+<!-- sideMenu -->
 
+<!-- main -->
+<main>
+<br><br>
 <!-- NoticeUpdateAction.java에서 저장한 dto 객체 출력 -->
-
 <form action="./NoticeContentActionPro.foo" method="post">
 
 	<table border="1">
@@ -37,7 +52,13 @@
 
 
 <input type="button" value="목록으로" onclick="location.href='./NoticeList.foo?pageNum=${pageNum}';">
+</main>
+<!-- main -->
 
+
+<!-- footer -->
+	<jsp:include page="../inc/footerDiv.jsp" />
+<!-- footer -->
 
 </body>
 </html>

@@ -11,11 +11,10 @@
 	
 	<h1>waitingCheckResult.jsp</h1>
 	
-	<h2>이미 대기 중입니다!</h2>
-	
 	사용자 : ${sessionScope.user_id}<br>
 	대기 중인 가게 : ${wdto.rest_id}<br>
-	대기 번호 : ${wdto.wait_num}
+	대기 번호 : ${wdto.wait_num} <br>
+	대기 인원 : ${wdto.people} 명
 	
 	<hr>
 	

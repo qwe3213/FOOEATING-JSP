@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fooeating.action.ListFormAction;
-import com.fooeating.action.MapFormAction;
 import com.fooeating.action.RestaurantFormAction;
-import com.fooeating.action.RestaurantInfoAction;
+import com.fooeating.action.RestaurantInfoHeartAdd;
+import com.fooeating.action.RestaurantInfoHeartRemove;
 import com.fooeating.action.WaitingCheckProAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -57,29 +57,14 @@ public class ListFrontController extends HttpServlet {
 			System.out.println("  C : /listForm.fd 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
 
-			forward = new ActionForward();
-			forward.setPath("./list/listForm.jsp");
-			forward.setRedirect(false);
+			action = new ListFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-//			action = new ListFormAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
 
-//		} else if(command.equals("/restaurantForm.fd")) {
-//			System.out.println("  C : /RestaurantInfo.ad 실행");
-//			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-//
-//			action = new RestaurantFormAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
 		// 지도
 //		else if (command.equals("/TestMap.fd")) {
 //			System.out.println("  C : /TestMap.fd 실행");
@@ -93,30 +78,6 @@ public class ListFrontController extends HttpServlet {
 //			}
 //		}
 		
-//		else if(command.equals("/restaurantForm.fd")) {
-//			System.out.println("  C : /restaurantForm.fd 실행");
-//			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-//
-//			action = new listFormAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-		
-		else if (command.equals("/ListGallery.fd")) {
-			System.out.println("  C : /RestaurantInfo.ad 실행");
-			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
-			
-			action = new ListFormAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
 		else if(command.equals("/restaurantForm.fd")) {
 			System.out.println("  C : /RestaurantForm.ad 실행");
 			System.out.println("  C : DB사용o, view 페이지 이동+출력(패턴3)");
@@ -127,8 +88,9 @@ public class ListFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
+
+		} 
+
 		else if(command.equals("/WaitingCheck.fd")) {
 			System.out.println("  C : /WaitingCheck.fd 실행");
 			System.out.println("  C : DB사용x, view 페이지 이동(패턴1)");
@@ -158,6 +120,33 @@ public class ListFrontController extends HttpServlet {
 			forward.setPath("./list/waitingCheckResult.jsp");
 			forward.setRedirect(false);
 		}
+		
+		// 가게 상세페이지 유저가 빈하트 클릭 시 기능
+		else if (command.equals("/RestaurantInfoHeartAdd.fd")) {
+			System.out.println(" C : /RestaurantInfoHeartAdd.fd 실행");
+			
+			action = new RestaurantInfoHeartAdd();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 가게 상세페이지 유저가 꽉찬하트 클릭 시 기능
+				else if (command.equals("/RestaurantInfoHeartRemove.fd")) {
+					System.out.println(" C : /RestaurantInfoHeartRemove.fd 실행");
+					
+					action = new RestaurantInfoHeartRemove();
+
+					try {
+						forward = action.execute(request, response);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
 
 
 		System.out.println("2. 가상주소 매핑 끝\n");

@@ -11,6 +11,7 @@
 <link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
 
 </head>
 <body>
@@ -20,9 +21,12 @@
 <!-- header -->
 
 <!-- sideMune -->
-<jsp:include page="adminSidMenu.jsp" />
+<jsp:include page="../inc/sideMenuAdmin.jsp" />
 <!-- sideMune -->
-	
+
+<!-- main -->
+<main>
+<br><br>
 	<table border="1">
 		<tr>
 			<th>No.</th>
@@ -46,6 +50,7 @@
 				<form action="./RestaurantInfo.ad" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<input type="hidden" name="rest_id" value="${dto.rest_id}">
+					<input type="hidden" name="rstatus" value="yes">
 					<input type="submit" value="상세보기">
 				</form>
 			</td>
@@ -85,6 +90,9 @@
 			}
 		}
 	%>
+</main>
+<!-- main -->
+	
 	
 <!-- footer -->
 <jsp:include page="../inc/footerDiv.jsp" />

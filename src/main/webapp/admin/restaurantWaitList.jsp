@@ -11,6 +11,8 @@
 <link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+
 
 <script type="text/javascript">
 	function winopen(rest_id){
@@ -31,9 +33,12 @@
 <!-- header -->
 
 <!-- sideMune -->
-<jsp:include page="adminSidMenu.jsp" />
+<jsp:include page="../inc/sideMenuAdmin.jsp" />
 <!-- sideMune -->
-	
+
+<!-- main -->
+<main>
+<br><br>
 	<table border="1">
 		<tr>
 			<th>No.</th>
@@ -61,6 +66,7 @@
 				<form action="./RestaurantInfo.ad" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<input type="hidden" name="rest_id" value="${dto.rest_id}">
+					<input type="hidden" name="rstatus" value="no">
 					<input type="submit" value="상세보기">
 				</form>
 			</td>
@@ -85,25 +91,29 @@
 			
 			if(startPage > pageBlock) {
 	%>
-				<a href="./RestaurantList.ad?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+				<a href="./RestaurantWaitList.ad?pageNum=<%=startPage - pageBlock%>">[이전]</a>
 	<%
 			}
 			for(int i = startPage; i <= endPage; i++) {
 	%>
-				<a href="./RestaurantList.ad?pageNum=<%=i%>">[<%=i%>]</a>
+				<a href="./RestaurantWaitList.ad?pageNum=<%=i%>">[<%=i%>]</a>
 	<%
 			}
 			if(endPage < pageCount) {
 	%>
-				<a href="./RestaurantList.ad?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+				<a href="./RestaurantWaitList.ad?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 	<%
 			}
 		}
 	%>
+</main>
+<!-- main -->
+	
 	
 <!-- footer -->
 <jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
+	
 	
 </body>
 </html>

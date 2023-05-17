@@ -7,7 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- css 파일 -->
+<link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+
+<script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 	function winopen1(rest_id){
 		let popupX = (window.screen.width / 2) - (500 / 2);
@@ -26,6 +32,64 @@
 		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
 		 ',screenY= '+ popupY);
 	}
+	
+	function moveLogin() {
+		alert("로그인이 필요한 기능입니다!")
+		location.href = "./MemberLogin.foo";
+	}
+	
+	function heart_check(user_id, rest_id) {
+		
+		if($('img').attr('class') == "empty_heart" ){
+		
+			$.ajax({
+				url:"./RestaurantInfoHeartAdd.fd",
+				data : {
+					user_id:user_id, 
+					rest_id:rest_id,
+					},
+				success: function(data) {
+					$('img').attr("src", "./img/fullheart.png");
+					$('img').attr("class", "full_heart");
+					
+					$('.heartNo').html(data);
+					
+				},
+				error : function() {
+					alert("서버요청실패");
+				}
+				
+			});
+			
+			} else if($('img').attr('class') == "full_heart" ){
+					
+					$.ajax({
+						url:"./RestaurantInfoHeartRemove.fd",
+						data : {
+							user_id:user_id, 
+							rest_id:rest_id,
+							},
+						success: function(data) {
+							$('img').attr("src", "./img/emptyheart.png");
+							$('img').attr("class", "empty_heart");
+							
+							$('.heartNo').html(data);
+							
+						},
+						error : function() {
+							alert("서버요청실패");
+						}
+						
+			});
+		
+		}
+	}
+		
+	
+	
+	
+	
+	
 </script>
 
 </head>
@@ -35,11 +99,13 @@
 <jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
+<!-- main -->
+<main>
+<br><br>
 		<h1>상세페이지</h1>
 		
 		<table border="1">
 		<tr>
-			<td rowspan="8">${restForm.file_out}</td>
 			<th>상호명</th>
 			<td>${restForm.name}</td>
 		</tr>
@@ -71,20 +137,89 @@
 			<th>가게 공지사항</th>
 			<td>${restForm.rest_notice}</td>
 		</tr>
+		<tr>
+			<th>조회수</th>
+			<td>${restForm.read_count}</td>
+		</tr>
 	</table>
 	
 	<br>
 	
-<%-- 	${sessionScope.wdto.user_id} ${sessionScope.wdto.rest_id} ${sessionScope.wdto.wait_num} <br> --%>
+	<hr>
 	
-	<c:if test="${wdto == null}">
-		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>아이디</th>
+			<th>외관사진</th>			
+			<th>평점</th>
+			<th>내용</th>
+			<th>등록일</th>
+		</tr>
+		
+		<c:forEach var="re" items="${requestScope.re }" varStatus="no">
+	
+		<tr>
+			<td>${no.count}</td>
+			<td>${re.user_id}</td>
+			<td>${re.file}</td>
+			<td>${re.grade}</td>
+			<td>${re.content}</td>
+			<td>${re.regdate}</td>
+
+
+		</tr>
+		</c:forEach>
+	</table>
+	
+	
+	
+<%-- 	${wdto.user_id} ${wdto.rest_id} ${wdto.wait_num} <br> --%>
+<%-- 	${sessionScope.user_id} ${restForm.rest_id} --%>
+	
+	<c:if test="${restForm.on_off == true}">
+		<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+		</c:if>
+		
+		<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen2();">대기하기</button>
+		</c:if>
+	</c:if>
+	<c:if test="${restForm.on_off == false}">
+		<button>영업 준비 중입니다...(T^T)</button>
 	</c:if>
 	
-	<c:if test="${wdto != null}">
-		<button onclick="winopen2();">대기하기</button>
-	</c:if>
 	
 	<button onclick="location.href='./listForm.fd'">가게 리스트로</button>
+	<br>
+	<br>
+	<br>
+		<c:choose>
+			<c:when test="${!empty user_id && heart_check ==1}">
+				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
+				<div class="heartNo">${heartNo }</div> 
+			</c:when>
+			<c:when test="${empty user_id}">
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="50" height="50">
+				<div class="heartNo">${heartNo }</div> 
+			</c:when>
+			<c:otherwise>
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
+				<div class="heartNo">${heartNo }</div> 
+			</c:otherwise>
+		</c:choose>
+</main>
+<!-- main -->
+
+
+
+
+
+<!-- footer -->
+<jsp:include page="../inc/footerDiv.jsp" />
+<!-- footer -->
+
+	
 </body>
 </html>

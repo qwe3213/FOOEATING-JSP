@@ -34,6 +34,7 @@ public class ReviewUpdateAction implements Action {
 		
 		// 전달정보 저장(변수)
 		int review_num = Integer.parseInt(request.getParameter("review_num"));
+		int grade = Integer.parseInt(request.getParameter("grade"));
 		String newContent = request.getParameter("newContent");
 		
 		
@@ -41,7 +42,7 @@ public class ReviewUpdateAction implements Action {
 		// DAO - 정보수정 메서드 호출 -changePw(id, pw, newPw)
 		PublicDAO dao = new PublicDAO();
 		
-		int result = dao.changeReview(id, review_num, newContent);
+		int result = dao.changeReview(id, review_num, newContent, grade);
 		
 		System.out.println(" M : 정보 수정 결과 " + result);
 		

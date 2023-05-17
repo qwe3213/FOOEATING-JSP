@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="./js/jquery-3.6.4.js"></script>
-
 <script type="text/javascript">
 
 $(function() {
