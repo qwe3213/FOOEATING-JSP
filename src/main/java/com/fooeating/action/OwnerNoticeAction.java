@@ -22,9 +22,10 @@ public class OwnerNoticeAction implements Action {
 			
 			// rest_notice 정보 저장
 		    String rest_notice = request.getParameter("rest_notice");
+		    String rest_id = request.getParameter("rest_id");
 		    
 		    PublicDAO dao = new PublicDAO();
-		    dao.OwnergetNotice(rest_notice);
+		    dao.OwnergetNotice(rest_notice,rest_id);
 		
 		    JSForward.alertAndMove(response, "공지사항 작성이 완료되었습니다.", "./OwnerMainPageRstcareAction.on");
 		   

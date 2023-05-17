@@ -2312,7 +2312,7 @@ public class PublicDAO {
 			
 		}
 		
-		public void OwnergetNotice(String rest_notice) {
+		public void OwnergetNotice(String rest_notice, String rest_id) {
 			
 			try {
 				// 1,2 연결
@@ -2320,18 +2320,20 @@ public class PublicDAO {
 				// 3 sql 실행
 				if(rest_notice == null) {
 					sql ="insert into restaurant (rest_notice)"
-							+ "values(?)";
+							+ "values(?) where rest_id=? ";
 					pstmt = con.prepareStatement(sql);
 					
 					pstmt.setString(1, rest_notice);
+					pstmt.setString(2, rest_id);
 					pstmt.executeUpdate();
 					System.out.println("공지사항쓰기 완료!");
 			     }else {
-			    	 sql="update restaurant set rest_notice=?";
+			    	 sql="update restaurant set rest_notice=? where rest_id=? ";
 			    	 
 			    	 pstmt = con.prepareStatement(sql);
 			    	 
 			    	 pstmt.setString(1,rest_notice);
+			    	 pstmt.setString(2, rest_id);
 			    	 pstmt.executeUpdate();
 			    	 System.out.println("공지사항쓰기 완료!");
 			     }
@@ -2342,6 +2344,44 @@ public class PublicDAO {
 			finally {
 				closeDB();
 			}
+		}
+		
+		public int deleteRestaurant(String user_id,String pw) {
+			 int result = -1;
+			  try {
+				  // 1,2 디비연결
+				  con = getCon();
+				  sql = "select pw from user where user_id=?";
+				  
+				  pstmt = con.prepareStatement(sql);
+				  pstmt.setString(1, user_id);  
+				  rs = pstmt.executeQuery();
+				  
+				  if(rs.next()) {
+					//id 같음
+		            	if(pw.equals(rs.getString("pw"))) {
+		            		// 비밀번호도 같음
+		            		sql ="delete from restaurant where owner_user_id=?";
+		            		pstmt = con.prepareStatement(sql);
+		            		pstmt.setString(1,user_id);
+		            		result = pstmt.executeUpdate();
+		            	}else {
+		            		 result =0;
+		            	}
+		            }else {
+		            	result = -1;
+		            }
+		            System.out.println("DAO : 삭제완료 " + result);  
+
+				  
+			     } catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			
+			return result;
 		}
 		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
 		

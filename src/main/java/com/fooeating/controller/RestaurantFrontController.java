@@ -14,6 +14,8 @@ import com.fooeating.action.RestaurantUpdateProAction;
 import com.fooeating.action.OwnerWaitingListAction;
 import com.fooeating.action.OwnerWaitingListPopupAction;
 import com.fooeating.action.RestOnOffAction;
+import com.fooeating.action.RestaurantDeleteAction;
+import com.fooeating.action.RestaurantDeleteProAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -245,6 +247,30 @@ public class RestaurantFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 			
+		}
+		else if(command.equals("/RestaurantDeleteAction.on")) {
+			System.out.println(" C : /RestaurantDeleteAction.on ");
+			System.out.println(" C : 패턴 2");
+			
+			action = new RestaurantDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/RestaurantDeleteProAction.on")) {
+			System.out.println(" C : /RestaurantDeleteProAction.on ");
+			System.out.println(" C : 패턴 3");
+			
+			action = new RestaurantDeleteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		System.out.println("2. 가상주소 매핑 끝\n");

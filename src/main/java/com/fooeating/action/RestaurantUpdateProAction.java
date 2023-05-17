@@ -19,8 +19,6 @@ public class RestaurantUpdateProAction implements Action{
 		 
 	    	ActionForward forward = new ActionForward();
 		
-		   
-	    	
 	       RestaurantDTO restal = new RestaurantDTO();
 	       
 	       HttpSession session = request.getSession();
