@@ -145,6 +145,35 @@
 	
 	<br>
 	
+	<hr>
+	
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>아이디</th>
+			<th>외관사진</th>			
+			<th>평점</th>
+			<th>내용</th>
+			<th>등록일</th>
+		</tr>
+		
+		<c:forEach var="re" items="${requestScope.re }" varStatus="no">
+	
+		<tr>
+			<td>${no.count}</td>
+			<td>${re.user_id}</td>
+			<td>${re.file}</td>
+			<td>${re.grade}</td>
+			<td>${re.content}</td>
+			<td>${re.regdate}</td>
+
+
+		</tr>
+		</c:forEach>
+	</table>
+	
+	
+	
 <%-- 	${wdto.user_id} ${wdto.rest_id} ${wdto.wait_num} <br> --%>
 <%-- 	${sessionScope.user_id} ${restForm.rest_id} --%>
 	
@@ -176,6 +205,9 @@
 		</c:choose>
 </main>
 <!-- main -->
+
+
+
 
 
 <!-- footer -->
