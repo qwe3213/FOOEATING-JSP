@@ -130,13 +130,8 @@
     </div>
 	 
 	 
-<!-- 	 <input id="kakao" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
-<!-- 	 <input id="gallery" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 		
-		<style>
-		.myDiv{
-			display : block;}
-		</style>
+
 
  <script>
  function toggleDiv(divId) {
@@ -155,7 +150,9 @@
  
   window.onload = function() {
 	var listDiv = document.getElementById("list");
+	var mapDiv = document.getElementById("map");
 	listDiv.style.display = "block";
+	mapDiv.style.display = "none";
  };
  
  function addrChange(e) {
@@ -180,8 +177,13 @@
 	}
   </script>
   
-   <button onclick="toggleDiv('map')">Gallery</button>
-   <button onclick="toggleDiv('list')">API</button>
+<!-- 	 <input id="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
+<!-- 	 <input id="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
+<!--    <button onclick="toggleDiv('map')" image>MAP</button> -->
+<!--    <button onclick="toggleDiv('list')">LIST</button> -->
+   
+   <input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
 
 
 			<!-- 가게 리스트 시작-->
@@ -270,7 +272,7 @@
 
 <!-- <div id="myDiv" style="width:100%;height:350px;display: none;"> -->
 
-<div id="map" class="myDiv" style="width:400x;height:300px;">
+<div id="map" class="myDiv" style="width:400x;height:500px;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
 <script>
