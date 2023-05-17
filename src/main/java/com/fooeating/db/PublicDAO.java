@@ -1653,10 +1653,11 @@ public class PublicDAO {
 				
 				if(rs.next()) {
 					// 유저 상태 변환
-					sql = "update heart set heart_check=1 where user_id=?" ;
+					sql = "update heart set heart_check=1 where user_id=? and rest_id = ?";
 					pstmt = con.prepareStatement(sql);
 					// ???
 					pstmt.setString(1, user_id);
+					pstmt.setString(2, rest_id);
 					
 					// 4. sql 실행
 					pstmt.executeUpdate();
@@ -1717,10 +1718,11 @@ public class PublicDAO {
 				
 				if(rs.next()) {
 					// 유저 상태 변환
-					sql = "update heart set heart_check=0 where user_id=?" ;
+					sql = "update heart set heart_check=0 where user_id=? and rest_id = ?";
 					pstmt = con.prepareStatement(sql);
 					// ???
 					pstmt.setString(1, user_id);
+					pstmt.setString(2, rest_id);
 					
 					// 4. sql 실행
 					pstmt.executeUpdate();
