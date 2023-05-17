@@ -36,7 +36,7 @@
 <!--                                 </ul> -->
 <!--                             </li> -->
                     <ul class="nav" style="margin-left: 0px;">
-                        <li class="scroll-to-section"><a href="#">Pudding</a></li>
+                        <li class="scroll-to-section"><a href="./listForm.fd">Pudding 메뉴 추천</a></li>
                         <li class="scroll-to-section"><a href="./NoticeList.foo">Notice</a></li>
                     </ul>
                         
