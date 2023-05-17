@@ -1,5 +1,7 @@
 package com.fooeating.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,6 +10,7 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.db.LikeDTO;
 import com.fooeating.db.PublicDAO;
+import com.fooeating.db.ReivewDTO;
 import com.fooeating.db.RestaurantDTO;
 import com.fooeating.db.WaitingDTO;
 
@@ -24,6 +27,21 @@ public class RestaurantFormAction implements Action {
 		// 가게 정보 저장
 		String rest_id = request.getParameter("rest_id");
 		PublicDAO dao = new PublicDAO();
+		
+		// 리뷰-------------------------------------------------
+
+		List<ReivewDTO> re = dao.getReview(rest_id);
+	
+		request.setAttribute("re", re);
+		
+		
+		
+		// 리뷰-------------------------------------------------
+		
+		
+		
+		
+		
 		
 		dao.getUpdateReadCount(rest_id);
 		RestaurantDTO restForm = dao.getRestaurantForm(rest_id);

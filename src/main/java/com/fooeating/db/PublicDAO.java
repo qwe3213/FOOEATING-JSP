@@ -1946,6 +1946,35 @@ public class PublicDAO {
                 closeDB();
             }
         }
+        
+        public List<ReivewDTO> getReview (String rest_id) {
+        	List<ReivewDTO> re = new ArrayList<ReivewDTO>();
+        	
+        	try {
+				con=getCon();
+				sql = "select user_id,content,file,regdate,grade from review where rest_id=? ";
+				 pstmt = con.prepareStatement(sql);
+	               pstmt.setString(1, rest_id);
+	               rs = pstmt.executeQuery();
+	                while (rs.next()) {
+	                	ReivewDTO dto = new ReivewDTO();
+	                	dto.setGrade(rs.getInt("grade"));
+	                	dto.setContent(rs.getString("content"));
+	                	dto.setFile(rs.getString("file"));
+	                	dto.setUser_id(rs.getString("user_id"));
+	                	dto.setRegdate(rs.getTimestamp("regdate"));
+	                	re.add(dto);
+	                }
+	              
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+        	
+        	return re ;
+        }
+        
 
         // -----------------조회수------------------------------
 		
