@@ -10,6 +10,8 @@ import com.fooeating.action.OwnerMainPageRstcareAction;
 import com.fooeating.action.RestaurantUpdateAction;
 import com.fooeating.action.RestaurantUpdateProAction;
 import com.fooeating.action.OwnerWaitingListAction;
+import com.fooeating.action.OwnerWaitingListDone;
+import com.fooeating.action.OwnerWaitingListPopupAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -148,6 +150,31 @@ public class RestaurantFrontController extends HttpServlet {
 			System.out.println("C : DB사용o, 페이지 이동 & 출력");
 			
 			action = new OwnerWaitingListDone();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		// 점주의 마이페이지 - 대기 관리 - 팝업
+		else if(command.equals("/OwnerWaitingListPopup.on")) {
+			System.out.println("C : /OwnerWaitingListPopup.on 실행");
+			System.out.println("C : DB사용x, 팝업창 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerWaitingListPopup.jsp");
+			forward.setRedirect(false);
+		}
+		
+		
+		// 점주의 마이페이지 - 대기 관리 - 팝업 처리
+		else if(command.equals("/OwnerWaitingListPopupAction.on")) {
+			System.out.println("C : /OwnerWaitingListPopupAction.on 실행");
+			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
+			
+			action = new OwnerWaitingListPopupAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

@@ -1,4 +1,4 @@
-package com.fooeating.controller;
+package com.fooeating.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

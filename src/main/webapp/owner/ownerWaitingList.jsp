@@ -24,15 +24,16 @@ function selectAll(selectAll)  {
 	    checkbox.checked = selectAll.checked;
 	  })
 	}
+
+
+function winopen(wait_num){  
+	let popupX = (window.screen.width / 2) - (500 / 2);
+	let popupY= (window.screen.height / 2) - (300 / 2);
 	
-function waitingDone(wait_num, pageNum){  
-	alert('입장이 완료되었습니다!');
-	location.href="./OwnerWaitingListDone.on?pageNum=" + pageNum;
-	// 여기서 wait_num을 못담아가서 자꾸 null 에러남
+	window.open("OwnerWaitingListPopup.on?wait_num=" + wait_num, "", 
+			"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+			 ',screenY= '+ popupY);
 }
-
-
-
 
 </script>
 
@@ -78,7 +79,7 @@ function waitingDone(wait_num, pageNum){
 				<td>${dto.phone }</td>
 				<td>${dto.people }</td>
 				<td>${dto.regdate }</td>
-				<td><button onclick="waitingDone('${dto.wait_num}', '${pageNum}');">완료</button></td>
+				<td><button onclick="winopen('${dto.wait_num}');">완료</button></td>
 			</tr>
 			</c:if>
 		</c:forEach>

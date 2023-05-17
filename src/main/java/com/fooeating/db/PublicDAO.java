@@ -1189,7 +1189,7 @@ public class PublicDAO {
 			con = getCon();
 			
 			// sql작성 & pstmt객체
-			sql = "select count(*) from waiting where rest_id=?";
+			sql = "select count(*) from waiting where rest_id=? and status=1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, rest_id);
 			
@@ -2156,7 +2156,7 @@ public class PublicDAO {
 						+ "ON u.user_id = w.user_id "
 						+ "WHERE rest_id = (SELECT rest_id "
 						+ "                 FROM restaurant "
-						+ "                 WHERE owner_user_id = ?)"
+						+ "                 WHERE owner_user_id = ?) and w.status = 1 "
 						+ "order by w.wait_num limit ?,?";
 				
 				pstmt = con.prepareStatement(sql);
