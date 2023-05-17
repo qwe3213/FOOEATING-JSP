@@ -72,11 +72,11 @@
 	 
 	 
 	 <div id="table_search">
-        <form action="./listForm.fd" method="get">
+        <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
 			<div>
 			<label for="addr_city">시/도</label>
-				<select id="addr_city" name="addr_city" onchange="addrChange(this)">
-					<option>시/도 선택</option>
+				<select id="addr_city" name="addr_city" onchange="addrChange(this);">
+					<option value="none">시/도 선택</option>
 					<option value="서울" <c:if test="${param.addr_city.equals('서울')}">selected</c:if>>서울</option>
 					<option value="부산" <c:if test="${param.addr_city.equals('부산')}">selected</c:if>>부산</option>
 					<option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
@@ -85,14 +85,14 @@
 			<div>
 			<label for="addr_discrict">구</label>
 				<select id="addr_district" name="addr_district">
-					<option>선택해주세요</option>
-					<c:if test="${param.addr_district != null}">
+					<option value="none">선택해주세요</option>
+					<c:if test="${param.addr_district.equals('none')}">
 						<option value="${param.addr_district}" selected>${param.addr_district}</option>
 					</c:if>
 				</select>
 			</div>
 	        <input type="text" name="search" class="input_box">
-	        <input type="submit" value="search" class="btn">
+	        <input type="submit" value="검색" class="btn">
         </form>
     </div>
 	 
@@ -111,7 +111,7 @@
     	listDiv.style.display = "none";
      } else if(divId === "list"){
     	 mapDiv.style.display = "none";
-    	 listDiv.style.display = "block";s
+    	 listDiv.style.display = "block";
      	}
      }
  
@@ -142,6 +142,17 @@
 			target.appendChild(opt);
 		}
 	}
+	
+	function checkData() {
+		if(fr.addr_city.value == "none"){
+			alert("지역을 선택하세요.");
+			return false;
+		}
+		if(fr.search.value == "") {
+			alert("검색어를 입력하세요.")
+			return false;
+		}
+	}
   </script>
   
 <!-- 	 <input id="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
@@ -167,9 +178,7 @@
 			<th>등록일</th>
 			<th>휴무일</th>
 			<th>외관사진</th>
-
 			<th>좋아요 수</th>
-
 <!-- 			<th>조회수</th> -->
 		</tr>
 		
@@ -189,10 +198,8 @@
 			<td>${dto.rest_id}</td>
 			<td>${dto.regdate}</td>
 			<td>${dto.dayoff}</td>
-<%-- 			<td>${dto.outfile}</td> --%>
-
+			<td>${dto.outfile}</td>
 			<td>${dto.like_num}</td>
-
 <%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>

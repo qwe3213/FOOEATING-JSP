@@ -75,11 +75,19 @@
 			<td>정기 휴무 : ${restal.dayoff }	</td>
 			</tr>
 			<tr>
-			<td>가게 on/off : ${restal.on_off}
-				<button onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
-					<c:if test="${restal.on_off == true}">가게 닫기</c:if>
-					<c:if test="${restal.on_off == false}">가게 열기</c:if>
-				</button>
+			<td>가게 on/off 
+				<c:if test="${restal.on_off == true}">
+					&lt;open&gt;
+					<button onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
+						가게 닫기
+					</button>
+				</c:if>
+				<c:if test="${restal.on_off == false}">
+					&lt;closed&gt;
+					<button onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
+						가게 열기
+					</button>
+				</c:if>
 			</td>
 			</tr>
 		</table>

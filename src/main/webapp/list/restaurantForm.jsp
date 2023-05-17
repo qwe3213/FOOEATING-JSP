@@ -177,13 +177,19 @@
 <%-- 	${wdto.user_id} ${wdto.rest_id} ${wdto.wait_num} <br> --%>
 <%-- 	${sessionScope.user_id} ${restForm.rest_id} --%>
 	
-	<c:if test="${!wdto.rest_id.equals(restForm.rest_id) || !wdto.user_id.equals(sessionScope.user_id)}">
-		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+	<c:if test="${restForm.on_off == true}">
+		<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+		</c:if>
+		
+		<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen2();">대기하기</button>
+		</c:if>
+	</c:if>
+	<c:if test="${restForm.on_off == false}">
+		<button>영업 준비 중입니다...(T^T)</button>
 	</c:if>
 	
-	<c:if test="${wdto.rest_id.equals(restForm.rest_id) && wdto.user_id.equals(sessionScope.user_id)}">
-		<button onclick="winopen2();">대기하기</button>
-	</c:if>
 	
 	<button onclick="location.href='./listForm.fd'">가게 리스트로</button>
 	<br>
