@@ -8,14 +8,15 @@ import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.commons.JSForward;
 import com.fooeating.db.PublicDAO;
+import com.fooeating.db.ReivewDTO;
 
-public class ReviewUpdateAction implements Action {
+public class ReviewWriteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 		
-		System.out.println(" M: ReviewUpdateAction_execute() 호출 ");
+		System.out.println(" M: ReviewWriteAction_execute() 호출 ");
 		
 		// 세션정보 제어
 		HttpSession session = request.getSession();
@@ -33,31 +34,23 @@ public class ReviewUpdateAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		
 		// 전달정보 저장(변수)
-		int review_num = Integer.parseInt(request.getParameter("review_num"));
-		int grade = Integer.parseInt(request.getParameter("grade"));
-		String newContent = request.getParameter("newContent");
+		ReivewDTO dto = new ReivewDTO();
+		
+		dto.setWait_num(Integer.parseInt(request.getParameter("wait_num")));
+		dto.setRest_id(request.getParameter("rest_id"));
+		dto.setGrade(Integer.parseInt(request.getParameter("grade")));
+		dto.setContent(request.getParameter("content"));
+		dto.setUser_id(id);
 		
 		
 		
 		// DAO - 정보수정 메서드 호출 -changePw(id, pw, newPw)
 		PublicDAO dao = new PublicDAO();
 		
-		int result = dao.changeReview(id, review_num, newContent, grade);
+		dao.reviewWriteAction(dto);
 		
-		System.out.println(" M : 정보 수정 결과 " + result);
+		JSForward.alertAndCloseAndMove(response, "리뷰 작성 완료!", "./MyReview.foo");
 		
-		// 수정 처리 결과에 따른 페이지 이동 (JS)
-		
-		if (result == -1) {
-			JSForward.alertAndBack(response, "아이디 없음");
-			
-			return null; // 컨트롤러에서는 이동X
-		}
-		
-		
-		session.removeAttribute("dto");
-		// result == 1
-		JSForward.alertAndCloseAndMove(response, "리뷰 수정 완료!","./MyReview.foo");
 		
 		return null;
 	}

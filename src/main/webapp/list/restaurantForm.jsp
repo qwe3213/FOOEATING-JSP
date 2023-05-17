@@ -7,7 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- css 파일 -->
+<link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
+
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 	function winopen1(rest_id){
@@ -93,7 +98,10 @@
 <!-- header -->
 <jsp:include page="../inc/header.jsp" />
 <!-- header -->
-		
+
+<!-- main -->
+<main>
+<br><br>
 		<h1>상세페이지</h1>
 		
 		<table border="1">
@@ -137,8 +145,8 @@
 	
 	<br>
 	
-	${wdto.user_id} ${wdto.rest_id} ${wdto.wait_num} <br>
-	${sessionScope.user_id} ${restForm.rest_id}
+<%-- 	${wdto.user_id} ${wdto.rest_id} ${wdto.wait_num} <br> --%>
+<%-- 	${sessionScope.user_id} ${restForm.rest_id} --%>
 	
 	<c:if test="${!wdto.rest_id.equals(restForm.rest_id) || !wdto.user_id.equals(sessionScope.user_id)}">
 		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
@@ -154,18 +162,26 @@
 	<br>
 		<c:choose>
 			<c:when test="${!empty user_id && heart_check ==1}">
-				<img src="./img/fullheart.png" class="full_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="20" height="20">
+				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
 				<div class="heartNo">${heartNo }</div> 
 			</c:when>
 			<c:when test="${empty user_id}">
-				<img src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="20" height="20">
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="50" height="50">
 				<div class="heartNo">${heartNo }</div> 
 			</c:when>
 			<c:otherwise>
-				<img src="./img/emptyheart.png" class="empty_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="20" height="20">
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
 				<div class="heartNo">${heartNo }</div> 
 			</c:otherwise>
 		</c:choose>
+</main>
+<!-- main -->
+
+
+<!-- footer -->
+<jsp:include page="../inc/footer.jsp" />
+<!-- footer -->
+
 	
 </body>
 </html>

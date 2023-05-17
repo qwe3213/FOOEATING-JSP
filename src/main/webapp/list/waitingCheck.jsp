@@ -25,6 +25,7 @@
 	대기 하시겠습니까?
 	<form action="./WaitingCheckPro.fd" method="post">
 		<input type="hidden" name="rest_id" value="<%=request.getParameter("rest_id")%>">
+		대기 인원 : <input type="number" name="people" min="1" max="5" value="1">(최대 5명)<br>
 		<input type="submit" value="대기">
 		<input type="button" value="취소" onclick="window.close();">
 	</form>

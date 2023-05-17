@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+/* questionMain.jsp */
+.container {
+	display: flex;
+	justify-content: center
+}
+.box {
+	margin: 25px;
+	top: 50%;
+	left: 50%;
+}
+.dvh {
+	text-align: center;
+}
+
+/* questionList.jsp */
+.question {
+	display: flex;
+	justify-content: center
+}
+.field {
+	width: 50%;
+	text-align: center;
+}
+
+/* result.jsp*/
+.box2 {
+	display: flex;
+	justify-content: center;
+	margin: 25px;
+}
+.container2 {
+	display: flex;
+	justify-content: center
+}
+.h {
+	text-align: center;
+}
+.box3 {
+	display: flex;
+	justify-content: center
+}

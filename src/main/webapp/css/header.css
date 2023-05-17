@@ -2,7 +2,17 @@
 
 
 
-img { display: block; margin: 0px auto; }
+img#heart { 
+	display: block; 
+	margin: -47px auto;
+	margin-left: 200px;
+	margin-top: -75px;
+	}
+	
+div.heartNo{
+	margin-top: 10px;
+	margin-left: 220px;
+}
 
 
 * {

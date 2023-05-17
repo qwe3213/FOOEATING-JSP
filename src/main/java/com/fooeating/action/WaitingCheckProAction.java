@@ -21,7 +21,8 @@ public class WaitingCheckProAction implements Action {
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
 		String rest_id = request.getParameter("rest_id");
-		System.out.println(user_id + ", " + rest_id);
+		int people = Integer.parseInt(request.getParameter("people"));
+		System.out.println(user_id + ", " + rest_id + ", " + people);
 		
 		PublicDAO dao = new PublicDAO();
 		
@@ -29,12 +30,14 @@ public class WaitingCheckProAction implements Action {
 		WaitingDTO wdto = dao.getWaitingCheck(user_id, rest_id);
 		
 		if (wdto != null) {
-			System.out.printf("(이미 있을 때)user_id : %s, rest_id : %s, wait_num : %d\n", wdto.getUser_id(), wdto.getRest_id(), wdto.getWait_num());
+			System.out.printf("(이미 있을 때)user_id : %s, rest_id : %s, wait_num : %d, people : %d명\n", 
+					wdto.getUser_id(), wdto.getRest_id(), wdto.getWait_num(), wdto.getPeople());
 		} else {
 			// 대기번호 발급
-			dao.getWaitingNum(user_id, rest_id);
+			dao.getWaitingNum(user_id, rest_id, people);
 			wdto = dao.getWaitingCheck(user_id, rest_id);
-			System.out.printf("(신규 발급 후)user_id : %s, rest_id : %s, wait_num : %d\n", wdto.getUser_id(), wdto.getRest_id(), wdto.getWait_num());
+			System.out.printf("(신규 발급 후)user_id : %s, rest_id : %s, wait_num : %d, people : %d명\n", 
+					wdto.getUser_id(), wdto.getRest_id(), wdto.getWait_num(), wdto.getPeople());
 		}
 		
 		session.setAttribute("wdto", wdto);

@@ -2,6 +2,7 @@ package com.fooeating.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +33,8 @@ import com.fooeating.member.action.NoticeWriteAction;
 import com.fooeating.member.action.ReviewDelete;
 import com.fooeating.member.action.ReviewUpdate;
 import com.fooeating.member.action.ReviewUpdateAction;
+import com.fooeating.member.action.ReviewWrite;
+import com.fooeating.member.action.ReviewWriteAction;
 
 public class MemberFrontController extends HttpServlet {
 
@@ -266,7 +269,7 @@ public class MemberFrontController extends HttpServlet {
 		// 6-2. 마이페이지 - 리뷰관리 수정버튼 클릭 시 정보를 저장할 액션페이지 호출
 		else if (command.equals("/ReviewUpdate.foo")) {
 			System.out.println(" C : /ReviewUpdate.foo 호출 ");
-			System.out.println(" C : DB사용o, view이동&출력(패턴3) ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
 
 			// MemberUpdateAction() 객체
 			action = new ReviewUpdate();
@@ -281,7 +284,7 @@ public class MemberFrontController extends HttpServlet {
 		// 6-3. 마이페이지 - 리뷰관리 수정버튼 클릭 시 수정팝업창 호출
 		else if (command.equals("/ReviewUpdatePop.foo")) {
 			System.out.println(" C : /ReviewUpdatePop.foo 실행");
-			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
+			System.out.println(" C : DB사용o, view 페이지 이동 (패턴3)");
 
 			forward = new ActionForward();
 			forward.setPath("./member/reviewUpdate.jsp");
@@ -465,6 +468,36 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		
+		// 11 회원 마이페이지 대기리스트 - 리뷰작성
+		else if (command.equals("/ReviewWrite.foo")) {
+			System.out.println(" C : /ReviewWrite.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
+
+			// ReviewWrite() 객체
+			action = new ReviewWrite();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if (command.equals("/ReviewWriteAction.foo")) {
+			System.out.println(" C : /ReviewWriteAction.foo 호출 ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
+
+			// ReviewWriteAction() 객체
+			action = new ReviewWriteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 

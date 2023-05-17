@@ -35,7 +35,7 @@ public class OwnerWaitingListAction implements Action {
 		// 2-1. 전체 대기 수
 		int count = dao.getWaitingCount(rest_id);
 		// 2-2. 한 페이지에 출력할 글의 개수
-		int pageSize = 1;
+		int pageSize = 10;
 		// 2-3. 현 페이지 정보가 몇 페이지인지 체크
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) {
@@ -58,6 +58,10 @@ public class OwnerWaitingListAction implements Action {
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageNum", pageNum);
+		System.out.println(count);
+		System.out.println(currentPage);
+		System.out.println(pageSize);
+		System.out.println(pageNum);
 
 		
 		// 5. 페이지 이동 

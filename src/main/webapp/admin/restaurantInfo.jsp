@@ -11,6 +11,7 @@
 <link href="./css/footer.css" rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet">
 
 <script type="text/javascript">
 	function winopen(rest_id){
@@ -32,9 +33,13 @@
 <!-- header -->
 
 <!-- sideMune -->
-<jsp:include page="adminSidMenu.jsp" />
+<jsp:include page="../inc/sideMenuAdmin.jsp" />
 <!-- sideMune -->
-	
+
+
+<!-- main -->
+<main>
+<br><br>
 	<table border="1">
 		<tr>
 			<th>상호명</th>
@@ -84,6 +89,9 @@
 		<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'">
 			목록으로</button>
 	</c:if>
+</main>
+<!-- main -->
+	
 	
 <!-- footer -->
 <jsp:include page="../inc/footer.jsp" />
