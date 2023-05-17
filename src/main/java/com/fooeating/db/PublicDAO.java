@@ -696,14 +696,19 @@ public class PublicDAO {
 	
 	
 	// 6. 회원 리뷰 정보 모두 가져가기
-	public List<ReivewDTO> getReviewAll(String id) {
+	public List<ReivewDTO> getReviewAll(String user_id, int startRow, int pageSize) {
+		
 		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
+		
 		try {
 			con = getCon();
 			sql = "select re.review_num, r.name, re.grade, re.regdate, re.content from restaurant r "
-					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
+					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?"
+					+ " order by owner_user_id limit ?,?" ;
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -727,7 +732,36 @@ public class PublicDAO {
 		return reviewList;
 	}
 	
-	// 6.1 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
+	// 6-1. 회원의 리뷰 정보 총 개수
+	public int getReviewCount(String user_id) {
+		
+		int result = 0;
+		
+		try {
+			con = getCon();
+			
+			sql = "SELECT count(*) FROM review WHERE user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			System.out.println("내가 작성한 리뷰의 총 개수 : " + result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return result;
+	}
+	
+	// 6-2. 리뷰 수정버튼 클릭시 해당 리뷰정보 가져가기
 	public ReivewDTO getReview(String id, int review_num) {
 		ReivewDTO dto = null;
 		try {
@@ -765,7 +799,7 @@ public class PublicDAO {
 		
 	}
 	
-	// 6-2. 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
+	// 6-3. 리뷰 수정 완료버튼 클릭시 리뷰수정 및 부모창 새로고침
 	public int changeReview(String id, int review_num, String newContent, int grade) {
 		int result = -1; // -1	0	1
 		
@@ -814,7 +848,7 @@ public class PublicDAO {
 	
 	}
 	
-	// 6.3 리뷰 삭제 
+	// 6-4. 리뷰 삭제 
 	public int deleteReview(String id, int review_num) {
 		int result = -1; // -1	0	1
 		
@@ -860,7 +894,7 @@ public class PublicDAO {
 	
 	}
 	
-	// 6-4. 내가 찜한 가게의 수
+	// 6-5. 내가 찜한 가게의 수
 	public int getLikeRestCount(String user_id) {
 			
 		int result = 0;
@@ -891,7 +925,7 @@ public class PublicDAO {
 		return result;
 	}
 	
-	// 6-5. 점주의 rest_id 알아내기
+	// 6-6. 점주의 rest_id 알아내기
 	public String getRest_id(String user_id) {
 		
 		String rest_id = null;
@@ -920,7 +954,7 @@ public class PublicDAO {
 	
 	
 	
-	// 7. 멤버 현재 대기중인 가게 대기번호
+	// 7-1. 멤버 현재 대기중인 가게 대기번호
 	public WaitingDTO getWaiting(String id) {
 		WaitingDTO dto = null;
 		try {
@@ -1000,17 +1034,22 @@ public class PublicDAO {
 		}
 	
 	// 7-2. 멤버 대기내역
-	public List<WaitingDTO> getMemberQueueHistory(String id) {
+	public List<WaitingDTO> getMemberQueueHistory(String user_id, int startRow, int pageSize) {
+		
 		List<WaitingDTO> queueHistory = new ArrayList<WaitingDTO>();
+		
 		try {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
 			sql = "select w.user_id,r.name, w.regdate, w.wait_num, w.review_check from waiting w join restaurant r on w.rest_id = r.rest_id "
-					+ " where w.user_id = ? and w.status ='2' ";
+					+ " where w.user_id=? and w.status=2"
+					+ " order by owner_user_id limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			// ??
-			pstmt.setString(1, id);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 			// 4. sql 실행
 			rs = pstmt.executeQuery();
 			// 5. 데이터처리
@@ -1093,6 +1132,35 @@ public class PublicDAO {
 		return result;
 	}
 	
+	// 7-4. 멤버 과거 대기 내역 총 개수
+	public int getWaitingListBeforeCount(String user_id) {
+		
+		int result = 0;
+		
+		try {
+			con = getCon();
+			
+			sql = "SELECT count(*) FROM waiting WHERE status=2 AND user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return result;
+	}
+	
+	
+	
 	// 8. 회원 찜한 가게 리스트 가져가기
 		public List<RestaurantDTO> getMemberLikeList(String user_id, int startRow, int pageSize) {
 			
@@ -1151,6 +1219,8 @@ public class PublicDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 		return dto;
 		
@@ -2344,7 +2414,11 @@ public class PublicDAO {
 				System.out.println(" DAO : on_off 상태 = " + on_off);
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
+			
+			
 		}
 		//select * from restaurant_menu where rest_id=?
 		public List<ReivewDTO> OwnergetReview(String user_id) {
