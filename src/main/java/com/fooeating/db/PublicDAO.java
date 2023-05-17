@@ -2251,6 +2251,153 @@ public class PublicDAO {
 		}
 		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
 		
+		// 점주 메뉴 리스트
+		public List<Restaurant_menuDTO> getOwnerMenuList(String id) {
+			List<Restaurant_menuDTO> menuList = new ArrayList<Restaurant_menuDTO>();
+			try {
+				con = getCon();
+				sql = "select * from restaurant_menu where rest_id =(select rest_id from restaurant where owner_user_id = ?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Restaurant_menuDTO dto = new Restaurant_menuDTO();
+					dto.setRest_menu_num(rs.getInt(1));
+					dto.setMenu_name(rs.getString(2));
+					dto.setMenu_descriptions(rs.getString(3));
+					dto.setPrice(rs.getString(4));
+					dto.setRest_id(rs.getString(5));
+					dto.setMeunfile(rs.getString(6));
+					
+					menuList.add(dto);
+				} // while
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return menuList;
+		}
+		
+		// 점주 메뉴 수정 버튼 클릭 시 기존 정보 가져가기
+		public Restaurant_menuDTO getMenu(int review_num) {
+			Restaurant_menuDTO dto = null;
+			try {
+				// 1.2. 디비연결
+				con = getCon();
+				// 3. sql & pstmt
+				sql = "select * from restaurant_menu where rest_menu_num = ?";
+				pstmt = con.prepareStatement(sql);
+				// ??
+				pstmt.setInt(1, review_num);
+				// 4. sql 실행
+				rs = pstmt.executeQuery();
+				// 5. 데이터처리
+				
+				if(rs.next()) {
+					dto = new Restaurant_menuDTO();
+					dto.setRest_menu_num(rs.getInt(1));
+					dto.setMenu_name(rs.getString(2));
+					dto.setMenu_descriptions(rs.getString(3));
+					dto.setPrice(rs.getString(4));
+					dto.setRest_id(rs.getString(5));
+					dto.setMeunfile(rs.getString(6));				
+					}
+				
+				System.out.println(" DAO : 해당 메뉴 저장완료! ");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return dto;
+		}
+		
+		// 점주 메뉴 수정 
+		public void OwnerMenuUpdate(Restaurant_menuDTO dto) {
+			try {
+				// 1.2. 디비연결
+				con = getCon();
+				// 3. sql & pstmt
+				sql = "select * from restaurant_menu where rest_menu_num = ?";
+				pstmt = con.prepareStatement(sql);
+				// ??
+				pstmt.setInt(1, dto.getRest_menu_num());
+				// 4. sql 실행
+				rs = pstmt.executeQuery();
+				// 5. 데이터처리
+				
+				if(rs.next()) {
+					sql = "update restaurant_menu set menu_name =?, menu_descriptions =?, "
+							+ " price =?, menufile = ? where rest_menu_num =?";
+					pstmt = con.prepareStatement(sql);
+					// ??
+					pstmt.setString(1, dto.getMenu_name());
+					pstmt.setString(2, dto.getMenu_descriptions());
+					pstmt.setString(3, dto.getPrice());
+					pstmt.setString(4, dto.getMeunfile());
+					pstmt.setInt(5, dto.getRest_menu_num());
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					// 5. 데이터처리
+				}
+				
+				System.out.println(" DAO : 메뉴 수정 완료!! ");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+		}
+		
+		// 점주 메뉴 삭제
+		public int deleteMenu(int rest_menu_num) {
+			int result = -1; // -1	0	1
+			
+			try {
+				// 1.2. 디비연결
+				con = getCon();
+				
+				// 3. sql작성 & pstmt 객체
+				sql = "select * from restaurant_menu where rest_menu_num=?";
+				pstmt = con.prepareStatement(sql);
+				// ??
+				pstmt.setInt(1, rest_menu_num);
+				
+				// 4. sql 실행(select)
+				rs = pstmt.executeQuery();
+				
+				// 데이터 처리
+				if(rs.next()){
+					// 회원
+					
+						// 3. sql 작성(update) & pstmt 객체
+						sql = "delete from restaurant_menu where rest_menu_num =?" ;
+						pstmt = con.prepareStatement(sql);
+						// ???
+						pstmt.setInt(1, rest_menu_num);
+						// 4. sql 실행
+						result = pstmt.executeUpdate();
+					
+				}else {
+					// 비회원
+					result = -1;
+				}
+			
+				System.out.println(" DAO : 점주 메뉴 삭제 완료(" +result +")");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return result;
+		
+		}
 
 		
 		/* ================== < 가게리스트 > ======================== */
