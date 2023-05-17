@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -52,6 +53,59 @@
 			<br>
 			<br>
 		</c:forEach>
+		
+		
+		
+<!-- 페이징처리 -->
+<%
+int count = (int)request.getAttribute("count");
+int pageSize = (int)request.getAttribute("pageSize");
+int currentPage = (int)request.getAttribute("currentPage");
+String pageNum = (String)request.getAttribute("pageNum");
+
+System.out.println(count);
+System.out.println(pageSize);
+System.out.println(currentPage);
+
+if(count != 0) {
+	int pageBlock = 5;
+	int pageCount = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);
+	int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+	int endPage = startPage + pageBlock - 1;
+	
+	if(endPage > pageCount) {
+		endPage = pageCount;
+	}
+	
+	if(startPage > pageBlock) {
+%>
+
+				<a href="./MemberLike.foo?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+	
+<%
+	}
+	for(int i = startPage; i <= endPage; i++) {
+%>
+
+
+				<a href="./MemberLike.foo?pageNum=<%=i%>">[<%=i%>]</a>
+				
+				
+<%
+	}
+	if(endPage < pageCount) {
+%>
+
+
+				<a href="./MemberLike.foo?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+				
+				
+<%
+	}
+}
+%>
+		
+		
 	</main>
 
 <!-- footer -->

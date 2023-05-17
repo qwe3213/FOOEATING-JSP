@@ -74,7 +74,7 @@
 		</c:if>
 		<br> <br> <br>
 		<hr>
-		<h2>과거 대기 내역</h2>
+		<h2>과거 대기 내역</h2> <!-- include 해보기.! 페이징처리 -->
 		<c:forEach var="list" items="${queueHistory}">
 			<table border="1">
 				<tr>
