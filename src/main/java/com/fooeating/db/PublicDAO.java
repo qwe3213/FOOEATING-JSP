@@ -732,6 +732,36 @@ public class PublicDAO {
 		return reviewList;
 	}
 	
+	// 6-1. 점주의 리뷰관리 - 가게의 리뷰 정보 모두 가져가기
+	public List<ReivewDTO> getReviewAll(String id) {
+		List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
+		try {
+			con = getCon();
+			sql = "select re.review_num, r.name, r.grade, re.regdate, re.content from restaurant r "
+					+ " join review re on r.rest_id  = re.rest_id where re.user_id = ?" ;
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ReivewDTO dto = new ReivewDTO();
+				
+				dto.setReview_num(rs.getInt("review_num"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegdate(rs.getTimestamp("regdate"));
+				dto.setName(rs.getString("name"));
+				dto.setGrade(rs.getInt("grade"));
+				
+				reviewList.add(dto);
+			} // while
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return reviewList;
+	}
+	
 	// 6-1. 회원의 리뷰 정보 총 개수
 	public int getReviewCount(String user_id) {
 		
