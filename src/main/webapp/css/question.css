@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* questionMain.jsp */
-.container {
+.conta {
 	display: flex;
 	justify-content: center
 }
@@ -30,7 +30,7 @@
 	justify-content: center;
 	margin: 25px;
 }
-.container2 {
+.conta2 {
 	display: flex;
 	justify-content: center
 }

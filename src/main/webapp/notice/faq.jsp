@@ -57,15 +57,14 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-	<!-- header -->
-	<jsp:include page="../inc/headerDiv.jsp" />
-	<!-- header -->
-=======
+
+<!-- header -->
+<jsp:include page="../inc/headerDiv.jsp" />
+<!-- header -->
+
 <!-- header -->
 	<jsp:include page="../inc/header.jsp" />
 <!-- header -->
->>>>>>> branch 'develop' of https://github.com/LingLing23/FOOEATING.git
 
 <!-- sideMenu -->
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
