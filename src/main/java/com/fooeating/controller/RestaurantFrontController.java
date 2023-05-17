@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.fooeating.action.OwnerMainPageRstcareAction;
+import com.fooeating.action.OwnerMenuAddAction;
+import com.fooeating.action.OwnerMenuDeleteAction;
+import com.fooeating.action.OwnerMenuList;
+import com.fooeating.action.OwnerMenuUpdate;
+import com.fooeating.action.OwnerMenuUpdateAction;
 import com.fooeating.action.OwnerReviewAction;
 import com.fooeating.action.RestaurantUpdateAction;
 import com.fooeating.action.RestaurantUpdateProAction;
@@ -15,6 +20,7 @@ import com.fooeating.action.RestOnOffAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
+import com.fooeating.member.action.ReviewWrite;
 
 public class RestaurantFrontController extends HttpServlet {
 	
@@ -208,6 +214,94 @@ public class RestaurantFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		// 점주 메뉴관리 
+		else if(command.equals("/OwnerMenu.on")) {
+			System.out.println(" C : / OwnerMenu.on 실행");
+			System.out.println(" 패턴3");
+			
+			action = new OwnerMenuList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 점주 메뉴 수정 팝업창에 정보 가져가기
+		else if (command.equals("/OwnerMenuUpdate.on")) {
+			System.out.println(" C : /OwnerMenuUpdate.on 호출 ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
+
+			// OwnerMenuUpdate() 객체
+			action = new OwnerMenuUpdate();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 점주 메뉴 수정 클릭시 정보 수정
+		
+		else if (command.equals("/OwnerMenuUpdateAction.on")) {
+			System.out.println(" C : /OwnerMenuUpdateAction.on 호출 ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
+
+			// OwnerMenuUpdateAction() 객체
+			action = new OwnerMenuUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 점주 메뉴 삭제
+		
+		else if (command.equals("/OwnerMenuDelete.on")) {
+			System.out.println(" C : /OwnerMenuDelete.on 호출 ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
+
+			// OwnerMenuUpdateAction() 객체
+			action = new OwnerMenuDeleteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 점주 메뉴 추가 jsp로 이동
+		
+		else if (command.equals("/OwnerMenuAdd.on")) {
+			System.out.println(" C : /OwnerMenuAdd.on 호출 ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
+			
+			// 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerMenuAdd.jsp");
+			forward.setRedirect(false);
+		}
+		
+		// 점주 메뉴 추가
+		else if (command.equals("/OwnerMenuAddAction.on")) {
+			System.out.println(" C : /OwnerMenuAddAction.on 호출 ");
+			System.out.println(" C : DB사용o, 페이지이동(패턴2) ");
+				// OwnerMenuUpdateAction() 객체
+			action = new OwnerMenuAddAction();
+					
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		
