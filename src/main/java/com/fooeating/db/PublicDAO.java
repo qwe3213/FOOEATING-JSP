@@ -1205,7 +1205,7 @@ public class PublicDAO {
 			con = getCon();
 			
 			// sql작성 & pstmt객체
-			sql = "select count(*) from waiting where rest_id=?";
+			sql = "select count(*) from waiting where rest_id=? and status=1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, rest_id);
 			
@@ -2202,12 +2202,12 @@ public class PublicDAO {
 			try {
 				con = getCon();
 				
-				sql = "SELECT w.rest_id, w.wait_num, u.name, u.phone, w.people FROM waiting w "
+				sql = "SELECT w.status, w.rest_id, w.wait_num, u.name, u.phone, w.people, w.regdate FROM waiting w "
 						+ "JOIN USER u "
 						+ "ON u.user_id = w.user_id "
 						+ "WHERE rest_id = (SELECT rest_id "
 						+ "                 FROM restaurant "
-						+ "                 WHERE owner_user_id = ?)"
+						+ "                 WHERE owner_user_id = ?) and w.status = 1 "
 						+ "order by w.wait_num limit ?,?";
 				
 				pstmt = con.prepareStatement(sql);
@@ -2224,6 +2224,8 @@ public class PublicDAO {
 					dto.setName(rs.getString("name"));
 					dto.setPhone(rs.getString("phone"));
 					dto.setPeople(rs.getInt("people"));
+					dto.setRegdate(rs.getTimestamp("regdate"));
+					dto.setStatus(rs.getInt("status"));
 					waitingList.add(dto);
 				}
 				
@@ -2239,6 +2241,26 @@ public class PublicDAO {
 		}
 		
 		
+
+		// 점주의 마이페이지 - 대기관리 - 완료버튼 데이터처리
+		public void waitingDone(int wait_num) {
+			
+			try {
+				con = getCon();
+				
+				sql = "update waiting set status=2 where wait_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, wait_num);
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+		}
+
 		
 		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
 		public void updateRestOnOff(String rest_id, String onoff) {
