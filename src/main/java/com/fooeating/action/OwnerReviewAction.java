@@ -1,5 +1,8 @@
 package com.fooeating.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,7 +22,7 @@ public class OwnerReviewAction implements Action{
 		   HttpSession session = request.getSession();
 		   
 		   String user_id = (String)session.getAttribute("user_id");
-		   
+		   System.out.println(user_id);
 		   
 		   //한글처리
 		   request.setCharacterEncoding("UTF-8");
@@ -27,10 +30,11 @@ public class OwnerReviewAction implements Action{
 		   ReivewDTO dto = new ReivewDTO();
 		   
 		   PublicDAO dao = new PublicDAO();
-		   dao.OwnergetReview(user_id);
+		   List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
+		   reviewList = dao.OwnergetReview(user_id);
 		   
-		   request.setAttribute("dto", dto);
-		   System.out.println("dto : "+dto);
+		   request.setAttribute("reviewList", reviewList);
+		   System.out.println("reviewList : "+reviewList);
 		   
 		   ActionForward forward = new ActionForward();
 		   

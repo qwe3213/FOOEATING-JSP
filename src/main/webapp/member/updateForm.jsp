@@ -95,10 +95,13 @@
 <body>
 
 <!-- header -->
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 <!-- sideMenu -->
+<<<<<<< HEAD
+	<jsp:include page="../inc/sideMenuDiv.jsp" />
+=======
 <c:choose>
 	<c:when test="${user_id.equals(owner_user_id) }" >
 		<jsp:include page="../inc/sideMenuOwner.jsp" />
@@ -107,6 +110,7 @@
 		<jsp:include page="../inc/sideMenuMember.jsp" />
 	</c:otherwise>
 </c:choose>
+>>>>>>> branch 'develop' of https://github.com/LingLing23/FOOEATING.git
 <!-- sideMenu -->
 
 <!-- main -->
@@ -141,7 +145,7 @@
  <!-- main -->
  	
 <!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
  	
 </body>

@@ -57,9 +57,15 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+	<!-- header -->
+	<jsp:include page="../inc/headerDiv.jsp" />
+	<!-- header -->
+=======
 <!-- header -->
 	<jsp:include page="../inc/header.jsp" />
 <!-- header -->
+>>>>>>> branch 'develop' of https://github.com/LingLing23/FOOEATING.git
 
 <!-- sideMenu -->
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
@@ -112,7 +118,7 @@
 
 
 	<!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footerDiv.jsp" />
 	<!-- footer -->
 
 </body>

@@ -6,17 +6,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+import com.fooeating.action.ownerMainPageReviewAction;
+
 import com.fooeating.action.OwnerMainPageRstcareAction;
 import com.fooeating.action.OwnerMenuAddAction;
 import com.fooeating.action.OwnerMenuDeleteAction;
 import com.fooeating.action.OwnerMenuList;
 import com.fooeating.action.OwnerMenuUpdate;
 import com.fooeating.action.OwnerMenuUpdateAction;
+import com.fooeating.action.OwnerNoticeAction;
 import com.fooeating.action.OwnerReviewAction;
 import com.fooeating.action.RestaurantUpdateAction;
 import com.fooeating.action.RestaurantUpdateProAction;
 import com.fooeating.action.OwnerWaitingListAction;
+import com.fooeating.action.OwnerWaitingListPopupAction;
 import com.fooeating.action.RestOnOffAction;
+
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
@@ -26,6 +33,10 @@ public class RestaurantFrontController extends HttpServlet {
 	
 	
 	
+
+	// http://localhost:8088/FOOEATING/ownerChangeForm.on
+	// http://localhost:8088/FOOEATING/ownerChangeForm.on
+
 	// http://localhost:8088/FOOEATING/ownerChangeForm4.on
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -106,7 +117,7 @@ public class RestaurantFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 			 
-		}
+		} // ownerRequestSuccessAction
 
 		// 점주의 마이페이지 - 가게 관리
 		else if(command.equals("/Main.foo")) {
@@ -120,12 +131,25 @@ public class RestaurantFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+
+		else if(command.equals("/ownerMainPage_review.on")) {
+			System.out.println(" C : ownerMainPage_review.on 호출");
+			System.out.println(" C : DB사용o , 페이지 이동, 출력(패턴3)");
+			
+			// ownerMainPageReviewAction() 객체
+			action = new ownerMainPageReviewAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // ownerMainPage_review
 		
 		
 		// 점주의 마이페이지 - 대기 관리
 		else if(command.equals("/OwnerWaitingList.on")) {
-			System.out.println("C : /ownerWaitingList.on 실행");
+			System.out.println("C : /OwnerWaitingList.on 실행");
 			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
 			
 			action = new OwnerWaitingListAction();
@@ -135,8 +159,30 @@ public class RestaurantFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
+		// 점주의 마이페이지 - 대기 관리 - 팝업
+		else if(command.equals("/OwnerWaitingListPopup.on")) {
+			System.out.println("C : /OwnerWaitingListPopup.on 실행");
+			System.out.println("C : DB사용x, 팝업창 이동 (패턴1)");
+			
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerWaitingListPopup.jsp");
+			forward.setRedirect(false);
+		}
 		
 		
+		// 점주의 마이페이지 - 대기 관리 - 팝업 처리
+		else if(command.equals("/OwnerWaitingListPopupAction.on")) {
+			System.out.println("C : /OwnerWaitingListPopupAction.on 실행");
+			System.out.println("C : DB사용o, 페이지 이동 (패턴2)");
+			
+			action = new OwnerWaitingListPopupAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		else if(command.equals("/OwnerMainPageRstcareAction.on")) {
 			 System.out.println(" /OwnerMainPageRstcareAction.on");
@@ -301,7 +347,20 @@ public class RestaurantFrontController extends HttpServlet {
 			}
 		}
 		
-		
+		else if(command.equals("/OwnerNoticeAction.on")) {
+			System.out.println(" C: / OwnerNoticeAction 실행");
+			System.out.println(" C: / 패턴2");
+        
+		action = new OwnerNoticeAction();
+		  
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		}
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		

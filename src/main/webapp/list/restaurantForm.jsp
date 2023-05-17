@@ -96,7 +96,7 @@
 <body>
 
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 <!-- main -->
@@ -145,16 +145,51 @@
 	
 	<br>
 	
+	<hr>
+	
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>아이디</th>
+			<th>외관사진</th>			
+			<th>평점</th>
+			<th>내용</th>
+			<th>등록일</th>
+		</tr>
+		
+		<c:forEach var="re" items="${requestScope.re }" varStatus="no">
+	
+		<tr>
+			<td>${no.count}</td>
+			<td>${re.user_id}</td>
+			<td>${re.file}</td>
+			<td>${re.grade}</td>
+			<td>${re.content}</td>
+			<td>${re.regdate}</td>
+
+
+		</tr>
+		</c:forEach>
+	</table>
+	
+	
+	
 <%-- 	${wdto.user_id} ${wdto.rest_id} ${wdto.wait_num} <br> --%>
 <%-- 	${sessionScope.user_id} ${restForm.rest_id} --%>
 	
-	<c:if test="${!wdto.rest_id.equals(restForm.rest_id) || !wdto.user_id.equals(sessionScope.user_id)}">
-		<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+	<c:if test="${restForm.on_off == true}">
+		<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
+		</c:if>
+		
+		<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen2();">대기하기</button>
+		</c:if>
+	</c:if>
+	<c:if test="${restForm.on_off == false}">
+		<button>영업 준비 중입니다...(T^T)</button>
 	</c:if>
 	
-	<c:if test="${wdto.rest_id.equals(restForm.rest_id) && wdto.user_id.equals(sessionScope.user_id)}">
-		<button onclick="winopen2();">대기하기</button>
-	</c:if>
 	
 	<button onclick="location.href='./listForm.fd'">가게 리스트로</button>
 	<br>
@@ -178,8 +213,11 @@
 <!-- main -->
 
 
+
+
+
 <!-- footer -->
-<jsp:include page="../inc/footer.jsp" />
+<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
 
 	

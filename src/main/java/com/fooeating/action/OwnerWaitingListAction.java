@@ -58,10 +58,6 @@ public class OwnerWaitingListAction implements Action {
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageNum", pageNum);
-		System.out.println(count);
-		System.out.println(currentPage);
-		System.out.println(pageSize);
-		System.out.println(pageNum);
 
 		
 		// 5. 페이지 이동 

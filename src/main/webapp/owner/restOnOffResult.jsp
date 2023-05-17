@@ -11,7 +11,7 @@
 	
 	<h1>on_off 상태</h1>
 	
-	가게 상태가 변경되었습니다.
+	가게 상태가 변경되었습니다. <br>
 	<button onclick="opener.parent.location.reload(); window.close();">닫기</button>
 	
 </body>

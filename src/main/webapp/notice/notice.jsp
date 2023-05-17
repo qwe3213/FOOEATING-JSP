@@ -11,25 +11,30 @@
 
 
 <!-- css 파일 -->
-<link href="./css/header.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
-<link href="./css/sideMenu.css" rel="stylesheet">
-<link href="./css/footer.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+  <link rel="stylesheet" href="assets/css/owl-carousel.css">
+  <link rel="stylesheet" href="assets/css/lightbox.css">
 
 
-<title>NOTICE</title>
+<title>FOOEATING - Notice</title>
 </head>
 <body>
 
 
 <!-- header -->
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 
 
 
 
+<<<<<<< HEAD
+=======
 <!-- side menu -->
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
 <!-- side menu -->
@@ -38,6 +43,7 @@
 
 
 
+>>>>>>> branch 'develop' of https://github.com/LingLing23/FOOEATING.git
 <!-- main -->
 <main>
 <br><br>
@@ -47,7 +53,6 @@
 <c:if test="${!empty user_id && user_id.equals('real_admin')}">
 	<input type="button" value="글 작성하기" onclick="location.href='./NoticeWrite.foo';">
 </c:if>
-
 
 
 
@@ -124,7 +129,7 @@
 
 
 <!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
 
 </body>

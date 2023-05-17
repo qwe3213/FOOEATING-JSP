@@ -14,9 +14,33 @@
 <link href="./css/sideMenu.css" rel="stylesheet">
 <link href="./css/main.css" rel="stylesheet">
 
+<!-- javaScript -->
+<script type="text/javascript">
+function selectAll(selectAll)  {
+	  const checkboxes 
+	       = document.getElementsByName('waitlist');
+	  
+	  checkboxes.forEach((checkbox) => {
+	    checkbox.checked = selectAll.checked;
+	  })
+	}
+
+
+function winopen(wait_num){  
+	let popupX = (window.screen.width / 2) - (500 / 2);
+	let popupY= (window.screen.height / 2) - (300 / 2);
+	
+	window.open("OwnerWaitingListPopup.on?wait_num=" + wait_num, "", 
+			"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+			 ',screenY= '+ popupY);
+}
+
+</script>
+
 
 </head>
 <body>
+
 
 <!-- header -->
 	<jsp:include page="../inc/header.jsp" />
@@ -36,24 +60,31 @@
 <main>
 <br><br>
 
+	<c:set var="wait_num" value="${dto.wait_num }" />
+	<table border="1">
+		<tr>
+			<th>대기 번호</th>
+			<th>회원 이름</th>
+			<th>전화번호</th>
+			<th>인원수</th>
+			<th>대기 등록 시간</th>
+			<th>완료</th>
+		</tr>
+		
+		<c:forEach var="dto" items="${requestScope.waitingList }">
+			<c:if test="${dto.status == 1 }">
+			<tr>
+				<td>${dto.wait_num }</td>
+				<td>${dto.name }</td>
+				<td>${dto.phone }</td>
+				<td>${dto.people }</td>
+				<td>${dto.regdate }</td>
+				<td><button onclick="winopen('${dto.wait_num}');">완료</button></td>
+			</tr>
+			</c:if>
+		</c:forEach>
+	</table>
 
-<table border="1">
-	<tr>
-		<th>대기 번호</th>
-		<th>회원 이름</th>
-		<th>전화번호</th>
-		<th>인원수</th>
-	</tr>
-	
-	<c:forEach var="dto" items="${requestScope.waitingList }">
-	<tr>
-		<td>${dto.wait_num }</td>
-		<td>${dto.name }</td>
-		<td>${dto.phone }</td>
-		<td>${dto.people }</td>
-	</tr>
-	</c:forEach>
-</table>
 
 
 <%
@@ -107,7 +138,7 @@ if(count != 0) {
 
 
 <!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
 
 

@@ -32,17 +32,11 @@ public class ListFormAction implements Action {
 		int count = 0;
 
 		if(search != null) { // 검색어만 있을 때
-			count = dao.getListCount(search.trim());
-			
-			if (addr_city != null && addr_district != null) {	// 검색어가 있으면서 지역까지 있을 때
-				count = dao.getListCount(search.trim(), addr_city, addr_district);
-			}
+			count = dao.getListCount(search.trim(), addr_city, addr_district);
+			System.out.println("검색어 o, 지역o");
 		} else {
-			if (addr_city != null && addr_district != null) {	// 검색어는 없고 지역만 있을 때
-				count = dao.getListCount(addr_city, addr_district);
-			} else {	// 검색어도 지역도 없을 때
-				count = dao.getListCount();
-			}
+			count = dao.getListCount();
+			System.out.println("검색어 x, 지역 x");
 		}
 		
 		
@@ -71,17 +65,11 @@ public class ListFormAction implements Action {
 		List<RestaurantDTO> listForm = null;
 		
 		if(search != null) {
-			listForm = dao.getListInfo(startRow, pageSize, search.trim());
-			
-			if (addr_city != null && addr_district != null) {	// 검색어가 있으면서 지역까지 있을 때
-				listForm = dao.getListInfo(startRow, pageSize, search.trim(), addr_city, addr_district);
-			}
+			listForm = dao.getListInfo(startRow, pageSize, search.trim(), addr_city, addr_district);
+			System.out.println("검색어 o, 지역o");
 		} else {
-			if (addr_city != null && addr_district != null) {	// 지역만 있을 때
-				listForm = dao.getListInfo(startRow, pageSize, addr_city, addr_district);
-			} else {
-				listForm = dao.getListInfo(startRow, pageSize);
-			}
+			listForm = dao.getListInfo(startRow, pageSize);
+			System.out.println("검색어 x, 지역 x");
 		}
 		
 		System.out.println("listForm : " + listForm.toString());
