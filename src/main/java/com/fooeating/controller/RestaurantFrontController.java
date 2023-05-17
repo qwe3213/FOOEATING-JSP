@@ -11,7 +11,6 @@ import com.fooeating.action.OwnerReviewAction;
 import com.fooeating.action.RestaurantUpdateAction;
 import com.fooeating.action.RestaurantUpdateProAction;
 import com.fooeating.action.OwnerWaitingListAction;
-import com.fooeating.action.OwnerWaitingListDone;
 import com.fooeating.action.OwnerWaitingListPopupAction;
 import com.fooeating.action.RestOnOffAction;
 import com.fooeating.action.ownerRequestSuccessAction;
@@ -121,7 +120,7 @@ public class RestaurantFrontController extends HttpServlet {
 		
 		// 점주의 마이페이지 - 대기 관리
 		else if(command.equals("/OwnerWaitingList.on")) {
-			System.out.println("C : /ownerWaitingList.on 실행");
+			System.out.println("C : /OwnerWaitingList.on 실행");
 			System.out.println("C : DB사용o, 페이지 이동 & 출력(패턴3)");
 			
 			action = new OwnerWaitingListAction();
@@ -131,23 +130,7 @@ public class RestaurantFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-		// 점주의 마이페이지 - 대기 관리 - 완료 처리
-		else if(command.equals("/OwnerWaitingListDone.on")) {
-			System.out.println("C : /OwnerWaitingListDone.on 실행");
-			System.out.println("C : DB사용o, 페이지 이동 & 출력");
-			
-			action = new OwnerWaitingListDone();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
+
 		// 점주의 마이페이지 - 대기 관리 - 팝업
 		else if(command.equals("/OwnerWaitingListPopup.on")) {
 			System.out.println("C : /OwnerWaitingListPopup.on 실행");
