@@ -15,6 +15,16 @@
 <link href="./css/sideMenu.css" rel="stylesheet">
 <link href="./css/main.css" rel="stylesheet">
 
+<script type="text/javascript">
+	function rest_onoff(onoff, rest_id) {
+		let popupX = (window.screen.width / 2) - (500 / 2);
+		let popupY= (window.screen.height / 2) - (300 / 2);
+		
+		window.open("RestOnOffAction.on?on_off=" + onoff + "&rest_id=" + rest_id, "", 
+		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		 ',screenY= '+ popupY);
+	}
+</script>
 
 </head>
 <body>
@@ -37,11 +47,15 @@
 	
 	   <div style="text-align: right;" >
  	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none;">수정</a>
-		<a href="" style="text-decoration: none;">삭제</a>
+		<a href="#" style="text-decoration: none;">삭제</a>
    	   </div>
-
-		  <div style="margin-left: 1px">
+		<div style="margin-left: 1px">
+		
 		<table>
+        	<tr>
+			<td><img src="./upload/${restal.outfile}" width="100px"></td>
+			</tr>
+		
 			<tr>
 			<td>상호 : ${restal.name}</td>
 			</tr>
@@ -59,6 +73,14 @@
 			</tr>
 			<tr>
 			<td>정기 휴무 : ${restal.dayoff }	</td>
+			</tr>
+			<tr>
+			<td>가게 on/off : ${restal.on_off}
+				<button onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
+					<c:if test="${restal.on_off == true}">가게 닫기</c:if>
+					<c:if test="${restal.on_off == false}">가게 열기</c:if>
+				</button>
+			</td>
 			</tr>
 		</table>
 	    <br>
