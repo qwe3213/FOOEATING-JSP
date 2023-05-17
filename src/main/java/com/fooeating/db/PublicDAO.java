@@ -860,6 +860,64 @@ public class PublicDAO {
 	
 	}
 	
+	// 6-4. 내가 찜한 가게의 수
+	public int getLikeRestCount(String user_id) {
+			
+		int result = 0;
+		
+		try {
+			con = getCon();
+			
+			// sql작성 & pstmt객체
+			sql = "SELECT count(*) FROM heart WHERE heart_check=1 and user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			// sql실행
+			rs = pstmt.executeQuery();
+			
+		    // 데이터처리
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println("DAO : 전체 좋아요 한 가게의 수 - " + result);
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return result;
+	}
+	
+	// 6-5. 점주의 rest_id 알아내기
+	public String getRest_id(String user_id) {
+		
+		String rest_id = null;
+		
+		try {
+			con = getCon();
+			
+			sql = "select rest_id from restaurant where owner_user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rest_id = rs.getString("rest_id");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return rest_id;
+	}
+	
 	
 	
 	// 7. 멤버 현재 대기중인 가게 대기번호
@@ -1037,14 +1095,22 @@ public class PublicDAO {
 	}
 	
 	// 8. 회원 찜한 가게 리스트 가져가기
-		public List<RestaurantDTO> getMemberLikeList(String id) {
+		public List<RestaurantDTO> getMemberLikeList(String user_id, int startRow, int pageSize) {
+			
 			List<RestaurantDTO> likeList = new ArrayList<RestaurantDTO>();
+			
 			try {
 				con = getCon();
+				
 				sql = "select rest_id, name, rest_tel, descriptions from restaurant where rest_id "
-						+ " in (select rest_id from heart where heart_check =1 and user_id =? )";
+						+ "in (select rest_id from heart where heart_check =1 and user_id =? ) "
+						+ "order by owner_user_id limit ?,?";
+				
 				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1, id);
+				pstmt.setString(1, user_id);
+				pstmt.setInt(2, startRow-1);
+				pstmt.setInt(3, pageSize);
+				
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
