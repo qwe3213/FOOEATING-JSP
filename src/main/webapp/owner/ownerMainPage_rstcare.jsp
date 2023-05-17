@@ -84,9 +84,12 @@
 			</tr>
 		</table>
 	    <br>
+	  	
 	    <div style="text-align: left;">
-		<textarea rows="2" cols="110" placeholder="공지사항"></textarea>
-		<input type="button" value="저장">
+	    <form action ="./OwnerNoticeAction.on " method="post">
+		<textarea name="rest_notice" rows="2" cols="110" placeholder="공지사항"></textarea>
+		<input type="submit" value="저장">
+	  </form>
 	</div>
 	</div>
 	

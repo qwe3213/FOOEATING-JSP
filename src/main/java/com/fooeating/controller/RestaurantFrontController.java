@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.fooeating.action.OwnerMainPageRstcareAction;
+import com.fooeating.action.OwnerNoticeAction;
 import com.fooeating.action.OwnerReviewAction;
 import com.fooeating.action.RestaurantUpdateAction;
 import com.fooeating.action.RestaurantUpdateProAction;
@@ -207,6 +208,20 @@ public class RestaurantFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		else if(command.equals("/OwnerNoticeAction.on")) {
+			System.out.println(" C: / OwnerNoticeAction 실행");
+			System.out.println(" C: / 패턴2");
+        
+		action = new OwnerNoticeAction();
+		  
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 		}
 
 		System.out.println("2. 가상주소 매핑 끝\n");
