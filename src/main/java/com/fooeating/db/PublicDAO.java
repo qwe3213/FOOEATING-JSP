@@ -2311,6 +2311,38 @@ public class PublicDAO {
 			return reviewList;
 			
 		}
+		
+		public void OwnergetNotice(String rest_notice) {
+			
+			try {
+				// 1,2 연결
+				con = getCon();
+				// 3 sql 실행
+				if(rest_notice == null) {
+					sql ="insert into restaurant (rest_notice)"
+							+ "values(?)";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, rest_notice);
+					pstmt.executeUpdate();
+					System.out.println("공지사항쓰기 완료!");
+			     }else {
+			    	 sql="update restaurant set rest_notice=?";
+			    	 
+			    	 pstmt = con.prepareStatement(sql);
+			    	 
+			    	 pstmt.setString(1,rest_notice);
+			    	 pstmt.executeUpdate();
+			    	 System.out.println("공지사항쓰기 완료!");
+			     }
+				
+			}catch (Exception e) {
+					e.printStackTrace();
+				}
+			finally {
+				closeDB();
+			}
+		}
 		// 점주의 가게 on_off 업데이트 - updateRestOnOff(on_off)
 		
 
