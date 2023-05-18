@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <main>
+	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
 	
-	
-	<div id="top">
 	    <div class="container-fluid">
 	        <div class="row">
 	            <div class="col-lg-4">
@@ -23,33 +22,31 @@
 	            <div class="col-lg-8">
 	                <div class="main-banner header-text">
 	                    <div class="Modern-Slider">
-	                      Item
 	                      <div class="item">
 	                        <div class="img-fill">
 	                            <img src="assets/images/slide-01.jpg" alt="">
 	                        </div>
 	                      </div>
-	                      // Item
-	                      Item
 	                      <div class="item">
 	                        <div class="img-fill">
 	                            <img src="assets/images/slide-02.jpg" alt="">
 	                        </div>
 	                      </div>
-	                      // Item
-	                      Item
 	                      <div class="item">
 	                        <div class="img-fill">
 	                            <img src="assets/images/slide-03.jpg" alt="">
 	                        </div>
 	                      </div>
-	                      // Item
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
 	    </div>
-	</div>
-	
-	
+	    
+	    
+	</div> <!-- ***** Main End ***** -->
 </main>
+
+
+
+

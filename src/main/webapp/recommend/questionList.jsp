@@ -150,7 +150,7 @@
 		
 		Collections.shuffle(list);
 	%>
-		<br><br><br><br><br>
+<div id="top">
 	<%
 		for(int i = 0; i < list.size(); i++) {
 	%>
@@ -165,11 +165,10 @@
 			<div class="box"><button onclick="location.href='./RecommendMain.ad'">다시하기</button></div>
 	    </div>
     </div>
-    
 	<%
 		}
 	%>
-	
+</div>
 	
 	<script>
 		

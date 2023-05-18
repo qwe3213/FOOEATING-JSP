@@ -38,7 +38,7 @@
 <!-- main -->
 <main>
 
-	<br><br><br><br><br>
+<div id="top">
 	<div class="dvh"><h1>당신에게 추천해드리는 음식</h1></div>
 	
 	<%
@@ -660,7 +660,7 @@
 			<button onclick="location.href='./listForm.fd'"> 맘에 들면 예약하러 GO! </button>
 		</div>
     </div>
-    
+</div>
 </main>
 <!-- main -->
 	

@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
-
 <footer>
-
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-xs-12">
@@ -19,18 +17,23 @@
             </div>
             <div class="col-lg-4">
                 <div class="logo">
-                    <a href="./Main.foo"><img src="./img/푸이팅.png"  width="100px" alt=""></a>
+                    <a href="./Main.foo"><img src="./img/푸이팅.png"  width="100px"></a>
                 </div>
             </div>
             <div class="col-lg-4 col-xs-12">
                 <div class="left-text-content">
-                    <p>© Copyright FOOEATING Co.
+                    <p>© Copyright FOOEATING Co.W
                     
                     <br>Design: TemplateMo</p>
                 </div>
             </div>
         </div>
     </div>
-    
 </footer>
+
+
+
+
+
+
 
