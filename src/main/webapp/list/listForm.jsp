@@ -69,13 +69,13 @@
 
 <main>
 	<div>
-		 <div>
-			 <select style="width:300x; height:30px;">
-			 	<option>리뷰수</option>
-			 	<option>평점수</option>
-			 	<option>좋아요수</option>
-			 </select>
-		</div>
+<!-- 		 <div> -->
+<!-- 			 <select style="width:300x; height:30px;"> -->
+<!-- 			 	<option>리뷰수</option> -->
+<!-- 			 	<option>평점수</option> -->
+<!-- 			 	<option>좋아요수</option> -->
+<!-- 			 </select> -->
+<!-- 		</div> -->
 		 
 		 <div id="table_search">
 	        <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
@@ -97,7 +97,7 @@
 						</c:if>
 					</select>
 				</div>
-		        <input type="text" name="search" class="input_box">
+		        <input type="text" name="search" class="input_box" style="width: 300px; text-align:center; ;" placeholder="매장을 검색해 보세요">
 		        <input type="submit" value="검색" class="btn">
 	        </form>
 	    </div>
@@ -178,11 +178,6 @@
 		<tr>
 			<th>No.</th>
 			<th>가게이름</th>
-			<th>전화번호</th>
-			<th>편의사항</th>
-			<th>id</th>
-			<th>등록일</th>
-			<th>휴무일</th>
 			<th>외관사진</th>
 			<th>좋아요 수</th>
 <!-- 			<th>조회수</th> -->
@@ -199,11 +194,6 @@
 				</form> --%>
 				<a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
 			</td>
-			<td>${dto.rest_tel}</td>
-			<td>${dto.convenience}</td>
-			<td>${dto.rest_id}</td>
-			<td>${dto.regdate}</td>
-			<td>${dto.dayoff}</td>
 			<td>${dto.outfile}</td>
 			<td>${dto.like_num}</td>
 <%-- 			<td>${restForm.read_count}</td> --%>
@@ -258,7 +248,7 @@
 
 <!-- <div id="myDiv" style="width:100%;height:350px;display: none;"> -->
 
-<div id="map" class="myDiv" style="width:400x;height:500px;">
+<div id="map" class="myDiv" style="width:400x;height:300px;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
 <script>
