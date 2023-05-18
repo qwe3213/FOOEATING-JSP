@@ -51,7 +51,7 @@
 	
 	function heart_check(user_id, rest_id) {
 		
-		if($('img').attr('class') == "empty_heart" ){
+		if($('#heart').attr('class') == "empty_heart"){
 		
 			$.ajax({
 				url:"./RestaurantInfoHeartAdd.fd",
@@ -60,8 +60,8 @@
 					rest_id:rest_id,
 					},
 				success: function(data) {
-					$('img').attr("src", "./img/fullheart.png");
-					$('img').attr("class", "full_heart");
+					$('#heart').attr("src", "./img/fullheart.png");
+					$('#heart').attr("class", "full_heart");
 					
 					$('.heartNo').html(data);
 				},
@@ -70,7 +70,7 @@
 				}
 			});
 			
-			} else if($('img').attr('class') == "full_heart" ){
+			} else if($('#heart').attr('class') == "full_heart" ){
 					
 					$.ajax({
 						url:"./RestaurantInfoHeartRemove.fd",
@@ -79,8 +79,8 @@
 							rest_id:rest_id,
 							},
 						success: function(data) {
-							$('img').attr("src", "./img/emptyheart.png");
-							$('img').attr("class", "empty_heart");
+							$('#heart').attr("src", "./img/emptyheart.png");
+							$('#heart').attr("class", "empty_heart");
 							
 							$('.heartNo').html(data);
 							
@@ -147,7 +147,7 @@
 	<br>
 		<c:choose>
 			<c:when test="${!empty user_id && heart_check == 1}">
-				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
+				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
 				<div class="heartNo">${heartNo }</div> 
 			</c:when>
 			<c:when test="${empty user_id}">
@@ -155,7 +155,7 @@
 				<div class="heartNo">${heartNo }</div> 
 			</c:when>
 			<c:otherwise>
-				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="javascript:heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
 				<div class="heartNo">${heartNo }</div> 
 			</c:otherwise>
 		</c:choose>
