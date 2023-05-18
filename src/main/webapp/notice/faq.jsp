@@ -1,18 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-<link href="./css/footer.css" rel="stylesheet">
-<link href="./css/header.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
+<!-- css파일 -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+<link rel="stylesheet" href="assets/css/owl-carousel.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+<link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
 
-<title>Insert title here</title>
+<title> FAQ </title>
 <script src="./js/jquery-3.6.4.js"></script>
 
 <style type="text/css">
@@ -58,13 +66,20 @@
 </head>
 <body>
 
-<!-- header -->
-<jsp:include page="../inc/headerDiv.jsp" />
-<!-- header -->
+<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
 
-<!-- header -->
-	<jsp:include page="../inc/header.jsp" />
-<!-- header -->
+
+<!-- ***** Header Area Start ***** -->
+	<jsp:include page="../inc/headerDiv.jsp" />
+<!-- ***** Header Area End ***** -->
 
 <!-- sideMenu -->
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
@@ -72,8 +87,8 @@
 
 <!-- main -->
 <main>
-<br><br>
-
+	<div id="top">
+	
 		<h1>F A Q</h1>
 		<div id="category">
 			<h3>카테고리</h3>
@@ -85,10 +100,6 @@
 				<li><a href="#" title="d">4번</a></li>
 			</ul>
 		</div>
-
-
-
-
 
 		<!-- 첫 번째 Modal을 여는 클래스 -->
 		<c:forEach var="dto" items="${faqList }">
@@ -111,14 +122,9 @@
 
 		</c:forEach>
 
-
+	</div>
 </main>
 <!-- main -->
-
-
-	<!-- footer -->
-	<jsp:include page="../inc/footerDiv.jsp" />
-	<!-- footer -->
 
 </body>
 
@@ -182,4 +188,48 @@
 	});
 </script>
 
+
+<!-- ***** Footer Start ***** -->
+	<jsp:include page="../inc/footerDiv.jsp" />
+<!-- ***** Footer End ***** -->
+
+<!-- jQuery -->
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/accordions.js"></script>
+<script src="assets/js/datepicker.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script> 
+<script src="assets/js/slick.js"></script> 
+<script src="assets/js/lightbox.js"></script> 
+<script src="assets/js/isotope.js"></script> 
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+<script>
+    $(function() {
+        var selectedClass = "";
+        $("p").click(function(){
+        selectedClass = $(this).attr("data-rel");
+        $("#portfolio").fadeTo(50, 0.1);
+            $("#portfolio div").not("."+selectedClass).fadeOut();
+        setTimeout(function() {
+          $("."+selectedClass).fadeIn();
+          $("#portfolio").fadeTo(50, 1);
+        }, 500);
+            
+        });
+    });
+</script>
+
+
+</body>
 </html>

@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link href="./css/sideMenu.css" rel="stylesheet">
 
 
 <title>FOOEATING - Notice</title>
@@ -44,7 +45,7 @@
 
 <!-- main -->
 <main>
-<br><br>
+<div id="top">
 <table border="1">
 	<tr>
 		<th>No</th>
@@ -83,6 +84,7 @@
 		<input type="submit" value="삭제하기" >
 	</form>
 </c:if>
+</div>
 </main>
 <!-- main -->
 
