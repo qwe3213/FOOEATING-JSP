@@ -189,7 +189,7 @@ $(document).ready(function(){
 <main>
 	<div id="top">
 
-	<fieldset style="text-align: center;">
+	<fieldset style="text-align: center; color: rgb(0,0,0);">
 		<legend><b>step2</b></legend>
 		<form action="./ownerChangeForm3.on" id="fr" name="fr" method="post" >
 		사업자등록 번호 <br>
@@ -227,7 +227,7 @@ $(document).ready(function(){
 		<input type="text" name="dayoff" id="dayoff"placeholder="정기휴일을 입력해주세요."><br>
 		<div id="divday"></div>
 		<br>
-		<div>
+		<div><fieldset style="color: rgb(0,0,0);">
 		<input type="checkbox" name="convenience" value="parking" style="display: inline-block; width:30px; line-height:50px;"> 주차 공간 
 		<input type="checkbox" name="convenience" value="toilet" style="display: inline-block; width:30px; line-height:50px;"> 화장실 (남/여) <br>
 		<input type="checkbox" name="convenience" value="nokidszone" style="display: inline-block; width:30px; line-height:50px;"> 노키즈존 
@@ -235,7 +235,7 @@ $(document).ready(function(){
 		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려 동물 
 		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 <br> 
 		<input type="submit" value="다음">
-		</div>
+		</fieldset></div>
 		</form>
 	</fieldset>
 	</div>

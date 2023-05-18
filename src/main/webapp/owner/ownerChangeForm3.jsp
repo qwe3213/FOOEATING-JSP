@@ -111,8 +111,7 @@
 <!-- main -->
 <main>
 	<div id="top">
-
-	<fieldset style="text-align: center;">
+	<fieldset style="text-align: center; color: rgb(0,0,0);">
 		<legend>step3</legend>
 		<form action="./ownerRequestSuccessAction.on" method="post" enctype="multipart/form-data" name="fr" id="fr">
 		    가게 소개<br>
