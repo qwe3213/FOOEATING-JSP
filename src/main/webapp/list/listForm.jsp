@@ -79,10 +79,7 @@
 <!-- 	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select> -->
 
 <main>
-
-
-
-		 
+	<div id="top">
 		 <div id="table_search">
 	        <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
 				<div>
@@ -107,7 +104,6 @@
 		        <input type="submit" value="검색" class="btn">
 	        </form>
 	    </div>
-	 
 		
 
 
@@ -330,7 +326,6 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 </div>
 <!-- 카카오맵 API 끝 -->
 
-</div>
 </main>
 <!-- main -->
 
