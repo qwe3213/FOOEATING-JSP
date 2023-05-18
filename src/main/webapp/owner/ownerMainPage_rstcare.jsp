@@ -152,7 +152,7 @@
 	
 	   <div style="text-align: right;" >
  	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none;">수정</a>
-		<a href="#" style="text-decoration: none;">삭제</a>
+		<a href="./RestaurantDeleteAction.on" style="text-decoration: none;">삭제</a>
    	   </div>
 		<div style="margin-left: 1px">
 		
@@ -201,6 +201,7 @@
 	    <div style="text-align: left;">
 	    <form action ="./OwnerNoticeAction.on " method="post">
 		<textarea name="rest_notice" rows="2" cols="110" placeholder="공지사항"></textarea>
+		<input type="hidden" name="rest_id" value="${restal.rest_id }" >
 		<input type="submit" value="저장">
 	  </form>
 	</div>
