@@ -156,11 +156,13 @@
 		for(int i = 0; i < list.size(); i++) {
 	%>
 	<div id="questionContainer">
-		<div id="question<%=i + 1%>" class="question hidden" style="margin-top: 200px;">
+		<div id="question<%=i + 1%>" class="question hidden" style="margin-top: 150px;">
 	        <fieldset class="field">
-	            <legend>질문 <%=i + 1%></legend>
+	            <legend style="padding-bottom: 20px; font-weight : 600; ">질문 <%=i + 1%></legend>
 	            <%=list.get(i)%><br>
-	            <button onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')">Yes</button>
+	            <button onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')" style="margin-top : 30px; margin-right: 30px;">
+	            	Yes
+	            </button>
 	            <button onclick="answerQuestion(false)">No</button>
 	        </fieldset>
 	    </div>
