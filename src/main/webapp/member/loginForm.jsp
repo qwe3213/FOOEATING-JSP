@@ -56,6 +56,39 @@ $(document).ready(function(){
 
 </script>
 
+<style type="text/css">
+	.panel { border: 1px solid;
+		width: 460px;
+		height: 257px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+	
+#input_row {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding: 14px 17px 13px;
+    box-sizing: border-box;
+}
+
+.input_text {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: -.5px;
+    color: #222;
+    box-sizing: border-box;
+    z-index: 4;
+}
+
+</style>
+
 </head>
 <body>
 
@@ -77,22 +110,24 @@ $(document).ready(function(){
 
 <main>
 	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
-	
+		<div class= "panel">
 		<fieldset style="margin: 5%; text-align: center;">
 			<legend>FOOEATING 로그인</legend>
 			
-			<form action="./MemberLoginAction.foo" id="fr" method="post">
-				아이디 : <input type="text" id="id" name="user_id"> <br>
+			<form action="./MemberLoginAction.foo" id="fr" method="post" >
+				<div id="input_row">
+				<input type="text" id="id" name="user_id" class="input_text" placeholder="아이디"> <br>
 				<div id="divid"></div>
-				비밀번호 : <input type="password" id="pw" name="pw"> <br>
+				<input type="password" id="pw" name="pw" class="input_text" placeholder="비밀번호"> <br>
 				<div id="divpw"></div>
+				</div>
 				<hr>
 				<input type="submit" value="로그인">
 				<input type="button" value="회원가입" onclick="location.href='./MemberJoin.foo';">
 			</form>
 			
 		</fieldset>
-
+		</div>
 	</div> <!-- ***** Main End ***** -->
 </main>
 

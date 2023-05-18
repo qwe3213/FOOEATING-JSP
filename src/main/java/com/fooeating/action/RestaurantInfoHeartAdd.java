@@ -23,6 +23,8 @@ public class RestaurantInfoHeartAdd implements Action{
         // 아이디 저장
         String user_id = request.getParameter("user_id");
         String rest_id = request.getParameter("rest_id");
+        System.out.println(user_id);
+        System.out.println(rest_id);
         
         PublicDAO dao = new PublicDAO();
         
