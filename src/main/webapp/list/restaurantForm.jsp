@@ -274,8 +274,8 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색
-geocoder.addressSearch('부산 부산진구 중앙대로 672', function(result, status) {
-
+geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc} ', function(result, status) {
+	
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
 
@@ -289,7 +289,7 @@ geocoder.addressSearch('부산 부산진구 중앙대로 672', function(result, 
 
         // 인포윈도우로 장소에 대한 설명을 표시
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">삼정타워</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${restForm.name}</div>'
         });
         infowindow.open(map, marker);
         
