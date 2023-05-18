@@ -113,19 +113,19 @@ $(document).ready(function(){
             
 	     });
 	     
-	     $("#rest_tel").keyup(function() {
-	    	 let num = /[0-9]{7}$/;
+	 /*     $("#rest_tel").keyup(function() {
+	    	 let num = /[0-9]{10}$/;
 	    	 let tel = document.fr.rest_tel.value; 
 	         if(num.test(tel)){
 	        	 $('#divtel').html(""); 
 	        	
 	         }else{
-		       $('#divtel').html("-빼고 번호를 7자 입력해주세요.");
+		       $('#divtel').html("-빼고 번호를 10자 입력해주세요.");
 		
 	         }
             
 	     });
-	     
+	      */
 	     $("#fr").on("submit", function(e){
 	    	 let num = /[0-9]{10}$/;
 	    	 let id = document.fr.rest_id.value;
