@@ -2026,7 +2026,7 @@ public class PublicDAO {
 				// 1,2 디비연결
 				con = getCon();
 				// 3 sql문 작성
-				sql = "insert into restaurant values(?,?,?,?,?,?,?,?,0,false,?,?,?,?,?,?,now(),0,0,0)";
+				sql = "insert into restaurant values(?,?,?,?,?,?,?,?,0,false,?,?,?,?,?,?,now(),?,0,0,0)";
 				
 				pstmt = con.prepareStatement(sql);
 			
@@ -2065,7 +2065,7 @@ public class PublicDAO {
 				con = getCon();
 				
 				// 3. sql 작성
-				sql = "insert into restaurant_menu (menufile,menu_name,menu_descriptions,price,rest_id) "
+				sql = "insert into restaurant_menu (remenufile,menu_name,menu_descriptions,price,rest_id) "
 						+ " values(?,?,?,?,?)";
 				
 				pstmt= con.prepareStatement(sql);
