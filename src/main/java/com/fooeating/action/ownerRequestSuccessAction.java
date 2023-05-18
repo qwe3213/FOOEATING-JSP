@@ -30,9 +30,8 @@ public class ownerRequestSuccessAction implements Action {
 		 String user_id = (String)session.getAttribute("user_id");
 		
 		 // 파일업로드 + 상품정보 (파라메터)
-//		 ServletContext ctx = request.getServletContext();
-//		 String realPath = ctx.getRealPath("/upload");
-		 String realPath = "http://c7d2301t4file.itwillbs.com/files/webapps/upload";
+		 ServletContext ctx = request.getServletContext();
+		 String realPath = ctx.getRealPath("/upload");
 		 System.out.println(realPath);
 		 
 		 int maxSize = 5 * 1024 * 1024 ;
