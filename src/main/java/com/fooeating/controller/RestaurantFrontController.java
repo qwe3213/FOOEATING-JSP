@@ -185,6 +185,7 @@ public class RestaurantFrontController extends HttpServlet {
 			}
 		}
 		
+
 		else if(command.equals("/OwnerMainPageRstcareAction.on")) {
 			 System.out.println(" /OwnerMainPageRstcareAction.on");
 			 System.out.println(" 패턴 3 ");

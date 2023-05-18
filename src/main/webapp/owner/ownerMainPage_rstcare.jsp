@@ -1,124 +1,25 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-<script type="text/javascript">
-// 	$(document).ready(function(){
-// 		$.each(data,function(idx,obj){
-// 			var tmp;
-// 			tmp += "<td>"+obj.name+"</td>";
-// 			tmp += "<td>"+obj+"</td>";
-// 			tmp += "<td>"+obj.addr+"</td>";
-// 			tmp += "<td>"+obj.gender+"</td>";
-// 			tmp += "<td>"++"</td>";
-			
-// 			$('tr').append(tmp);
-// 		});
-// 	} // 몰라 나중에 볼래
-</script>
-</head>
-<body>
-	<h1>owmerMainPage_rstcare.jsp</h1>
-	<fieldset style="float:left;">
-	<div style="height:240px; vertical-align: middle; display: table-cell;">
-		<h3 style="margin: 10px;"><b>마이페이지</b></h3>
-			<ul style="list-style:none; padding-left:0px;">
-				<li style="margin: 10px;">
-					<div>
-						<a href="./owmerMainPage_rstcare.on" style="text-decoration: none;">
-						<img src="../owner/ownerImg/store.png" width="20" height="20">
-						</a>
-						<a href="./owmerMainPage_rstcare.on" style="text-decoration: none;">가게 관리</a>
-					</div>
-				</li>
-				<li style="margin: 10px;">
-					<div>
-						<a href="./owmerMainPage_wating.on" style="text-decoration: none;">
-						<img src="../owner/ownerImg/people.png" width="20" height="20">
-						</a>
-						<a href="./owmerMainPage_wating.on" style="text-decoration: none;">대기 관리</a>
-					</div>
-				</li>
-				<li style="margin: 10px;">
-					<div>
-						<a href="./owmerMainPage_review.on" style="text-decoration: none;">
-						<img src="../owner/ownerImg/review.png" width="20" height="20">
-						</a>
-						<a href="./owmerMainPage_review.on" style="text-decoration: none;">리뷰 관리</a>
-					</div>
-				</li>
-				<li style="margin: 10px;">
-					<div>
-						<a href="./owmerMainPage_memberInfo.on" style="text-decoration: none;">
-						<img src="../owner/ownerImg/note.png" width="20" height="20">
-						</a>
-						<a href="./owmerMainPage_memberInfo.on" style="text-decoration: none;">회원정보 수정</a>
-					</div>
-				</li>
-			</ul>
-	</div>
-	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
-	<fieldset>
-	<div style="height:240px;">
-	<div style="text-align: right;" >
-		<a href="" style="text-decoration: none;">수정</a>
-		<a href="" style="text-decoration: none;">삭제</a>
-	</div>
-	<div style="float: left;">
-		<img src="../owner/ownerImg/store.png" width="150px;" style="margin-right: 10px;">
-	</div>
-	<div style="margin-left: 1px">
-		<table>
-			<tr>
-			<td>가게 이름 :	</td>
-			</tr>
-			<tr>
-			<td>가게 업종 :	</td>
-			</tr>
-			<tr>
-			<td>가게 주소 :	</td>
-			</tr>
-			<tr>
-			<td>가게 번호 :	</td>
-			</tr>
-			<tr>
-			<td>영업 시간 :	</td>
-			</tr>
-			<tr>
-			<td>정기 휴무 :	</td>
-			</tr>
-		</table>
-	</div>
-	<br>
-	<div style="text-align: left;">
-		<textarea rows="2" cols="110" placeholder="공지사항"></textarea>
-		<input type="button" value="저장">
-	</div>
-	</div>
-	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
-</body>
-=======
-<%@page import="com.fooeating.action.RestaurantListAction"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
+<!-- css파일 -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+<link rel="stylesheet" href="assets/css/owl-carousel.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+<link rel="stylesheet" href="css/main.css">
 
-<!-- css 파일 -->
-<link href="./css/footer.css" rel="stylesheet">
-<link href="./css/header.css" rel="stylesheet">
 <link href="./css/sideMenu.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
 
 <script type="text/javascript">
 	function rest_onoff(onoff, rest_id) {
@@ -134,17 +35,30 @@
 </head>
 <body>
 
-<!-- header -->
-	<jsp:include page="../inc/header.jsp" />
-<!-- header -->
+<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+
+<!-- ***** Header Area Start ***** -->
+	<jsp:include page="../inc/headerDiv.jsp" />
+<!-- ***** Header Area End ***** -->
+
 
 <!-- sidemenu -->
 	<jsp:include page="../inc/sideMenuOwner.jsp" />
 <!-- sidemenu -->
 
+
 <!-- main -->
 <main>
-<br><br>
+	<div id="top">
 	<h1>나의 가게 정보</h1>
 	
 	<fieldset>
@@ -210,15 +124,52 @@
 	</div>
 	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
 
+	</div>
 </main>
 <!-- main -->
 
 
-<!-- footer -->
-<jsp:include page="../inc/footerDiv.jsp" />
-<!-- footer -->
-	
-	
+<!-- ***** Footer Start ***** -->
+	<jsp:include page="../inc/footerDiv.jsp" />
+<!-- ***** Footer End ***** -->
+
+<!-- jQuery -->
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/accordions.js"></script>
+<script src="assets/js/datepicker.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script> 
+<script src="assets/js/slick.js"></script> 
+<script src="assets/js/lightbox.js"></script> 
+<script src="assets/js/isotope.js"></script> 
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+<script>
+    $(function() {
+        var selectedClass = "";
+        $("p").click(function(){
+        selectedClass = $(this).attr("data-rel");
+        $("#portfolio").fadeTo(50, 0.1);
+            $("#portfolio div").not("."+selectedClass).fadeOut();
+        setTimeout(function() {
+          $("."+selectedClass).fadeIn();
+          $("#portfolio").fadeTo(50, 1);
+        }, 500);
+            
+        });
+    });
+</script>
+
+
 </body>
->>>>>>> branch 'develop' of https://github.com/LingLing23/FOOEATING.git
 </html>

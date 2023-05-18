@@ -3,7 +3,7 @@
 
 
 
-<nav id="sub_menu">
+<nav id="sub_menu" style="margin-top: 150px;">
 <ul>
 <li><a href="./OwnerMainPageRstcareAction.on">가게 관리</a></li>
 <li><a href="./OwnerWaitingList.on">대기 관리</a></li>
