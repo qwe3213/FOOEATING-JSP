@@ -1535,7 +1535,7 @@ responsive
 
 @media (max-width: 992px) {
   #top {
-    padding-top: 24%;
+    padding-top: 20%;
     height: auto;
   }
   .header-area .main-nav .nav li.submenu:after {

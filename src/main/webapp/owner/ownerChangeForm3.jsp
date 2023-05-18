@@ -111,10 +111,8 @@
 <!-- main -->
 <main>
 	<div id="top">
-	
-	<h1>ownerChangeForm3.jsp</h1>
-	
-	<fieldset>
+
+	<fieldset style="text-align: center;">
 		<legend>step3</legend>
 		<form action="./ownerRequestSuccessAction.on" method="post" enctype="multipart/form-data" name="fr" id="fr">
 		    가게 소개<br>

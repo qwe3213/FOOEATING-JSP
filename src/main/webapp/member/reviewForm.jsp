@@ -100,6 +100,7 @@ input[type=radio]:checked ~ label{
 <!-- main -->
 <main>
 	<div id="top">
+	<div id="category" style="margin: 40px 0 0 300px;">
 	<h1>리뷰 관리</h1>
 	<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }">
@@ -208,7 +209,7 @@ if(count != 0) {
 }
 %>
 	
-	
+	</div>
 	</div>
 </main>
 <!-- main -->

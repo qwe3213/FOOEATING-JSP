@@ -62,10 +62,9 @@
 
 <main>
 	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
-	
-	    <h1>ownerChangeForm4.jsp</h1>
-	    <fieldset>
-	        <legend>step4</legend>
+
+	    <fieldset style="text-align: center;">
+	        <legend>step1</legend>
 	        <form id="terms_form" action="./ownerChangeForm2.on" method="post">
 	            <textarea rows="5" cols="50">약관 내용</textarea><br>
 	            약관에 동의합니다. <input type="checkbox" id="check_1"><br>
