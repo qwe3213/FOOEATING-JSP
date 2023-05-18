@@ -515,7 +515,7 @@ header
 }
 
 .header-area.header-sticky {
-  min-height: 150px;
+  min-height: 190px;
 }
 
 .header-area .nav {
@@ -581,7 +581,7 @@ header
     border-top: 1px solid #eee;
   }
   .header-area.header-sticky .nav {
-    margin-top: 150px !important;
+    margin-top: 170px !important;
   }
   .header-area .main-nav .nav li {
     width: 100%;
@@ -649,7 +649,7 @@ banner
 */
 
 #top {
-  padding-top: 150px;
+  padding-top: 190px;
 }
 
 #top .col-lg-4,
