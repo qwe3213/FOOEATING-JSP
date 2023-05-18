@@ -88,6 +88,7 @@
 	    <div style="text-align: left;">
 	    <form action ="./OwnerNoticeAction.on " method="post">
 		<textarea name="rest_notice" rows="2" cols="110" placeholder="공지사항"></textarea>
+		<input type="hidden" name="rest_id" value="${restal.rest_id }" >
 		<input type="submit" value="저장">
 	  </form>
 	</div>

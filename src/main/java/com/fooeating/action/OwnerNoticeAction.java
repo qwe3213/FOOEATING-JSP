@@ -23,7 +23,7 @@ public class OwnerNoticeAction implements Action {
 			// rest_notice 정보 저장
 		    String rest_notice = request.getParameter("rest_notice");
 		    String rest_id = request.getParameter("rest_id");
-		    
+		    System.out.println(rest_id);
 		    PublicDAO dao = new PublicDAO();
 		    dao.OwnergetNotice(rest_notice,rest_id);
 		
