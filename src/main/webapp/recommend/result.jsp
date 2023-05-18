@@ -50,7 +50,7 @@
 <!-- main -->
 <main>
 
-<div id="top">
+<div id="top" style="margin-top: 180px;">
 	<div class="dvh"><h1>당신에게 추천해드리는 음식</h1></div>
 	
 	<%

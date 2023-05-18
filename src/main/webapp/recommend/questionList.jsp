@@ -156,19 +156,21 @@
 		for(int i = 0; i < list.size(); i++) {
 	%>
 	<div id="questionContainer">
-		<div id="question<%=i + 1%>" class="question hidden">
+		<div id="question<%=i + 1%>" class="question hidden" style="margin-top: 200px;">
 	        <fieldset class="field">
 	            <legend>질문 <%=i + 1%></legend>
 	            <%=list.get(i)%><br>
 	            <button onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')">Yes</button>
 	            <button onclick="answerQuestion(false)">No</button>
 	        </fieldset>
-			<div class="box"><button onclick="location.href='./RecommendMain.ad'">다시하기</button></div>
 	    </div>
     </div>
 	<%
 		}
 	%>
+	<div class="box" style="text-align: center;">
+		<button onclick="location.href='./RecommendMain.ad'">다시하기</button>
+	</div>
 </div>
 	
 	<script>
