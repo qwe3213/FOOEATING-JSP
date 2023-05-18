@@ -218,7 +218,7 @@ $(document).ready(function(){
 	    <div id="divradrr"></div>
 	     <div id="divretcadrr"></div>
 		대표 전화 <br>
-		<input type="text" name="rest_tel" id="rest_tel" maxlength="7" placeholder="- 빼고 입력해주세요."><br>
+		<input type="text" name="rest_tel" id="rest_tel" maxlength="12" placeholder="- 빼고 입력해주세요."><br>
 		<div id="divtel"></div>
 		영업 시간 <br>
 		<input type="text" name="runtime" id ="runtime"placeholder="영업시간대를 입력해주세요."><br>
