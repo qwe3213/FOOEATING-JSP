@@ -3,7 +3,7 @@
 
     
     
-<nav id="sub_menu">
+<nav id="sub_menu" style="margin-top: 170px;">
 <ul>
 <li><a href="./NoticeList.foo">공지사항</a></li>
 <li><a href="#">회사소개</a></li>

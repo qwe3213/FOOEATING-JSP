@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link href="./css/question.css" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
 
 
 <title>PUDDING</title>
@@ -150,7 +151,7 @@
 		
 		Collections.shuffle(list);
 	%>
-		<br><br><br><br><br>
+<div id="top">
 	<%
 		for(int i = 0; i < list.size(); i++) {
 	%>
@@ -165,11 +166,10 @@
 			<div class="box"><button onclick="location.href='./RecommendMain.ad'">다시하기</button></div>
 	    </div>
     </div>
-    
 	<%
 		}
 	%>
-	
+</div>
 	
 	<script>
 		

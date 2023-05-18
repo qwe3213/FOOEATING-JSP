@@ -65,6 +65,7 @@ public class MemberDeleteAction implements Action{
 		JSForward.alertAndClose(response, "회원정보 탈퇴 성공!");
 		
 		return null;
+		
 		}
 		
 		

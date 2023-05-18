@@ -3,7 +3,7 @@
 
 
 
-<nav id="sub_menu">
+<nav id="sub_menu" style="margin-top: 150px;">
 <ul>
 	<li><a href="./UserInfoList.ad">회원 정보 목록</a></li>
 	<li><a href="./RestaurantList.ad">입점 가게 목록</a></li>

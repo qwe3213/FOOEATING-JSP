@@ -71,10 +71,6 @@ ul, li {
   list-style: none;
 }
 
-.scroll-to-section {
-	margin-right: 40px;
-}
-
 header, nav, section, article, aside, footer, hgroup {
   display: block;
 }
@@ -95,10 +91,6 @@ html, body {
 
 a {
   text-decoration: none !important;
-}
-
-.logo {
-	margin-right: 35px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -269,6 +261,7 @@ header
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  margin-top: 15px;			/* 로고 위,아래 위치 조정 - 새로 추가 */
 }
 
 .background-header .main-nav .logo {
@@ -280,10 +273,9 @@ header
 }
 
 .header-area .main-nav .nav {
-  float: left;
-  margin-top: 30px;
+  float: right;
+  margin-top: 50px;
   margin-right: 0px;
-  margin-left: 430px;
   background-color: transparent;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -294,8 +286,8 @@ header
 }
 
 .header-area .main-nav .nav li {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .header-area .main-nav .nav li:last-child {
@@ -304,7 +296,7 @@ header
 
 .header-area .main-nav .nav li a {
   display: block;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 20px;
   color: #2a2a2a;
   text-transform: capitalize;
@@ -315,7 +307,7 @@ header
   height: 40px;
   line-height: 40px;
   border: transparent;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .header-area .main-nav .nav li a {
@@ -523,7 +515,7 @@ header
 }
 
 .header-area.header-sticky {
-  min-height: 150px;
+  min-height: 190px;
 }
 
 .header-area .nav {
@@ -589,7 +581,7 @@ header
     border-top: 1px solid #eee;
   }
   .header-area.header-sticky .nav {
-    margin-top: 100px !important;
+    margin-top: 170px !important;
   }
   .header-area .main-nav .nav li {
     width: 100%;
@@ -657,7 +649,7 @@ banner
 */
 
 #top {
-  padding-top: 100px;
+  padding-top: 190px;
 }
 
 #top .col-lg-4,
