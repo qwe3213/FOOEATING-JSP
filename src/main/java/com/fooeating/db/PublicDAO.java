@@ -2026,7 +2026,7 @@ public class PublicDAO {
 				// 1,2 디비연결
 				con = getCon();
 				// 3 sql문 작성
-				sql = "insert into restaurant values(?,?,?,?,?,?,?,?,0,?,false,?,?,?,?,now(),0,0,0,?,?)";
+				sql = "insert into restaurant values(?,?,?,?,?,?,?,?,0,false,?,?,?,?,?,?,now(),0,0,0)";
 				
 				pstmt = con.prepareStatement(sql);
 			
@@ -2038,13 +2038,13 @@ public class PublicDAO {
 				pstmt.setString(6, dto.getRuntime());
 				pstmt.setString(7, dto.getRest_notice());
 				pstmt.setString(8, dto.getDayoff());
-				pstmt.setString(9, dto.getOwner_user_id());
-				pstmt.setString(10, dto.getCategory());
-				pstmt.setString(11, dto.getAddr_city());
-				pstmt.setString(12, dto.getAddr_district());
-				pstmt.setString(13, dto.getAddr_etc());
-				pstmt.setString(14, dto.getOutfile());
-				pstmt.setString(15, dto.getInfile());
+				pstmt.setString(9, dto.getCategory());
+				pstmt.setString(10, dto.getAddr_city());
+				pstmt.setString(11, dto.getAddr_district());
+				pstmt.setString(12, dto.getAddr_etc());
+				pstmt.setString(13, dto.getOutfile());
+				pstmt.setString(14, dto.getInfile());
+				pstmt.setString(15, dto.getOwner_user_id());
 		  	    // 4. sql 실행
 				pstmt.executeUpdate();
 				System.out.println("DAO 레스토랑 정보 저장 성공");
