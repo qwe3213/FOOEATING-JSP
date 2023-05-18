@@ -33,7 +33,7 @@
 					</c:choose>
 				
 				<c:if test="${empty owner_user_id && !user_id.equals('real_admin')}">
-					<a href=	"./MyPageMember.foo">Business registration</a>
+					<a href="./ownerChangeForm.on">Business registration</a>
 				</c:if>
 			
 			</c:if>
