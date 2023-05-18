@@ -10,10 +10,10 @@
 		  font-size:1em  }
 /*너비 238px 정렬 왼쪽 밖여백20px
 글자체 Verdana,Geneva,sans-serif 글자크기 1em*/
-#sub_menu ul{margin: 20px 0 0 10px; list-style: none;
+#sub_menu ul{margin: 45% 0 0 25%; list-style: none;
 }/*밖여백 20 0 0 10 리스트스타일none*/
 #sub_menu a{text-decoration: none;color: #666;
-display:block;height: 30px;width: 165px;padding: 7px;
+display:block;height: 40px;width: 165px;padding: 7px;
 border-bottom-width: 1px;border-bottom-style: dotted;
 border-bottom-color: #999;
 background-image: url("../images/bullet.gif");

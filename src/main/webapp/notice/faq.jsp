@@ -88,16 +88,16 @@
 <!-- main -->
 <main>
 	<div id="top">
+		<div id="category" style="margin: 40px 0 0 300px;">
 	
 		<h1>F A Q</h1>
-		<div id="category">
 			<h3>카테고리</h3>
-			<ul>
-				<li><a href="#" title="all">전체보기</a></li>
-				<li><a href="#" title="a">1번</a></li>
-				<li><a href="#" title="b">2번</a></li>
-				<li><a href="#" title="c">3번</a></li>
-				<li><a href="#" title="d">4번</a></li>
+			<ul style="margin-top: 30px;">
+				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="all" style="text-align: center;">전체보기</a></li>
+				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="a" style="text-align: center;">1번</a></li>
+				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="b" style="text-align: center;">2번</a></li>
+				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="c" style="text-align: center;">3번</a></li>
+				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="d" style="text-align: center;">4번</a></li>
 			</ul>
 		</div>
 
