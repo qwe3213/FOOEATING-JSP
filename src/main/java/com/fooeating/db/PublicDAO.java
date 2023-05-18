@@ -2356,21 +2356,28 @@ public class PublicDAO {
 			
 			
 		}
-		//select * from restaurant_menu where rest_id=?
-		public List<ReivewDTO> OwnergetReview(String user_id) {
+		
+		// 점주 - 마이페이지 - 리뷰관리
+		public List<ReivewDTO> OwnergetReview(String user_id, int startRow, int pageSize) {
 			List<ReivewDTO> reviewList = new ArrayList<ReivewDTO>();
 			try {
 				System.out.println(user_id);
 			    // 1,2 디비연결
 				con = getCon();
 				// sql 작성
-				sql = "select * from review r where rest_id = (select rest_id from restaurant where owner_user_id = ?)";
+				sql = "select * from review r where rest_id = (select rest_id from restaurant where owner_user_id = ?)"
+						+ " order by user_id limit ?,?";
 				
 				pstmt = con.prepareStatement(sql);
+				
 				pstmt.setString(1,user_id);
+				pstmt.setInt(2,startRow-1);
+				pstmt.setInt(3,pageSize);
+				
 				rs = pstmt.executeQuery();
+				
                 while(rs.next()) {
-                	ReivewDTO dto = new ReivewDTO();
+                ReivewDTO dto = new ReivewDTO();
                  dto.setUser_id(rs.getString("user_id"));
                  dto.setContent(rs.getString("content"));
                  dto.setRegdate(rs.getTimestamp("regdate"));
@@ -2385,6 +2392,39 @@ public class PublicDAO {
 				closeDB();
 			}
 			return reviewList;
+			
+		}
+		
+		// 점주 -  내 가게의 총 리뷰 개수
+		public int getOwnerReviewCount(String rest_id) {
+			 int result = 0;
+			     
+			 try {
+				 //1,2 디비연결
+				con = getCon();
+				
+				// 3 sql 실행
+				//sql = "SELECT count(*) FROM heart WHERE heart_check=1 and user_id=?";
+				sql = "select count(*) from review where rest_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, rest_id);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result =rs.getInt(1);
+				}
+				
+				
+				 
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			 return  result;
 			
 		}
 		

@@ -163,7 +163,7 @@ input[type=radio]:checked ~ label{
 	
 	
 	
-	<!-- 페이징처리 -->
+<!-- 페이징처리 -->
 <%
 int count = (int)request.getAttribute("count");
 int pageSize = (int)request.getAttribute("pageSize");
