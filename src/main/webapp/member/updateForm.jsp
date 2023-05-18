@@ -140,24 +140,21 @@
 	</c:if>
  		
  		<br><br>
- 		<fieldset>
+ 		<fieldset style="margin-right: 260px; text-align: center;">
  			<legend>FOOEATING 회원 정보 수정</legend>
- 			
-	 		<form action="./MemberUpdateProAction.foo" method="post" name="fr" onsubmit="return checkData();" id="fr">
- 			 	아이디 : <input type="text" name="user_id" value="${dto.user_id }" readonly="readonly"><br>
- 			 	비밀번호 : <input type="password" name="pw" placeholder="비밀번호를 입력하세요.">
- 			 	<input type="button" value="비밀번호 변경" onclick="winopen()"><br>
- 			 	이름 : <input type="text" name="name" value="${dto.name }" id="name"><br>
- 			 	<div id="namediv" class="errorDiv"></div>
- 			 	이메일 : <input type="email" name="email" value="${dto.email }" readonly="readonly"><br>
- 			 	휴대전화 : <input type="text" name="phone" value="${dto.phone }" id="phone"> 
- 			 	<div id="phonediv" class="errorDiv"></div>       
- 			 	<hr>      
- 			 	<input type="submit" value="회원정보 수정">
- 			 	<input type="button" value="회원 탈퇴" onclick="winopen2()"><br>
- 		
- 		
- 			</form>
+		 		<form action="./MemberUpdateProAction.foo" method="post" name="fr" onsubmit="return checkData();" id="fr">
+	 			 	아이디 : <input type="text" name="user_id" value="${dto.user_id }" readonly="readonly"><br>
+	 			 	비밀번호 : <input type="password" name="pw" placeholder="비밀번호를 입력하세요.">
+	 			 	<input type="button" value="비밀번호 변경" onclick="winopen()"><br>
+	 			 	이름 : <input type="text" name="name" value="${dto.name }" id="name"><br>
+	 			 	<div id="namediv" class="errorDiv"></div>
+	 			 	이메일 : <input type="email" name="email" value="${dto.email }" readonly="readonly"><br>
+	 			 	휴대전화 : <input type="text" name="phone" value="${dto.phone }" id="phone"> 
+	 			 	<div id="phonediv" class="errorDiv"></div>       
+	 			 	<hr>      
+	 			 	<input type="submit" value="회원정보 수정">
+	 			 	<input type="button" value="회원 탈퇴" onclick="winopen2()"><br>
+ 				</form>
  		</fieldset>
 	</div>
 </main>

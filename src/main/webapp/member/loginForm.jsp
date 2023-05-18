@@ -78,7 +78,7 @@ $(document).ready(function(){
 <main>
 	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
 	
-		<fieldset>
+		<fieldset style="margin: 5%; text-align: center;">
 			<legend>FOOEATING 로그인</legend>
 			
 			<form action="./MemberLoginAction.foo" id="fr" method="post">

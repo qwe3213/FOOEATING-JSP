@@ -7,7 +7,7 @@
 <header class="header-area header-sticky">
 	<!-- 오른쪽 아래에 띄우고 싶은데... ul + li 합쳐야만 css 적용됨 -->
 	<div>
-		<div style="float: right; font-size: small; width: max-content; margin-left: 0%; padding-left: 100%;">
+		<div style="float: right; font-size: 1em; width: max-content; margin-left: 0%; padding-left: 100%;">
 		
 		<!-- 로그인 안했을 때 -->
 			<c:if test="${empty user_id }" >
@@ -54,7 +54,7 @@
                     <ul class="nav" style="display: none;">
                         <li class="scroll-to-section"><a href="./Main.foo" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="./listForm.fd">Category</a></li>
-                        <li class="scroll-to-section"><a href="./RecommendMain.ad">Let`s Giring</a></li>
+                        <li class="scroll-to-section"><a href="./RecommendMain.ad">Let's Giring</a></li>
                         <li class="scroll-to-section"><a href="./NoticeList.foo">Notice</a></li>
                     </ul>
                       

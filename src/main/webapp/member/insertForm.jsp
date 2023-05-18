@@ -277,10 +277,9 @@ $(function() {
 <main>
 	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
 	
- 		<h1>insertForm.jsp(team4)</h1>
  		<!-- itwill_member 테이블에 저장될 정보를 입력 -->
  		
- 		<fieldset>
+ 		<fieldset style="margin: 5%; text-align: center;">
  			<legend>team4 회원가입</legend>
  			
  			<!-- action주소가 없으면 자신의 페이지 호출 -->

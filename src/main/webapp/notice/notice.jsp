@@ -65,7 +65,7 @@
 
 
 <!-- 공지사항 리스트 출력-->
-<table border="1">
+<table border="1" style="margin: 40px 0 0 300px;">
 	<tr>
 		<th>no</th>
 		<th>제목</th>

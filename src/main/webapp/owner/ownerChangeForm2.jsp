@@ -188,10 +188,9 @@ $(document).ready(function(){
 <!-- main -->
 <main>
 	<div id="top">
-	
-	<h1>ownerChangeform.jsp</h1>
-	<fieldset>
-		<legend><b>step1</b></legend>
+
+	<fieldset style="text-align: center;">
+		<legend><b>step2</b></legend>
 		<form action="./ownerChangeForm3.on" id="fr" name="fr" method="post" >
 		사업자등록 번호 <br>
 		<input type="text" id ="rest_id" name ="rest_id" placeholder="- 빼고 입력해주세요." maxlength="10"><br>
@@ -228,13 +227,15 @@ $(document).ready(function(){
 		<input type="text" name="dayoff" id="dayoff"placeholder="정기휴일을 입력해주세요."><br>
 		<div id="divday"></div>
 		<br>
-		<input type="checkbox" name="convenience" value="parking" > 주차 공간
-		<input type="checkbox" name="convenience" value="toilet" > 화장실 (남/여) <br>
-		<input type="checkbox" name="convenience" value="nokidszone" > 노키즈존
-		<input type="checkbox" name="convenience" value="takeout" > 포장 가능 <br>
-		<input type="checkbox" name="convenience" value="animal" > 반려 동물
-		<input type="checkbox" name="convenience" value="wifi" > 와이파이 <br> 
+		<div>
+		<input type="checkbox" name="convenience" value="parking" style="display: inline-block; width:30px; line-height:50px;"> 주차 공간 
+		<input type="checkbox" name="convenience" value="toilet" style="display: inline-block; width:30px; line-height:50px;"> 화장실 (남/여) <br>
+		<input type="checkbox" name="convenience" value="nokidszone" style="display: inline-block; width:30px; line-height:50px;"> 노키즈존 
+		<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장 가능 <br>
+		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려 동물 
+		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 <br> 
 		<input type="submit" value="다음">
+		</div>
 		</form>
 	</fieldset>
 	</div>
