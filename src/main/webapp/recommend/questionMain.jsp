@@ -18,11 +18,23 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/question.css">
+<link rel="stylesheet" href="css/main.css">
+
 
 
 <title>GIRING</title>
 </head>
 <body>
+
+<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
 
 <!-- header -->
 <jsp:include page="../inc/headerDiv.jsp" />

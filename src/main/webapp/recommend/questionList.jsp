@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link href="./css/question.css" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
 
 
 <title>PUDDING</title>

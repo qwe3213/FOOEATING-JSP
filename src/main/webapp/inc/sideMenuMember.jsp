@@ -3,7 +3,7 @@
 
 
 
-<nav id="sub_menu">
+<nav id="sub_menu" style="margin-top: 150px;">
 <ul>
 <li><a href="./MemberWaitingList.foo">대기리스트</a></li>
 <li><a href="./MemberLike.foo">찜한매장</a></li>

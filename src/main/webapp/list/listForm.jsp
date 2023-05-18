@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
+<link rel="stylesheet" href="css/main.css">
 
 <title>Category</title>
 
@@ -49,6 +50,16 @@
 </head>
 <body>
 
+<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
 <!-- header -->
 <jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
@@ -69,6 +80,7 @@
 
 <main>
 	<div id="top">
+		<div>
 		 <div>
 			 <select style="width:300x; height:30px;">
 			 	<option>리뷰수</option>
@@ -101,7 +113,6 @@
 		        <input type="submit" value="검색" class="btn">
 	        </form>
 	    </div>
-	</div> 
 	 
 		
 
@@ -331,11 +342,11 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 });
 
 </script>
+</div>
+</div>
+<!-- 카카오맵 API 끝 -->
 
 </div>
-
-
-	<!-- 카카오맵 API 끝 -->
 </main>
 <!-- main -->
 
@@ -378,7 +389,7 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
             
         });
     });
-    </script>
+</script>
 
 
 

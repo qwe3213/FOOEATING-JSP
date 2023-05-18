@@ -25,10 +25,10 @@
 							<a href="./UserInfoList.ad">MyPage</a>
 						</c:when>
 						<c:when test="${user_id.equals(owner_user_id) }">
-							<a href="./Main.foo">MyPage</a>
+							<a href="./OwnerMainPageRstcareAction.on">MyPage</a>
 						</c:when>
 						<c:otherwise>
-							<a href="./MyPageMember.foo">MyPage</a>
+							<a href="./MemberWaitingList.foo">MyPage</a>
 						</c:otherwise>
 					</c:choose>
 				

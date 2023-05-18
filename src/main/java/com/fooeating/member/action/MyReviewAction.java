@@ -64,8 +64,8 @@ public class MyReviewAction implements Action {
 		request.setAttribute("pageNum", pageNum);
 
 		
-		// ./member/updateForm.jsp 출력
-		forward.setPath("./ownerMainPage_review.jsp");
+		// ./member/reviewForm.jsp 출력
+		forward.setPath("./member/reviewForm.jsp");
 		forward.setRedirect(false);
 		
 		System.out.println(" M : 정보조회 저장, 처리 끝");
