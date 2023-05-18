@@ -57,6 +57,11 @@
 
 </head>
 <body>
+
+<!-- header -->
+<jsp:include page="../inc/headerDiv.jsp" />
+<!-- header -->
+
 <!-- header -->
 	<jsp:include page="../inc/header.jsp" />
 <!-- header -->
@@ -112,7 +117,7 @@
 
 
 	<!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footerDiv.jsp" />
 	<!-- footer -->
 
 </body>

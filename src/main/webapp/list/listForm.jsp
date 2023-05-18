@@ -6,17 +6,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+ 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-<!-- css 파일 -->
-<link href="./css/footer.css" rel="stylesheet">
-<link href="./css/header.css" rel="stylesheet">
-<link href="./css/sideMenu.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
+<!-- css파일 -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+<link rel="stylesheet" href="assets/css/owl-carousel.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+
+<title>Category</title>
+
  
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"/></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -40,7 +50,7 @@
 <body>
 
 <!-- header -->
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 <!-- 	<form action="./listFormAction.fd" method="post" name="fr" onsubmit="checkData();"></form>	 -->
@@ -57,45 +67,41 @@
 <!-- 	<select name="sido1" id="sido1" style="width:500x; height:50px;"></select> -->
 <!-- 	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select> -->
 
-	 
-<!-- main -->
 <main>
-
-	 
-	 <hr>
-	 
-	 <select style="width:300x; height:30px;">
-	 	<option>리뷰수</option>
-	 	<option>평점수</option>
-	 	<option>좋아요수</option>
-	 </select>
-	 
-	 
-	 <div id="table_search">
-        <form action="./listForm.fd" method="get">
-			<div>
-			<label for="addr_city">시/도</label>
-				<select id="addr_city" name="addr_city" onchange="addrChange(this)">
-					<option>시/도 선택</option>
-					<option value="서울" <c:if test="${param.addr_city.equals('서울')}">selected</c:if>>서울</option>
-					<option value="부산" <c:if test="${param.addr_city.equals('부산')}">selected</c:if>>부산</option>
-					<option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
-				</select>
-			</div>
-			<div>
-			<label for="addr_discrict">구</label>
-				<select id="addr_district" name="addr_district">
-					<option>선택해주세요</option>
-					<c:if test="${param.addr_district != null}">
-						<option value="${param.addr_district}" selected>${param.addr_district}</option>
-					</c:if>
-				</select>
-			</div>
-	        <input type="text" name="search" class="input_box">
-	        <input type="submit" value="search" class="btn">
-        </form>
-    </div>
-	 
+	<div>
+		 <div>
+			 <select style="width:300x; height:30px;">
+			 	<option>리뷰수</option>
+			 	<option>평점수</option>
+			 	<option>좋아요수</option>
+			 </select>
+		</div>
+		 
+		 <div id="table_search">
+	        <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
+				<div>
+				<label for="addr_city">시/도</label>
+					<select id="addr_city" name="addr_city" onchange="addrChange(this);">
+						<option value="none">시/도 선택</option>
+						<option value="서울" <c:if test="${param.addr_city.equals('서울')}">selected</c:if>>서울</option>
+						<option value="부산" <c:if test="${param.addr_city.equals('부산')}">selected</c:if>>부산</option>
+						<option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
+					</select>
+				</div>
+				<div>
+				<label for="addr_discrict">구</label>
+					<select id="addr_district" name="addr_district">
+						<option value="none">선택해주세요</option>
+						<c:if test="${param.addr_district.equals('none')}">
+							<option value="${param.addr_district}" selected>${param.addr_district}</option>
+						</c:if>
+					</select>
+				</div>
+		        <input type="text" name="search" class="input_box">
+		        <input type="submit" value="검색" class="btn">
+	        </form>
+	    </div>
+	</div> 
 	 
 		
 
@@ -111,7 +117,7 @@
     	listDiv.style.display = "none";
      } else if(divId === "list"){
     	 mapDiv.style.display = "none";
-    	 listDiv.style.display = "block";s
+    	 listDiv.style.display = "block";
      	}
      }
  
@@ -142,6 +148,17 @@
 			target.appendChild(opt);
 		}
 	}
+	
+	function checkData() {
+		if(fr.addr_city.value == "none"){
+			alert("지역을 선택하세요.");
+			return false;
+		}
+		if(fr.search.value == "") {
+			alert("검색어를 입력하세요.")
+			return false;
+		}
+	}
   </script>
   
 <!-- 	 <input id="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
@@ -167,9 +184,7 @@
 			<th>등록일</th>
 			<th>휴무일</th>
 			<th>외관사진</th>
-
 			<th>좋아요 수</th>
-
 <!-- 			<th>조회수</th> -->
 		</tr>
 		
@@ -189,10 +204,8 @@
 			<td>${dto.rest_id}</td>
 			<td>${dto.regdate}</td>
 			<td>${dto.dayoff}</td>
-<%-- 			<td>${dto.outfile}</td> --%>
-
+			<td>${dto.outfile}</td>
 			<td>${dto.like_num}</td>
-
 <%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>
@@ -327,8 +340,47 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 <!-- main -->
 
 <!-- footer -->
-<jsp:include page="../inc/footer.jsp" />
+<jsp:include page="../inc/footerDiv.jsp" />
 <!-- footer -->
                  
+<!-- jQuery -->
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/accordions.js"></script>
+<script src="assets/js/datepicker.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script> 
+<script src="assets/js/slick.js"></script> 
+<script src="assets/js/lightbox.js"></script> 
+<script src="assets/js/isotope.js"></script> 
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+<script>
+    $(function() {
+        var selectedClass = "";
+        $("p").click(function(){
+        selectedClass = $(this).attr("data-rel");
+        $("#portfolio").fadeTo(50, 0.1);
+            $("#portfolio div").not("."+selectedClass).fadeOut();
+        setTimeout(function() {
+          $("."+selectedClass).fadeIn();
+          $("#portfolio").fadeTo(50, 1);
+        }, 500);
+            
+        });
+    });
+    </script>
+
+
+
 </body>
 </html>
