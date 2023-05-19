@@ -665,11 +665,11 @@
 	<div class="conta2">
 		<div class="box2">
 			<form action="./RecommendMain.ad">
-				<button type="submit"> 다시 추천 받을래!!! </button>
+				<button class="btn-1" type="submit"> 다시 추천 받을래!!! </button>
 			</form>
 		</div>
 		<div class="box2">
-			<button onclick="location.href='./listForm.fd'"> 맘에 들면 예약하러 GO! </button>
+			<button class="btn-1" onclick="location.href='./listForm.fd'"> 맘에 들면 예약하러 GO! </button>
 		</div>
     </div>
 </div>

@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
@@ -135,7 +136,7 @@
 			<input type="hidden" name="rest_tel" value="<%=rest_tel %>">
 			<input type="hidden" name="rest_id" value="<%=rest_id %>">      
 			<input type="hidden" name="convenience" value="<%=convenience %>">      
-			<input type="submit" value="다음" >
+			<input class="btn-2" type="submit" value="다음" >
 		</form>
 	</fieldset>
 	</div>

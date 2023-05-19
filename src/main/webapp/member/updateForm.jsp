@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
@@ -74,7 +75,7 @@
 			// 아이디가 입력되어 있는지 체크
 			
 			if(document.fr.pw.value == ""){
-				alert(" 비밀번호를 입력하시오!");
+				alert(" 비밀번호를 입력하세요!");
 				document.fr.pw.focus();
 				return false;
 			}
@@ -98,6 +99,20 @@
 		}
 	
 	</script>
+	<style type="text/css">
+	.panel {
+	border: 1px solid;
+	width: 460px;
+	height: 530px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+	.left {
+	text-align: left;
+	}
+	
+	</style>
 
 </head>
 <body>
@@ -133,29 +148,36 @@
 
 <!-- main -->
 <main>
-	<div id="top">
+	<div id="top" style="text-align: -webkit-center;">
  		<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }" >
 		<c:redirect url="./MemberLogin.foo"/>
 	</c:if>
  		
  		<br><br>
- 		<fieldset style="margin-right: 260px; text-align: center;">
+ 		<div class="panel">
+ 		<fieldset style="text-align: center;">
  			<legend>FOOEATING 회원 정보 수정</legend>
 		 		<form action="./MemberUpdateProAction.foo" method="post" name="fr" onsubmit="return checkData();" id="fr">
-	 			 	아이디 : <input type="text" name="user_id" value="${dto.user_id }" readonly="readonly"><br>
-	 			 	비밀번호 : <input type="password" name="pw" placeholder="비밀번호를 입력하세요.">
-	 			 	<input type="button" value="비밀번호 변경" onclick="winopen()"><br>
-	 			 	이름 : <input type="text" name="name" value="${dto.name }" id="name"><br>
+	 			 	<div class="left">아이디</div>
+	 			 	<div class="left"><input type="text" name="user_id" value="${dto.user_id }" readonly="readonly"></div>
+	 			 	<div class="left">비밀번호</div>
+	 			 	<div class="left"><input type="password" name="pw" placeholder="비밀번호를 입력하세요.">
+	 			 	<input type="button" value="수정" onclick="winopen()"></div>
+	 			 	<div class="left">이름</div> 
+	 			 	<div class="left"><input type="text" name="name" value="${dto.name }" id="name"></div>
 	 			 	<div id="namediv" class="errorDiv"></div>
-	 			 	이메일 : <input type="email" name="email" value="${dto.email }" readonly="readonly"><br>
-	 			 	휴대전화 : <input type="text" name="phone" value="${dto.phone }" id="phone"> 
+	 			 	<div class="left">이메일</div>
+	 			 	<div class="left"><input type="email" name="email" value="${dto.email }" readonly="readonly"></div>
+	 			 	<div class="left">휴대전화</div>
+	 			 	<div class="left"><input type="text" name="phone" value="${dto.phone }" id="phone"> </div>
 	 			 	<div id="phonediv" class="errorDiv"></div>       
 	 			 	<hr>      
-	 			 	<input type="submit" value="회원정보 수정">
-	 			 	<input type="button" value="회원 탈퇴" onclick="winopen2()"><br>
+	 			 	<input class="btn-2" type="submit" value="회원정보 수정">
+	 			 	<input class="btn-2" type="button" value="회원 탈퇴" onclick="winopen2()"><br>
  				</form>
  		</fieldset>
+ 		</div>
 	</div>
 </main>
 <!-- main -->

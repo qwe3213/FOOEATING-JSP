@@ -162,10 +162,10 @@
 	            <div style="font-size: 20px;">
 	            	<%=list.get(i)%><br>
 	            </div>
-	            <button onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')" style="margin-top : 30px; margin-right: 30px;">
+	            <button class="btn-1" onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')" style="margin-top : 30px; margin-right: 30px;">
 	            	Yes
 	            </button>
-	            <button onclick="answerQuestion(false)">No</button>
+	            <button class="btn-1" onclick="answerQuestion(false)">No</button>
 	        </fieldset>
 	    </div>
     </div>
@@ -173,7 +173,7 @@
 		}
 	%>
 	<div class="box" style="text-align: center;">
-		<button onclick="location.href='./RecommendMain.ad'">다시하기</button>
+		<button class="btn-1"  onclick="location.href='./RecommendMain.ad'">다시하기</button>
 	</div>
 </div>
 	

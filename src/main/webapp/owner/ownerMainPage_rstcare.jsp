@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
@@ -121,7 +122,7 @@
 	    <form action ="./OwnerNoticeAction.on " method="post">
 		<textarea name="rest_notice" rows="2" cols="110" placeholder="공지사항"></textarea>
 		<input type="hidden" name="rest_id" value="${restal.rest_id }" >
-		<input type="submit" value="저장">
+		<input class="btn-2" type="submit" value="저장">
 	  </form>
 	</div>
 	</div>
