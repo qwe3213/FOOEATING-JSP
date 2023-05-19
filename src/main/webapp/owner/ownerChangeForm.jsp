@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 
 <title>약간 동의</title>
@@ -93,7 +94,7 @@
 1. GeoTagging 서비스: 게시물 또는 이용자가 저장하는 콘텐츠에 포함된 개인위치정보주체 또는 이동성 있는 기기의 위치정보가 게시물과 함께 저장됩니다. 저장된 위치정보는 별도의 활용없이 보관되거나, 또는 장소를 기반으로 콘텐츠를 분류하거나 검색할 수 있는 기능이 제공될 수도 있습니다.</textarea><br>
 	            약관에 동의합니다. <input type="checkbox" id="check_3"><br>
 	            <br>	    
-	            <input type="button" value="다음" id="nextBtn">
+	            <input class="btn-2" type="button" value="다음" id="nextBtn">
 	        </form>
 	    </fieldset>
  	</div> <!-- ***** Main End ***** -->

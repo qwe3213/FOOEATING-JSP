@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 <script>
 const changeValue = (target) => {
 	  // 선택한 option의 value 값
@@ -231,10 +232,17 @@ $(document).ready(function(){
 		<input type="checkbox" name="convenience" value="parking" style="display: inline-block; width:30px; line-height:50px;"> 주차공간 
 		<input type="checkbox" name="convenience" value="toilet" style="display: inline-block; width:30px; line-height:50px;"> 화장실(남,녀) <br>
 		<input type="checkbox" name="convenience" value="nokidszone" style="display: inline-block; width:30px; line-height:50px;"> 노키즈존 
+      
+		<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장 가능 <br>
+		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려 동물 
+		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 <br> 
+		<input class="btn-2" type="submit" value="다음">
+
 		<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장가능 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
 		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려동물 
 		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> 
 		<input type="submit" value="다음">
+
 		</fieldset></div>
 		</form>
 	</fieldset>

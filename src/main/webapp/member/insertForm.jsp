@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 
 <title>membership</title>
@@ -317,7 +318,7 @@ $(function() {
  			 	<input type="text" name="phone" id="phone"><br>
  			 	<div id="phonediv" class="errorDiv" style="text-align: left;"></div>       
  			 	<hr>      
- 			 	<input type="submit" value="회원가입">
+ 			 	<input class="btn-2" type="submit" value="회원가입">
  			 	
  		
  			</form>
