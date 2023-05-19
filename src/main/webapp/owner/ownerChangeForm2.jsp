@@ -189,10 +189,10 @@ $(document).ready(function(){
 <!-- main -->
 <main>
 	<div id="top">
-
-	<fieldset style="text-align: center; color: rgb(0,0,0);">
-		<legend><b>step2</b></legend>
-		<form action="./ownerChangeForm3.on" id="fr" name="fr" method="post" >
+	<div style="margin:0% 28.5% 0% 45%;">
+	<fieldset style="text-align:left; color: rgb(0,0,0);">
+		<legend>step2</legend>
+		<form action="./ownerChangeForm3.on" id="fr" name="fr" method="post" style="font-size: medium; width: 350px;">
 		사업자등록 번호 <br>
 		<input type="text" id ="rest_id" name ="rest_id" placeholder="- 빼고 입력해주세요." maxlength="10"><br>
 	    <div id="divbpw"></div>
@@ -212,7 +212,7 @@ $(document).ready(function(){
 		주소 <br>
 		<input type="text" id="sample4_postcode" placeholder="우편번호" >
         <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addr_city">
+		<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addr_city">
 		<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="addr_district">
 		<span id="guide" style="color:#999;display:none"></span><br>
 		<input type="text" id="sample4_detailAddress" placeholder="상세주소" name="addr_etc"><br>
@@ -228,24 +228,25 @@ $(document).ready(function(){
 		<input type="text" name="dayoff" id="dayoff"placeholder="정기휴일을 입력해주세요."><br>
 		<div id="divday"></div>
 		<br>
-		<div><fieldset style="color: rgb(0,0,0);">
-		<input type="checkbox" name="convenience" value="parking" style="display: inline-block; width:30px; line-height:50px;"> 주차공간 
-		<input type="checkbox" name="convenience" value="toilet" style="display: inline-block; width:30px; line-height:50px;"> 화장실(남,녀) <br>
-		<input type="checkbox" name="convenience" value="nokidszone" style="display: inline-block; width:30px; line-height:50px;"> 노키즈존 
-      
-		<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장 가능 <br>
-		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려 동물 
-		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 <br> 
-		<input class="btn-2" type="submit" value="다음">
-
-		<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장가능 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려동물 
-		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> 
-		<input type="submit" value="다음">
-
-		</fieldset></div>
+		<div>
+			<fieldset style="color: rgb(0,0,0); font-size: medium;">
+			<input type="checkbox" name="convenience" value="parking" style="display: inline-block; width:30px; line-height:50px;"> 주차공간 
+			<input type="checkbox" name="convenience" value="toilet" style="display: inline-block; width:30px; line-height:50px;"> 화장실(남,녀) <br>
+			<input type="checkbox" name="convenience" value="nokidszone" style="display: inline-block; width:30px; line-height:50px;"> 노키즈존 
+	
+			<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장가능<br>
+			<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려동물 
+			<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이<br> 
+			<br>
+			<div style="text-align: right; margin-right: 25px;">
+				<input class="btn-2" type="submit" value="다음">
+			</div>
+			<br>
+			</fieldset>
+		</div>
 		</form>
 	</fieldset>
+	</div>
 	</div>
 </main>
 <!-- main -->

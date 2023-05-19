@@ -42,7 +42,10 @@
 <!-- header -->
 
 <!-- side menu -->
+<!-- sideMune -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
+</div>
 <!-- side menu -->
 
 

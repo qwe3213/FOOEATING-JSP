@@ -18,6 +18,7 @@ public class PublicDAO {
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	private ResultSet rs2 = null;
 	private String sql = "";
 	
 
@@ -1070,7 +1071,7 @@ public class PublicDAO {
 			// 1.2. 디비연결
 			con = getCon();
 			// 3. sql & pstmt
-			sql = "select w.user_id,r.name, w.regdate, w.wait_num, w.review_check from waiting w join restaurant r on w.rest_id = r.rest_id "
+			sql = "select w.user_id,r.name, w.regdate, w.wait_num, w.review_check, w.rest_id from waiting w join restaurant r on w.rest_id = r.rest_id "
 					+ " where w.user_id=? and w.status=2"
 					+ " order by owner_user_id limit ?,?";
 			pstmt = con.prepareStatement(sql);
@@ -1089,6 +1090,7 @@ public class PublicDAO {
 				dto.setRest_name(rs.getString("name"));
 				dto.setRegdate(rs.getTimestamp("regdate"));
 				dto.setWait_num(rs.getInt("wait_num"));
+				dto.setRest_id(rs.getString("rest_id"));
 				dto.setReview_check(rs.getInt("review_check"));
 				queueHistory.add(dto);
 			} // while
@@ -1623,7 +1625,18 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setLike_num(rs.getInt("like_num"));
+
 					dto.setOutfile(rs.getString("outfile"));
+
+						sql = "SELECT count(*) FROM review WHERE rest_id=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, dto.getRest_id());
+						rs2 = pstmt.executeQuery();
+						if (rs2.next()) {
+							
+							dto.setReviewCount(rs2.getInt(1));
+						}
+
 					listForm.add(dto);
 					
 				}
@@ -2020,6 +2033,8 @@ public class PublicDAO {
         	
         	return re ;
         }
+        
+     
         
 
         // -----------------조회수------------------------------

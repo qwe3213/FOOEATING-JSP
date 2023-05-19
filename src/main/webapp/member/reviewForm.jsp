@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/ownerwait.css">
+<link rel="stylesheet" href="css/question.css">
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
@@ -44,36 +46,6 @@
 	
 </script>
 
-<style type="text/css">
-fieldset{
-    display: inline-block;
-    direction: rtl;
-    border:0;
-}
-fieldset legend{
-    text-align: right;
-}
-input[type=radio]{
-    display: none;
-}
-label{
-    font-size: 1em;
-    color: transparent;
-    text-shadow: 0 0 0 #f0f0f0;
-}
-label:check{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-/* #myform label:hover ~ label{ */
-/*     text-shadow: 0 0 0 rgba(250, 208, 0, 0.99); */
-/* } */
-input[type=radio]:checked ~ label{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-
-
-</style>
-
 
 </head>
 <body>
@@ -94,14 +66,16 @@ input[type=radio]:checked ~ label{
 <!-- ***** Header Area End ***** -->
 
 <!-- sideMenu -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuMember.jsp" />
+</div>
 <!-- sideMenu -->
 
 <!-- main -->
 <main>
 	<div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
-	<h1>리뷰 관리</h1>
+	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
+	<h2>리뷰 관리</h2>
 	<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }">
 		<c:redirect url="./MemberLogin.foo" />
@@ -109,61 +83,53 @@ input[type=radio]:checked ~ label{
 
 
 	<c:forEach var="dto" items="${reviewList}">
-		<table border="1">
+		<div >
+		<table border="1" style="text-align: center;">
+			
 			<tr>
 				<td colspan="2">${dto.name }</td>
 			</tr>
 			<tr>
-				<td>
-				<fieldset>
-				<input type="radio" name="grade" value="5" disabled id="rate1"  
-					<c:if test="${dto.grade == 5 }"> checked </c:if>
-				><label
-					for="rate1">★</label>
-				<input type="radio" name="grade" value="4" disabled id="rate2" 
-					<c:if test="${dto.grade == 4 }"> checked </c:if>
-				><label
-					for="rate2">★</label>
-				<input type="radio" name="grade" value="3" disabled id="rate3" 
-					<c:if test="${dto.grade == 3 }"> checked </c:if>
-				><label
-					for="rate3">★</label>
-				<input type="radio" name="grade" value="2" disabled id="rate4" 
-					<c:if test="${dto.grade == 2 }"> checked </c:if>
-				><label
-					for="rate4">★</label>
-				<input type="radio" name="grade" value="1" disabled id="rate5" 
-					<c:if test="${dto.grade == 1 }"> checked </c:if>
-				><label
-					for="rate5">★</label>
-			</fieldset>
+			<td width="50%">
+			
+				<c:forEach begin="1" end="${dto.grade }" step="1"> 
+				<img src="./img/free-icon-favorite-5379602.png" width="15px">
+				</c:forEach>
+				<c:forEach begin="1" end="${5-dto.grade  }" step="1"> 
+				<img src="./img/free-icon-star-3384828.png" width="15px">
+				</c:forEach>
+			
 			</td>
 				<td>${dto.regdate }</td>
 			</tr>
 			<tr>
 				<td colspan="2">${dto.content }</td>
 			</tr>
-
 		</table>
+		</div>
+		<div style="float: left; margin-left: 28%;">
 		<form action="" method="post">
 			<input type="hidden" name="user_id" value="${user_id }"> <input
 				type="hidden" name="review_num" id="review_num"
 				value="${dto.review_num }">
-			<button onclick="winopen(${dto.review_num });">수정</button>
+			<button onclick="winopen(${dto.review_num });" class="btn-2">수정</button>
 		</form>
-
+		</div>
+		<div style="float: right; margin-right: 28%;">
 		<form action="ReviewDelete.foo" method="post"
 			onsubmit="return deleteReview()">
 			<input type="hidden" name="user_id" value="${user_id }"> <input
 				type="hidden" name="review_num" id="review_num"
 				value="${dto.review_num }">
-			<button>삭제</button>
+			<button class="btn-2" >삭제</button>
 		</form>
-
+		<br>
+		</div>
 	</c:forEach>
+
 	
 	
-	
+<div style="text-align: center; margin-top: 7%;"> 	
 <!-- 페이징처리 -->
 <%
 int count = (int)request.getAttribute("count");
@@ -191,7 +157,7 @@ if(count != 0) {
 	for(int i = startPage; i <= endPage; i++) {
 %>
 
-
+		
 		<a href="./MyReview.foo?pageNum=<%=i%>">[<%=i%>]</a>
 				
 				
@@ -208,7 +174,7 @@ if(count != 0) {
 	}
 }
 %>
-	
+	</div>
 	</div>
 	</div>
 </main>

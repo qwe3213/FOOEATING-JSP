@@ -25,6 +25,15 @@ public class RestaurantDTO {
 	private WaitingDTO waitdto;
     private String outfile;
     private String infile;
+    private int reviewCount;
+    
+    
+	public int getReviewCount() {
+		return reviewCount;
+	}
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
 	public String getRest_id() {
 		return rest_id;
 	}
@@ -165,7 +174,8 @@ public class RestaurantDTO {
 				+ ", dayoff=" + dayoff + ", status=" + status + ", owner_user_id=" + owner_user_id + ", on_off="
 				+ on_off + ", category=" + category + ", addr_city=" + addr_city + ", addr_district=" + addr_district
 				+ ", addr_etc=" + addr_etc + ", regdate=" + regdate + ", read_count=" + read_count + ", like_num="
-				+ like_num + ", grade=" + grade + ", waitdto=" + waitdto + "]";
+				+ like_num + ", grade=" + grade + ", waitdto=" + waitdto + ", outfile=" + outfile + ", infile=" + infile
+				+ ", reviewCount=" + reviewCount + "]";
 	}
 	
 }

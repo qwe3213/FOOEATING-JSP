@@ -76,10 +76,11 @@
 	</table>
 	
 	<c:set var="rstatus" value="<%=request.getParameter(\"rstatus\")%>" />
+	<c:set var="rest_id" value="${param.rest_id}" />
 	
 	<!-- 대기 중인 가게 목록에서 진입  -->
 	<c:if test="${rstatus.equals('no')}">
-		<button onclick="winopen(${rest_id})">입점 승인</button>
+		<button onclick="opener.parent.location.reload(); winopen(${rest_id})">입점 승인</button>
 		<button onclick="location.href='./RestaurantWaitList.ad?pageNum=${pageNum}'">
 			목록으로</button>
 	</c:if>

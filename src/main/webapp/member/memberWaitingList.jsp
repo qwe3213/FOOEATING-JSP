@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/ownerwait.css">
+
 <link href="./css/sideMenu.css" rel="stylesheet">
 
 <script type="text/javascript">
@@ -56,18 +58,17 @@
 	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- ***** Header Area End ***** -->
 
-
 <!-- sideMune -->
-
+<div style="float: left;">
 <jsp:include page="../inc/sideMenuDiv.jsp" />
-
 <jsp:include page="../inc/sideMenuMember.jsp" />
-
+</div>
 <!-- sideMune -->
 
 <!-- main -->
 <main>
-	<div id="category" style="margin: 85px 0 0 410px;">
+<div id="top">
+	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
 		<!-- 유저 로그인 제어 -->
 		<c:if test="${empty user_id }">
 			<c:redirect url="./MemberLogin.foo" />
@@ -78,28 +79,32 @@
 		</c:if>
 		<c:if test="${!empty wDto.wait_num }">
 			<h2>대기 중인 가게</h2>
+			<br>
 			<table border="1">
+				<thead>
 				<tr>
-					<td>가게명</td>
-					<td>나의 대기번호</td>
-					<td>남은 팀 수</td>
+					<th>가게명</th>
+					<th>나의 대기번호</th>
+					<th>남은 팀 수</th>
 				</tr>
+				</thead>
 				<tr>
-					<td>${wDto.rest_name}</td>
+					<td><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}">${wDto.rest_name}</a></td>
 					<td>${wDto.wait_num}</td>
 					<td>${qDto.wait_team}</td>
 				</tr>
 			</table>
 			<form action="./MemberCancelWaiting.foo" method="post" onsubmit="return cancelWaiting()">
 				<input type="hidden" name="wait_num" value="${wDto.wait_num}">
-				<input type="submit" value="대기 취소" >
+				<input type="submit" value="대기 취소" class="btn-2">
 			</form>
 		</c:if>
 		<br> <br> <br>
 		
 		<!-- 과거 대기 내역 -->
 		<jsp:include page="memberWaitingBeforeList.jsp" />
-	</div>
+	</div>	
+</div>
 </main>
 <!-- main -->
 

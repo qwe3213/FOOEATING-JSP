@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-	<h1>WaitingCheck.jsp</h1>
+<!-- 	<h1>WaitingCheck.jsp</h1> -->
 	
 	<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id}">
@@ -21,14 +21,15 @@
 	</c:if>
 	
 <%-- 	<%=request.getParameter("rest_id")%><br> --%>
-	
-	대기 하시겠습니까?
-	<form action="./WaitingCheckPro.fd" method="post">
-		<input type="hidden" name="rest_id" value="<%=request.getParameter("rest_id")%>">
-		대기 인원 : <input type="number" name="people" min="1" max="5" value="1">(최대 5명)<br>
-		<input type="submit" value="대기">
-		<input type="button" value="취소" onclick="window.close();">
-	</form>
+	<div class="cd-popup">
+		<h2>대기 하시겠습니까?</h2>
+			<form action="./WaitingCheckPro.fd" method="post">
+				<input type="hidden" name="rest_id" value="<%=request.getParameter("rest_id")%>">
+				<h2>대기 인원 : <input type="number" name="people" min="1" max="5" value="1">(최대 5명)</h2><br>
+				<input type="submit" value="대기">
+				<input type="button" value="취소" onclick="window.close();">
+			</form>
+	</div>
 	
 </body>
 </html>

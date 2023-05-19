@@ -42,15 +42,18 @@
 	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- ***** Header Area End ***** -->
 
-	<!-- sideMenu -->
-	<jsp:include page="../inc/sideMenuMember.jsp" />
-	<!-- sideMenu -->
+<!-- sideMenu -->
+<div style="float: left;">
+<jsp:include page="../inc/sideMenuMember.jsp" />
+</div>
+<!-- sideMenu -->
 
 <!-- main -->
 <main>
 	<div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
-		<h1>찜한 매장</h1>
+	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
+		<h2>찜한 매장</h2>
+		<br>
 		<!-- 로그인 세션 제어 -->
 		<c:if test="${empty user_id }">
 			<c:redirect url="./MemberLogin.foo" />

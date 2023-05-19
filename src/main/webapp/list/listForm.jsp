@@ -181,6 +181,7 @@
 			<th>가게이름</th>
 			<th>외관사진</th>
 			<th>좋아요 수</th>
+			<th>리뷰 수</th>
 <!-- 			<th>조회수</th> -->
 		</tr>
 		
@@ -197,6 +198,7 @@
 			</td>
 			<td><img src="./upload/${dto.outfile}" width="100px"></td>
 			<td>${dto.like_num}</td>
+			<td>${dto.reviewCount}</td>
 <%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>
