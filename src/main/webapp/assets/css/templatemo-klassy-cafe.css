@@ -1669,3 +1669,26 @@ responsive
     opacity: 0;
   }
 }
+
+/* 버튼 디자인 추가 */
+.btn-1 {
+	background-color: #fd9991;
+	color: #fff;
+	border: none;
+	border-radius: 20px;
+}
+
+.btn-1:hover {
+	color: #fb5849;
+}
+/* 버튼 디자인 추가 */
+/* questionMain 버튼에 전부 div 추가하고 class 이름 추가. 디자인 임시 적용 */
+
+/* 지니 결과 위치 조정 및 글씨 크기 조정 */
+.questionResult {
+	margin-left: 40px;
+	margin-top: 40px;
+	font-size: 16px;
+}
+/* 지니 결과 위치  및 글씨 크기 조정 */
+
