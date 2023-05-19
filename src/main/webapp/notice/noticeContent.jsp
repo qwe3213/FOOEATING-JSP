@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("br", "<br/>");
+	pageContext.setAttribute("cn", "\n");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +27,8 @@
 
 
 <title>FOOEATING - Notice</title>
+
+
 </head>
 <body>
 
@@ -60,7 +67,7 @@
 	</tr>
 	<tr>
 		<th colspan="2">내용</th>
-		<td colspan="6">${dto.content }</td>
+		<td colspan="6">${fn:replace(dto.content,cn,br) }</td>
 	</tr>
 </table>
 

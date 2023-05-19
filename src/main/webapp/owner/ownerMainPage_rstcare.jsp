@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/question.css">
 
+
 <link href="./css/sideMenu.css" rel="stylesheet">
 
 <script type="text/javascript">
@@ -53,7 +54,7 @@
 
 
 <!-- sidemenu -->
-<div style="float: left;">
+<div style="float: left">
 	<jsp:include page="../inc/sideMenuOwner.jsp" />
 </div>
 <!-- sidemenu -->
@@ -61,6 +62,7 @@
 
 <!-- main -->
 <main>
+
 <div id="top">
 <div id="category" style="margin: 85px 0 0 410px;">
 	<h2>나의 가게 정보</h2>
@@ -132,7 +134,7 @@
 	</div>
 	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
 	</div>
-</div>
+	</div>
 </main>
 <!-- main -->
 
