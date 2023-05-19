@@ -18,6 +18,7 @@ public class PublicDAO {
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	private ResultSet rs2 = null;
 	private String sql = "";
 	
 
@@ -1622,7 +1623,14 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setLike_num(rs.getInt("like_num"));
-					
+						sql = "SELECT count(*) FROM review WHERE rest_id=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, dto.getRest_id());
+						rs2 = pstmt.executeQuery();
+						if (rs2.next()) {
+							
+							dto.setReviewCount(rs2.getInt(1));
+						}
 					listForm.add(dto);
 					
 				}
@@ -2016,6 +2024,8 @@ public class PublicDAO {
         	
         	return re ;
         }
+        
+     
         
 
         // -----------------조회수------------------------------
