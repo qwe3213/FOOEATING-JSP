@@ -109,7 +109,7 @@ $(document).ready(function(){
 <h1>LOGIN</h1>
 
 <main>
-	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
+	<div id="top" style="text-align: -webkit-center;"> <!-- ** main -> div id="top" 해주기 ** -->
 		<div class= "panel">
 		<fieldset style="margin: 5%; text-align: center;">
 			<legend>FOOEATING 로그인</legend>
