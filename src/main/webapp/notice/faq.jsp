@@ -59,6 +59,24 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+#list {
+    font-size: 13px;
+    color: #fb5849;
+    background-color: white;
+    padding: 12px 25px;
+    display: inline-block;
+    border-radius: 60px;
+    font-weight: 600;
+    transition: all .3s;
+    }
+
+
+
+
+
+
+
 </style>
 
 
@@ -109,10 +127,10 @@
 		<div style="padding: 110px 10% 110px 55px">
 			<!-- 첫 번째 Modal을 여는 클래스 -->
 			<c:forEach var="dto" items="${faqList }">
-				<div id="list" style="float:left; margin: 0 2% 0 0; width: 250px;">
+				<div id="list" style="float:left; margin: 0 2% 0 0; width: 258px; height: 100px; ">
 					<ul>
 						<li class="${dto.category}">
-							<h2 class="btn">Q.${dto.subject }</h2>
+							<h2 class="btn" style="color: #fb5849;">Q.${dto.subject }</h2>
 						</li>
 					</ul>
 				</div>

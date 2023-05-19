@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/ownerwait.css">
+
 <link href="./css/sideMenu.css" rel="stylesheet">
 
 <script type="text/javascript">
@@ -78,20 +80,22 @@
 		<c:if test="${!empty wDto.wait_num }">
 			<h2>대기 중인 가게</h2>
 			<table border="1">
+				<thead>
 				<tr>
-					<td>가게명</td>
-					<td>나의 대기번호</td>
-					<td>남은 팀 수</td>
+					<th>가게명</th>
+					<th>나의 대기번호</th>
+					<th>남은 팀 수</th>
 				</tr>
+				</thead>
 				<tr>
-					<td>${wDto.rest_name}</td>
+					<td><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}">${wDto.rest_name}</a></td>
 					<td>${wDto.wait_num}</td>
 					<td>${qDto.wait_team}</td>
 				</tr>
 			</table>
 			<form action="./MemberCancelWaiting.foo" method="post" onsubmit="return cancelWaiting()">
 				<input type="hidden" name="wait_num" value="${wDto.wait_num}">
-				<input type="submit" value="대기 취소" >
+				<input type="submit" value="대기 취소" class="btn-2">
 			</form>
 		</c:if>
 		<br> <br> <br>

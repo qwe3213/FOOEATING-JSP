@@ -6,14 +6,17 @@
 <h2>과거 대기 내역</h2>
 <c:forEach var="list" items="${queueHistory}">
 	<table border="1">
+		<thead>
 		<tr>
-			<td>가게명</td>
-			<td>방문일자</td>
+			<th>가게명</th>
+			<th>방문일자</th>
 		</tr>
+		</thead>
 		<tr>
-			<td>${list.rest_name}</td>
+		<td><a href="./restaurantForm.fd?rest_id=${list.rest_id}">${list.rest_name}</a></td>
 			<td>${list.regdate}</td>
 		</tr>
+		
 	</table>
 	<c:if test="${list.review_check == 1 }">
 	<script>
