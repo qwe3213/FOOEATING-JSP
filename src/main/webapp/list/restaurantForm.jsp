@@ -145,7 +145,7 @@
 		<th>&nbsp;&#128150&nbsp;</th>
 		<td>&nbsp;${heartNo }&nbsp;</td>
 		<th>&nbsp;&#9997</th>
-		<td>&nbsp;${review_num }&nbsp;</td>
+		<td>&nbsp;${reviewCount }&nbsp;</td>
 		
 		
 		
