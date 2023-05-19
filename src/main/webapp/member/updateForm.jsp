@@ -135,7 +135,7 @@
 <!-- ***** Header Area End ***** -->
 
 <!-- sideMenu -->
-
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuDiv.jsp" />
 <c:choose>
 	<c:when test="${user_id.equals(owner_user_id) }" >
@@ -145,6 +145,7 @@
 		<jsp:include page="../inc/sideMenuMember.jsp" />
 	</c:otherwise>
 </c:choose>
+</div>
 <!-- sideMenu -->
 
 

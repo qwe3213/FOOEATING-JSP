@@ -41,13 +41,16 @@
 <!-- ***** Header Area End ***** -->
 
 <!-- sidemenu -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuOwner.jsp" />
+</div>
 <!-- sidemenu -->
 
 <!-- main -->
 <main>
-	<div id="top">
-		<table border="1" bordercolor = "blue">
+<div id="top">
+<div id="category" style="margin: 85px 0 0 410px;">
+		<table border="1">
 			<tr>
 				<td>유저 아이디</td>
 				<td>리뷰내용</td>
@@ -109,24 +112,6 @@
         });
     });
 </script>
-
-<table border="1" bordercolor = "blue">
-  <tr>
-    <td>유저 아이디</td>
-    <td>리뷰내용</td>
-    <td>리뷰작성일</td>
-    <td>별점</td>
-  </tr>
-
-<c:forEach var="dto" items="${reviewList}">
-  <tr>
-    <td>${dto.user_id}</td>
-    <td>${dto.content}</td>
-    <td>${dto.regdate}</td>
-    <td>${dto.grade}</td>
-  </tr>
-</c:forEach>
-</table>
 
 <!-- 페이징처리 -->
 <%

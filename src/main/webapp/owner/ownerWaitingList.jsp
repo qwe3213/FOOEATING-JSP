@@ -64,14 +64,16 @@ function winopen(wait_num){
 <!-- ***** Header Area End ***** -->
 
 <!-- sidemenu -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuOwner.jsp" />
+</div>
 <!-- sidemenu -->
 
 
 <!-- main -->
 <main>
-	<div id="top">
-
+<div id="top">
+<div id="category" style="margin: 85px 0 0 410px;">
 	<c:set var="wait_num" value="${dto.wait_num }" />
 	<table border="1">
 		<tr>
@@ -143,7 +145,7 @@ if(count != 0) {
 }
 %>
 
-
+	</div>
 	</div>
 </main>
 <!-- main -->

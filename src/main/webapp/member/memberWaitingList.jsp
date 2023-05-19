@@ -56,17 +56,16 @@
 	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- ***** Header Area End ***** -->
 
-
 <!-- sideMune -->
-
+<div style="float: left;">
 <jsp:include page="../inc/sideMenuDiv.jsp" />
-
 <jsp:include page="../inc/sideMenuMember.jsp" />
-
+</div>
 <!-- sideMune -->
 
 <!-- main -->
 <main>
+<div id="top">
 	<div id="category" style="margin: 85px 0 0 410px;">
 		<!-- 유저 로그인 제어 -->
 		<c:if test="${empty user_id }">
@@ -99,7 +98,8 @@
 		
 		<!-- 과거 대기 내역 -->
 		<jsp:include page="memberWaitingBeforeList.jsp" />
-	</div>
+	</div>	
+</div>
 </main>
 <!-- main -->
 

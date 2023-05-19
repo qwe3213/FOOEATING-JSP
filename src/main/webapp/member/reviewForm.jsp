@@ -94,7 +94,9 @@ input[type=radio]:checked ~ label{
 <!-- ***** Header Area End ***** -->
 
 <!-- sideMenu -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuMember.jsp" />
+</div>
 <!-- sideMenu -->
 
 <!-- main -->

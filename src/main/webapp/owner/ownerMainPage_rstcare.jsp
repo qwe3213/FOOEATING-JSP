@@ -53,13 +53,16 @@
 
 
 <!-- sidemenu -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuOwner.jsp" />
+</div>
 <!-- sidemenu -->
 
 
 <!-- main -->
 <main>
-	<div id="top">
+<div id="top">
+<div id="category" style="margin: 85px 0 0 410px;">
 	<h1>나의 가게 정보</h1>
 	
 	<fieldset>
@@ -129,8 +132,8 @@
 	
 	</div>
 	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
-
 	</div>
+</div>
 </main>
 <!-- main -->
 

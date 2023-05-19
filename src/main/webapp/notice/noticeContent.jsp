@@ -40,12 +40,15 @@
 <!-- header -->
 
 <!-- sideMenu -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
+</div>
 <!-- sideMenu -->
 
 <!-- main -->
 <main>
 <div id="top">
+<div id="category" style="margin: 85px 0 0 410px;">
 <table border="1">
 	<tr>
 		<th>No</th>
@@ -84,6 +87,7 @@
 		<input type="submit" value="삭제하기" >
 	</form>
 </c:if>
+</div>
 </div>
 </main>
 <!-- main -->

@@ -81,47 +81,55 @@
 	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- ***** Header Area End ***** -->
 
-<!-- sideMenu -->
+<!-- sideMune -->
+<div style="float: left;">
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
+</div>
 <!-- sideMenu -->
 
 <!-- main -->
 <main>
 	<div id="top">
 		<div id="category" style="margin: 85px 0 0 410px;">
-	
-		<h1>F A Q</h1>
+		<div style="float: left;">
+			<h1>F A Q</h1>
 			<h3>카테고리</h3>
-			<ul style="margin-top: 30px;">
-				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="all" style="text-align: center;">전체보기</a></li>
-				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="a" style="text-align: center;">1번</a></li>
-				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="b" style="text-align: center;">2번</a></li>
-				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="c" style="text-align: center;">3번</a></li>
-				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="d" style="text-align: center;">4번</a></li>
-			</ul>
 		</div>
-
-		<!-- 첫 번째 Modal을 여는 클래스 -->
-		<c:forEach var="dto" items="${faqList }">
-			<div id="list">
-				<ul>
-					<li class="${dto.category}">
-						<h2 class="btn">Q.${dto.subject }</h2>
-					</li>
-				</ul>
-			</div>
-			<!-- 첫 번째 Modal -->
-			<div class="modal">
-
-				<!-- 첫 번째 Modal의 내용 -->
-				<div class="modal-content">
-					<span class="close">&times;</span>
-					<p>${dto.content }</p>
+		
+		<div>
+		<ul style="margin-top: 30px; padding-top:40px; padding-flet: 10%;">
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px; padding-flet: 10%;"><a href="#" title="all" style="text-align: center;">전체보기</a></li>
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px"><a href="#" title="계정관리" style="text-align: center;">계정관리</a></li>
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px"><a href="#" title="도용보안" style="text-align: center;">도용보안</a></li>
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px"><a href="#" title="예약" style="text-align: center;">예약</a></li>
+<!-- 				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="d" style="text-align: center;">4번</a></li> -->
+		</ul>
+		</div>
+		
+		<div style="padding: 110px 10% 110px 55px">
+			<!-- 첫 번째 Modal을 여는 클래스 -->
+			<c:forEach var="dto" items="${faqList }">
+				<div id="list" style="float:left; margin: 0 2% 0 0; width: 250px;">
+					<ul>
+						<li class="${dto.category}">
+							<h2 class="btn">Q.${dto.subject }</h2>
+						</li>
+					</ul>
 				</div>
-			</div>
+				<!-- 첫 번째 Modal -->
+				<div class="modal">
+	
+					<!-- 첫 번째 Modal의 내용 -->
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>${dto.content }</p>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		
 
-		</c:forEach>
-
+		</div>
 	</div>
 </main>
 <!-- main -->
