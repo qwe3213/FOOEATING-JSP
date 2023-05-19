@@ -158,8 +158,10 @@
 	<div id="questionContainer">
 		<div id="question<%=i + 1%>" class="question hidden" style="margin-top: 150px;">
 	        <fieldset class="field">
-	            <legend style="padding-bottom: 20px; font-weight : 600; ">질문 <%=i + 1%></legend>
-	            <%=list.get(i)%><br>
+	            <legend style="padding-bottom: 20px; font-weight : 600; font-size: 30px;">질문 <%=i + 1%></legend>
+	            <div style="font-size: 20px;">
+	            	<%=list.get(i)%><br>
+	            </div>
 	            <button onclick="answerQuestion(true); saveKey('<%=list.get(i) %>')" style="margin-top : 30px; margin-right: 30px;">
 	            	Yes
 	            </button>

@@ -45,13 +45,13 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** 로고 Start ***** -->
-					<a href="./Main.foo" class="logo">
+					<a href="./Main.foo" class="logo" style="margin-right: 125px;">
                        	<img src="./img/푸이팅.png" width="130px">
                        	
                     </a>
                     <!-- ***** 로고 End***** -->
                     <!-- ***** 메뉴 Start ***** -->
-                    <ul class="nav" style="display: none;">
+                    <ul class="nav" style="display: none; float: left;">
                         <li class="scroll-to-section"><a href="./Main.foo" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="./listForm.fd">Category</a></li>
                         <li class="scroll-to-section"><a href="./RecommendMain.ad">Let's Giring</a></li>

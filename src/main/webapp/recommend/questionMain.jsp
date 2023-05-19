@@ -51,31 +51,39 @@
 				<div class="box">
 					<form action="./RecommendList.ad" method="GET">
 						<input type="hidden" name="foodMenu" value="kf">
-						<button type="submit">한식</button>
+						<div class="cont">
+							<button type="submit" class="btn-1">한식</button>
+						</div>
 					</form>
 				</div><br>
 				<div class="box">
 					<form action="./RecommendList.ad" method="GET">
 						<input type="hidden" name="foodMenu" value="wf">
-						<button type="submit">양식</button>
+						<button type="submit" class="btn-1">양식</button>
 					</form>
 				</div><br>
 				<div class="box"> 
 					<form action="./RecommendList.ad" method="GET">
 						<input type="hidden" name="foodMenu" value="cf">
-						<button type="submit">중식</button>
+						<div class="cont">
+							<button type="submit" class="btn-1">중식</button>
+						</div>
 					</form>
 				</div><br>
 				<div class="box">
 					<form action="./RecommendList.ad" method="GET">
 						<input type="hidden" name="foodMenu" value="jf">
-						<button type="submit">일식</button>
+						<div class="cont">
+							<button type="submit" class="btn-1">일식</button>
+						</div>
 					</form>
 				</div><br>
 				<div class="box">
 					<form action="./RecommendList.ad" method="GET">
 						<input type="hidden" name="foodMenu" value="sf">
-						<button type="submit">분식</button>
+						<div class="cont">
+							<button type="submit" class="btn-1">분식</button>
+						</div>
 					</form>
 				</div>
 			</div>
