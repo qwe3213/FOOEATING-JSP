@@ -19,7 +19,7 @@
 		<form action="./ApprovalCheckPro.ad" method="post">
 			<input type="hidden" name="rest_id" value="<%=request.getParameter("rest_id")%>">
 			<input type="submit" value="승인">
-			<input type="button" value="거절" onclick="window.close();">
+			<input type="button" value="거절" onclick="opener.parent.location.reload(); window.close();">
 		</form>
 		
 		
