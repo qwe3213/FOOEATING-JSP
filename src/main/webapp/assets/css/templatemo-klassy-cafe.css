@@ -581,7 +581,7 @@ header
     border-top: 1px solid #eee;
   }
   .header-area.header-sticky .nav {
-    margin-top: 170px !important;
+    margin-top: 3.5% !important; 
   }
   .header-area .main-nav .nav li {
     width: 100%;
