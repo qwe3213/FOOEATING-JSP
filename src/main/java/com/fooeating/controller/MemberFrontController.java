@@ -14,6 +14,7 @@ import com.fooeating.commons.ActionForward;
 import com.fooeating.member.action.ChangePwAction;
 import com.fooeating.member.action.FaqList;
 import com.fooeating.member.action.IdCheckAction;
+import com.fooeating.member.action.MainAction;
 import com.fooeating.member.action.MemberCancelWaiting;
 import com.fooeating.member.action.MemberDeleteAction;
 import com.fooeating.member.action.MemberJoinAction;
@@ -143,9 +144,12 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : /Main.foo 실행");
 			System.out.println(" C : DB사용x, view 페이지 이동 (패턴1)");
 
-			forward = new ActionForward();
-			forward.setPath("./main/main.jsp");
-			forward.setRedirect(false);
+			action = new MainAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		// 4. 로그아웃
