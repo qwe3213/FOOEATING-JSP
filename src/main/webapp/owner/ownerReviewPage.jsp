@@ -69,6 +69,7 @@
 			</c:forEach>
 		</table>
 	</div>
+	</div>
 </main>
 
 
