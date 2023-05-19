@@ -107,6 +107,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-right: 20%;
+	
 	}
 	.left {
 	text-align: left;
@@ -153,17 +155,15 @@
 	<c:if test="${empty user_id }" >
 		<c:redirect url="./MemberLogin.foo"/>
 	</c:if>
- 		
- 		<br><br>
- 		<div class="panel">
+ 		<div class="panel" style="text-align-last: center;">
  		<fieldset style="text-align: center;">
- 			<legend>FOOEATING 회원 정보 수정</legend>
+ 			<legend>FOOEATING<br>회원 정보 수정</legend>
 		 		<form action="./MemberUpdateProAction.foo" method="post" name="fr" onsubmit="return checkData();" id="fr">
 	 			 	<div class="left">아이디</div>
 	 			 	<div class="left"><input type="text" name="user_id" value="${dto.user_id }" readonly="readonly"></div>
 	 			 	<div class="left">비밀번호</div>
 	 			 	<div class="left"><input type="password" name="pw" placeholder="비밀번호를 입력하세요.">
-	 			 	<input type="button" value="수정" onclick="winopen()"></div>
+	 			 	<br><input class="btn-2" style="margin-top: 2%;"type="button" value="수정" onclick="winopen()"></div><br>
 	 			 	<div class="left">이름</div> 
 	 			 	<div class="left"><input type="text" name="name" value="${dto.name }" id="name"></div>
 	 			 	<div id="namediv" class="errorDiv"></div>
@@ -173,8 +173,8 @@
 	 			 	<div class="left"><input type="text" name="phone" value="${dto.phone }" id="phone"> </div>
 	 			 	<div id="phonediv" class="errorDiv"></div>       
 	 			 	<hr>      
-	 			 	<input class="btn-2" type="submit" value="회원정보 수정">
-	 			 	<input class="btn-2" type="button" value="회원 탈퇴" onclick="winopen2()"><br>
+	 			 	<input class="btn-2" type="submit" value="수정" style="margin-right: 25%">
+	 			 	<input class="btn-2" type="button" value="탈퇴" onclick="winopen2()"><br>
  				</form>
  		</fieldset>
  		</div>

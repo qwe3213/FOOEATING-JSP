@@ -67,8 +67,7 @@
 
 <!-- main -->
 <main>
-	<div>
-	<br><br>
+	<div id="category" style="margin: 85px 0 0 410px;">
 		<!-- 유저 로그인 제어 -->
 		<c:if test="${empty user_id }">
 			<c:redirect url="./MemberLogin.foo" />
