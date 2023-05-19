@@ -73,7 +73,7 @@
 <!-- 				<input type="submit" value="search" class="btn">  -->
 <!-- 			</form> -->
 <!-- 		</div> -->
-	 
+	
 	
 <!-- 	<select name="sido1" id="sido1" style="width:500x; height:50px;"></select> -->
 <!-- 	<select name="gugun1" id="gugun1" style="width:500x; height:50px;"></select> -->

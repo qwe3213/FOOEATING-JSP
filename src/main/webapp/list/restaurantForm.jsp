@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/sideMenuright.css">
 
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
@@ -113,19 +114,46 @@
 <jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
+
 <!-- main -->
 <main>
-<br><br>
+<div style="margin-top: 190px">
 
-			<h1>${restForm.name}</h1>
+	
+	<div class="container">
+	<aside id="left-sidebar"></aside>
+	<div class="emoji">
+		<h1 class="restname">${restForm.name}
+		<c:choose>
+			<c:when test="${!empty user_id && heart_check == 1}">
+				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
+<%-- 				<div class="heartNo">${heartNo }</div>  --%>
+			</c:when>
+			<c:when test="${empty user_id}">
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="40" height="40">
+<%-- 				<div class="heartNo">${heartNo }</div>  --%>
+			</c:when>
+			<c:otherwise>
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
+<%-- 				<div class="heartNo">${heartNo }</div>  --%>
+			</c:otherwise>
+		</c:choose>
+		</h1>
 
-			<th>&#128065</th>
-			<td>${restForm.read_count}</td>
-			<th>&#128150</th>
-			<td>${heartNo }</td>
-			<th>&#9997</th>
+		<th>&#128065</th>
+		<td>&nbsp;${restForm.read_count}&nbsp;</td>
+		<th>&nbsp;&#128150&nbsp;</th>
+		<td>&nbsp;${heartNo }&nbsp;</td>
+		<th>&nbsp;&#9997</th>
+		<td>&nbsp;${review_num }&nbsp;</td>
+		
+		
+		
+	
+	</div>
 
-			<hr>
+	<hr>
+	
 	<c:if test="${restForm.on_off == true}">
 		<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
 			<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
@@ -142,40 +170,29 @@
    	 
 
 	<button onclick="location.href='./listForm.fd'">가게 리스트로</button>
-	<br>
-	<br>
-	<br>
-		<c:choose>
-			<c:when test="${!empty user_id && heart_check == 1}">
-				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
-				<div class="heartNo">${heartNo }</div> 
-			</c:when>
-			<c:when test="${empty user_id}">
-				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="50" height="50">
-				<div class="heartNo">${heartNo }</div> 
-			</c:when>
-			<c:otherwise>
-				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="50" height="50">
-				<div class="heartNo">${heartNo }</div> 
-			</c:otherwise>
-		</c:choose>
+
 			
-			<tbody>
-			<th>주소</th>
-			${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td><br>
-
-
-			<th>전화번호</th>
-			<td>${restForm.rest_tel}</td><br>
-	
-
-			<th>업종</th>
-			<td>${restForm.category}</td><br>
-
-
-			<th>영업 시간</th>
-			<td>${restForm.runtime}</td><br>
-			</tbody>
+			
+		<table class="abc">
+<%-- 			<caption>레스토랑 상세정보</caption> --%>
+			<tr>
+					<th class="def">주소</th> <th class="def">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td><br>
+			</tr>
+			<tr>
+					<th class="def">전화번호</th> <th class="def"></th>
+					<td>${restForm.rest_tel}</td><br>
+			</tr>
+			<tr>
+					<th class="def">업종</th> <th class="def"></th>
+					<td>${restForm.category}</td><br>
+			</tr>
+			<tr>
+					<th class="def">영업 시간</th> <th class="def"></th>
+					<td>${restForm.runtime}</td><br>
+			</tr>
+<!-- 			<tbody> -->
+		</table>	
 
 <hr>
 
@@ -197,8 +214,6 @@
 	<hr>
 	
 
-	
-	<tbody>
 		<tr>
 		<c:forEach var="re" items="${requestScope.re }" varStatus="no">
 			<th>번호</th> &nbsp <td>${no.count}</td><br>
@@ -211,7 +226,7 @@
 		</c:forEach>
 		</tr>
 		
-	</tbody>
+<!-- 	</tbody> -->
 	
 	
 	
@@ -222,6 +237,8 @@
 		
 		
 		<th>FACILITIES</th> <br>
+		
+		<div class="flacticon">
 		
 			<c:if test="${restForm.convenience.split(',')[0] != null}">
 			<img src="./img/facilities/${restForm.convenience.split(',')[0]}.png" style="width: 65px; height: 65px;">
@@ -253,11 +270,15 @@
 <%-- 			<td>${restForm.convenience.split(",")[1]}</td> --%>
 <%-- 			<td>${restForm.convenience.split(",")[2]}</td> --%>
 			<br>
+			
+		</div>
 	<hr>
 	
-	<th>LOCATIOM</th>
-		
-		<div id="map" class="myDiv" style="width:70%;height:400px;">
+	<div class="location">
+	<th>LOCATION</th>
+	</div>
+		<div style="text-align: -webkit-center;">
+		<div id="map" class="myDiv" style="width:100%;height:400px; margin-top: 40px;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
 <script>
@@ -307,6 +328,13 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 
 </div>
 		
+</div>
+</div>		
+
+<aside id="right-sidebar"></aside>
+		
+</div>		
+		<div style="float: right; margin: auto; padding: auto;"></div>
 		
 		
 		
