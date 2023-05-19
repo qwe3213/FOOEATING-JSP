@@ -68,7 +68,7 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
+	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
 		<!-- 유저 로그인 제어 -->
 		<c:if test="${empty user_id }">
 			<c:redirect url="./MemberLogin.foo" />
@@ -79,6 +79,7 @@
 		</c:if>
 		<c:if test="${!empty wDto.wait_num }">
 			<h2>대기 중인 가게</h2>
+			<br>
 			<table border="1">
 				<thead>
 				<tr>

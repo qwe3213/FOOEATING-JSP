@@ -8,11 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<h1>on_off 상태</h1>
-	
-	가게 상태가 변경되었습니다. <br>
-	<button onclick="opener.parent.location.reload(); window.close();">닫기</button>
-	
+	<fieldset  style="text-align: center; border: none; margin-top: 50px;" >
+		<h2>가게 상태가 변경되었습니다.</h2> <br>
+			<button onclick="opener.parent.location.reload(); window.close();" style="background-color: #fd9991;
+																						color: #fff;
+																						border: none;
+																						border-radius: 10px;
+																						font-size:medium;
+																						font-weight: bold;">
+				닫기
+			</button>
+	</fieldset>
 </body>
 </html>

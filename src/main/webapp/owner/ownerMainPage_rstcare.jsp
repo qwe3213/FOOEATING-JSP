@@ -62,17 +62,17 @@
 
 <!-- main -->
 <main>
-	<div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
-	
-	<h1>나의 가게 정보</h1>
+
+<div id="top">
+<div id="category" style="margin: 85px 0 0 410px;">
+	<h2>나의 가게 정보</h2>
 	
 	<fieldset>
-	<div style="height:240px;">
+	<div style="height:240px; margin-right: 35%;">
 	
 	   <div style="text-align: right;" >
- 	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none;">수정</a>
-		<a href="./RestaurantDeleteAction.on" style="text-decoration: none;">삭제</a>
+ 	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none; color: #fd9991;"><b>수정</b></a>
+		<a href="./RestaurantDeleteAction.on" style="text-decoration: none; color: #fd9991;"><b>삭제</b></a>
    	   </div>
 		<div style="margin-left: 1px">
 		
@@ -82,35 +82,35 @@
 			</tr>
 		
 			<tr>
-			   <td>상호명 :${restal.name}</td>
+			<td><b>상&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;호</b> : ${restal.name}</td>
 			</tr>
 			<tr>
-			<td>가게 업종 : ${restal.category}	</td>
+			<td><b>가게 업종</b> : ${restal.category}	</td>
 			</tr>
 			<tr>
-			<td>가게 주소 : ${restal.addr_city}	</td>
+			<td><b>가게 주소</b> : ${restal.addr_city}	</td>
 			</tr>
 			<tr>
-			<td>가게 번호 : ${restal.rest_tel }	</td>
+			<td><b>가게 번호</b> : ${restal.rest_tel }	</td>
 			</tr>
 			<tr>
-			<td>영업 시간 : ${restal.runtime }	</td>
+			<td><b>영업 시간</b> : ${restal.runtime }	</td>
 			</tr>
 			<tr>
-			<td>정기 휴무 : ${restal.dayoff }	</td>
+			<td><b>정기 휴무</b> : ${restal.dayoff }	</td>
 			</tr>
 			<tr>
-			<td>가게 on/off 
+			<td><b>가게 on/off</b> <br>
 			  <c:if test="${restal.status == 1}">
 				<c:if test="${restal.on_off == true}">
-					&lt;open&gt;
-					<button onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
+					<span style="color: #0064FF;"><b>&lt;open&gt;</b></span> <br>
+					<button class="btn-2" onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
 						가게 닫기
 					</button>
 				</c:if>
 				<c:if test="${restal.on_off == false}">
-					&lt;closed&gt;
-					<button onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
+					<span style="color: #FF0000;"><b>&lt;closed&gt;</b></span> <br>
+					<button class="btn-2" onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
 						가게 열기
 					</button>
 				</c:if>
@@ -127,11 +127,10 @@
 	    <form action ="./OwnerNoticeAction.on " method="post">
 		<textarea name="rest_notice" rows="2" cols="110" placeholder="공지사항"></textarea>
 		<input type="hidden" name="rest_id" value="${restal.rest_id }" >
-		<input class="btn-2" type="submit" value="저장">
+		<input class="btn-2" type="submit" value="저장" style="margin-bottom: 2px;">
 	  </form>
 	</div>
 	</div>
-	
 	</div>
 	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
 	</div>

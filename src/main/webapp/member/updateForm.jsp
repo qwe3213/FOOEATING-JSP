@@ -164,7 +164,7 @@
 	 			 	<div class="left"><input type="text" name="user_id" value="${dto.user_id }" readonly="readonly"></div>
 	 			 	<div class="left">비밀번호</div>
 	 			 	<div class="left"><input type="password" name="pw" placeholder="비밀번호를 입력하세요.">
-	 			 	<br><input class="btn-2" style="margin-top: 2%;"type="button" value="수정" onclick="winopen()"></div><br>
+	 			 	<br><input class="btn-2" style="margin-top: 2%;"type="button" value="비밀번호 수정" onclick="winopen()"></div><br>
 	 			 	<div class="left">이름</div> 
 	 			 	<div class="left"><input type="text" name="name" value="${dto.name }" id="name"></div>
 	 			 	<div id="namediv" class="errorDiv"></div>
