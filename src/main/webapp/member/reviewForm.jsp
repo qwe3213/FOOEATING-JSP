@@ -129,7 +129,7 @@
 
 	
 	
-<div style="text-align: center; margin-top: 7%;"> 	
+<div style=" text-align: center; margin-top: 7%;"> 	
 <!-- 페이징처리 -->
 <%
 int count = (int)request.getAttribute("count");
@@ -150,7 +150,7 @@ if(count != 0) {
 	if(startPage > pageBlock) {
 %>
 
-		<a href="./MyReview.foo?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+		<a class="asdfasdf" href="./MyReview.foo?pageNum=<%=startPage - pageBlock%>">[이전]</a>
 	
 <%
 	}
@@ -158,7 +158,7 @@ if(count != 0) {
 %>
 
 		
-		<a href="./MyReview.foo?pageNum=<%=i%>">[<%=i%>]</a>
+		<a class="asdfasdf" href="./MyReview.foo?pageNum=<%=i%>">[<%=i%>]</a>
 				
 				
 <%
@@ -167,7 +167,7 @@ if(count != 0) {
 %>
 
 
-		<a href="./MyReview.foo?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+		<a class="asdfasdf" href="./MyReview.foo?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 				
 				
 <%
