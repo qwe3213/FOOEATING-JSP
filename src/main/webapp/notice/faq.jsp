@@ -59,6 +59,17 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+.alinkstyle {
+	color: #fff;
+	background: #fd9991;
+    border: none;
+	border-radius: 10px;
+	font-size: medium;
+    font-weight: bold;
+    display: inline-block;
+    width: 75px;
+    height: 25px;
+}
 </style>
 
 
@@ -97,11 +108,15 @@
 		</div>
 		
 		<div>
-		<ul style="margin-top: 30px; padding-top:40px; padding-flet: 10%;">
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px; padding-flet: 10%;"><a href="#" title="all" style="text-align: center;">전체보기</a></li>
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px"><a href="#" title="계정관리" style="text-align: center;">계정관리</a></li>
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px"><a href="#" title="도용보안" style="text-align: center;">도용보안</a></li>
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px"><a href="#" title="예약" style="text-align: center;">예약</a></li>
+		<ul style="margin-top: 30px; padding-top:40px;">
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px; padding-left: 10%;">
+				<a class="alinkstyle" href="#" title="all" style="text-align: center;">전체보기</a></li>
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px">
+				<a class="alinkstyle" href="#" title="계정관리" style="text-align: center;">계정관리</a></li>
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px">
+				<a class="alinkstyle" href="#" title="도용보안" style="text-align: center;">도용보안</a></li>
+			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px">
+				<a class="alinkstyle" 	href="#" title="예약" style="text-align: center;">예약</a></li>
 <!-- 				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="d" style="text-align: center;">4번</a></li> -->
 		</ul>
 		</div>
@@ -111,8 +126,8 @@
 			<c:forEach var="dto" items="${faqList }">
 				<div id="list" style="float:left; margin: 0 2% 0 0; width: 250px;">
 					<ul>
-						<li class="${dto.category}">
-							<h2 class="btn">Q.${dto.subject }</h2>
+						<li class="${dto.category}" style="padding-bottom: 10%;">
+							<h6 class="btn" style="font-size: 15px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
 						</li>
 					</ul>
 				</div>
@@ -121,8 +136,8 @@
 	
 					<!-- 첫 번째 Modal의 내용 -->
 					<div class="modal-content">
-						<span class="close">&times;</span>
-						<p>${dto.content }</p>
+						<span class="close" style="text-align: right;">&times;</span>
+						<p style="text-align: center;">${dto.content }</p>
 					</div>
 				</div>
 			</c:forEach>

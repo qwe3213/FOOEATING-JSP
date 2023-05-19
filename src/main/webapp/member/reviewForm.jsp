@@ -102,8 +102,8 @@ input[type=radio]:checked ~ label{
 <!-- main -->
 <main>
 	<div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
-	<h1>리뷰 관리</h1>
+	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
+	<h2>리뷰 관리</h2>
 	<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }">
 		<c:redirect url="./MemberLogin.foo" />
