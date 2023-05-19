@@ -265,8 +265,6 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성
 var geocoder = new kakao.maps.services.Geocoder();
 
-for (int i = 0; i < ${count}; i++) {
-
 // 주소로 좌표를 검색
 geocoder.addressSearch('${listForm.addr_city} ${listForm.addr_district} ${listForm.addr_etc}', function(result, status) {
 
@@ -294,7 +292,6 @@ geocoder.addressSearch('${listForm.addr_city} ${listForm.addr_district} ${listFo
     } 
         map.relayout();
 });  
-}
 
 geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, status) {
 
