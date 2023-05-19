@@ -1815,6 +1815,7 @@ public class PublicDAO {
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
+					System.out.println("유저 아이디 상태 변환 시작");
 					// 유저 상태 변환
 					sql = "update heart set heart_check=1 where user_id=? and rest_id = ?";
 					pstmt = con.prepareStatement(sql);
@@ -1836,13 +1837,14 @@ public class PublicDAO {
 					
 					System.out.println("유저 좋아요 상태 변환");
 				} else {
+					System.out.println("회원 정보 추가 시작");
 					
 					// 유저 상태 변환
 					sql = "insert into heart values (1,?,?)";
 					pstmt = con.prepareStatement(sql);
 					// ???
-					pstmt.setString(1, rest_id);
-					pstmt.setString(2, user_id);
+					pstmt.setString(1, user_id);
+					pstmt.setString(2, rest_id);
 					
 					// 4. sql 실행
 					pstmt.executeUpdate();
