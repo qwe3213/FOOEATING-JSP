@@ -5,6 +5,7 @@
 
 
 <hr>
+
 		<h2>과거 대기 내역</h2>
 		<c:forEach var="list" items="${queueHistory}">
 			<table border="1">

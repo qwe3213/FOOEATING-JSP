@@ -88,7 +88,7 @@
 <!-- main -->
 <main>
 	<div id="top">
-		<div id="category" style="margin: 40px 0 0 300px;">
+		<div id="category" style="margin: 85px 0 0 410px;">
 	
 		<h1>F A Q</h1>
 			<h3>카테고리</h3>

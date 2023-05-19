@@ -49,7 +49,7 @@
 <!-- main -->
 <main>
 	<div id="top">
-	<div id="category" style="margin: 40px 0 0 300px;">
+	<div id="category" style="margin: 85px 0 0 410px;">
 		<h1>찜한 매장</h1>
 		<!-- 로그인 세션 제어 -->
 		<c:if test="${empty user_id }">

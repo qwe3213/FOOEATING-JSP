@@ -49,7 +49,7 @@
 <!-- main -->
 <main>
 <div id="top">
-
+	<div id="category" style="margin: 85px 0 0 410px;">
 
 <!-- 관리자일 때만 글쓰기 버튼 활성화  -->
 <c:if test="${!empty user_id && user_id.equals('real_admin')}">
@@ -65,7 +65,7 @@
 
 
 <!-- 공지사항 리스트 출력-->
-<table border="1" style="margin: 40px 0 0 300px;">
+<table border="1">
 	<tr>
 		<th>no</th>
 		<th>제목</th>
@@ -123,7 +123,7 @@
 	}
 %>
 
-
+</div>
 </div>
 </main>
 <!-- main -->

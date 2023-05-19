@@ -60,7 +60,7 @@ $(document).ready(function(){
 <style type="text/css">
 	.panel { border: 1px solid;
 		width: 460px;
-		height: 257px;
+		height: 300px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -110,10 +110,10 @@ $(document).ready(function(){
 <h1>LOGIN</h1>
 
 <main>
-	<div id="top" style="text-align: -webkit-center;"> <!-- ** main -> div id="top" 해주기 ** -->
-		<div class= "panel">
-		<fieldset style="margin: 5%; text-align: center;">
-			<legend>FOOEATING 로그인</legend>
+	<div id="top" style="text-align: -webkit-center; color: rgb(0,0,0);">
+		<div class= "panel" style="border-color: rgb(0,0,0); text-align-last: center;">
+		<fieldset style="margin: 5%; text-align: center; color: rgb(0,0,0);">
+			<legend>FOOEATING<br>로그인</legend>
 			
 			<form action="./MemberLoginAction.foo" id="fr" method="post" >
 				<div id="input_row">
