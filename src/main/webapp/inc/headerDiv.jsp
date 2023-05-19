@@ -7,7 +7,7 @@
 <header class="header-area header-sticky">
 	<!-- 오른쪽 아래에 띄우고 싶은데... ul + li 합쳐야만 css 적용됨 -->
 	<div style="font-size: 1em;">
-		<div style="float: right; font-size: 1em; width: max-content; margin-left: 0%; padding-left: 100%;">
+		<div style="float: right; font-size: 16px; width: max-content; margin-left: 0%; padding-left: 100%;">
 		
 		<!-- 로그인 안했을 때 -->
 			<c:if test="${empty user_id }">
