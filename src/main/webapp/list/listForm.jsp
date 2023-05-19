@@ -196,7 +196,7 @@
 				</form> --%>
 				<a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
 			</td>
-			<td>${dto.outfile}</td>
+			<td><img src="./upload/${dto.outfile}" width="100px"></td>
 			<td>${dto.like_num}</td>
 			<td>${dto.reviewCount}</td>
 <%-- 			<td>${restForm.read_count}</td> --%>

@@ -123,7 +123,9 @@
 	<div class="container">
 	<aside id="left-sidebar"></aside>
 
+
 		<h1 class="restname" style="padding-top: 80px">${restForm.name}
+
 
 		</h1>
 
@@ -157,8 +159,10 @@
 		<table style="border-collapse: separate; border-spacing: 11px;">
 <%-- 			<caption>레스토랑 상세정보</caption> --%>
 			<tr>
+
 					<th>주소</th>
 					<td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td>
+
 			</tr>
 			<tr>
 					<th>전화번호</th>
@@ -179,15 +183,101 @@
 		</table>	
 
 <hr>
-
-			<th>메뉴</th>
-			<td></td>
+ 
 
 
+<script>
+ function toggleDiv(divId) {
+     var menuDiv = document.getElementById("menu");
+     var introDiv = document.getElementById("intro");
+     var reviewDiv = document.getElementById("review");
+     var noticeDiv = document.getElementById("notice");
+     
+     
+     
+     if(divId === "menu"){
+    	 menuDiv.style.display = "block";
+    	introDiv.style.display = "none";
+    	reviewDiv.style.display = "none";
+    	noticeDiv.style.display = "none";
+    	
+     } else if(divId === "intro"){
+    	 noticeDiv.style.display = "none";
+    	 reviewDiv.style.display = "none";
+    	 menuDiv.style.display = "none";
+    	 introDiv.style.display = "block";
+     	}
+      else if(divId === "review"){
+    	 noticeDiv.style.display = "none";
+    	 introDiv.style.display = "none";
+    	 menuDiv.style.display = "none";
+    	 reviewDiv.style.display = "block";
+     	}
+    else if(divId === "notice") {
+    	 introDiv.style.display = "none";
+    	 reviewDiv.style.display = "none";
+    	 menuDiv.style.display = "none";
+    	 noticeDiv.style.display = "block";
+     	}
+     
+     
+     
+     }
+ 
+  window.onload = function() {
+	  	 var menuDiv = document.getElementById("menu");
+	     var introDiv = document.getElementById("intro");
+	     var reviewDiv = document.getElementById("review");
+	     var noticeDiv = document.getElementById("notice");
+	    	
+	     	menuDiv.style.display = "block";
+			 introDiv.style.display = "none";
+			 reviewDiv.style.display = "none";
+			 noticeDiv.style.display = "none";
+ };
+</script>
 
 
+
+ 	<input onclick="toggleDiv('menu')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('intro')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('review')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('notice')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
+
+			<div id="menu" class="myDiv">
+			<th>메뉴</th><br>
+			<td>${menudto.meunfile }</td><br>
+			</div>
+
+			<div id="intro" class="myDiv" >
+			<th>가게 소개</th><br>
+			<td>${restForm.descriptions}</td><br>
+			</div>
+
+			<div id="review" class="myDiv" >
+			<tr>
+			<c:forEach var="re" items="${requestScope.re }" varStatus="no">
+			<th>번호</th> &nbsp <td>${no.count}</td><br>
+			<th>아이디</th> &nbsp <td>${re.user_id}</td><br>
+			<th>외관사진</th> &nbsp <td>${re.file}</td><br>			
+			<th>평점</th> &nbsp <td>${re.grade}</td><br>
+			<th>내용</th> &nbsp <td>${re.content}</td><br>
+			<th>등록일</th> &nbsp <td>${re.regdate}</td><br>
+			<hr>
+		</c:forEach>
+		</tr>
+			</div>
+
+			<div id="notice" class="myDiv" >
 			<th>가게 공지사항</th>
-			<td>${restForm.rest_notice}</td>
+
+			<td>${restForm.rest_notice}</td><br>
+			</div>
+
+
+
+
+
 
 
 
@@ -197,17 +287,18 @@
 	<hr>
 	
 
-		<tr>
-		<c:forEach var="re" items="${requestScope.re }" varStatus="no">
-			<th>번호</th> &nbsp <td>${no.count}</td>
-			<th>아이디</th> &nbsp <td>${re.user_id}</td>
-			<th>외관사진</th> &nbsp <td>${re.file}</td>		
-			<th>평점</th> &nbsp <td>${re.grade}</td>
-			<th>내용</th> &nbsp <td>${re.content}</td>
-			<th>등록일</th> &nbsp <td>${re.regdate}</td>
-			<hr>
-		</c:forEach>
-		</tr>
+<!-- 		<tr> -->
+<%-- 		<c:forEach var="re" items="${requestScope.re }" varStatus="no"> --%>
+<%-- 			<th>번호</th> &nbsp <td>${no.count}</td><br> --%>
+<%-- 			<th>아이디</th> &nbsp <td>${re.user_id}</td><br> --%>
+<%-- 			<th>외관사진</th> &nbsp <td>${re.file}</td><br>			 --%>
+<%-- 			<th>평점</th> &nbsp <td>${re.grade}</td><br> --%>
+<%-- 			<th>내용</th> &nbsp <td>${re.content}</td><br> --%>
+<%-- 			<th>등록일</th> &nbsp <td>${re.regdate}</td><br> --%>
+<!-- 			<hr> -->
+<%-- 		</c:forEach> --%>
+<!-- 		</tr> -->
+
 		
 <!-- 	</tbody> -->
 	
