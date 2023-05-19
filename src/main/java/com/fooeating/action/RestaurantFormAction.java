@@ -35,10 +35,10 @@ public class RestaurantFormAction implements Action {
 		request.setAttribute("re", re);
 		
 		
+		int reviewCount = dao.getOwnerReviewCount(rest_id);
+		request.setAttribute("reviewCount", reviewCount);
 		
 		// 리뷰-------------------------------------------------
-		
-		
 		
 		
 		
