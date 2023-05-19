@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/question.css">
 <!-- <script src="./js/jquery-3.6.4.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.6.4.js" 
         integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" 
@@ -104,23 +105,28 @@ function checkData() {
 </script>
 </head>
 <body>
-		<h1>changePw.jsp</h1>
+		<h2 style="text-align: center;">비밀번호 변경</h2>
 		
 		<!-- 로그인 세션 제어 -->
 		<c:if test="${empty user_id }" >
 			<c:redirect url="./MemberLogin.foo"/>
 		</c:if>
-		
+		<div style="display: flex;
+		justify-content: center;
+		align-items: center;">
 		<form action="./ChangePwAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
-		현재 비밀번호<input type="password" name="pw"><br>
-		새 비밀번호<input type="password" name="newPw" id="newPw"><br>
+		현재 비밀번호<br>
+		<input type="password" name="pw"><br>
+		새 비밀번호<br>
+		<input type="password" name="newPw" id="newPw"><br>
 		<div id="newPwDiv" class="errorDiv"></div>
-		새 비밀번호 확인<input type="password" name="checkNewPw" id="checkNewPw">
+		새 비밀번호 확인<br>
+		<input type="password" name="checkNewPw" id="checkNewPw">
 		<div id="checkNewPwDiv" class="errorDiv"></div>
 		
-		<button>비밀번호 변경</button>
+		<button class="btn-2" style="text-align: center; margin-top: 5%; ">비밀번호 변경</button>
 		</form>
-		
+		</div>
 		
 </body>
 </html>

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/question.css">
 <script src="./js/jquery-3.6.4.js"></script>
 <style type="text/css">
 #myform fieldset{
@@ -51,16 +52,11 @@
 <body>
 	
 
-	<h1> 리뷰 수정</h1>
 		<c:if test="${empty user_id }" >
 			<c:redirect url="./MemberLogin.foo"/>
 		</c:if>
 		
-		<table border="1">
-		<tr>
-			<td colspan="2">가게명 : ${dto.name }</td>
-		</tr>	
-		</table>
+		<div style="font-size: 22px; text-align: center;"><b>${dto.name }</b> </div>
 		
 		<form action="./ReviewUpdateAction.foo" method="post" id="myform">
 			<input type="hidden" name="user_id" value="${user_id }">
@@ -91,7 +87,7 @@
 			<div>
 				<textarea class="col-auto form-control" type="text" name="newContent" id="reviewContents" >${dto.content }</textarea>
 			</div>
-			<button>수정</button>
+			<button class="btn-2">수정</button>
 		</form>
 	
 </body>
