@@ -31,7 +31,6 @@
 							<a href="./MemberWaitingList.foo">MyPage</a>
 						</c:otherwise>
 					</c:choose>
-				
 				<c:if test="${empty owner_user_id && !user_id.equals('real_admin')}">
 					<a href="./ownerChangeForm.on">Business registration</a>
 				</c:if>
