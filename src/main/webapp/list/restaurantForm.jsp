@@ -122,89 +122,72 @@
 	
 	<div class="container">
 	<aside id="left-sidebar"></aside>
-	<div class="emoji">
-		<h1 class="restname">${restForm.name}
-		<c:choose>
-			<c:when test="${!empty user_id && heart_check == 1}">
-				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
-<%-- 				<div class="heartNo">${heartNo }</div>  --%>
-			</c:when>
-			<c:when test="${empty user_id}">
-				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="40" height="40">
-<%-- 				<div class="heartNo">${heartNo }</div>  --%>
-			</c:when>
-			<c:otherwise>
-				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
-<%-- 				<div class="heartNo">${heartNo }</div>  --%>
-			</c:otherwise>
-		</c:choose>
+
+		<h1 class="restname" style="padding-top: 80px">${restForm.name}
+
 		</h1>
 
 		<th>&#128065</th>
 		<td>&nbsp;${restForm.read_count}&nbsp;</td>
 		<th>&nbsp;&#128150&nbsp;</th>
-		<td>&nbsp;${heartNo }&nbsp;</td>
+		<td>&nbsp;
+		<c:choose>
+			<c:when test="${!empty user_id && heart_check == 1}">
+				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
+				<span class="heartNo">${heartNo }</span> 
+			</c:when>
+			<c:when test="${empty user_id}">
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="40" height="40">
+				<span class="heartNo">${heartNo }</span> 
+			</c:when>
+			<c:otherwise>
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
+				<span class="heartNo">${heartNo }</span> 
+			</c:otherwise>
+		</c:choose>
+		&nbsp;</td>
 		<th>&nbsp;&#9997</th>
 		<td>&nbsp;${review_num }&nbsp;</td>
 		
-		
-		
-	
-	</div>
+
 
 	<hr>
 	
-	<c:if test="${restForm.on_off == true}">
-		<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
-			<button onclick="winopen1('${restForm.rest_id}');">대기하기</button>
-		</c:if>
-		
-		<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
-			<button onclick="winopen2();">대기하기</button>
-		</c:if>
-	</c:if>
-	<c:if test="${restForm.on_off == false}">
-		<button>영업 준비 중입니다...(T^T)</button>
-	</c:if>
 	
-   	 
-
-	<button onclick="location.href='./listForm.fd'">가게 리스트로</button>
-
-			
-			
-		<table class="abc">
+		<table style="border-collapse: separate; border-spacing: 11px;">
 <%-- 			<caption>레스토랑 상세정보</caption> --%>
 			<tr>
-					<th class="def">주소</th> <th class="def">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td><br>
+					<th>주소</th>
+					<td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td>
 			</tr>
 			<tr>
-					<th class="def">전화번호</th> <th class="def"></th>
-					<td>${restForm.rest_tel}</td><br>
+					<th>전화번호</th>
+					<td>${restForm.rest_tel}</td>
 			</tr>
 			<tr>
-					<th class="def">업종</th> <th class="def"></th>
-					<td>${restForm.category}</td><br>
+					<th>업종</th>
+					<td>${restForm.category}</td>
 			</tr>
 			<tr>
-					<th class="def">영업 시간</th> <th class="def"></th>
-					<td>${restForm.runtime}</td><br>
+					<th>영업 시간</th>
+					<td>${restForm.runtime}</td>
 			</tr>
-<!-- 			<tbody> -->
+			<tr>
+					<th>휴일</th>
+					<td>${restForm.dayoff}</td>
+			</tr>
 		</table>	
 
 <hr>
 
-
 			<th>메뉴</th>
-			<td></td><br>
+			<td></td>
 
 
 
 
 			<th>가게 공지사항</th>
-			<td>${restForm.rest_notice}</td><br>
+			<td>${restForm.rest_notice}</td>
 
 
 
@@ -216,12 +199,12 @@
 
 		<tr>
 		<c:forEach var="re" items="${requestScope.re }" varStatus="no">
-			<th>번호</th> &nbsp <td>${no.count}</td><br>
-			<th>아이디</th> &nbsp <td>${re.user_id}</td><br>
-			<th>외관사진</th> &nbsp <td>${re.file}</td><br>			
-			<th>평점</th> &nbsp <td>${re.grade}</td><br>
-			<th>내용</th> &nbsp <td>${re.content}</td><br>
-			<th>등록일</th> &nbsp <td>${re.regdate}</td><br>
+			<th>번호</th> &nbsp <td>${no.count}</td>
+			<th>아이디</th> &nbsp <td>${re.user_id}</td>
+			<th>외관사진</th> &nbsp <td>${re.file}</td>		
+			<th>평점</th> &nbsp <td>${re.grade}</td>
+			<th>내용</th> &nbsp <td>${re.content}</td>
+			<th>등록일</th> &nbsp <td>${re.regdate}</td>
 			<hr>
 		</c:forEach>
 		</tr>
@@ -239,37 +222,37 @@
 		<th>FACILITIES</th> <br>
 		
 		<div class="flacticon">
-		
-			<c:if test="${restForm.convenience.split(',')[0] != null}">
-			<img src="./img/facilities/${restForm.convenience.split(',')[0]}.png" style="width: 65px; height: 65px;">
-			</c:if>
 			
+
+			<c:if test="${restForm.convenience.split(',')[0] != null}">
+			<img src="./img/facilities/${restForm.convenience.split(',')[0]}.png" style="width: 65px; height: 65px;" class="fic" >
+			</c:if>
+
 			<c:if test="${restForm.convenience.split(',')[1] != null}">
-			<img src="./img/facilities/${restForm.convenience.split(',')[1]}.png" style="width: 65px; height: 65px;">
+			<img src="./img/facilities/${restForm.convenience.split(',')[1]}.png" style="width: 65px; height: 65px;" class="fic">
 			</c:if>
 			
 			<c:if test="${restForm.convenience.split(',')[2] != null}">
-			<img src="./img/facilities/${restForm.convenience.split(',')[2]}.png" style="width: 65px; height: 65px;">
+			<img src="./img/facilities/${restForm.convenience.split(',')[2]}.png" style="width: 65px; height: 65px;" class="fic">
 			</c:if>
-			
+
 			<c:if test="${restForm.convenience.split(',')[3] != null}">
-			<img src="./img/facilities/${restForm.convenience.split(',')[3]}.png" style="width: 65px; height: 65px;">
+			<img src="./img/facilities/${restForm.convenience.split(',')[3]}.png" style="width: 65px; height: 65px;" class="fic">
 			</c:if>
-			
+
 			<c:if test="${restForm.convenience.split(',')[4] != null}">
-			<img src="./img/facilities/${restForm.convenience.split(',')[4]}.png" style="width: 65px; height: 65px;">
+			<img src="./img/facilities/${restForm.convenience.split(',')[4]}.png" style="width: 65px; height: 65px;" class="fic">
 			</c:if>
-			
+
 			<c:if test="${restForm.convenience.split(',')[5] != null}">
 			<img src="./img/facilities/${restForm.convenience.split(',')[5]}.png" style="width: 65px; height: 65px;">
 			</c:if>
-			
+
 			
 			
 <%-- 			<td>${restForm.convenience.split(",")[0]}</td> --%>
 <%-- 			<td>${restForm.convenience.split(",")[1]}</td> --%>
 <%-- 			<td>${restForm.convenience.split(",")[2]}</td> --%>
-			<br>
 			
 		</div>
 	<hr>
@@ -331,15 +314,35 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 </div>
 </div>		
 
-<aside id="right-sidebar"></aside>
+
 		
 </div>		
-		<div style="float: right; margin: auto; padding: auto;"></div>
 		
+<!-- <aside class="right-sidebar"> -->
+<!-- 		<div style="float: right; margin: auto; padding: auto;"></div> -->
+
+<!-- </aside> -->
+
+	<span id="wait">
+	<c:if test="${restForm.on_off == true}">
+		<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen1('${restForm.rest_id}');" id="waiting" style="margin-right: 50px">대기하기</button>
+		</c:if>
 		
-		
+		<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
+			<button onclick="winopen2();" id="waiting2">대기하기</button>
+		</c:if>
+	</c:if>
+	<c:if test="${restForm.on_off == false}">
+		<button>영업 준비 중입니다...(T^T)</button>
+	</c:if>
+   	 
+
+	<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button>
+	</span>
 		
 </main>
+
 <!-- main -->
 
 
