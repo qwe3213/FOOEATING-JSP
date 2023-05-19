@@ -18,7 +18,7 @@
 	float: left;
 }
 
-#right-sidebar{
+.right-sidebar{
 	width: 900px;
 	height: 700px;
 	float: right;
@@ -36,3 +36,19 @@
 #heart{
 	float: right;
 }
+
+ #shit tr th,
+ #shit tr td {
+    padding-bottom: 10px;
+  }
+
+.fic{
+	margin-right: 40px;
+}
+
+#wait{
+	position: relative;
+	left: 1450px;
+	bottom: 900px;
+}
+
