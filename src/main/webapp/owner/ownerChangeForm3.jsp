@@ -95,37 +95,26 @@
        String rest_tel = request.getParameter("rest_tel");  
        
   %>
-       <%=convenience %> 
-       <%=rest_id %>  
-       <%=name %>
-       <%=category %>
-       <%=addr_city %>
-       <%=addr_district %>
-       <%=addr_etc %>
-       <%=dayoff%>
-       <%=runtime %>
-       <%=rest_tel %>
-
-       
-     
 
 <!-- main -->
 <main>
 	<div id="top">
-	<fieldset style="text-align: center; color: rgb(0,0,0);">
-		<legend>step3</legend>
+	<div style="margin:0% 40% 0% 40%; ">
+	<fieldset style="text-align: left; color: rgb(0,0,0); font-size: small;">
+		<legend style="">step3</legend>
 		<form action="./ownerRequestSuccessAction.on" method="post" enctype="multipart/form-data" name="fr" id="fr">
 		    가게 소개<br>
-		    <textarea rows="5" cols="50" name="descriptions" placeholder="가게 소개를 적어주세요!"></textarea><br>		
+		    <textarea rows="5" cols="50" name="descriptions" placeholder="가게 소개를 적어주세요!"></textarea><br>
+		    <br><br>	
 		    <div id="divdes"></div>
-		    <br>
-			1. <br>
-			메뉴 이름 : <input type="text" name="menu_name"> <br>
-			메뉴 소개 : <input type="text" name="menu_descriptions"> <br>
+			메뉴 이름 : <input type="text" name="menu_name" style="margin-bottom: 5px;"> <br>
+			메뉴 소개 : <input type="text" name="menu_descriptions" style="margin-bottom: 5px;"> <br>
 			메뉴 가격 : <input type="text" name="price"> <br>
-			메뉴 이미지 :<input type="file" name="meunfile"> <br>
-		    가게 외부 이미지: <input type="file" name="outfile"> <br>
-		    가게 내부 이미지 :<input type="file" name="infile"> <br>
+			<br><br>
+			메뉴 이미지 <input type="file" name="meunfile" style="margin-bottom: 5px; "> <br>
+		   	가게 외부 이미지 <input type="file" name="outfile" style="margin-bottom: 5px; "> <br>
+		    가게 내부 이미지 <input type="file" name="infile" > <br>
+		    
 		  	<input type="hidden" name="dayoff" value="<%=dayoff %>">
 		    <input type="hidden" name="runtime" value="<%=runtime %>">
 			<input type="hidden" name="name" value="<%=name %>">
@@ -135,10 +124,15 @@
 			<input type="hidden" name="addr_etc" value="<%=addr_etc %>">
 			<input type="hidden" name="rest_tel" value="<%=rest_tel %>">
 			<input type="hidden" name="rest_id" value="<%=rest_id %>">      
-			<input type="hidden" name="convenience" value="<%=convenience %>">      
-			<input class="btn-2" type="submit" value="다음" >
+			<input type="hidden" name="convenience" value="<%=convenience %>">   
+			<br><br>
+			<div style="text-align: right;">
+				<input class="btn-2" type="submit" value="다음" >
+			</div>
 		</form>
 	</fieldset>
+			<br>
+	</div>
 	</div>
 </main>
 <!-- main -->
