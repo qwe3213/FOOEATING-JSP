@@ -255,6 +255,19 @@ $(function() {
 		 
 	
 	</script>
+	
+<style type="text/css">
+	.panel {
+	border: 1px solid;
+	width: 460px;
+	height: 530px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+
+
+</style>
 
 </head>
 <body>
@@ -275,39 +288,42 @@ $(function() {
 <!-- ***** Header Area End ***** -->
 
 <main>
-	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
+	<div id="top" style="text-align: -webkit-center;"> <!-- ** main -> div id="top" 해주기 ** -->
 	
  		<!-- itwill_member 테이블에 저장될 정보를 입력 -->
- 		
+ 		<div class="panel">
  		<fieldset style="margin: 5%; text-align: center;">
- 			<legend>team4 회원가입</legend>
+ 			<legend>회원가입</legend>
  			
  			<!-- action주소가 없으면 자신의 페이지 호출 -->
+ 			
 	 		<form action="./MemberJoinAction.foo" method="post" name="fr" onsubmit="return checkData()" id="fr">
- 			 	아이디 <br>
+ 			 	<div style="text-align: left;">아이디</div>
  			 	<input type="text" name="user_id" maxlength="20" id="id" ><br>
- 			 	<div id="idd" class="errorDiv"></div>
- 			 	비밀번호<br>
+ 			 	<div id="idd" class="errorDiv" style="text-align: left;"></div>
+ 			 	<div style="text-align: left;">비밀번호</div>
  			 	<input type="password" name="pw" maxlength="20" id="pw"><br>
- 			 	<div id="pwd" class="errorDiv"></div>
- 			 	비밀번호 재확인<br>
+ 			 	<div id="pwd" class="errorDiv" style="text-align: left;"></div>
+ 			 	<div style="text-align: left;">비밀번호 재확인</div>
  			 	<input type="password" name="cpw" maxlength="20" id="cpw"><br>
- 			 	<div id="cpwd" class="errorDiv"></div>
- 			 	이름<br>
+ 			 	<div id="cpwd" class="errorDiv" style="text-align: left;"></div>
+ 			 	<div style="text-align: left;">이름</div>
  			 	<input type="text" name="name" id="name"><br>
- 			 	<div id="namediv" class="errorDiv"></div>
- 			 	이메일<br>
+ 			 	<div id="namediv" class="errorDiv" style="text-align: left;"></div>
+ 			 	<div style="text-align: left;">이메일</div>
  			 	<input type="email" name="email" id="email"><br>
- 			 	<div id="emaildiv" class="errorDiv"></div>
- 			 	휴대전화<br>
+ 			 	<div id="emaildiv" class="errorDiv" style="text-align: left;"></div>
+ 			 	<div style="text-align: left;">휴대전화</div>
  			 	<input type="text" name="phone" id="phone"><br>
- 			 	<div id="phonediv" class="errorDiv"></div>       
+ 			 	<div id="phonediv" class="errorDiv" style="text-align: left;"></div>       
  			 	<hr>      
  			 	<input type="submit" value="회원가입">
  			 	
  		
  			</form>
+ 			
  		</fieldset>
+ 		</div>
  	</div> <!-- ***** Main End ***** -->
 </main>	
  	
