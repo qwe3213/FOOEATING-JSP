@@ -211,7 +211,7 @@ $(document).ready(function(){
 		주소 <br>
 		<input type="text" id="sample4_postcode" placeholder="우편번호" >
         <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addr_city">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addr_city">
 		<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="addr_district">
 		<span id="guide" style="color:#999;display:none"></span><br>
 		<input type="text" id="sample4_detailAddress" placeholder="상세주소" name="addr_etc"><br>
@@ -228,12 +228,12 @@ $(document).ready(function(){
 		<div id="divday"></div>
 		<br>
 		<div><fieldset style="color: rgb(0,0,0);">
-		<input type="checkbox" name="convenience" value="parking" style="display: inline-block; width:30px; line-height:50px;"> 주차 공간 
-		<input type="checkbox" name="convenience" value="toilet" style="display: inline-block; width:30px; line-height:50px;"> 화장실 (남/여) <br>
+		<input type="checkbox" name="convenience" value="parking" style="display: inline-block; width:30px; line-height:50px;"> 주차공간 
+		<input type="checkbox" name="convenience" value="toilet" style="display: inline-block; width:30px; line-height:50px;"> 화장실(남,녀) <br>
 		<input type="checkbox" name="convenience" value="nokidszone" style="display: inline-block; width:30px; line-height:50px;"> 노키즈존 
-		<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장 가능 <br>
-		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려 동물 
-		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 <br> 
+		<input type="checkbox" name="convenience" value="takeout" style="display: inline-block; width:30px; line-height:50px;"> 포장가능 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		<input type="checkbox" name="convenience" value="animal" style="display: inline-block; width:30px; line-height:50px;"> 반려동물 
+		<input type="checkbox" name="convenience" value="wifi" style="display: inline-block; width:30px; line-height:50px;"> 와이파이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> 
 		<input type="submit" value="다음">
 		</fieldset></div>
 		</form>
