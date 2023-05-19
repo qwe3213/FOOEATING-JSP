@@ -96,6 +96,7 @@
 			</tr>
 			<tr>
 			<td>가게 on/off 
+			  <c:if test="${restal.status == 1}">
 				<c:if test="${restal.on_off == true}">
 					&lt;open&gt;
 					<button onclick="rest_onoff(${restal.on_off}, '${restal.rest_id}');">
@@ -108,6 +109,10 @@
 						가게 열기
 					</button>
 				</c:if>
+			  </c:if>
+			  <c:if test="${restal.status == 0}">
+			  	&lt;현재 가게는 대기 중이므로, 가게를 열 수 없습니다!&gt;
+			  </c:if>
 			</td>
 			</tr>
 		</table>

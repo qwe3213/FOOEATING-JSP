@@ -1,12 +1,15 @@
 package com.fooeating.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.fooeating.action.ownerMainPageReviewAction;
 
@@ -28,6 +31,7 @@ import com.fooeating.action.RestaurantDeleteProAction;
 import com.fooeating.action.ownerRequestSuccessAction;
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
+import com.fooeating.commons.JSForward;
 import com.fooeating.member.action.ReviewWrite;
 
 public class RestaurantFrontController extends HttpServlet {
@@ -81,10 +85,18 @@ public class RestaurantFrontController extends HttpServlet {
 			System.out.println("  C : /RestaurantJoin.on 실행");
 			System.out.println("  C : DB사용x, view 페이지 이동");
 			
-			// 페이지 이동
+			HttpSession session = request.getSession();
+			String user_id = (String)session.getAttribute("user_id");
 			forward = new ActionForward();
-			forward.setPath("./owner/ownerChangeForm.jsp");
-			forward.setRedirect(false);	
+			if(user_id == null) {
+			
+	     	JSForward.alertAndMove(response, "로그인 후 등록해주세요!", "./MemberLogin.foo");
+
+			}else {
+				// 페이지 이동
+				forward.setPath("./owner/ownerChangeForm.jsp");
+				forward.setRedirect(false);	
+			}
 		} // ownerChangeForm.jsp
 		
 		else if(command.equals("/ownerChangeForm2.on")) {

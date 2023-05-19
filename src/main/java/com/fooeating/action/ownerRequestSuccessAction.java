@@ -80,6 +80,8 @@ public class ownerRequestSuccessAction implements Action {
 
 		System.out.println(" M : " + dto);
         System.out.println(" M : " + menudto);
+        
+        session.setAttribute("owner_user_id", dto.getOwner_user_id());
 		
         ActionForward forward = new ActionForward();
 		forward.setPath("./owner/ownerRequestSuccess.jsp");

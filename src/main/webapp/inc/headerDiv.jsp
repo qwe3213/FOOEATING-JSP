@@ -15,7 +15,10 @@
 				<a href="./MemberJoin.foo">JoinUs</a>
 				<a href="./ownerChangeForm.on">Business registration</a>
 			</c:if>
-								
+			
+		<!-- 레스토랑 테이블에 점주 아이디가 있을 경우 변수 저장 -->
+		<c:set var="owner_user_id" value="${sessionScope.owner_user_id}" />
+			
 		<!-- 로그인 했을 때 -->
 			<c:if test="${!empty user_id }" >
 				<a href="./MemberLogout.foo">Logout</a>
@@ -31,7 +34,6 @@
 							<a href="./MemberWaitingList.foo">MyPage</a>
 						</c:otherwise>
 					</c:choose>
-				
 				<c:if test="${empty owner_user_id && !user_id.equals('real_admin')}">
 					<a href="./ownerChangeForm.on">Business registration</a>
 				</c:if>
