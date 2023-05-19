@@ -1590,6 +1590,7 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setOwner_user_id(rs.getString("owner_user_id"));
+					dto.setOutfile(rs.getString("outfile"));
 					listForm.add(dto);
 				}
 			} catch (Exception e) {
@@ -1622,7 +1623,7 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setLike_num(rs.getInt("like_num"));
-					
+					dto.setOutfile(rs.getString("outfile"));
 					listForm.add(dto);
 					
 				}
@@ -1687,6 +1688,7 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
+					dto.setOutfile(rs.getString("outfile"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1747,6 +1749,7 @@ public class PublicDAO {
 					dto.setConvenience(rs.getString("convenience"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
+					dto.setOutfile(rs.getString("outfile"));
 					listForm.add(dto);
 					
 				}
@@ -1792,6 +1795,7 @@ public class PublicDAO {
 					dto.setRest_tel(rs.getString("rest_tel"));
 					dto.setRuntime(rs.getString("runtime"));
 					dto.setStatus(rs.getInt("status"));
+					dto.setOutfile(rs.getString("outfile"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

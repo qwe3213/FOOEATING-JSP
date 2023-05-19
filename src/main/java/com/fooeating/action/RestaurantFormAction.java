@@ -12,6 +12,7 @@ import com.fooeating.db.LikeDTO;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.ReivewDTO;
 import com.fooeating.db.RestaurantDTO;
+import com.fooeating.db.Restaurant_menuDTO;
 import com.fooeating.db.WaitingDTO;
 
 public class RestaurantFormAction implements Action {
@@ -34,10 +35,11 @@ public class RestaurantFormAction implements Action {
 	
 		request.setAttribute("re", re);
 		
-		
-		
 		// 리뷰-------------------------------------------------
 		
+		
+		// --------------------------------------
+		// --------------------------------------
 		
 		
 		

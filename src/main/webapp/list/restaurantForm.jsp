@@ -124,26 +124,28 @@
 	<aside id="left-sidebar"></aside>
 	<div class="emoji">
 		<h1 class="restname">${restForm.name}
-		<c:choose>
-			<c:when test="${!empty user_id && heart_check == 1}">
-				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
-<%-- 				<div class="heartNo">${heartNo }</div>  --%>
-			</c:when>
-			<c:when test="${empty user_id}">
-				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="40" height="40">
-<%-- 				<div class="heartNo">${heartNo }</div>  --%>
-			</c:when>
-			<c:otherwise>
-				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
-<%-- 				<div class="heartNo">${heartNo }</div>  --%>
-			</c:otherwise>
-		</c:choose>
+
 		</h1>
 
 		<th>&#128065</th>
 		<td>&nbsp;${restForm.read_count}&nbsp;</td>
 		<th>&nbsp;&#128150&nbsp;</th>
-		<td>&nbsp;${heartNo }&nbsp;</td>
+		<td>&nbsp;
+		<c:choose>
+			<c:when test="${!empty user_id && heart_check == 1}">
+				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
+				<span class="heartNo">${heartNo }</span> 
+			</c:when>
+			<c:when test="${empty user_id}">
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart_login" onclick="moveLogin();" width="40" height="40">
+				<span class="heartNo">${heartNo }</span> 
+			</c:when>
+			<c:otherwise>
+				<img id="heart" src="./img/emptyheart.png" class="empty_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
+				<span class="heartNo">${heartNo }</span> 
+			</c:otherwise>
+		</c:choose>
+		&nbsp;</td>
 		<th>&nbsp;&#9997</th>
 		<td>&nbsp;${review_num }&nbsp;</td>
 		
@@ -176,7 +178,7 @@
 		<table class="abc">
 <%-- 			<caption>레스토랑 상세정보</caption> --%>
 			<tr>
-					<th class="def">주소</th> <th class="def">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<th class="def"><b>주소</b></th> <th class="def"></th>
 					<td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td><br>
 			</tr>
 			<tr>
@@ -195,27 +197,78 @@
 		</table>	
 
 <hr>
+ 
+
+<script>
+ function toggleDiv(divId) {
+     var menuDiv = document.getElementById("menu");
+     var introDiv = document.getElementById("intro");
+     var reviewDiv = document.getElementById("review");
+     var noticeDiv = document.getElementById("notice");
+     
+     
+     
+     if(divId === "menu"){
+    	 menuDiv.style.display = "block";
+    	introDiv.style.display = "none";
+    	reviewDiv.style.display = "none";
+    	noticeDiv.style.display = "none";
+    	
+     } else if(divId === "intro"){
+    	 noticeDiv.style.display = "none";
+    	 reviewDiv.style.display = "none";
+    	 menuDiv.style.display = "none";
+    	 introDiv.style.display = "block";
+     	}
+      else if(divId === "review"){
+    	 noticeDiv.style.display = "none";
+    	 introDiv.style.display = "none";
+    	 menuDiv.style.display = "none";
+    	 reviewDiv.style.display = "block";
+     	}
+    else if(divId === "notice") {
+    	 introDiv.style.display = "none";
+    	 reviewDiv.style.display = "none";
+    	 menuDiv.style.display = "none";
+    	 noticeDiv.style.display = "block";
+     	}
+     
+     
+     
+     }
+ 
+  window.onload = function() {
+	  	 var menuDiv = document.getElementById("menu");
+	     var introDiv = document.getElementById("intro");
+	     var reviewDiv = document.getElementById("review");
+	     var noticeDiv = document.getElementById("notice");
+	    	
+	     	menuDiv.style.display = "block";
+			 introDiv.style.display = "none";
+			 reviewDiv.style.display = "none";
+			 noticeDiv.style.display = "none";
+ };
+</script>
 
 
-			<th>메뉴</th>
-			<td></td><br>
+ 	<input onclick="toggleDiv('menu')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('intro')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('review')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('notice')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
 
+			<div id="menu" class="myDiv">
+			<th>메뉴</th><br>
+			<td>${menudto.meunfile }</td><br>
+			</div>
 
+			<div id="intro" class="myDiv" >
+			<th>가게 소개</th><br>
+			<td>${restForm.descriptions}</td><br>
+			</div>
 
-
-			<th>가게 공지사항</th>
-			<td>${restForm.rest_notice}</td><br>
-
-
-
-
-
-	
-	<hr>
-	
-
-		<tr>
-		<c:forEach var="re" items="${requestScope.re }" varStatus="no">
+			<div id="review" class="myDiv" >
+			<tr>
+			<c:forEach var="re" items="${requestScope.re }" varStatus="no">
 			<th>번호</th> &nbsp <td>${no.count}</td><br>
 			<th>아이디</th> &nbsp <td>${re.user_id}</td><br>
 			<th>외관사진</th> &nbsp <td>${re.file}</td><br>			
@@ -225,6 +278,36 @@
 			<hr>
 		</c:forEach>
 		</tr>
+			</div>
+
+			<div id="notice" class="myDiv" >
+			<th>가게 공지사항</th>
+			<td>${restForm.rest_notice}</td><br>
+			</div>
+
+
+
+
+
+
+
+
+
+	
+	<hr>
+	
+
+<!-- 		<tr> -->
+<%-- 		<c:forEach var="re" items="${requestScope.re }" varStatus="no"> --%>
+<%-- 			<th>번호</th> &nbsp <td>${no.count}</td><br> --%>
+<%-- 			<th>아이디</th> &nbsp <td>${re.user_id}</td><br> --%>
+<%-- 			<th>외관사진</th> &nbsp <td>${re.file}</td><br>			 --%>
+<%-- 			<th>평점</th> &nbsp <td>${re.grade}</td><br> --%>
+<%-- 			<th>내용</th> &nbsp <td>${re.content}</td><br> --%>
+<%-- 			<th>등록일</th> &nbsp <td>${re.regdate}</td><br> --%>
+<!-- 			<hr> -->
+<%-- 		</c:forEach> --%>
+<!-- 		</tr> -->
 		
 <!-- 	</tbody> -->
 	

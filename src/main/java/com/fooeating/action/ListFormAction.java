@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fooeating.commons.Action;
 import com.fooeating.commons.ActionForward;
 import com.fooeating.db.PublicDAO;
 import com.fooeating.db.RestaurantDTO;
+import com.fooeating.db.Restaurant_menuDTO;
 
 public class ListFormAction implements Action {
 
@@ -74,6 +76,19 @@ public class ListFormAction implements Action {
 		
 		System.out.println("listForm : " + listForm.toString());
 		// ---------------------------------------------------------------------
+
+		
+		///-------------------------
+//		HttpSession session = request.getSession();
+//		String user_id = (String)session.getAttribute("user_id");
+//        RestaurantDTO restal = dao.getRestaurantallow(user_id);
+//        Restaurant_menuDTO menudto = dao.getRestaurantmenuallow(restal.getRest_id());
+//        System.out.println("출력할 가게의 정보" + restal);
+//        System.out.println("출력할 가게의 메뉴 정보 :" + menudto);
+//        request.setAttribute("restal",restal);
+//        request.setAttribute("menudto", menudto);
+		
+		///-------------------------
 
 		
 		request.setAttribute("listForm", listForm);
