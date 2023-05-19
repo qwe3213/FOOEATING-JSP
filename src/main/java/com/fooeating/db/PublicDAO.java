@@ -2274,7 +2274,7 @@ public class PublicDAO {
 				con = getCon();
 				
 				sql = "SELECT w.status, w.rest_id, w.wait_num, u.name, u.phone, w.people, w.regdate FROM waiting w "
-						+ "JOIN USER u "
+						+ "JOIN user u "
 						+ "ON u.user_id = w.user_id "
 						+ "WHERE rest_id = (SELECT rest_id "
 						+ "                 FROM restaurant "
