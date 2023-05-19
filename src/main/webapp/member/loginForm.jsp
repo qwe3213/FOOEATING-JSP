@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 
 <title>Login</title>
@@ -122,8 +123,8 @@ $(document).ready(function(){
 				<div id="divpw"></div>
 				</div>
 				<hr>
-				<input type="submit" value="로그인">
-				<input type="button" value="회원가입" onclick="location.href='./MemberJoin.foo';">
+				<input class=" btn-2" type="submit" value="로그인" style="margin-right: 25%;">
+				<input class=" btn-2" type="button" value="회원가입" onclick="location.href='./MemberJoin.foo';">
 			</form>
 			
 		</fieldset>

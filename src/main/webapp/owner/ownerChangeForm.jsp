@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 
 <title>약간 동의</title>
@@ -73,7 +74,7 @@
 	            <textarea rows="5" cols="50">약관 내용</textarea><br>
 	            약관에 동의합니다. <input type="checkbox" id="check_3"><br>
 	            <br>	    
-	            <input type="button" value="다음" id="nextBtn">
+	            <input class="btn-2" type="button" value="다음" id="nextBtn">
 	        </form>
 	    </fieldset>
  	</div> <!-- ***** Main End ***** -->

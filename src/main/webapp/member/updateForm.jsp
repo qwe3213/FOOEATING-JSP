@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/question.css">
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
@@ -152,8 +153,8 @@
 	 			 	휴대전화 : <input type="text" name="phone" value="${dto.phone }" id="phone"> 
 	 			 	<div id="phonediv" class="errorDiv"></div>       
 	 			 	<hr>      
-	 			 	<input type="submit" value="회원정보 수정">
-	 			 	<input type="button" value="회원 탈퇴" onclick="winopen2()"><br>
+	 			 	<input class="btn-2" type="submit" value="회원정보 수정">
+	 			 	<input class="btn-2" type="button" value="회원 탈퇴" onclick="winopen2()"><br>
  				</form>
  		</fieldset>
 	</div>
