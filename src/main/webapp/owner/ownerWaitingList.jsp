@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/ownerwait.css">
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
@@ -75,7 +76,8 @@ function winopen(wait_num){
 <div id="top">
 <div id="category" style="margin: 85px 0 0 410px;">
 	<c:set var="wait_num" value="${dto.wait_num }" />
-	<table border="1">
+	<table>
+	<thead>
 		<tr>
 			<th>대기 번호</th>
 			<th>회원 이름</th>
@@ -84,7 +86,7 @@ function winopen(wait_num){
 			<th>대기 등록 시간</th>
 			<th>완료</th>
 		</tr>
-		
+		</thead>
 		<c:forEach var="dto" items="${requestScope.waitingList }">
 			<c:if test="${dto.status == 1 }">
 			<tr>
@@ -93,13 +95,18 @@ function winopen(wait_num){
 				<td>${dto.phone }</td>
 				<td>${dto.people }</td>
 				<td>${dto.regdate }</td>
-				<td><button onclick="winopen('${dto.wait_num}');">완료</button></td>
+				<td><button  onclick="winopen('${dto.wait_num}');" 
+				style="background-color: #fd9991;
+			    color: #fff;
+			    border: none;
+			    border-radius: 10px;
+			    font-size:medium;
+			    font-weight: bold;"
+				>완료</button></td>
 			</tr>
 			</c:if>
 		</c:forEach>
 	</table>
-
-
 
 <%
 int count = (int)request.getAttribute("count");
