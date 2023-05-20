@@ -20,6 +20,9 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/question.css">
 
+
+<title>점주 My page 가게 관리</title>
+
 <link href="./css/sideMenu.css" rel="stylesheet">
 
 <script type="text/javascript">
@@ -33,8 +36,6 @@
 	}
 </script>
 
-
-<title>가게 관리</title>
 </head>
 <body>
 

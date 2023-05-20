@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/question.css">
 
+<title>점주 전환</title>
+
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){

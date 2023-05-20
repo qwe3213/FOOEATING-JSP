@@ -72,7 +72,7 @@
     }
 .alinkstyle {
 	color: #fff;
-	background: #fd9991;
+	background: #ff4742;
     border: none;
 	border-radius: 10px;
 	font-size: medium;
