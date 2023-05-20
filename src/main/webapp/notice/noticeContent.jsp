@@ -24,7 +24,8 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/ownerwait.css">
+<link rel="stylesheet" href="css/question.css">
 
 <title>FOOEATING - Notice</title>
 
@@ -55,18 +56,18 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 410px 0 410px;">
 <table border="1">
 	<tr>
-		<th>No</th>
-		<td>${dto.notice_num}</td>
-		<th>제목</th>
+		<th style="color: white; background: #fb5849; ">No</th>
+		<td style="text-align: center;">${dto.notice_num}</td>
+		<th style="color: white; background: #fb5849;">제목</th>
 		<td>${dto.subject }</td>
-		<th>작성일</th>
+		<th style="color: white; background: #fb5849;">작성일</th>
 		<td>${dto.regdate }</td>
 	</tr>
 	<tr>
-		<th colspan="2">내용</th>
+		<th colspan="2" style="color: white; background: #fb5849;">내용</th>
 		<td colspan="6">${fn:replace(dto.content,cn,br) }</td>
 	</tr>
 </table>
@@ -80,20 +81,26 @@
 
 
 <!-- 모두 가능 -->
-<input type="button" value="목록으로" onclick="location.href='./NoticeList.foo?pageNum=${pageNum}';">
-
+<div>
+<div style="float: left; padding: 33px 66px;">
+<input class="btn-2" type="button" value="목록으로" onclick="location.href='./NoticeList.foo?pageNum=${pageNum}';">
+</div>
 <!-- 관리자만 가능 -->
 <c:if test="${user_id.equals('real_admin') }" >
+<div style="float: left; padding: 33px 66px;">
 	<form action="./NoticeUpdateAction.foo?pageNum=${pageNum }&notice_num=${dto.notice_num }" method="post">
 		<input type="hidden" name="dto" value="${dto }">
-		<input type="submit" value="수정하기">
+		<input class="btn-2" type="submit" value="수정하기">
 	</form>
-	
+</div>
+<div style="float: left; padding: 33px 66px;">
 	<form action="./NoticeDeleteAction.foo?pageNum=${pageNum }&notice_num=${dto.notice_num }" method="post">
 		<input type="hidden" value="${dto }">
-		<input type="submit" value="삭제하기" >
+		<input class="btn-2" type="submit" value="삭제하기" >
 	</form>
+</div>
 </c:if>
+</div>
 </div>
 </div>
 </main>
