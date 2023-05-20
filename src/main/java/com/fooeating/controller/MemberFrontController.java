@@ -514,6 +514,16 @@ public class MemberFrontController extends HttpServlet {
 		    
 		}
 		
+		else if(command.equals("/crewInformation.foo")) {
+			System.out.println("C : companyInformation.foo 호출");
+		    System.out.println(" 패턴1 view페이지 이동");
+		    
+		    forward = new ActionForward();
+			forward.setPath("./main/crewInformation.jsp");
+			forward.setRedirect(false);
+		    
+		}
+		
 		
 
 		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
