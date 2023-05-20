@@ -95,18 +95,18 @@
 					</td>
 				</tr>
 			</table>
-			<button onclick="winopen(${list.rest_menu_num})">메뉴 수정</button>
+			<button class="btn-2" onclick="winopen(${list.rest_menu_num})">메뉴 수정</button>
 			<form action="./OwnerMenuDelete.on" method="post"
 				onsubmit="return deleteMenu()">
 				<input type="hidden" name="rest_menu_num" id="rest_menu_num"
 					value="${list.rest_menu_num }">
-				<button>삭제</button>
+				<button class="btn-2">삭제</button>
 			</form>
 			</c:forEach>
 			<c:if test="${fn:length(menuList)< 3 }">
 			<hr>
 			
-			<button onclick="winopen2(${menuList[0].rest_id});">메뉴 추가</button>
+			<button class="btn-2" onclick="winopen2(${menuList[0].rest_id});">메뉴 추가</button>
 			</c:if>
  		</div>
 	</div>

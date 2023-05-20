@@ -2097,14 +2097,14 @@ public class PublicDAO {
 				con = getCon();
 				
 				// 3. sql 작성
-				sql = "insert into restaurant_menu (menufile,menu_name,menu_descriptions,price,rest_id) "
+				sql = "insert into restaurant_menu (menu_name,menu_descriptions,price,menufile,rest_id) "
 						+ " values(?,?,?,?,?)";
 				
 				pstmt= con.prepareStatement(sql);
-				pstmt.setString(1, menudto.getMenufile());
-				pstmt.setString(2, menudto.getMenu_name());
-				pstmt.setString(3, menudto.getMenu_descriptions());
-				pstmt.setString(4, menudto.getPrice());
+				pstmt.setString(1, menudto.getMenu_name());
+				pstmt.setString(2, menudto.getMenu_descriptions());
+				pstmt.setString(3, menudto.getPrice());
+				pstmt.setString(4, menudto.getMenufile());
 				pstmt.setString(5, menudto.getRest_id());
 				//4. sql실행
 				pstmt.executeUpdate();

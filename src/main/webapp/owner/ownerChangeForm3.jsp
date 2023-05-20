@@ -113,7 +113,7 @@
 			메뉴 소개 : <input type="text" name="menu_descriptions" style="margin-bottom: 5px;"> <br>
 			메뉴 가격 : <input type="text" name="price"> <br>
 			<br><br>
-			메뉴 이미지 <input type="file" name="meunfile" style="margin-bottom: 5px; "> <br>
+			메뉴 이미지 <input type="file" name="menufile" style="margin-bottom: 5px; "> <br>
 		   	가게 외부 이미지 <input type="file" name="outfile" style="margin-bottom: 5px; "> <br>
 		    가게 내부 이미지 <input type="file" name="infile" > <br>
 		    
