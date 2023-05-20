@@ -52,9 +52,9 @@
 		<h2> 가게 정보 삭제 </h2>
 		<br>
 		<fieldset>
-		 	<legend style="font-size: large;"> 가게 삭제시 비밀번호를 입력하세요! </legend>
+		 	<legend style="font-size: large;"> 가게 삭제 시 비밀번호를 입력하세요! </legend>
 	 
-				<form action="./RestaurantDeleteProAction.on" method="post">
+				<form action="./RestaurantDeleteProAction.on" method="post" style="margin-top: 10px;"> 
 					<b>비밀번호</b> : <input type="password" name="pw" placeholder="비밀번호를 입력하세요.">
 			
 					<input class="btn-2" type="submit" value="삭제">

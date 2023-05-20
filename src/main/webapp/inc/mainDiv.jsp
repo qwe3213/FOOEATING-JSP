@@ -10,7 +10,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-4">
-					<div class="left-content">
+					<div class="left-content" >
 						<div class="inner-content">
 							<h4>Fooeating</h4>
 							<h6>THE BEST QUEUE UP</h6>
@@ -45,17 +45,17 @@
 					<div class="main-banner header-text">
 						<div class="Modern-Slider">
 							<div class="item">
-								<div class="img-fill">
+								<div class="img-fill" style="height: 102%;">
 									<img src="assets/images/slide-01.jpg" alt="">
 								</div>
 							</div>
 							<div class="item">
-								<div class="img-fill">
+								<div class="img-fill" style="height: 102%;">
 									<img src="assets/images/slide-02.jpg" alt="">
 								</div>
 							</div>
 							<div class="item">
-								<div class="img-fill">
+								<div class="img-fill" style="height: 102%;">
 									<img src="assets/images/slide-03.jpg" alt="">
 								</div>
 							</div>
