@@ -39,7 +39,7 @@
 	}
 	
 </script>
-
+<title>대기리스트</title>
 </head>
 <body>
 
@@ -68,7 +68,7 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
+	<div id="category" style="margin: 85px 250px 0 410px; text-align:-webkit-center; min-width: 500px;">
 		<!-- 유저 로그인 제어 -->
 		<c:if test="${empty user_id }">
 			<c:redirect url="./MemberLogin.foo" />
@@ -80,18 +80,18 @@
 		<c:if test="${!empty wDto.wait_num }">
 			<h2>대기 중인 가게</h2>
 			<br>
-			<table border="1">
+			<table border="1" style="text-align-last: center;">
 				<thead>
 				<tr>
-					<th>가게명</th>
-					<th>나의 대기번호</th>
-					<th>남은 팀 수</th>
+					<th style="min-width: 150px;">가게명</th>
+					<th style="min-width: 150px;">나의 대기번호</th>
+					<th style="min-width: 150px;">남은 팀 수</th>
 				</tr>
 				</thead>
 				<tr>
-					<td><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}" style="color:#73685d;">${wDto.rest_name}</a></td>
-					<td>${wDto.wait_num}</td>
-					<td>${qDto.wait_team}</td>
+					<td style="min-width: 150px;"><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}">${wDto.rest_name}</a></td>
+					<td style="min-width: 150px;">${wDto.wait_num}</td>
+					<td style="min-width: 150px;">${qDto.wait_team}</td>
 				</tr>
 			</table>
 			<form action="./MemberCancelWaiting.foo" method="post" onsubmit="return cancelWaiting()">
@@ -108,7 +108,7 @@
 		<br> <br> <br>
 		
 		<!-- 과거 대기 내역 -->
-		<jsp:include page="memberWaitingBeforeList.jsp" />
+		<jsp:include page="memberWaitingBeforeList.jsp" /><br><br>
 	</div>	
 </div>
 </main>

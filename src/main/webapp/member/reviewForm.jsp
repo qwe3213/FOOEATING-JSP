@@ -46,7 +46,7 @@
 	
 </script>
 
-
+<title>리뷰관리</title>
 </head>
 <body>
 
@@ -74,7 +74,7 @@
 <!-- main -->
 <main>
 	<div id="top">
-	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
+	<div id="category" style="margin: 85px 250px 0 410px; text-align:-webkit-center;  min-width: 500px;">
 	<h2 style="margin-bottom: 15px;">리뷰 관리</h2>
 	<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }">
@@ -85,7 +85,6 @@
 	<c:forEach var="dto" items="${reviewList}">
 		<div >
 		<table border="1" style="text-align: center;">
-			
 			<tr>
 				<td colspan="2">${dto.name }</td>
 			</tr>

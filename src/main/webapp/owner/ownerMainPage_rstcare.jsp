@@ -128,14 +128,13 @@
 		</table>
 	    <br>
 	  	
-	</div>
-	<div style="text-align: left;">
 	  <form action ="./OwnerNoticeAction.on " method="post">
-		<textarea name="rest_notice" rows="2" cols="110" placeholder="공지사항"></textarea>
+		<textarea name="rest_notice" rows="2"placeholder="공지사항" style="width:100%"></textarea>
 		<input type="hidden" name="rest_id" value="${restal.rest_id }" >
 		<input class="btn-2" type="submit" value="저장" style="margin-bottom: 2px;">
 	  </form>
 	</div>
+	
 	</div>
 	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
 	</div>

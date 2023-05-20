@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/ownerwait.css">
+<link rel="stylesheet" href="css/question.css">
 
 <title>USERLIST</title>
 
@@ -49,7 +51,9 @@
 <!-- main -->
 <main>
 	<div id="top">
+	<div id="category" style="margin: 85px 50px 0 410px; text-align:-webkit-center;  min-width: 400px;">
 		<table border="1">
+			<thead>
 			<tr>
 				<th>No.</th>
 				<th>아이디</th>
@@ -60,7 +64,9 @@
 				<th>가입일</th>
 				<th>점주유무</th>
 			</tr>
+			</thead>
 			
+			<tbody>
 			<c:forEach var="dto" items="${requestScope.userList }">
 			<tr>
 				<td>${dto.uno}</td>
@@ -73,6 +79,7 @@
 				<td>${dto.owner_id}</td>
 			</tr>
 			</c:forEach>
+			</tbody>
 		</table>
 	
 		<%
@@ -108,6 +115,8 @@
 			}
 		}
 	%>
+	<br><br>
+	</div>
 	</div> <!-- ***** Main End ***** -->
 </main>
 <!-- main -->

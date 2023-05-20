@@ -21,12 +21,8 @@
 			
 		</div>
 			<span>
-				<button onclick="opener.parent.location.reload(); window.close();" style="background-color: #ff4742;
-																							color: #fff;
-																							border: none;
-																							border-radius: 10px;
-																							font-size:medium;
-																							font-weight: bold;">
+				<button onclick="opener.parent.location.reload(); window.close();" 
+				style="background-color: #ff4742; color: #fff; border: none; border-radius: 10px; font-size:medium; font-weight: bold;">
 					닫기
 				</button>
 			</span>

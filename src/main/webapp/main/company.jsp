@@ -50,7 +50,7 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 410px 0 410px;">
+	<div id="category" style="margin: 85px 410px 0 410px; min-width: 750px;">
 
 	<div style="text-align: center;">
 		<h1>푸이팅</h1>

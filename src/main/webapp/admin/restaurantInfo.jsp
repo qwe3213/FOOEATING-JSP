@@ -7,11 +7,18 @@
 <meta charset="UTF-8">
 <title>restaurantInfo</title>
 
-<!-- css 파일 -->
-<link href="./css/footer.css" rel="stylesheet">
-<link href="./css/header.css" rel="stylesheet">
+<!-- css파일 -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+<link rel="stylesheet" href="assets/css/owl-carousel.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+<link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="css/ownerwait.css"> -->
+<link rel="stylesheet" href="css/question.css">
 
 <script type="text/javascript">
 	function winopen(rest_id){
@@ -40,7 +47,10 @@
 <!-- main -->
 <main>
 <br><br>
-	<table border="1">
+	<div id="top">
+	<div id="category" style="margin: 85px 50px 0 410px; text-align:-webkit-center;  min-width: 400px;">
+	<table>
+	<tbody>
 		<tr>
 			<th>상호명</th>
 			<td>${restInfo.name}</td>
@@ -62,10 +72,6 @@
 			<td>${restInfo.runtime}</td>
 		</tr>
 		<tr>
-			<th>메뉴</th>
-			<td></td>
-		</tr>
-		<tr>
 			<th>편의시설</th>
 			<td>${restInfo.convenience}</td>
 		</tr>
@@ -73,6 +79,7 @@
 			<th>가게 공지사항</th>
 			<td>${restInfo.rest_notice}</td>
 		</tr>
+	</tbody>
 	</table>
 	
 	<c:set var="rstatus" value="<%=request.getParameter(\"rstatus\")%>" />
@@ -80,16 +87,18 @@
 	
 	<!-- 대기 중인 가게 목록에서 진입  -->
 	<c:if test="${rstatus.equals('no')}">
-		<button onclick="opener.parent.location.reload(); winopen(${rest_id})">입점 승인</button>
-		<button onclick="location.href='./RestaurantWaitList.ad?pageNum=${pageNum}'">
+		<button onclick="opener.parent.location.reload(); winopen(${rest_id})" class="btn-2">입점 승인</button>
+		<button onclick="location.href='./RestaurantWaitList.ad?pageNum=${pageNum}'" class="btn-2">
 			목록으로</button>
 	</c:if>
 	
 	<!-- 입점 중인 가게 목록에서 진입  -->
 	<c:if test="${rstatus.equals('yes')}">
-		<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'">
+		<button onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'" class="btn-2">
 			목록으로</button>
 	</c:if>
+	</div>
+	</div>
 </main>
 <!-- main -->
 	
