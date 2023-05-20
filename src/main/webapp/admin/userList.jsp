@@ -61,9 +61,9 @@
 				<th>점주유무</th>
 			</tr>
 			
-			<c:forEach var="dto" items="${requestScope.userList }" varStatus="no">
+			<c:forEach var="dto" items="${requestScope.userList }">
 			<tr>
-				<td>${no.count}</td>
+				<td>${dto.uno}</td>
 				<td>${dto.user_id}</td>
 				<td>${dto.pw}</td>
 				<td>${dto.name}</td>

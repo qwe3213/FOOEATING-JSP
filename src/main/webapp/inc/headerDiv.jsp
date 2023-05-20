@@ -7,13 +7,13 @@
 <header class="header-area header-sticky">
 	<!-- 오른쪽 아래에 띄우고 싶은데... ul + li 합쳐야만 css 적용됨 -->
 	<div style="font-size: 1em;">
-		<div style="float: right; font-size: 1em; width: max-content; margin-left: 0%; padding-left: 100%;">
+		<div style="float: right; font-size: 16px; width: max-content; margin-left: 0%; padding-left: 100%;">
 		
 		<!-- 로그인 안했을 때 -->
-			<c:if test="${empty user_id }" >
-				<a href="./MemberLogin.foo">Login</a>
-				<a href="./MemberJoin.foo">JoinUs</a>
-				<a href="./ownerChangeForm.on">Business registration</a>
+			<c:if test="${empty user_id }">
+				<a href="./MemberLogin.foo" style="margin-right: 15px;">LOGIN</a>
+				<a href="./MemberJoin.foo" style="margin-right: 15px;">JOIN US</a>
+				<a href="./ownerChangeForm.on" style="margin-right: 10px;">BUSINESS</a>
 			</c:if>
 			
 		<!-- 레스토랑 테이블에 점주 아이디가 있을 경우 변수 저장 -->
@@ -21,21 +21,21 @@
 			
 		<!-- 로그인 했을 때 -->
 			<c:if test="${!empty user_id }" >
-				<a href="./MemberLogout.foo">Logout</a>
+				<a href="./MemberLogout.foo" style="margin-right: 15px;">LOGOUT</a>
 									
 					<c:choose>
 						<c:when test="${user_id.equals('real_admin')}" >
-							<a href="./UserInfoList.ad">MyPage</a>
+							<a href="./UserInfoList.ad" style="margin-right: 15px;">MY PAGE</a>
 						</c:when>
 						<c:when test="${user_id.equals(owner_user_id) }">
-							<a href="./OwnerMainPageRstcareAction.on">MyPage</a>
+							<a href="./OwnerMainPageRstcareAction.on" style="margin-right: 15px;">MY PAGE</a>
 						</c:when>
 						<c:otherwise>
-							<a href="./MemberWaitingList.foo">MyPage</a>
+							<a href="./MemberWaitingList.foo" style="margin-right: 15px;">MY PAGE</a>
 						</c:otherwise>
 					</c:choose>
 				<c:if test="${empty owner_user_id && !user_id.equals('real_admin')}">
-					<a href="./ownerChangeForm.on">Business registration</a>
+					<a href="./ownerChangeForm.on" style="margin-right: 10px;">BUSINESS</a>
 				</c:if>
 			
 			</c:if>

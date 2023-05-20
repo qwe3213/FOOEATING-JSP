@@ -29,11 +29,12 @@
 // ID & PW 유효성 체크
 $(document).ready(function(){
 	
-	$(document).ready(function(){
-	    $('div').css({
-	        'font-size' : '0.7em',
-	        'color' : 'red'
-	    });
+// 	$(document).ready(function(){
+// 	    $('div').css({
+// 	        'font-size' : '0.7em',
+// 	        'color' : 'red'
+// 	    });
+// -> 이 코드 때문에 로그인 페이지에서 상단 '로그인, 회원가입, 비지니스' 부분이 자꾸 작아졌음!
 	    
 	     $("#fr").on("submit", function(e) {
 	         if(fr.user_id.value ==""){
@@ -93,7 +94,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
+<!-- ***** Preloader Start ***** !!가운데 로딩 점!! -->
 <div id="preloader">
     <div class="jumper">
         <div></div>
