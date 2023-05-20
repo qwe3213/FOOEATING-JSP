@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/question.css">
 
-
 <link href="./css/sideMenu.css" rel="stylesheet">
 
 <script type="text/javascript">
@@ -34,6 +33,8 @@
 	}
 </script>
 
+
+<title>가게 관리</title>
 </head>
 <body>
 
@@ -62,7 +63,6 @@
 
 <!-- main -->
 <main>
-
 <div id="top">
 <div id="category" style="margin: 85px 0 0 410px;">
 	<h2>나의 가게 정보</h2>
