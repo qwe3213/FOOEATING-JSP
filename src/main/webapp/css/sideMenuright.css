@@ -40,9 +40,135 @@
 	margin-right: 40px;
 }
 
+/* .fict{ */
+/* 	margin-left: 10px; */
+/* } */
+
 #wait{
 	position: relative;
 	left: 1450px;
 	bottom: 900px;
 }
 
+#waiting1{
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #ff4742;
+    color: #fff;
+    background-color: #ff4742;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    font-weight: 800;
+    font-size: 16px;
+    height: 42px;
+
+}
+
+#waiting1:hover{
+    background: 0 0;
+    color: #ff4742;
+}
+
+#waiting2{
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #ff4742;
+    color: #fff;
+    background-color: #ff4742;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    font-weight: 800;
+    font-size: 16px;
+    height: 42px;
+
+}
+
+#waiting2:hover{
+    background: 0 0;
+    color: #ff4742;
+}
+
+#ready{
+	display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #ff4742;
+    color: #fff;
+    background-color: #ff4742;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    font-weight: 800;
+    font-size: 16px;
+    height: 42px;
+}
+
+#ready{
+	background: 0 0;
+    color: #ff4742;
+}
+
+#sl{
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #ff4742;
+    color: #ff4742;
+    background: 0 0;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    font-weight: 800;
+    font-size: 16px;
+    height: 42px;
+}
+
+#sl:hover{
+    background-color: #ff4742;
+   	color: #fff;
+}
+
+#sogae{
+	margin-right: 45px;
+	margin-left: 20px;
+}  
+
+#sogae{
+	color: rgb(255,255,255);
+	background-color: #ff4742;
+	padding: 1rem 3rem;
+	position: relative;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+#sogae:hover{
+ 	border: none; 
+ 	background: rgb(255, 255, 255); 
+ 	padding: 1.2rem 3.2rem; 
+ 	color: rgb(27, 27, 27); 
+ 	letter-spacing: 0.3em; 
+ 	box-shadow: rgba(0, 0, 0, 0.15) 0px 0.5rem 1rem; 
+ }
+ 
+#sogae:active { 
+	padding: 0.8rem 2.8rem; 
+	color: rgb(27, 27, 27); 
+	transform: translateY(2px); 
+}
+
+#fc{
+	margin-bottom: 20px;
+}
+
+/* .fic{ */
+/* 	padding: 10px; */
+/* } */

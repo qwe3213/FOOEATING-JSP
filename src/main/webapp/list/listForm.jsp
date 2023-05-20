@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/listarray.css">
 
 <title>Category</title>
 
@@ -176,14 +177,14 @@
 <!-- 		<div id="list" class="myDiv"> -->
 		<div id="list" class="myDiv"><script id="list" class="myDiv"></script>
 		<table border="1">
-		<tr>
-			<th>No.</th>
-			<th>가게이름</th>
-			<th>외관사진</th>
-			<th>좋아요 수</th>
-			<th>리뷰 수</th>
-<!-- 			<th>조회수</th> -->
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<th>No.</th> -->
+<!-- 			<th>가게이름</th> -->
+<!-- 			<th>외관사진</th> -->
+<!-- 			<th>좋아요 수</th> -->
+<!-- 			<th>리뷰 수</th> -->
+<!-- <!-- 			<th>조회수</th> --> -->
+<!-- 		</tr> -->
 		
 		<c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
 	
@@ -196,13 +197,13 @@
 				</form> --%>
 				<a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
 			</td>
-			<td><img src="./upload/${dto.outfile}" width="100px"></td>
 			<td>${dto.like_num}</td>
 			<td>${dto.reviewCount}</td>
 <%-- 			<td>${restForm.read_count}</td> --%>
 		</tr>
 		</c:forEach>
 	</table>
+<br>
 <%
 		int count = (int)request.getAttribute("count");
 		int pageSize = (int)request.getAttribute("pageSize");
@@ -253,7 +254,7 @@
 
 <div id="map" class="myDiv" style="width:400x;height:300px;">
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89b7b057107ea38979fda72f1c0d0480&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
