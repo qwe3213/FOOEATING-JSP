@@ -63,9 +63,10 @@
 
 <main>
 	<div id="top"> <!-- ** main -> div id="top" 해주기 ** -->
-		<div style="margin:0% 28.5% 0% 35%;">
+		<div style="margin:0% 28.5% 0% 35%; min-width: 650px;">
+	    <br>
 	    <fieldset style="text-align: right;">
-	        <legend style="text-align: left;">step1</legend>
+	        <legend style="text-align: left; margin-left: 15px;">step1</legend>
 	        <form id="terms_form" action="./ownerChangeForm2.on" method="post">
 	            <textarea rows="8" cols="80">푸이팅 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 푸이팅 서비스의 이용과 관련하여 푸이팅 서비스를 제공하는 푸이팅 주식회사(이하 ‘푸이팅’)와 이를 이용하는 푸이팅 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 푸이팅 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
 
@@ -101,6 +102,8 @@
 	            <br>	    
 	            <input class="btn-2" type="button" value="다음" id="nextBtn">
 	        </form>
+	        <br>
+	        <br>
 	    </fieldset>
 	    </div>
  	</div> <!-- ***** Main End ***** -->

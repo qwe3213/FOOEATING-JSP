@@ -193,6 +193,7 @@ $(document).ready(function(){
 <main>
 	<div id="top">
 	<div style="margin:0% 28.5% 0% 45%;">
+	<br>
 	<fieldset style="text-align:left; color: rgb(0,0,0);">
 		<legend>step2</legend>
 		<form action="./ownerChangeForm3.on" id="fr" name="fr" method="post" style="font-size: medium; width: 350px;">
