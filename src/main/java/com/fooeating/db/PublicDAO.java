@@ -2097,11 +2097,11 @@ public class PublicDAO {
 				con = getCon();
 				
 				// 3. sql 작성
-				sql = "insert into restaurant_menu (remenufile,menu_name,menu_descriptions,price,rest_id) "
+				sql = "insert into restaurant_menu (menufile,menu_name,menu_descriptions,price,rest_id) "
 						+ " values(?,?,?,?,?)";
 				
 				pstmt= con.prepareStatement(sql);
-				pstmt.setString(1, menudto.getMeunfile());
+				pstmt.setString(1, menudto.getMenufile());
 				pstmt.setString(2, menudto.getMenu_name());
 				pstmt.setString(3, menudto.getMenu_descriptions());
 				pstmt.setString(4, menudto.getPrice());
@@ -2252,7 +2252,7 @@ public class PublicDAO {
       		    	dto.setMenu_name(rs.getString("menu_name"));
       		    	dto.setPrice(rs.getString("price"));
       		    	dto.setRest_id(rs.getString("rest_id"));
-      		    	dto.setMeunfile(rs.getString("menufile"));
+      		    	dto.setMenufile(rs.getString("menufile"));
       		    }
 			  
 			} catch (Exception e) {
@@ -2546,8 +2546,8 @@ public class PublicDAO {
 					dto.setMenu_name(rs.getString(2));
 					dto.setMenu_descriptions(rs.getString(3));
 					dto.setPrice(rs.getString(4));
-					dto.setRest_id(rs.getString(5));
-					dto.setMeunfile(rs.getString(6));
+					dto.setMenufile(rs.getString(5));
+					dto.setRest_id(rs.getString(6));
 					
 					menuList.add(dto);
 				} // while
@@ -2583,7 +2583,7 @@ public class PublicDAO {
 					dto.setMenu_descriptions(rs.getString(3));
 					dto.setPrice(rs.getString(4));
 					dto.setRest_id(rs.getString(5));
-					dto.setMeunfile(rs.getString(6));				
+					dto.setMenufile(rs.getString(6));				
 					}
 				
 				System.out.println(" DAO : 해당 메뉴 저장완료! ");
@@ -2618,7 +2618,7 @@ public class PublicDAO {
 					pstmt.setString(1, dto.getMenu_name());
 					pstmt.setString(2, dto.getMenu_descriptions());
 					pstmt.setString(3, dto.getPrice());
-					pstmt.setString(4, dto.getMeunfile());
+					pstmt.setString(4, dto.getMenufile());
 					pstmt.setInt(5, dto.getRest_menu_num());
 					// 4. sql 실행
 					pstmt.executeUpdate();

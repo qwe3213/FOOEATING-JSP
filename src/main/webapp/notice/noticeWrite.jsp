@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/question.css">
 
 
 <title>FOOEATING - Notice</title>
@@ -26,8 +27,18 @@
 </head>
 <body>
 
+<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
 <!-- header -->
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
 <!-- sideMenu -->
@@ -39,23 +50,26 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 410px 0 410px;">
 
-<h1>공지사항 작성하기</h1>
-<h3>관리자 전용</h3>
+<div>
+<h2>공지사항 작성하기</h2> <br>
 
 <fieldset>
 	<form action="./NoticeWriteAction.foo" method="post" >
-
-	제목 : <input type="text" name="subject"> <br>
-	내용 : <textarea rows="20" cols="100" name="content"></textarea> <br>
-	<hr>
+	<div style="float: left; padding: 1%;"><b>제목 : </b></div>
+	<div style="float: left; padding: 0.5% 0%;"><input type="text" name="subject"></div><br><br>
 	
-	<input type="submit" value="작성하기">
+	<div style="float: left; padding: 1%;"><b>내용 : </b></div>
+	<div style="padding: 1%;"><textarea rows="15" cols="80" name="content"></textarea></div>
 	
-	</form>
+	<div style="text-align: left; padding: 1%;">
+	<input class="btn-2" type="submit" value="작성하기"><br><br>
+	</div>
 	
+	</form>	
 </fieldset>
+</div>
 </div>
 </div>
 </main>

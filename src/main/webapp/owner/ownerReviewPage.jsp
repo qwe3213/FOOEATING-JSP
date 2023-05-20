@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="css/ownerwait.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
 
-<title>리뷰 관리</title>
+<title>점주 My page 리뷰 관리</title>
 </head>
 <body>
 
@@ -50,7 +50,7 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 20px 0px 410px;">
 		<table>
 		<thead>
 			<tr>

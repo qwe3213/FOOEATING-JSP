@@ -51,7 +51,7 @@ public class OwnerMenuUpdateAction implements Action {
 	       dto.setRest_menu_num(rest_menu_num);
 	       dto.setMenu_descriptions(multi.getParameter("menu_descriptions"));
 	       dto.setMenu_name(multi.getParameter("menu_name"));
-	       dto.setMeunfile(multi.getFilesystemName("menufile"));
+	       dto.setMenufile(multi.getFilesystemName("menufile"));
 	       dto.setPrice(multi.getParameter("price"));
 	       dao.OwnerMenuUpdate(dto);
 	       

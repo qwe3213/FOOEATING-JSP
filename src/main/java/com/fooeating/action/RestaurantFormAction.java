@@ -44,6 +44,9 @@ public class RestaurantFormAction implements Action {
 		// 리뷰-------------------------------------------------
 		
 		
+		Restaurant_menuDTO menulist = dao.getRestaurantmenuallow(rest_id);
+        request.setAttribute("menulist", menulist);
+		
 		// --------------------------------------
 		// --------------------------------------
 		

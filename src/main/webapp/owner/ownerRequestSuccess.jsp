@@ -22,7 +22,7 @@
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
-<title>Insert title here</title>
+<title>점주 전환</title>
 </head>
 <body>
 
@@ -42,14 +42,18 @@
 <!-- ***** Header Area End ***** -->
 <main>
 	<div id="top">
-    <h1>ownerRequestSuccess.jsp</h1>
 
-    <fieldset style="margin: 20%; padding: 10% 5%;">
+    <fieldset style="margin-top: 10%;">
         <div style="text-align: center;">
             <form action="./OwnerMainPageRstcareAction.on" method="post">
-                <b>가게 등록 신청이 완료 되었습니다.</b> <br>
+                <b style="font-size: x-large;">가게 등록 신청이 완료 되었습니다.</b> <br>
                 <br>
-                <input type="submit" value="확인">
+                <input type="submit" value="확인" style="background-color: #ff4742;
+															color: #fff;
+															border: none;
+															border-radius: 10px;
+															font-size:medium;
+															font-weight: bold;">
             </form>
         </div>
     </fieldset>
@@ -57,7 +61,34 @@
 </main>
 
 <!-- ***** Footer Start ***** -->
-	<jsp:include page="../inc/footerDiv.jsp" />
+	<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <div class="right-text-content">
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook" style="margin-top: 13px"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" style="margin-top: 13px"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" style="margin-top: 11px"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" style="margin-top: 12px"></i></a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="logo">
+                    <a href="./Main.foo"><img src="./img/푸이팅.png"  width="100px"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="left-text-content">
+                    <p>© Copyright FOOEATING Co.W
+                    
+                    <br>Design: TemplateMo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 <!-- ***** Footer End ***** -->
 
 <!-- jQuery -->

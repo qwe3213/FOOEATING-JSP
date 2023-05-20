@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="css/question.css">
 
 <link href="./css/sideMenu.css" rel="stylesheet">
+
+<title>점주 My page 가게 관리</title>
 </head>
 <body>
 <!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->

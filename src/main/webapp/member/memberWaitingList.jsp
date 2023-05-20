@@ -89,14 +89,20 @@
 				</tr>
 				</thead>
 				<tr>
-					<td><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}">${wDto.rest_name}</a></td>
+					<td><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}" style="color:#73685d;">${wDto.rest_name}</a></td>
 					<td>${wDto.wait_num}</td>
 					<td>${qDto.wait_team}</td>
 				</tr>
 			</table>
 			<form action="./MemberCancelWaiting.foo" method="post" onsubmit="return cancelWaiting()">
 				<input type="hidden" name="wait_num" value="${wDto.wait_num}">
-				<input type="submit" value="대기 취소" class="btn-2">
+				<input type="submit" value="대기 취소" class="btn-2" style="background-color: #ff4742;
+																			color: #fff;
+																			border: none;
+																			border-radius: 10px;
+																			font-size:medium;
+																			font-weight: bold;
+																			margin-top: 10px;">
 			</form>
 		</c:if>
 		<br> <br> <br>

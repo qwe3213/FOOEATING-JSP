@@ -188,14 +188,14 @@
 
 <script>
  function toggleDiv(divId) {
-     var menuDiv = document.getElementById("menu");
+     var menuDiv = document.getElementById("menu1");
      var introDiv = document.getElementById("intro");
      var reviewDiv = document.getElementById("review");
      var noticeDiv = document.getElementById("notice");
      
      
      
-     if(divId === "menu"){
+     if(divId === "menu1"){
     	 menuDiv.style.display = "block";
     	introDiv.style.display = "none";
     	reviewDiv.style.display = "none";
@@ -225,7 +225,7 @@
      }
  
   window.onload = function() {
-	  	 var menuDiv = document.getElementById("menu");
+	  	 var menuDiv = document.getElementById("menu1");
 	     var introDiv = document.getElementById("intro");
 	     var reviewDiv = document.getElementById("review");
 	     var noticeDiv = document.getElementById("notice");
@@ -239,21 +239,21 @@
 
 
 	<div class="">
-	   <input onclick="toggleDiv('menu')" type="button" value="MENU" id="sogae" style="border-radius: 10px;">
+	   <input onclick="toggleDiv('menu1')" type="button" value="MENU" id="sogae" style="border-radius: 10px;">
 	   <input onclick="toggleDiv('intro')" type="button" value="INTRO" id="sogae" style="border-radius: 10px;">
 	   <input onclick="toggleDiv('review')" type="button" value="REVIEW" id="sogae" style="border-radius: 10px;">
 	   <input onclick="toggleDiv('notice')" type="button" value="NOTICE" id="sogae" style="border-radius: 10px;">
 	</div>
 
-<div id="menu" class="rest">
-            <tr><th>&#128203;</th></tr><td>${menulist.menu_name }</td>
-            <tr><th> &#128172;</th></tr><td>${menulist.menu_descriptions }</td>
-            <tr><th>&#128181;</th></tr><td>${menulist.price }</td><br>
-            </div>    
+	<div id="menu1" class="rest">
+             &#128203;${menulist.menu_name }<br>
+             &#128172;${menulist.menu_descriptions }<br>
+            &#128181;${menulist.price }<br>
+    </div>    
 
             <div id="intro" class="rest" style="margin-top: 30px;">
             <p><b style="font-size: 20px;">&#128073; 가게 소개 &#128072;</b></p><br><br>
-            <td>${restForm.descriptions}</td><br>
+            ${restForm.descriptions}<br>
             </div>
 
             <div id="review" class="rest" >
@@ -427,7 +427,7 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 
 <!-- </aside> -->
 
-<table border="1px; solid">
+<table>
 	<span id="wait">
 		<c:if test="${restForm.on_off == true}">
 			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">

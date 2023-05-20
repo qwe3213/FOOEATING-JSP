@@ -22,6 +22,8 @@
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
+<title>점주 My page 대기 관리</title>
+
 <!-- javaScript -->
 <script type="text/javascript">
 function selectAll(selectAll)  {
