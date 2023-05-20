@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/ownerwait.css">
 
 <title>FOOEATING - Notice</title>
 
@@ -55,18 +55,18 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 410px 0 410px;">
 <table border="1">
 	<tr>
-		<th>No</th>
-		<td>${dto.notice_num}</td>
-		<th>제목</th>
+		<th style="color: white; background: #fb5849; ">No</th>
+		<td style="text-align: center;">${dto.notice_num}</td>
+		<th style="color: white; background: #fb5849;">제목</th>
 		<td>${dto.subject }</td>
-		<th>작성일</th>
+		<th style="color: white; background: #fb5849;">작성일</th>
 		<td>${dto.regdate }</td>
 	</tr>
 	<tr>
-		<th colspan="2">내용</th>
+		<th colspan="2" style="color: white; background: #fb5849;">내용</th>
 		<td colspan="6">${fn:replace(dto.content,cn,br) }</td>
 	</tr>
 </table>

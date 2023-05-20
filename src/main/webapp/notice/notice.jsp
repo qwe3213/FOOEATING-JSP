@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/ownerwait.css">
+<link rel="stylesheet" href="css/question.css">
 
 
 <title>FOOEATING - Notice</title>
@@ -52,14 +54,14 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
+	<div id="category" style="margin: 85px 410px 0 410px;">
 
-<!-- 관리자일 때만 글쓰기 버튼 활성화  -->
-<c:if test="${!empty user_id && user_id.equals('real_admin')}">
-	<input type="button" value="글 작성하기" onclick="location.href='./NoticeWrite.foo';">
-</c:if>
-
-
+	<!-- 관리자일 때만 글쓰기 버튼 활성화  -->
+	<div style="float: right;">
+	<c:if test="${!empty user_id && user_id.equals('real_admin')}">
+		<input id="dtn-2" type="button" value="글 작성하기" onclick="location.href='./NoticeWrite.foo';">
+	</c:if>
+	</div>
 
 <%
 	String pageNum = request.getParameter("pageNum");
@@ -69,12 +71,13 @@
 
 <!-- 공지사항 리스트 출력-->
 <table border="1">
+<thead>
 	<tr>
 		<th>no</th>
 		<th>제목</th>
 		<th>작성일</th>
 	</tr>
-	
+	</thead>
 	<c:forEach var="dto" items="${requestScope.noticeList }" >
 		<tr>
 			<td>${dto.notice_num }</td>
@@ -90,8 +93,8 @@
 	</c:forEach>
 </table>
 
-
-
+<br>
+<div style="text-align: -webkit-center;">
 <!-- 이전 / 페이징 번호 / 다음 -->
 <%
 	int count = (int)request.getAttribute("count");
@@ -125,7 +128,7 @@
 		}
 	}
 %>
-
+</div>
 </div>
 </div>
 </main>
