@@ -1631,7 +1631,9 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setLike_num(rs.getInt("like_num"));
-
+					dto.setAddr_city(rs.getString("addr_city"));
+					dto.setAddr_district(rs.getString("addr_district"));
+					dto.setAddr_etc(rs.getString("addr_etc"));
 					dto.setOutfile(rs.getString("outfile"));
 
 						sql = "SELECT count(*) FROM review WHERE rest_id=?";
@@ -1769,6 +1771,9 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setOutfile(rs.getString("outfile"));
+					dto.setAddr_city(rs.getString("addr_city"));
+					dto.setAddr_district(rs.getString("addr_district"));
+					dto.setAddr_etc(rs.getString("addr_etc"));
 					listForm.add(dto);
 					
 				}
@@ -2541,8 +2546,8 @@ public class PublicDAO {
 					dto.setMenu_name(rs.getString(2));
 					dto.setMenu_descriptions(rs.getString(3));
 					dto.setPrice(rs.getString(4));
-					dto.setRest_id(rs.getString(5));
-					dto.setMenufile(rs.getString(6));
+					dto.setMenufile(rs.getString(5));
+					dto.setRest_id(rs.getString(6));
 					
 					menuList.add(dto);
 				} // while

@@ -43,7 +43,6 @@
 	<jsp:include page="../inc/headerDiv.jsp" />
 <!-- header -->
 
-<!-- side menu -->
 <!-- sideMune -->
 <div style="float: left;">
 	<jsp:include page="../inc/sideMenuNotice.jsp" />
@@ -55,6 +54,8 @@
 <main>
 <div id="top">
 	<div id="category" style="margin: 85px 410px 0 410px;">
+	
+	<h2> 공지사항 </h2>
 
 	<!-- 관리자일 때만 글쓰기 버튼 활성화  -->
 	<div style="float: right;">
@@ -176,7 +177,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>

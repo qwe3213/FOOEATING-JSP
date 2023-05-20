@@ -19,6 +19,9 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/question.css">
+<link rel="stylesheet" href="css/ownerwait.css">
+
 
 <title>FOOEATING - Notice</title>
 </head>
@@ -47,35 +50,39 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 410px 0 410px;">
 <!-- NoticeUpdateAction.java에서 저장한 dto 객체 출력 -->
 <form action="./NoticeContentActionPro.foo" method="post">
 
 	<table border="1">
 		<tr>
-			<th>No</th>
-			<td>${dto.notice_num}</td>
-			<th>제목</th>
-			<td><input type="text" name="subject" value="${dto.subject }"></td>
-			<th>작성일</th>
+			<th style="color: white; background: #fb5849;">No</th>
+			<td style="text-align: center;">${dto.notice_num}</td>
+			<th style="color: white; background: #fb5849;">제목</th>
+			<td style="text-align: center; "><input type="text" name="subject" value="${dto.subject }" style="width: 300px;"></td>
+			<th style="color: white; background: #fb5849;">작성일</th>
 			<td>${dto.regdate }</td>
 		</tr>
 		<tr>
-			<th colspan="2">내용</th>
-			<td colspan="6" ><textarea name="content" cols="70" rows="10">${dto.content }</textarea></td>
+			<th colspan="2" style="color: white; background: #fb5849;">내용</th>
+			<td colspan="6" style="text-align: center;"><textarea name="content" cols="80" rows="10">${dto.content }</textarea></td>
 		</tr>
 	</table>
 	
-	
 	<input type="hidden" name="notice_num" value="${dto.notice_num }">
 	<input type="hidden" name="pageNum" value="${pageNum }">
-	<input type="submit" value="수정하기" >
+	<div style="float: right; padding: 1%; margin: 33px 33px;">
+	<input class="btn-2" type="submit" value="수정하기" >
+	</div>
 </form>
 
+<div style="float: right; padding: 1%; margin: 33px 33px;">
+<input class="btn-2" type="button" value="목록으로" onclick="location.href='./NoticeList.foo?pageNum=${pageNum}';">
+</div>
 
-<input type="button" value="목록으로" onclick="location.href='./NoticeList.foo?pageNum=${pageNum}';">
 </div>
 </div>
+
 </main>
 <!-- main -->
 

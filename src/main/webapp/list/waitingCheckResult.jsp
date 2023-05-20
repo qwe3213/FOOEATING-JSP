@@ -9,8 +9,8 @@
 </head>
 <body>
 	<fieldset style="text-align: center; border: none; margin-top: 50px;">
-		<div style="text-align: left; ">
-			<h1>waitingCheckResult.jsp</h1>
+		<div style="text-align: center;">
+			<h2>대기가 완료되었습니다.</h2>
 			
 			사용자 : ${sessionScope.user_id}<br>
 			대기 중인 가게 : ${wdto.rest_id}<br>
