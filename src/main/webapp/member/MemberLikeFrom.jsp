@@ -66,7 +66,7 @@
 			<table border="1" style="width: 500px;">
 							
 				<tr>
-					<td rowspan="2"><img src="./upload/${dto.outfile }" width="200px"></td>
+					<td rowspan="2" width="300px"><img src="./upload/${dto.outfile }" width="200px"></td>
 					<td colspan="2">
 					<a href="./restaurantForm.fd?rest_id=${dto.rest_id}">${dto.name }</a></td>
 					</tr>
