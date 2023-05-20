@@ -1199,7 +1199,7 @@ public class PublicDAO {
 			try {
 				con = getCon();
 				
-				sql = "select rest_id, name, rest_tel, descriptions, 'outfile' from restaurant where rest_id "
+				sql = "select rest_id, name, rest_tel, descriptions, `outfile` from restaurant where rest_id "
 						+ " in (select rest_id from heart where heart_check =1 and user_id =? ) "
 						+ " order by owner_user_id limit ?,?";
 				
@@ -1218,7 +1218,9 @@ public class PublicDAO {
 					dto.setDescriptions(rs.getString(4));
 					dto.setOutfile(rs.getString(5));
 					
+					System.out.println(dto.getOutfile());
 					likeList.add(dto);
+					
 				} // while
 				
 			} catch (Exception e) {
