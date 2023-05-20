@@ -119,10 +119,11 @@
 <main>
 <div style="margin-top: 190px">
 
-	
+	 
 	<div class="container">
 	<aside id="left-sidebar"></aside>
-
+        
+        
 
 		<h1 class="restname" style="padding-top: 80px">${restForm.name}
 
@@ -181,7 +182,9 @@
 					<td>${restForm.dayoff}</td>
 			</tr>
 		</table>	
-
+      <div style="text-align: right;">
+      <img src="./upload/${restForm.infile}" width="100px">
+      </div>
 <hr>
  
 
