@@ -238,7 +238,7 @@
 </script>
 
 
-	<div class="">
+	<div class="button-container">
 	   <input onclick="toggleDiv('menu')" type="button" value="MENU" id="sogae" style="border-radius: 10px;">
 	   <input onclick="toggleDiv('intro')" type="button" value="INTRO" id="sogae" style="border-radius: 10px;">
 	   <input onclick="toggleDiv('review')" type="button" value="REVIEW" id="sogae" style="border-radius: 10px;">
