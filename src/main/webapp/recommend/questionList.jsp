@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="css/main.css">
 
 
-<title>PUDDING</title>
+<title>~렛츠기링~</title>
 <style>
     /* 숨김 처리 */
     .hidden {

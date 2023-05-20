@@ -112,7 +112,7 @@
 <!-- main -->
 <main>
 	<div id="top">
-		<div id="category" style="margin: 85px 0 0 410px;">
+		<div id="category" style="margin: 85px 0 0 410px; min-width: 75%;">
 		<div style="float: left;">
 			<h1>F A Q</h1>
 			<h3>카테고리</h3>

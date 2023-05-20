@@ -22,7 +22,7 @@
 
 
 
-<title>Let`s Giring</title>
+<title>~렛츠기링~</title>
 </head>
 <body>
 
