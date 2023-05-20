@@ -124,15 +124,12 @@
 	<aside id="left-sidebar"></aside>
 
 
-		<h1 class="restname" style="padding-top: 80px">${restForm.name}
-
-
-		</h1>
-
-		<th>&#128065</th>
-		<td>&nbsp;${restForm.read_count}&nbsp;</td>
-		<th>&nbsp;&#128150&nbsp;</th>
-		<td>&nbsp;
+		<h1 class="restname" style="padding-top: 80px">${restForm.name}</h1>
+		
+		&#128065
+		&nbsp;${restForm.read_count}&nbsp;
+		&nbsp;&#128150&nbsp;
+		&nbsp;
 		<c:choose>
 			<c:when test="${!empty user_id && heart_check == 1}">
 				<img id="heart" src="./img/fullheart.png" class="full_heart" onclick="heart_check('${user_id}','${restForm.rest_id }');" width="40" height="40">
@@ -147,43 +144,43 @@
 				<span class="heartNo">${heartNo }</span> 
 			</c:otherwise>
 		</c:choose>
-		&nbsp;</td>
-		<th>&nbsp;&#9997</th>
-		<td>&nbsp;${reviewCount }&nbsp;</td>
-		
-
+		&nbsp;
+		&nbsp;&#9997
+		&nbsp;${reviewCount }&nbsp;
 
 	<hr>
 	
 	
-		<table style="border-collapse: separate; border-spacing: 11px;">
-<%-- 			<caption>레스토랑 상세정보</caption> --%>
-			<tr>
+<table style="border-collapse: separate; border-spacing: 11px;">
+<%--             <caption>레스토랑 상세정보</caption> --%>
+            <tr>
 
-					<th>주소</th>
-					<td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td>
+                    <th>&#127968; </th>
+                    <td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td>
 
-			</tr>
-			<tr>
-					<th>전화번호</th>
-					<td>${restForm.rest_tel}</td>
-			</tr>
-			<tr>
-					<th>업종</th>
-					<td>${restForm.category}</td>
-			</tr>
-			<tr>
-					<th>영업 시간</th>
-					<td>${restForm.runtime}</td>
-			</tr>
-			<tr>
-					<th>휴일</th>
-					<td>${restForm.dayoff}</td>
-			</tr>
-		</table>	
+            </tr>
+            <tr>
+                    <th>&#128222; </th>
+                    <td>${restForm.rest_tel}</td>
+            </tr>
+            <tr>
+                    <th>&#129348; </th>
+                    <td>${restForm.category}</td>
+            </tr>
+            <tr>
+                    <th>&#128344; </th>
+                    <td>${restForm.runtime}</td>
+            </tr>
+            <tr>
+                    <th>&#128198; </th>
+                    <td>${restForm.dayoff}</td>
+            </tr>
+        </table>  	
 
 <hr>
- 
+<br>
+<br>
+
 
 
 <script>
@@ -231,59 +228,50 @@
 	     var noticeDiv = document.getElementById("notice");
 	    	
 	     	menuDiv.style.display = "block";
-			 introDiv.style.display = "none";
-			 reviewDiv.style.display = "none";
-			 noticeDiv.style.display = "none";
+			introDiv.style.display = "none";
+			reviewDiv.style.display = "none";
+			noticeDiv.style.display = "none";
  };
 </script>
 
 
+	<div class="">
+	   <input onclick="toggleDiv('menu')" type="button" value="MENU" id="sogae" style="border-radius: 10px;">
+	   <input onclick="toggleDiv('intro')" type="button" value="INTRO" id="sogae" style="border-radius: 10px;">
+	   <input onclick="toggleDiv('review')" type="button" value="REVIEW" id="sogae" style="border-radius: 10px;">
+	   <input onclick="toggleDiv('notice')" type="button" value="NOTICE" id="sogae" style="border-radius: 10px;">
+	</div>
 
- 	<input onclick="toggleDiv('menu')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
-   <input onclick="toggleDiv('intro')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
-   <input onclick="toggleDiv('review')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
-   <input onclick="toggleDiv('notice')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
+<div id="menu" class="rest">
+            <tr><th>&#128203;</th></tr><td>${menulist.menu_name }</td>
+            <tr><th> &#128172;</th></tr><td>${menulist.menu_descriptions }</td>
+            <tr><th>&#128181;</th></tr><td>${menulist.price }</td><br>
+            </div>    
 
-			<div id="menu" class="myDiv">
-			<th>메뉴</th><br>
-			<td>${menudto.meunfile }</td><br>
-			</div>
+            <div id="intro" class="rest" style="margin-top: 30px;">
+            <p><b style="font-size: 20px;">&#128073; 가게 소개 &#128072;</b></p><br><br>
+            <td>${restForm.descriptions}</td><br>
+            </div>
 
-			<div id="intro" class="myDiv" >
-			<th>가게 소개</th><br>
-			<td>${restForm.descriptions}</td><br>
-			</div>
+            <div id="review" class="rest" >
+            <c:forEach var="re" items="${requestScope.re }" varStatus="no">
+            <table>
+            <tr><th>번호</th> &nbsp <td>${no.count}</td></tr>
+            <tr><th>아이디</th> &nbsp <td>${re.user_id}</td></tr>
+            <tr><th>외관사진</th> &nbsp <td>${re.file}</td></tr>                
+            <tr><th>평점</th> &nbsp <td>${re.grade}</td></tr>
+            <tr><th>내용</th> &nbsp <td>${re.content}</td></tr>
+            <tr><th>등록일</th> &nbsp <td>${re.regdate}</td></tr>
+        </table>
+            <hr>
+        </c:forEach>
+            </div>
 
-			<div id="review" class="myDiv" >
-			<tr>
-			<c:forEach var="re" items="${requestScope.re }" varStatus="no">
-			<th>번호</th> &nbsp <td>${no.count}</td><br>
-			<th>아이디</th> &nbsp <td>${re.user_id}</td><br>
-			<th>외관사진</th> &nbsp <td>${re.file}</td><br>			
-			<th>평점</th> &nbsp <td>${re.grade}</td><br>
-			<th>내용</th> &nbsp <td>${re.content}</td><br>
-			<th>등록일</th> &nbsp <td>${re.regdate}</td><br>
-			<hr>
-		</c:forEach>
-		</tr>
-			</div>
-
-			<div id="notice" class="myDiv" >
-			<th>가게 공지사항</th>
-
-			<td>${restForm.rest_notice}</td><br>
-			</div>
-
-
-
-
-
-
-
-
-
-
-	
+            <div id="notice" class="rest" style="margin-top: 30px;">
+            <p><b style="margin-bottom: 10px; font-size: 20px;">&#128276;&nbsp;가게 공지사항&nbsp;&#128276;</b><br></p>
+<br>
+            <td id="ntt" style="margin-top: 20px; margin-bottom: 20px;">${restForm.rest_notice}</td><br>
+            </div>
 	<hr>
 	
 
@@ -309,52 +297,74 @@
 	
 		 
 		
+<!-- FACILIES -->	
+
+		<b><p id="fc" style="font-size: 20px;">FACILITIES</p></b>
 		
-		<th>FACILITIES</th> <br>
-		
-		<div class="flacticon">
+		<div style="white-space: nowrap;">
 			
 
 			<c:if test="${restForm.convenience.split(',')[0] != null}">
-			<img src="./img/facilities/${restForm.convenience.split(',')[0]}.png" style="width: 65px; height: 65px;" class="fic" >
+			<div style="display: inline-block;">
+			<img src="./img/facilities/${restForm.convenience.split(',')[0]}.png" style="width: 65px; height: 65px; display: block;" class="fic">
+			<p id="fict1" style="margin-left: 10px; margin-top: 10px;">${restForm.convenience.split(',')[0]}</p>
+			</div>
 			</c:if>
 
 			<c:if test="${restForm.convenience.split(',')[1] != null}">
-			<img src="./img/facilities/${restForm.convenience.split(',')[1]}.png" style="width: 65px; height: 65px;" class="fic">
+			<div style="display: inline-block;">
+			<img src="./img/facilities/${restForm.convenience.split(',')[1]}.png" style="width: 65px; height: 65px; display: block;" class="fic">
+			<p id="fict2" style="margin-left: 10px; margin-top: 10px;">${restForm.convenience.split(',')[1]}</p>
+			</div>
 			</c:if>
 			
 			<c:if test="${restForm.convenience.split(',')[2] != null}">
+			<div style="display: inline-block;">
 			<img src="./img/facilities/${restForm.convenience.split(',')[2]}.png" style="width: 65px; height: 65px;" class="fic">
+			<p id="fict3" style="margin-left: 10px; margin-top: 10px;">${restForm.convenience.split(',')[2]}</p>
+			</div>
 			</c:if>
 
 			<c:if test="${restForm.convenience.split(',')[3] != null}">
+			<div style="display: inline-block;">
 			<img src="./img/facilities/${restForm.convenience.split(',')[3]}.png" style="width: 65px; height: 65px;" class="fic">
+			<p id="fict4" style="margin-left: 10px; margin-top: 10px;">${restForm.convenience.split(',')[3]}</p>
+			</div>
 			</c:if>
 
 			<c:if test="${restForm.convenience.split(',')[4] != null}">
+			<div style="display: inline-block;">
 			<img src="./img/facilities/${restForm.convenience.split(',')[4]}.png" style="width: 65px; height: 65px;" class="fic">
+			<p id="fict5" style="margin-left: 10px; margin-top: 10px;">${restForm.convenience.split(',')[4]}</p>
+			</div>
 			</c:if>
 
 			<c:if test="${restForm.convenience.split(',')[5] != null}">
+			<div style="display: inline-block;">
 			<img src="./img/facilities/${restForm.convenience.split(',')[5]}.png" style="width: 65px; height: 65px;">
+			<p id="fict6" style="margin-left: 10px;">${restForm.convenience.split(',')[5]}</p>
+			</div>
 			</c:if>
+</div>
 
+<!-- FACILIES -->
 			
 			
 <%-- 			<td>${restForm.convenience.split(",")[0]}</td> --%>
 <%-- 			<td>${restForm.convenience.split(",")[1]}</td> --%>
 <%-- 			<td>${restForm.convenience.split(",")[2]}</td> --%>
 			
-		</div>
+		
 	<hr>
 	
 	<div class="location">
-	<th>LOCATION</th>
+	<b style="font-size: 19px;"><th>LOCATION</th></b>
 	</div>
+	<p style="margin-top: 20px;">${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</p>
 		<div style="text-align: -webkit-center;">
 		<div id="map" class="myDiv" style="width:100%;height:400px; margin-top: 40px;">
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=818dd4a57e9e35bee82d5b6284cabfe5&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89b7b057107ea38979fda72f1c0d0480&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -414,23 +424,26 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 
 <!-- </aside> -->
 
+<table border="1px; solid">
 	<span id="wait">
-	<c:if test="${restForm.on_off == true}">
-		<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
-			<button onclick="winopen1('${restForm.rest_id}');" id="waiting" style="margin-right: 50px">대기하기</button>
+		<c:if test="${restForm.on_off == true}">
+			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
+				<button onclick="winopen1('${restForm.rest_id}');" id="waiting1" style="margin-right: 50px">대기하기</button>
+			</c:if>
+		
+			<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
+				<button onclick="winopen2();" id="waiting2">대기하기</button>
+			</c:if>
 		</c:if>
 		
-		<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
-			<button onclick="winopen2();" id="waiting2">대기하기</button>
+		<c:if test="${restForm.on_off == false}">
+			<button id="ready">영업 준비 중입니다...(T^T)</button>
 		</c:if>
-	</c:if>
-	<c:if test="${restForm.on_off == false}">
-		<button>영업 준비 중입니다...(T^T)</button>
-	</c:if>
    	 
-
-	<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button>
+		<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button>
 	</span>
+</table>
+
 		
 </main>
 
