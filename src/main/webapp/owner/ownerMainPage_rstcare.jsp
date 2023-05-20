@@ -73,7 +73,9 @@
 	   <div style="text-align: right;" >
  	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none; color: #fd9991;"><b>수정</b></a>
 		<a href="./RestaurantDeleteAction.on" style="text-decoration: none; color: #fd9991;"><b>삭제</b></a><br>
-   	    <img src="./upload/${restal.outfile}" width="100px">
+   	   </div>
+   	   <div style="float: right;">
+   	    <img src="./upload/${restal.outfile}" width="230px">
    	   </div>
 		<div style="margin-left: 1px">
 		
@@ -125,13 +127,13 @@
 		</table>
 	    <br>
 	  	
-	    <div style="text-align: left;">
-	    <form action ="./OwnerNoticeAction.on " method="post">
+	</div>
+	<div style="text-align: left;">
+	  <form action ="./OwnerNoticeAction.on " method="post">
 		<textarea name="rest_notice" rows="2" cols="110" placeholder="공지사항"></textarea>
 		<input type="hidden" name="rest_id" value="${restal.rest_id }" >
 		<input class="btn-2" type="submit" value="저장" style="margin-bottom: 2px;">
 	  </form>
-	</div>
 	</div>
 	</div>
 	</fieldset> <!-- 영역 구분하려고 일단 넣어놓음 나중에 필요없으면 뺄거임 -->
