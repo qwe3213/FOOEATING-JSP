@@ -29,8 +29,7 @@
 <link rel="stylesheet" href="css/ownerwait.css">
 <link rel="stylesheet" href="css/question.css">
 
-<title>USERLIST</title>
-
+<title>회원 정보 목록</title>
 </head>
 <body>
 

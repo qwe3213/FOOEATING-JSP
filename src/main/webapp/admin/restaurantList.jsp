@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="css/ownerwait.css">
 <link rel="stylesheet" href="css/question.css">
 
+<title>입점 가게 목록</title>
 </head>
 <body>
 

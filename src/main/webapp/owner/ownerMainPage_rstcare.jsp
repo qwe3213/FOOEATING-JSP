@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="css/question.css">
 
 
-<title>점주 My page 가게 관리</title>
+<title>가게 관리</title>
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
@@ -65,7 +65,7 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 250px 0 410px; min-width: 850px;">
 	<h2>나의 가게 정보</h2>
 	
 	<fieldset>

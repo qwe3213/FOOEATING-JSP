@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>restaurantInfo</title>
+<title>가게 상세 목록</title>
 
 <!-- css파일 -->
 <link
@@ -96,8 +96,9 @@
 				<c:set var="rest_id" value="${param.rest_id}" />
 
 				<!-- 대기 중인 가게 목록에서 진입  -->
-				<c:if test="${rstatus.equals('no')}">
+				<c:if test="${rstatus.equals('no')}"><br>
 					<button
+						style="padding-right: 10px;"
 						onclick="opener.parent.location.reload(); winopen(${rest_id})"
 						class="btn-2">입점 승인</button>
 					<button
@@ -106,7 +107,7 @@
 				</c:if>
 
 				<!-- 입점 중인 가게 목록에서 진입  -->
-				<c:if test="${rstatus.equals('yes')}">
+				<c:if test="${rstatus.equals('yes')}"><br>
 					<button
 						onclick="location.href='./RestaurantList.ad?pageNum=${pageNum}'"
 						class="btn-2">목록으로</button>

@@ -52,7 +52,7 @@
 
 </script>
 
-<title>Insert title here</title>
+<title>메뉴 추가</title>
 </head>
 <body>
 
@@ -81,33 +81,44 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
- 			<h2> FOOEATING 가게 메뉴 정보</h2>
+<div id="category" style="margin: 85px 250px 0 410px; min-width: 800px;">
+ 			<h2> FOOEATING 가게 메뉴 정보</h2><br>
+ 			
  			
  			<c:forEach var="list"  items="${menuList }">
-			<table border="1">
+ 			<div style="width: 300px;">
+			<table style="width: 300px;">
 				<tr>
 					<td>
-					<img src="./upload/${list.menufile}" width="100px" height="150px"><br>
-					${list.menu_name }<br>
-					${list.price }<br>
-					${list.menu_descriptions }<br>
+					<img src="./upload/${list.menufile}" width="150px" height="150px"><br>
+					메뉴: ${list.menu_name }<br>
+					가격: ${list.price }<br>
+					종류: ${list.menu_descriptions }<br>
 					</td>
 				</tr>
-			</table>
+			</table><br>
+			
+			<div style="float: left; padding-right: 10px;">
 			<button class="btn-2" onclick="winopen(${list.rest_menu_num})">메뉴 수정</button>
+			</div>
+			
+			<div>
 			<form action="./OwnerMenuDelete.on" method="post"
 				onsubmit="return deleteMenu()">
 				<input type="hidden" name="rest_menu_num" id="rest_menu_num"
 					value="${list.rest_menu_num }">
-				<button class="btn-2">삭제</button>
+				<button class="btn-2">메뉴 삭제</button>
 			</form>
+			</div>
+			</div><br>
 			</c:forEach>
-			<c:if test="${fn:length(menuList)< 3 }">
-			<hr>
 			
+			<div>
+			<c:if test="${fn:length(menuList)< 3 }">
 			<button class="btn-2" onclick="winopen2(${menuList[0].rest_id});">메뉴 추가</button>
 			</c:if>
+			</div><br><br>
+			
  		</div>
 	</div>
 </main>

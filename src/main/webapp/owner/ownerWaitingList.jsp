@@ -22,7 +22,7 @@
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
-<title>점주 My page 대기 관리</title>
+<title>대기 관리</title>
 
 <!-- javaScript -->
 <script type="text/javascript">
@@ -76,7 +76,7 @@ function winopen(wait_num){
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px; 	">
+<div id="category" style="margin: 85px 250px 0 410px; min-width: 800px;">
 	<c:set var="wait_num" value="${dto.wait_num }" />
 	
 	<h2 style="margin-bottom: 15px;">대기 관리</h2>
