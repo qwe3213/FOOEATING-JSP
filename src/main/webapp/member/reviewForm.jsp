@@ -75,7 +75,7 @@
 <main>
 	<div id="top">
 	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
-	<h2>리뷰 관리</h2>
+	<h2 style="margin-bottom: 15px;">리뷰 관리</h2>
 	<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }">
 		<c:redirect url="./MemberLogin.foo" />
@@ -93,10 +93,10 @@
 			<td width="50%">
 			
 				<c:forEach begin="1" end="${dto.grade }" step="1"> 
-				<img src="./img/free-icon-favorite-5379602.png" width="15px">
+					<img src="./img/free-icon-favorite-5379602.png" width="15px">
 				</c:forEach>
 				<c:forEach begin="1" end="${5-dto.grade  }" step="1"> 
-				<img src="./img/free-icon-star-3384828.png" width="15px">
+					<img src="./img/free-icon-star-3384828.png" width="15px">
 				</c:forEach>
 			
 			</td>
@@ -107,23 +107,25 @@
 			</tr>
 		</table>
 		</div>
-		<div style="float: left; margin-left: 28%;">
-		<form action="" method="post">
-			<input type="hidden" name="user_id" value="${user_id }"> <input
-				type="hidden" name="review_num" id="review_num"
-				value="${dto.review_num }">
-			<button onclick="winopen(${dto.review_num });" class="btn-2">수정</button>
-		</form>
-		</div>
-		<div style="float: right; margin-right: 28%;">
-		<form action="ReviewDelete.foo" method="post"
-			onsubmit="return deleteReview()">
-			<input type="hidden" name="user_id" value="${user_id }"> <input
-				type="hidden" name="review_num" id="review_num"
-				value="${dto.review_num }">
-			<button class="btn-2" >삭제</button>
-		</form>
-		<br>
+		<div style="margin-top: 10px;">
+			<div style="float: left; margin-left: 28%;">
+				<form action="" method="post">
+					<input type="hidden" name="user_id" value="${user_id }"> <input
+						type="hidden" name="review_num" id="review_num"
+						value="${dto.review_num }">
+					<button onclick="winopen(${dto.review_num });" class="btn-2">수정</button>
+				</form>
+			</div>
+			<div style="float: right; margin-right: 28%;">
+				<form action="ReviewDelete.foo" method="post"
+					onsubmit="return deleteReview()">
+					<input type="hidden" name="user_id" value="${user_id }"> <input
+						type="hidden" name="review_num" id="review_num"
+						value="${dto.review_num }">
+					<button class="btn-2" >삭제</button>
+				</form>
+				<br>
+			</div>
 		</div>
 	</c:forEach>
 

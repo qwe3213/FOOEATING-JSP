@@ -96,7 +96,13 @@
 			</table>
 			<form action="./MemberCancelWaiting.foo" method="post" onsubmit="return cancelWaiting()">
 				<input type="hidden" name="wait_num" value="${wDto.wait_num}">
-				<input type="submit" value="대기 취소" class="btn-2">
+				<input type="submit" value="대기 취소" class="btn-2" style="background-color: #ff4742;
+																			color: #fff;
+																			border: none;
+																			border-radius: 10px;
+																			font-size:medium;
+																			font-weight: bold;
+																			margin-top: 10px;">
 			</form>
 		</c:if>
 		<br> <br> <br>
