@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="css/main.css">
 
 
-<title>GIRING</title>
+<title>~렛츠기링~</title>
 </head>
 <body>
 
