@@ -217,6 +217,7 @@ public class PublicDAO {
 				dto.setRest_tel(rs.getString("rest_tel"));
 				dto.setRuntime(rs.getString("runtime"));
 				dto.setStatus(rs.getInt("status"));
+				dto.setOutfile(rs.getString("outfile"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1631,7 +1632,9 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setLike_num(rs.getInt("like_num"));
-
+					dto.setAddr_city(rs.getString("addr_city"));
+					dto.setAddr_district(rs.getString("addr_district"));
+					dto.setAddr_etc(rs.getString("addr_etc"));
 					dto.setOutfile(rs.getString("outfile"));
 
 						sql = "SELECT count(*) FROM review WHERE rest_id=?";
@@ -1769,6 +1772,9 @@ public class PublicDAO {
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setDayoff(rs.getString("dayoff"));
 					dto.setOutfile(rs.getString("outfile"));
+					dto.setAddr_city(rs.getString("addr_city"));
+					dto.setAddr_district(rs.getString("addr_district"));
+					dto.setAddr_etc(rs.getString("addr_etc"));
 					listForm.add(dto);
 					
 				}
@@ -2092,14 +2098,14 @@ public class PublicDAO {
 				con = getCon();
 				
 				// 3. sql 작성
-				sql = "insert into restaurant_menu (remenufile,menu_name,menu_descriptions,price,rest_id) "
+				sql = "insert into restaurant_menu (menu_name,menu_descriptions,price,menufile,rest_id) "
 						+ " values(?,?,?,?,?)";
 				
 				pstmt= con.prepareStatement(sql);
-				pstmt.setString(1, menudto.getMeunfile());
-				pstmt.setString(2, menudto.getMenu_name());
-				pstmt.setString(3, menudto.getMenu_descriptions());
-				pstmt.setString(4, menudto.getPrice());
+				pstmt.setString(1, menudto.getMenu_name());
+				pstmt.setString(2, menudto.getMenu_descriptions());
+				pstmt.setString(3, menudto.getPrice());
+				pstmt.setString(4, menudto.getMenufile());
 				pstmt.setString(5, menudto.getRest_id());
 				//4. sql실행
 				pstmt.executeUpdate();
@@ -2247,7 +2253,7 @@ public class PublicDAO {
       		    	dto.setMenu_name(rs.getString("menu_name"));
       		    	dto.setPrice(rs.getString("price"));
       		    	dto.setRest_id(rs.getString("rest_id"));
-      		    	dto.setMeunfile(rs.getString("menufile"));
+      		    	dto.setMenufile(rs.getString("menufile"));
       		    }
 			  
 			} catch (Exception e) {
@@ -2541,8 +2547,8 @@ public class PublicDAO {
 					dto.setMenu_name(rs.getString(2));
 					dto.setMenu_descriptions(rs.getString(3));
 					dto.setPrice(rs.getString(4));
-					dto.setRest_id(rs.getString(5));
-					dto.setMeunfile(rs.getString(6));
+					dto.setMenufile(rs.getString(5));
+					dto.setRest_id(rs.getString(6));
 					
 					menuList.add(dto);
 				} // while
@@ -2577,8 +2583,8 @@ public class PublicDAO {
 					dto.setMenu_name(rs.getString(2));
 					dto.setMenu_descriptions(rs.getString(3));
 					dto.setPrice(rs.getString(4));
-					dto.setRest_id(rs.getString(5));
-					dto.setMeunfile(rs.getString(6));				
+					dto.setMenufile(rs.getString(5));				
+					dto.setRest_id(rs.getString(6));
 					}
 				
 				System.out.println(" DAO : 해당 메뉴 저장완료! ");
@@ -2613,7 +2619,7 @@ public class PublicDAO {
 					pstmt.setString(1, dto.getMenu_name());
 					pstmt.setString(2, dto.getMenu_descriptions());
 					pstmt.setString(3, dto.getPrice());
-					pstmt.setString(4, dto.getMeunfile());
+					pstmt.setString(4, dto.getMenufile());
 					pstmt.setInt(5, dto.getRest_menu_num());
 					// 4. sql 실행
 					pstmt.executeUpdate();

@@ -26,14 +26,16 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/question.css">
 
+<title>점주 전환</title>
+
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
 
-    $('div').css({
-        'font-size' : '0.7em',
-        'color' : 'red'
-    });
+//     $('div').css({
+//         'font-size' : '0.7em',
+//         'color' : 'red'
+//     });
 	
 	  $("#fr").on("submit", function(e){
 		  let descriptions = document.fr.descriptions.value;
@@ -100,6 +102,7 @@
 <main>
 	<div id="top">
 	<div style="margin:0% 40% 0% 40%; ">
+	<br>
 	<fieldset style="text-align: left; color: rgb(0,0,0); font-size: small;">
 		<legend style="">step3</legend>
 		<form action="./ownerRequestSuccessAction.on" method="post" enctype="multipart/form-data" name="fr" id="fr">
@@ -111,7 +114,7 @@
 			메뉴 소개 : <input type="text" name="menu_descriptions" style="margin-bottom: 5px;"> <br>
 			메뉴 가격 : <input type="text" name="price"> <br>
 			<br><br>
-			메뉴 이미지 <input type="file" name="meunfile" style="margin-bottom: 5px; "> <br>
+			메뉴 이미지 <input type="file" name="menufile" style="margin-bottom: 5px; "> <br>
 		   	가게 외부 이미지 <input type="file" name="outfile" style="margin-bottom: 5px; "> <br>
 		    가게 내부 이미지 <input type="file" name="infile" > <br>
 		    

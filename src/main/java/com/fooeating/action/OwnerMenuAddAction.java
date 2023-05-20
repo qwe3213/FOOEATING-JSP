@@ -50,9 +50,8 @@ public class OwnerMenuAddAction implements Action {
 		menudto.setMenu_name(multi.getParameter("menu_name"));
 		menudto.setMenu_descriptions(multi.getParameter("menu_descriptions"));
 		menudto.setPrice(multi.getParameter("price"));
-		menudto.setPrice(multi.getParameter("price"));
 		menudto.setRest_id(multi.getParameter("rest_id"));
-		menudto.setMeunfile(multi.getFilesystemName("meunfile")); 
+		menudto.setMenufile(multi.getFilesystemName("menufile")); 
 		
 		PublicDAO dao = new PublicDAO();
 		dao.getRestaurantMenu(menudto);

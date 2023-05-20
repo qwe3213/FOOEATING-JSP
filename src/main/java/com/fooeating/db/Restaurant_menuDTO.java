@@ -6,7 +6,7 @@ public class Restaurant_menuDTO {
 	private String menu_descriptions;
 	private String price;
 	private String rest_id;
-	private String meunfile;
+	private String menufile;
 	public int getRest_menu_num() {
 		return rest_menu_num;
 	}
@@ -37,17 +37,17 @@ public class Restaurant_menuDTO {
 	public void setRest_id(String rest_id) {
 		this.rest_id = rest_id;
 	}
-	public String getMeunfile() {
-		return meunfile;
+	public String getMenufile() {
+		return menufile;
 	}
-	public void setMeunfile(String meunfile) {
-		this.meunfile = meunfile;
+	public void setMenufile(String menufile) {
+		this.menufile = menufile;
 	}
 	@Override
 	public String toString() {
 		return "Restaurant_menuDTO [rest_menu_num=" + rest_menu_num + ", menu_name=" + menu_name
 				+ ", menu_descriptions=" + menu_descriptions + ", price=" + price + ", rest_id=" + rest_id
-				+ ", meunfile=" + meunfile + "]";
+				+ ", menufile=" + menufile + "]";
 	}
 	
 }

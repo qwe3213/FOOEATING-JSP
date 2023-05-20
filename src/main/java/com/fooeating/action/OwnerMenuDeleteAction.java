@@ -48,7 +48,7 @@ public class OwnerMenuDeleteAction implements Action {
 		
 		} 
 		
-		JSForward.alertAndMove(response, "리뷰가 삭제 되었습니다!","./OwnerMenu.on");
+		JSForward.alertAndMove(response, "메뉴가 삭제 되었습니다!","./OwnerMenu.on");
 		
 		return null;
 

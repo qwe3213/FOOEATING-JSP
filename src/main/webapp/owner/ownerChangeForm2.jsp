@@ -19,6 +19,9 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/question.css">
+
+<title>점주 전환</title>
+
 <script>
 const changeValue = (target) => {
 	  // 선택한 option의 value 값
@@ -94,10 +97,10 @@ function sample4_execDaumPostcode() {
 
 $(document).ready(function(){
 	
-	    $('div').css({
-	        'font-size' : '0.7em',
-	        'color' : 'red'
-	    });
+// 	    $('div').css({
+// 	        'font-size' : '0.7em',
+// 	        'color' : 'red'
+// 	    });
 	    
 	  
 	    
@@ -190,6 +193,7 @@ $(document).ready(function(){
 <main>
 	<div id="top">
 	<div style="margin:0% 28.5% 0% 45%;">
+	<br>
 	<fieldset style="text-align:left; color: rgb(0,0,0);">
 		<legend>step2</legend>
 		<form action="./ownerChangeForm3.on" id="fr" name="fr" method="post" style="font-size: medium; width: 350px;">

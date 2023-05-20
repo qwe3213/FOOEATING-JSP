@@ -22,6 +22,8 @@
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
+<title>점주 My page 대기 관리</title>
+
 <!-- javaScript -->
 <script type="text/javascript">
 function selectAll(selectAll)  {
@@ -76,37 +78,42 @@ function winopen(wait_num){
 <div id="top">
 <div id="category" style="margin: 85px 0 0 410px; 	">
 	<c:set var="wait_num" value="${dto.wait_num }" />
-	<table>
-	<thead>
-		<tr>
-			<th>대기 번호</th>
-			<th>회원 이름</th>
-			<th>전화번호</th>
-			<th>인원수</th>
-			<th>대기 등록 시간</th>
-			<th>완료</th>
-		</tr>
-		</thead>
-		<c:forEach var="dto" items="${requestScope.waitingList }">
-			<c:if test="${dto.status == 1 }">
-			<tr>
-				<td>${dto.wait_num }</td>
-				<td>${dto.name }</td>
-				<td>${dto.phone }</td>
-				<td>${dto.people }</td>
-				<td>${dto.regdate }</td>
-				<td><button  onclick="winopen('${dto.wait_num}');" 
-				style="background-color: #ff4742;
-			    color: #fff;
-			    border: none;
-			    border-radius: 10px;
-			    font-size:medium;
-			    font-weight: bold;"
-				>완료</button></td>
-			</tr>
-			</c:if>
-		</c:forEach>
-	</table>
+	
+	<h2 style="margin-bottom: 15px;">대기 관리</h2>
+	
+	<div style="margin-right: 20px;">
+		<table>
+			<thead>
+				<tr>
+					<th>대기 번호</th>
+					<th>회원 이름</th>
+					<th>전화번호</th>
+					<th>인원수</th>
+					<th>대기 등록 시간</th>
+					<th>완료</th>
+				</tr>
+			</thead>
+			<c:forEach var="dto" items="${requestScope.waitingList }">
+				<c:if test="${dto.status == 1 }">
+				<tr>
+					<td>${dto.wait_num }</td>
+					<td>${dto.name }</td>
+					<td>${dto.phone }</td>
+					<td>${dto.people }</td>
+					<td>${dto.regdate }</td>
+					<td><button  onclick="winopen('${dto.wait_num}');" 
+					style="background-color: #ff4742;
+				    color: #fff;
+				    border: none;
+				    border-radius: 10px;
+				    font-size:medium;
+				    font-weight: bold;"
+					>완료</button></td>
+				</tr>
+				</c:if>
+			</c:forEach>
+		</table>
+	</div>
 <div style="text-align: center; "> 
 <br><br><br>
 <%

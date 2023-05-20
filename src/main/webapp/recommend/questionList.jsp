@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="css/main.css">
 
 
-<title>PUDDING</title>
+<title>~렛츠기링~</title>
 <style>
     /* 숨김 처리 */
     .hidden {
@@ -151,7 +151,7 @@
 		
 		Collections.shuffle(list);
 	%>
-<div id="top">
+<div id="top" style="min-width: 650px;">
 	<%
 		for(int i = 0; i < list.size(); i++) {
 	%>

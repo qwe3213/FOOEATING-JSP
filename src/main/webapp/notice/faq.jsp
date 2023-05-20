@@ -72,7 +72,7 @@
     }
 .alinkstyle {
 	color: #fff;
-	background: #fd9991;
+	background: #ff4742;
     border: none;
 	border-radius: 10px;
 	font-size: medium;
@@ -112,7 +112,7 @@
 <!-- main -->
 <main>
 	<div id="top">
-		<div id="category" style="margin: 85px 0 0 410px;">
+		<div id="category" style="margin: 85px 0 0 410px; min-width: 75%;">
 		<div style="float: left;">
 			<h1>F A Q</h1>
 			<h3>카테고리</h3>
@@ -135,7 +135,7 @@
 		<div style="padding: 110px 10% 110px 55px">
 			<!-- 첫 번째 Modal을 여는 클래스 -->
 			<c:forEach var="dto" items="${faqList }">
-				<div id="list" style="float:left; margin: 0 2% 0 0; width: 258px; height: 100px; ">
+				<div id="list" style="float:left; margin: 0 2% 1% 0; width: 258px; height: 100px; ">
 					<ul>
 						<li class="${dto.category}" style="padding-bottom: 10%;">
 							<h6 class="btn" style="font-size: 15px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>

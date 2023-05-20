@@ -108,7 +108,7 @@
 	justify-content: center;
 	align-items: center;
 	margin-right: 20%;
-	margin-top: 5%;
+	margin-top: 48px;
 	}
 	.left {
 	text-align: left;
@@ -116,6 +116,7 @@
 	
 	</style>
 
+<title>회원정보수정</title>
 </head>
 <body>
 
@@ -151,7 +152,7 @@
 
 <!-- main -->
 <main>
-	<div id="top" style="text-align: -webkit-center;">
+	<div id="top" style="text-align: -webkit-center">
  		<!-- 로그인 세션 제어 -->
 	<c:if test="${empty user_id }" >
 		<c:redirect url="./MemberLogin.foo"/>

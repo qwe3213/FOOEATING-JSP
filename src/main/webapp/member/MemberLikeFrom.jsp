@@ -24,6 +24,7 @@
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
+<title>찜한매장</title>
 </head>
 <body>
 
@@ -52,7 +53,7 @@
 <!-- main -->
 <main>
 	<div id="top">
-	<div id="category" style="margin: 85px 410px 0 410px; text-align:-webkit-center;">
+	<div id="category" style="margin: 85px 250px 0 410px; text-align:-webkit-center; min-width: 500px;">
 		<h2>찜한 매장</h2>
 		<br>
 		<!-- 로그인 세션 제어 -->
@@ -62,10 +63,10 @@
 
 
 		<c:forEach var="dto" items="${likeList}">
-			<table border="1">
+			<table border="1" style="width: 500px;">
 							
 				<tr>
-					<td rowspan="2"><img src="./upload/${dto.outfile }" width="200px"></td>
+					<td rowspan="2" width="300px"><img src="./upload/${dto.outfile }" width="200px"></td>
 					<td colspan="2">
 					<a href="./restaurantForm.fd?rest_id=${dto.rest_id}">${dto.name }</a></td>
 					</tr>
@@ -130,6 +131,7 @@ if(count != 0) {
 	}
 }
 %>
+	<br><br>
 	</div>
 	</div>
 </main>

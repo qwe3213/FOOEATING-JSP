@@ -22,9 +22,10 @@
 <link rel="stylesheet" href="css/ownerwait.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
 
-<title>리뷰 관리</title>
+<title>점주 My page 리뷰 관리</title>
 </head>
 <body>
+
 
 <!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
 <div id="preloader">
@@ -49,8 +50,12 @@
 
 <!-- main -->
 <main>
+
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 20px 0px 410px;">
+
+<h2 style="margin-bottom: 15px;">리뷰 관리</h2>
+
 		<table>
 		<thead>
 			<tr>
