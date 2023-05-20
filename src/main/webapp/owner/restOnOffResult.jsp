@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>점주 My page 가게 관리</title>
 </head>
 <body>
 	<fieldset style="text-align: center; border: none; margin-top: 50px;" >

@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="css/question.css">
 
 
-<title>약간 동의</title>
+<title>점주 전환</title>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script type="text/javascript">
         $(document).ready(function(){

@@ -19,6 +19,9 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/question.css">
+
+<title>점주 전환</title>
+
 <script>
 const changeValue = (target) => {
 	  // 선택한 option의 value 값
