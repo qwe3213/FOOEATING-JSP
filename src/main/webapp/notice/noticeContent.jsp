@@ -56,7 +56,7 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 410px 0 410px;">
+<div id="category" style="margin: 85px 410px 0 410px; min-width: 700px;">
 <table border="1">
 	<tr>
 		<th style="color: white; background: #fb5849;">No</th>

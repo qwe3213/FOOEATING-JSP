@@ -43,7 +43,7 @@
 
 <!-- main -->
 <main>
-<div id="top" >
+<div id="top" style="min-width: 650px;">
 	<div class="container-fluid" style="margin-top: 200px;">
 		<div>
 			<div class="dvh"><h2> 음식의 종류를 선택하세요. </h2></div>

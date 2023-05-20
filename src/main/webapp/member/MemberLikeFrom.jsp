@@ -62,6 +62,7 @@
 		</c:if>
 
 		<c:forEach var="dto" items="${likeList}">
+
 			<fieldset style="float:left;">
 				<div style="width: 250px;">		
 					<div>
@@ -75,7 +76,6 @@
 					</div>
 				</div>	
 			</fieldset>
-			
 		</c:forEach>
 		
 		
