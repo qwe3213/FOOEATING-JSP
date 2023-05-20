@@ -59,7 +59,7 @@
 	<!-- 관리자일 때만 글쓰기 버튼 활성화  -->
 	<div style="float: right;">
 	<c:if test="${!empty user_id && user_id.equals('real_admin')}">
-		<input id="dtn-2" type="button" value="글 작성하기" onclick="location.href='./NoticeWrite.foo';">
+		<input class="btn-2" type="button" value="글 작성하기" onclick="location.href='./NoticeWrite.foo';">
 	</c:if>
 	</div>
 
@@ -85,7 +85,7 @@
 				<form action="./NoticeContentAction.foo" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<input type="hidden" name="notice_num" value="${dto.notice_num}">
-					<input type="submit" value="${dto.subject} ">
+					<input class="btn-2" type="submit" value="${dto.subject} ">
 				</form>
 			</td>
 			<td>${dto.regdate }</td>
