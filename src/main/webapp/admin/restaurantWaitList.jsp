@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/ownerwait.css">
+<link rel="stylesheet" href="css/question.css">
 
 <script type="text/javascript">
 	function winopen(rest_id){
@@ -56,7 +58,9 @@
 <!-- main -->
 <main>
 	<div id="top">
+	<div id="category" style="margin: 85px 50px 0 410px; text-align:-webkit-center;  min-width: 400px;">
 	<table border="1">
+		<thead>
 		<tr>
 			<th>No.</th>
 			<th>상호명</th>
@@ -67,7 +71,9 @@
 			<th>승인/반려</th>
 			<th>상세</th>
 		</tr>
+		</thead>
 		
+		<tbody>
 		<c:forEach var="dto" items="${restWaitList}">
 		<tr>
 			<td>${dto.rno}</td>
@@ -77,18 +83,19 @@
 			<td>${dto.rest_tel}</td>
 			<td>${dto.regdate}</td>
 			<td>
-				<button type="submit" onclick="winopen('${dto.rest_id}');">승인/반려</button>
+				<button type="submit" onclick="winopen('${dto.rest_id}');" class="btn-2">승인/반려</button>
 			</td>
 			<td>
 				<form action="./RestaurantInfo.ad" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<input type="hidden" name="rest_id" value="${dto.rest_id}">
 					<input type="hidden" name="rstatus" value="no">
-					<input type="submit" value="상세보기">
+					<input type="submit" value="상세보기"  class="btn-2">
 				</form>
 			</td>
 		</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 	
 		<%
@@ -123,6 +130,8 @@
 			}
 		}
 	%>
+	<br><br>
+	</div>
 	</div>
 </main>
 <!-- main -->
