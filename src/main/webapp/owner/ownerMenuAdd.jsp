@@ -15,7 +15,7 @@
 			메뉴 이름 : <input type="text" name="menu_name" > <br>
 			메뉴 소개 : <input type="text" name="menu_descriptions" > <br>
 			메뉴 가격 : <input type="text" name="price"> <br>
-			메뉴 이미지 :<input type="file" name="meunfile"> <br>
+			메뉴 이미지 :<input type="file" name="menufile"> <br>
 			<input type="submit" value="메뉴 추가" >
 		</form>
 
