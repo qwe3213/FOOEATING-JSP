@@ -96,7 +96,7 @@ function winopen(wait_num){
 				<td>${dto.people }</td>
 				<td>${dto.regdate }</td>
 				<td><button  onclick="winopen('${dto.wait_num}');" 
-				style="background-color: #fd9991;
+				style="background-color: #ff4742;
 			    color: #fff;
 			    border: none;
 			    border-radius: 10px;
