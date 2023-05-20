@@ -17,7 +17,7 @@
 			메뉴 소개 : <input type="text" name="menu_descriptions" value="${dto.menu_descriptions }"> <br>
 			메뉴 가격 : <input type="text" name="price" value="${dto.price }"> <br>
 			기존 이미지 : <br>
-			<img src="./upload/${dto.meunfile}" width="100px" height="150px"><br>
+			<img src="./upload/${dto.menufile}" width="100px" height="150px"><br>
 			수정 메뉴 이미지<br>
 			<input type="file" name="menufile"> <br>
 			<input type="submit" value="수정" >
