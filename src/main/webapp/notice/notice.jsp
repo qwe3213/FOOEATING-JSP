@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="css/question.css">
 
 
-<title>FOOEATING - Notice</title>
+<title>공지사항</title>
 </head>
 <body>
 
@@ -53,9 +53,9 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 410px 0 410px;">
+	<div id="category" style="margin: 85px 410px 0 410px; min-width: 500px;">
 	
-	<h2> 공지사항 </h2>
+	<h2> 공지사항 </h2><br>
 
 	<!-- 관리자일 때만 글쓰기 버튼 활성화  -->
 	<div style="float: right;">

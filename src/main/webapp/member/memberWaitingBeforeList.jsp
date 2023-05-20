@@ -4,16 +4,16 @@
 
 <h2 style="margin-bottom: 20px;">과거 대기 내역</h2>
 <c:forEach var="list" items="${queueHistory}">
-	<table>
+	<table border="1" style="text-align-last: center;">
 		<thead>
 		<tr>
-			<th>가게명</th>
-			<th>방문일자</th>
+			<th style="min-width: 225.3px; width:50%;">방문일자</th>
+			<th style="min-width: 225.3px; width:50%;">가게명</th>
 		</tr>
 		</thead>
 		<tr>
-		<td><a href="./restaurantForm.fd?rest_id=${list.rest_id}">${list.rest_name}</a></td>
-			<td>${list.regdate}</td>
+			<td style="min-width: 225.3px; width: 50%;"><a href="./restaurantForm.fd?rest_id=${list.rest_id}">${list.rest_name}</a></td>
+			<td style="min-width: 225.3px; width: 50%;">${list.regdate}</td>
 		</tr>
 		
 	</table>
