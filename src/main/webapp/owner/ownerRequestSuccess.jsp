@@ -61,7 +61,34 @@
 </main>
 
 <!-- ***** Footer Start ***** -->
-	<jsp:include page="../inc/footerDiv.jsp" />
+	<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <div class="right-text-content">
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook" style="margin-top: 13px"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" style="margin-top: 13px"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" style="margin-top: 11px"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" style="margin-top: 12px"></i></a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="logo">
+                    <a href="./Main.foo"><img src="./img/푸이팅.png"  width="100px"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="left-text-content">
+                    <p>© Copyright FOOEATING Co.W
+                    
+                    <br>Design: TemplateMo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 <!-- ***** Footer End ***** -->
 
 <!-- jQuery -->
