@@ -108,6 +108,7 @@ function winopen(wait_num){
 		</c:forEach>
 	</table>
 <div style="text-align: center; "> 
+<br><br><br>
 <%
 int count = (int)request.getAttribute("count");
 int pageSize = (int)request.getAttribute("pageSize");

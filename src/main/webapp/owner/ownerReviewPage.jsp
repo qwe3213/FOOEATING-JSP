@@ -69,6 +69,53 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<!-- 페이징처리 -->
+		<div style="text-align: center;">
+		<br><br><br>
+<%
+int count = (int)request.getAttribute("count");
+int pageSize = (int)request.getAttribute("pageSize");
+int currentPage = (int)request.getAttribute("currentPage");
+String pageNum = (String)request.getAttribute("pageNum");
+
+if(count != 0) {
+	int pageBlock = 5;
+	int pageCount = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);
+	int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+	int endPage = startPage + pageBlock - 1;
+	
+	if(endPage > pageCount) {
+		endPage = pageCount;
+	}
+	
+	if(startPage > pageBlock) {
+%>
+
+		<a href="./ownerReviewPage.on?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+	
+<%
+	}
+	for(int i = startPage; i <= endPage; i++) {
+%>
+
+
+		<a href="./ownerReviewPage.on?pageNum=<%=i%>">[<%=i%>]</a>
+				
+				
+<%
+	}
+	if(endPage < pageCount) {
+%>
+
+
+		<a href="./ownerReviewPage.on?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+				
+				
+<%
+	}
+}
+%>
+</div>
 	</div>
 	</div>
 </main>
@@ -115,50 +162,7 @@
     });
 </script>
 
-<!-- 페이징처리 -->
-<%
-int count = (int)request.getAttribute("count");
-int pageSize = (int)request.getAttribute("pageSize");
-int currentPage = (int)request.getAttribute("currentPage");
-String pageNum = (String)request.getAttribute("pageNum");
 
-if(count != 0) {
-	int pageBlock = 5;
-	int pageCount = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);
-	int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
-	int endPage = startPage + pageBlock - 1;
-	
-	if(endPage > pageCount) {
-		endPage = pageCount;
-	}
-	
-	if(startPage > pageBlock) {
-%>
-
-		<a href="./ownerReviewPage.on?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-	
-<%
-	}
-	for(int i = startPage; i <= endPage; i++) {
-%>
-
-
-		<a href="./ownerReviewPage.on?pageNum=<%=i%>">[<%=i%>]</a>
-				
-				
-<%
-	}
-	if(endPage < pageCount) {
-%>
-
-
-		<a href="./ownerReviewPage.on?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-				
-				
-<%
-	}
-}
-%>
 
 </body>
 </html>
