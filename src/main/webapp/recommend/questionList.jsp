@@ -151,7 +151,7 @@
 		
 		Collections.shuffle(list);
 	%>
-<div id="top">
+<div id="top" style="min-width: 650px;">
 	<%
 		for(int i = 0; i < list.size(); i++) {
 	%>
