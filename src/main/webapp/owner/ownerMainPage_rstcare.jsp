@@ -72,15 +72,13 @@
 	
 	   <div style="text-align: right;" >
  	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none; color: #fd9991;"><b>수정</b></a>
-		<a href="./RestaurantDeleteAction.on" style="text-decoration: none; color: #fd9991;"><b>삭제</b></a>
+		<a href="./RestaurantDeleteAction.on" style="text-decoration: none; color: #fd9991;"><b>삭제</b></a><br>
+   	    <img src="./upload/${restal.outfile}" width="100px">
    	   </div>
 		<div style="margin-left: 1px">
 		
 		<table>
-        	<tr>
-			<td><img src="./upload/${restal.outfile}" width="100px"></td>
-			</tr>
-		
+        	
 			<tr>
 			<td><b>상&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;호</b> : ${restal.name}</td>
 			</tr>
@@ -99,6 +97,10 @@
 			<tr>
 			<td><b>정기 휴무</b> : ${restal.dayoff }	</td>
 			</tr>
+			<tr>
+			<td ></td>
+			</tr>
+			
 			<tr>
 			<td><b>가게 on/off</b> <br>
 			  <c:if test="${restal.status == 1}">

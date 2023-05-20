@@ -119,10 +119,11 @@
 <main>
 <div style="margin-top: 190px">
 
-	
+	 
 	<div class="container">
 	<aside id="left-sidebar"></aside>
-
+        
+        
 
 		<h1 class="restname" style="padding-top: 80px">${restForm.name}</h1>
 		
@@ -151,6 +152,7 @@
 	<hr>
 	
 	
+
 <table style="border-collapse: separate; border-spacing: 11px;">
 <%--             <caption>레스토랑 상세정보</caption> --%>
             <tr>
@@ -176,6 +178,7 @@
                     <td>${restForm.dayoff}</td>
             </tr>
         </table>  	
+
 
 <hr>
 <br>

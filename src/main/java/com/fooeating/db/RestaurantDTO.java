@@ -26,6 +26,7 @@ public class RestaurantDTO {
     private String outfile;
     private String infile;
     private int reviewCount;
+    private int rno;
     
     
 	public int getReviewCount() {
@@ -167,6 +168,12 @@ public class RestaurantDTO {
 		this.infile = infile;
 	}
 
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
 	@Override
 	public String toString() {
 		return "RestaurantDTO [rest_id=" + rest_id + ", name=" + name + ", descriptions=" + descriptions + ", rest_tel="

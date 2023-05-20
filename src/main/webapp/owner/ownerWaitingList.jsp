@@ -74,7 +74,7 @@ function winopen(wait_num){
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 0 0 410px;">
+<div id="category" style="margin: 85px 0 0 410px; 	">
 	<c:set var="wait_num" value="${dto.wait_num }" />
 	<table>
 	<thead>
@@ -96,7 +96,7 @@ function winopen(wait_num){
 				<td>${dto.people }</td>
 				<td>${dto.regdate }</td>
 				<td><button  onclick="winopen('${dto.wait_num}');" 
-				style="background-color: #fd9991;
+				style="background-color: #ff4742;
 			    color: #fff;
 			    border: none;
 			    border-radius: 10px;
@@ -107,7 +107,8 @@ function winopen(wait_num){
 			</c:if>
 		</c:forEach>
 	</table>
-
+<div style="text-align: center; "> 
+<br><br><br>
 <%
 int count = (int)request.getAttribute("count");
 int pageSize = (int)request.getAttribute("pageSize");
@@ -151,6 +152,7 @@ if(count != 0) {
 	}
 }
 %>
+</div>
 
 	</div>
 	</div>

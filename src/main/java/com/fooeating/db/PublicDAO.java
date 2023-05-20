@@ -55,7 +55,7 @@ public class PublicDAO {
 		
 		try {
 			con = getCon();
-			sql = "select user.*, if(user_id = owner_user_id, 'o', 'x') as 'owner_id' "
+			sql = "select row_number() over(order by regdate asc) as uno, user.*, if(user_id = owner_user_id, 'o', 'x') as 'owner_id' "
 					+ " from user left join restaurant on user_id = owner_user_id order by regdate desc "
 					+ " limit ?, ?";
 			pstmt = con.prepareStatement(sql);
@@ -72,6 +72,7 @@ public class PublicDAO {
 				dto.setRegdate(rs.getTimestamp("regdate"));
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setOwner_id(rs.getString("owner_id"));
+				dto.setUno(rs.getInt("uno"));
 				userList.add(dto);
 			}
 		} catch (Exception e) {
@@ -116,7 +117,8 @@ public class PublicDAO {
 		
 		try {
 			con = getCon();
-			sql = "select * from restaurant where status = 1 order by regdate desc limit ?, ?";
+			sql = "select row_number() over(order by regdate asc) as rno, restaurant.* from restaurant where status = 1 "
+					+ " order by regdate desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
@@ -143,6 +145,7 @@ public class PublicDAO {
 				dto.setRest_tel(rs.getString("rest_tel"));
 				dto.setRuntime(rs.getString("runtime"));
 				dto.setStatus(rs.getInt("status"));
+				dto.setRno(rs.getInt("rno"));
 				
 				restList.add(dto);
 			}
@@ -1199,9 +1202,9 @@ public class PublicDAO {
 			try {
 				con = getCon();
 				
-				sql = "select rest_id, name, rest_tel, descriptions from restaurant where rest_id "
-						+ "in (select rest_id from heart where heart_check =1 and user_id =? ) "
-						+ "order by owner_user_id limit ?,?";
+				sql = "select rest_id, name, rest_tel, descriptions, `outfile` from restaurant where rest_id "
+						+ " in (select rest_id from heart where heart_check =1 and user_id =? ) "
+						+ " order by owner_user_id limit ?,?";
 				
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, user_id);
@@ -1216,8 +1219,11 @@ public class PublicDAO {
 					dto.setName(rs.getString(2));
 					dto.setRest_tel(rs.getString(3));
 					dto.setDescriptions(rs.getString(4));
+					dto.setOutfile(rs.getString(5));
 					
+					System.out.println(dto.getOutfile());
 					likeList.add(dto);
+					
 				} // while
 				
 			} catch (Exception e) {

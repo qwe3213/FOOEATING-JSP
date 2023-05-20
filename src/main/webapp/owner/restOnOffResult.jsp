@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<fieldset  style="text-align: center; border: none; margin-top: 50px;" >
+	<fieldset style="text-align: center; border: none; margin-top: 50px;" >
 		<h2>가게 상태가 변경되었습니다.</h2> <br>
-			<button onclick="opener.parent.location.reload(); window.close();" style="background-color: #fd9991;
+			<button onclick="opener.parent.location.reload(); window.close();" style="background-color: #ff4742;
 																						color: #fff;
 																						border: none;
 																						border-radius: 10px;

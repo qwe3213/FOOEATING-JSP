@@ -68,9 +68,9 @@
 			<th>상세</th>
 		</tr>
 		
-		<c:forEach var="dto" items="${restWaitList}" varStatus="no">
+		<c:forEach var="dto" items="${restWaitList}">
 		<tr>
-			<td>${no.count}</td>
+			<td>${dto.rno}</td>
 			<td>${dto.name}</td>
 			<td>${dto.category}</td>
 			<td>${dto.owner_user_id}</td>

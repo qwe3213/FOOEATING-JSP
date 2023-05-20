@@ -56,9 +56,9 @@
 			<th>상세</th>
 		</tr>
 		
-		<c:forEach var="dto" items="${requestScope.restList}" varStatus="no">
+		<c:forEach var="dto" items="${requestScope.restList}">
 		<tr>
-			<td>${no.count}</td>
+			<td>${dto.rno}</td>
 			<td>${dto.name}</td>
 			<td>${dto.category}</td>
 			<td>${dto.owner_user_id}</td>
