@@ -10,6 +10,7 @@ public class UserDTO {
 	private String phone;
 	private Timestamp regdate;
 	private String owner_id;
+	private int uno;
 
 	
 	public String getUser_id() {
@@ -53,6 +54,12 @@ public class UserDTO {
 	}
 	public void setOwner_id(String owner_id) {
 		this.owner_id = owner_id;
+	}
+	public int getUno() {
+		return uno;
+	}
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
 
 }
