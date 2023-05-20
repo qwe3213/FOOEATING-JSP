@@ -399,6 +399,15 @@ public class RestaurantFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/ownerMenuAdd.on")) {
+			System.out.println("  C : /ownerMenuAdd.on실행");
+			System.out.println("  C : DB사용x, view 페이지 이동");
+			
+			// 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./owner/ownerMenuAdd.jsp");
+			forward.setRedirect(false);	
+		}
 
 		System.out.println("2. 가상주소 매핑 끝\n");
 		
