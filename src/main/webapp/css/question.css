@@ -46,7 +46,7 @@
 /* 버튼 디자인 추가 */
 
 .btn-1 {
-	background-color: #fd9991;
+	background-color: #ff4742;
 	color: #fff;
 	border: none;
 	border-radius: 10px;
@@ -54,10 +54,10 @@
 	font-weight: bold;
 }
 .btn-1:hover {
-	color: #fb5849;
+	color: #ff4742;
 }
 .btn-2 {
-	background-color: #fd9991;
+	background-color: #ff4742;
 	color: #fff;
 	border: none;
 	border-radius: 10px;
@@ -65,7 +65,7 @@
 	font-weight: bold;
 }
 .btn-2:hover {
-	color: #fb5849;
+	color: #ff4742;
 }
 
 /* 버튼 디자인 추가 */
