@@ -45,13 +45,23 @@
 /* 	margin-left: 10px; */
 /* } */
 
-#wait{
-	position: relative;
-	left: 1450px;
-	bottom: 900px;
-}
+/* #wait{ */
+/* 	position: relative;  */
+/*  	margin-left: 1650px;  */
+/*  	bottom: 1280px;  */
+/* /*  	width: 1000px;  */ */
+/* } */
 
-#waiting1{
+
+
+/* #wait { */
+/*         position: fixed; */
+/*         bottom: 1650px; */
+/*         right: 1280px; */
+/*         margin: 20px; */
+/* } */
+
+#waiting11{
     display: inline-block;
     outline: 0;
     cursor: pointer;
@@ -67,12 +77,12 @@
 
 }
 
-#waiting1:hover{
+#waiting11:hover{
     background: 0 0;
     color: #ff4742;
 }
 
-#waiting2{
+#waiting22{
     display: inline-block;
     outline: 0;
     cursor: pointer;
@@ -88,7 +98,7 @@
 
 }
 
-#waiting2:hover{
+#waiting22:hover{
     background: 0 0;
     color: #ff4742;
 }
@@ -138,6 +148,10 @@
     justify-content: space-around;
 }
 
+.con{
+	width: 1000px;
+}
+
 #sogae{
 	margin-right: 45px;
 	margin-left: 20px;
@@ -179,3 +193,25 @@
 /* .fic{ */
 /* 	padding: 10px; */
 /* } */
+
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.restname{
+	font-family: 'LINESeedKR-Bd';
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'GmarketSansMedium';
+}

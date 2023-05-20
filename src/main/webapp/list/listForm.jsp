@@ -54,7 +54,7 @@
         }
 
         .list {
-            border: 1px solid #ccc;
+/*             border: 1px solid #ccc; */
             padding: 10px;
             text-align: center;
         }
@@ -93,30 +93,30 @@
 
 <main>
 	<div id="top">
-		 <div id="table_search">
-	        <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
-				<div>
-				<label for="addr_city">시/도</label>
-					<select id="addr_city" name="addr_city" onchange="addrChange(this);">
-						<option value="none">시/도 선택</option>
-						<option value="서울" <c:if test="${param.addr_city.equals('서울')}">selected</c:if>>서울</option>
-						<option value="부산" <c:if test="${param.addr_city.equals('부산')}">selected</c:if>>부산</option>
-						<option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
-					</select>
-				</div>
-				<div>
-				<label for="addr_discrict">구</label>
-					<select id="addr_district" name="addr_district">
-						<option value="none">선택해주세요</option>
-						<c:if test="${param.addr_district.equals('none')}">
-							<option value="${param.addr_district}" selected>${param.addr_district}</option>
-						</c:if>
-					</select>
-				</div>
-		        <input type="text" name="search" class="input_box" style="width: 300px; text-align:center; ;" placeholder="매장을 검색해 보세요">
-		        <input type="submit" value="검색" class="btn">
-	        </form>
-	    </div>
+	<div id="table_search">
+            <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
+                <span>
+                <label for="addr_city"> <b>CITY</b></label>
+                    <select id="addr_city" name="addr_city" onchange="addrChange(this);">
+                        <option value="none">시/도를 선택해주세요.</option>
+                        <option value="서울" <c:if test="${param.addr_city.equals('서울')}">selected</c:if>>서울</option>
+                        <option value="부산" <c:if test="${param.addr_city.equals('부산')}">selected</c:if>>부산</option>
+                        <option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
+                    </select>
+                </span>
+                <span>
+                <label for="addr_discrict"><b>DISTRICT</b></label>
+                    <select id="addr_district" name="addr_district">
+                        <option value="none">구를 선택해주세요.</option>
+                        <c:if test="${param.addr_district.equals('none')}">
+                            <option value="${param.addr_district}" selected>${param.addr_district}</option>
+                        </c:if>
+                    </select>
+                </span><br>
+                <input type="text" name="search" class="input_box" style="width: 300px; text-align:center; ;" placeholder="매장을 검색해 보세요"><br>
+                <input type="submit" value="검색" class="btn">
+            </form>
+        </div>
 		
 
 
@@ -179,10 +179,10 @@
 <!-- 	 <input id="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 <!--    <button onclick="toggleDiv('map')" image>MAP</button> -->
 <!--    <button onclick="toggleDiv('list')">LIST</button> -->
-   
-   <input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
-   <input onclick="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px">
-
+   <span style="margin-left: 1400px; margin-bottom: 100px;">
+   <input onclick="toggleDiv('list')" type="image" src="img/menu.png" style="width:300x; height:50px">
+   <input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px; margin-left: 15px;">
+   </span>
 
 			<!-- 가게 리스트 시작-->
 		
@@ -196,15 +196,18 @@
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
     
             <div class="list">
-            <img src="./upload/${dto.outfile}" width="100px"><br>
+            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">
+            <img src="./upload/${dto.outfile}" width="100px"></a><br>
             ${no.count}
             
         
             <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
             
+             
+            
             <br>
              &#128150; ${dto.like_num} &nbsp;
-            &#128064; ${dto.reviewCount}
+			 &#128064; ${dto.reviewCount}
 
         </div>
         </c:forEach>
