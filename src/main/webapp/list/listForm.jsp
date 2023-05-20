@@ -46,7 +46,19 @@
 
 </script>
 
+<style>
+        .myDiv {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
 
+        .list {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 
 </head>
 <body>
@@ -175,72 +187,64 @@
 			<!-- 가게 리스트 시작-->
 		
 <!-- 		<div id="list" class="myDiv"> -->
-		<div id="list" class="myDiv"><script id="list" class="myDiv"></script>
-		<table border="1">
-<!-- 		<tr> -->
-<!-- 			<th>No.</th> -->
-<!-- 			<th>가게이름</th> -->
-<!-- 			<th>외관사진</th> -->
-<!-- 			<th>좋아요 수</th> -->
-<!-- 			<th>리뷰 수</th> -->
-<!-- <!-- 			<th>조회수</th> --> -->
-<!-- 		</tr> -->
-		
-		<c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
-	
-		<tr>
-			<td>${no.count}</td>
-			<td>
-			<%-- <form action="./restaurantForm.fd" method="post" >
-					<input type="hidden" name="rest_id" value="${dto.rest_id}">
-					<input type="submit" value="${dto.name}">
-				</form> --%>
-				<a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
-			</td>
-			<td>${dto.like_num}</td>
-			<td>${dto.reviewCount}</td>
-<%-- 			<td>${restForm.read_count}</td> --%>
-		</tr>
-		</c:forEach>
-	</table>
-<br>
+            <div id="list" class="myDiv">
+            <div id="list" class="myDiv">
+<!--             <script id="list" class="myDiv"></script> -->
+        
+
+        
+            <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
+    
+            <div class="list">
+            <img src="./upload/${dto.outfile}" width="100px"><br>
+            ${no.count}
+            
+        
+            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
+            
+            <br>
+             &#128150; ${dto.like_num} &nbsp;
+            &#128064; ${dto.reviewCount}
+
+        </div>
+        </c:forEach>
+
+            <div style="text-align: left;"> <br>
 <%
-		int count = (int)request.getAttribute("count");
-		int pageSize = (int)request.getAttribute("pageSize");
-		int currentPage = (int)request.getAttribute("currentPage");
-		int pno = Integer.parseInt((String)request.getAttribute("pno"));
-		
-	
-		
-		if(count != 0) {
-			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-			int pageBlock = 5;
-			int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
-			int endPage = startPage + pageBlock - 1;
-			
-			if(endPage > pageCount) {
-				endPage = pageCount;
-			}
-			
-			if(startPage > pageBlock) {
-	%>
-				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
-	<%
-			}
-			for(int i = startPage; i <= endPage; i++) {
-	%>
-				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a>
-	<%
-			}
-			if(endPage < pageCount) {
-	%>
-				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
-	<%
-			}
-		}
-	%>
-	
-	</div>
+        int count = (int)request.getAttribute("count");
+        int pageSize = (int)request.getAttribute("pageSize");
+        int currentPage = (int)request.getAttribute("currentPage");
+        int pno = Integer.parseInt((String)request.getAttribute("pno"));
+        
+    
+        
+        if(count != 0) {
+            int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+            int pageBlock = 5;
+            int startPage = ((pno - 1) / pageBlock) * pageBlock + 1;
+            int endPage = startPage + pageBlock - 1;
+            
+            if(endPage > pageCount) {
+                endPage = pageCount;
+            }
+            
+            if(startPage > pageBlock) {
+    %>
+                <a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
+    <%
+            }
+            for(int i = startPage; i <= endPage; i++) {
+    %>
+                <a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a> &nbsp;
+    <%
+            }
+            if(endPage < pageCount) {
+    %>
+                <a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
+    <%
+            }
+        }
+    %>
 	
 	<!-- 가게 리스트 끝 -->
 	
