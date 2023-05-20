@@ -108,7 +108,7 @@
 	justify-content: center;
 	align-items: center;
 	margin-right: 20%;
-	margin-top: 5%;
+	margin-top: 4%;
 	}
 	.left {
 	text-align: left;

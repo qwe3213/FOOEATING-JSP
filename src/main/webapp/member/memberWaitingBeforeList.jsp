@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<h2>과거 대기 내역</h2>
+<h2 style="margin-bottom: 20px;">과거 대기 내역</h2>
 <c:forEach var="list" items="${queueHistory}">
 	<table>
 		<thead>
