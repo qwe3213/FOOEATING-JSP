@@ -202,11 +202,11 @@ $(document).ready(function(){
 		업종 <br>
 		<select onchange="changeValue(this)" name="category" id="category">
 		    <option>업종을 선택해주세요.</option>
-			<option value="ko">한식</option>
-			<option value="ja">일식</option>
-			<option value="ch">중식</option>
-			<option value="we">양식</option>
-			<option value="ds">디저트</option>
+			<option value="한식">한식</option>
+			<option value="일식">일식</option>
+			<option value="중식">중식</option>
+			<option value="양식">양식</option>
+			<option value="디저트">디저트</option>
 		</select><br>
 		<div id ="divrct"></div>
 		주소 <br>

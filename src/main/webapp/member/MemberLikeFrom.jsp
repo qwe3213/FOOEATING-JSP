@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/ownerwait.css">
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
@@ -62,11 +63,13 @@
 
 		<c:forEach var="dto" items="${likeList}">
 			<table border="1">
+							
 				<tr>
+					<td rowspan="2"><img src="./upload/${dto.outfile }" width="200px"></td>
 					<td colspan="2">
 					<a href="./restaurantForm.fd?rest_id=${dto.rest_id}">${dto.name }</a></td>
-				</tr>
-				<tr>
+					</tr>
+					<tr>
 					<td colspan="2">${dto.rest_tel }</td>
 				</tr>
 				<tr>
