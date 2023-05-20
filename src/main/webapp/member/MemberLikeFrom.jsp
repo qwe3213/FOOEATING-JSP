@@ -61,29 +61,29 @@
 			<c:redirect url="./MemberLogin.foo" />
 		</c:if>
 
-
 		<c:forEach var="dto" items="${likeList}">
-			<table border="1" style="width: 500px;">
-							
-				<tr>
-					<td rowspan="2" width="300px"><img src="./upload/${dto.outfile }" width="200px"></td>
-					<td colspan="2">
-					<a href="./restaurantForm.fd?rest_id=${dto.rest_id}">${dto.name }</a></td>
-					</tr>
-					<tr>
-					<td colspan="2">${dto.rest_tel }</td>
-				</tr>
-				<tr>
-					<td colspan="2">${dto.descriptions }</td>
-				</tr>
-			</table>
-			<br>
-			<br>
+
+			<fieldset style="float:left;">
+				<div style="width: 250px;">		
+					<div>
+						<a href="./restaurantForm.fd?rest_id=${dto.rest_id}">${dto.name }</a>
+					</div>
+					<div>
+						<a href="./restaurantForm.fd?rest_id=${dto.rest_id}"><img src="./upload/${dto.outfile }" width="200px"></a>
+					</div>
+					<div>
+						&#128222; ${dto.rest_tel }
+					</div>
+				</div>	
+			</fieldset>
 		</c:forEach>
 		
 		
-		
+	</div>
+	</div>
+
 <!-- 페이징처리 -->
+<div style="margin-top: 30%; text-align: center; margin-right: 23%;">
 <%
 int count = (int)request.getAttribute("count");
 int pageSize = (int)request.getAttribute("pageSize");
@@ -106,14 +106,12 @@ if(count != 0) {
 	
 	if(startPage > pageBlock) {
 %>
-
 				<a href="./MemberLike.foo?pageNum=<%=startPage - pageBlock%>">[이전]</a>
 	
 <%
 	}
 	for(int i = startPage; i <= endPage; i++) {
 %>
-
 
 				<a href="./MemberLike.foo?pageNum=<%=i%>">[<%=i%>]</a>
 				
@@ -123,7 +121,7 @@ if(count != 0) {
 	if(endPage < pageCount) {
 %>
 
-
+			
 				<a href="./MemberLike.foo?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 				
 				
@@ -131,9 +129,8 @@ if(count != 0) {
 	}
 }
 %>
+</div>
 	<br><br>
-	</div>
-	</div>
 </main>
 <!-- main -->
 
