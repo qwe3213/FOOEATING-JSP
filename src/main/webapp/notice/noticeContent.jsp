@@ -59,7 +59,7 @@
 <div id="category" style="margin: 85px 410px 0 410px;">
 <table border="1">
 	<tr>
-		<th style="color: white; background: #fb5849; ">No</th>
+		<th style="color: white; background: #fb5849;">No</th>
 		<td style="text-align: center;">${dto.notice_num}</td>
 		<th style="color: white; background: #fb5849;">제목</th>
 		<td>${dto.subject }</td>
@@ -81,19 +81,19 @@
 
 
 <!-- 모두 가능 -->
-<div>
-<div style="float: left; padding: 33px 66px;">
+<div style="padding-block: 1%; text-align: -webkit-center;">
+<div style="float: right; padding: 33px 33px;">
 <input class="btn-2" type="button" value="목록으로" onclick="location.href='./NoticeList.foo?pageNum=${pageNum}';">
 </div>
 <!-- 관리자만 가능 -->
 <c:if test="${user_id.equals('real_admin') }" >
-<div style="float: left; padding: 33px 66px;">
+<div style="float: right; padding: 33px 33px;">
 	<form action="./NoticeUpdateAction.foo?pageNum=${pageNum }&notice_num=${dto.notice_num }" method="post">
 		<input type="hidden" name="dto" value="${dto }">
 		<input class="btn-2" type="submit" value="수정하기">
 	</form>
 </div>
-<div style="float: left; padding: 33px 66px;">
+<div style="float: right; padding: 33px 33px;">
 	<form action="./NoticeDeleteAction.foo?pageNum=${pageNum }&notice_num=${dto.notice_num }" method="post">
 		<input type="hidden" value="${dto }">
 		<input class="btn-2" type="submit" value="삭제하기" >

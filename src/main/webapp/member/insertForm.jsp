@@ -289,10 +289,9 @@ $(function() {
 <!-- ***** Header Area End ***** -->
 
 <main>
-	<div id="top" style="text-align: -webkit-center;"> <!-- ** main -> div id="top" 해주기 ** -->
-	
+	<div id="top" style="text-align: -webkit-center;">
  		<!-- itwill_member 테이블에 저장될 정보를 입력 -->
- 		<div class="panel" style="text-align-last: center;">
+ 		<div class="panel" style="text-align-last: center; margin-top: 48px;">
  		<fieldset style="margin: 5%; text-align: center;">
  			<legend>회원가입</legend>
  			
