@@ -14,30 +14,26 @@
 						<div class="inner-content">
 							<h4>Fooeating</h4>
 							<h6>THE BEST QUEUE UP</h6>
-							<div class="main-white-button scroll-to-section">
-								<a href="#reservation">Make A Reservation</a>
-							</div>
-
-
-							<!-- 로그인 후 회원이 가게 대기 시 대기 상태 표시-->
-							
+						<!-- 로그인 후 회원이 가게 대기 시 대기 상태 표시-->
+						
+						<div class="wt-wrap">
 							<c:if test="${!empty wDto.wait_num }">
-							<table border="1">
-								<tr>
-									<td>가게명</td>
-									<td>나의 대기번호</td>
-									<td>남은 팀 수</td>
-								</tr>
-								<tr>
-									<td>${wDto.rest_name}</td>
-									<td>${wDto.wait_num}</td>
-									<td>${qDto.wait_team}</td>
-								</tr>
-							</table>
+								<div class="wt-img">
+									<img src="./img/circle-background.png" width="250px">
+								</div>
+								<div class="wt-text">
+									<table class="wt-t" style="width: 150px;">
+										<tr><th>대기번호</th></tr>
+										<tr><th><b>${wDto.wait_num}</b></th></tr>
+										<tr><th>&lt;${wDto.rest_name}&gt;</th></tr>
+										<tr><th>남은 팀 수</th></tr>
+										<tr><th><b>${qDto.wait_team}</b></th></tr>
+									</table>
+								</div>
 							</c:if>
+						</div>
 
-							<!-- 로그인 후 회원이 가게 대기 시 대기 상태 표시-->
-
+						<!-- 로그인 후 회원이 가게 대기 시 대기 상태 표시-->
 						</div>
 					</div>
 				</div>
@@ -46,17 +42,17 @@
 						<div class="Modern-Slider">
 							<div class="item">
 								<div class="img-fill" style="height: 102%;">
-									<img src="assets/images/slide-01.jpg" alt="">
+									<img src="assets/images/줄서기1.png" alt="">
 								</div>
 							</div>
 							<div class="item">
 								<div class="img-fill" style="height: 102%;">
-									<img src="assets/images/slide-02.jpg" alt="">
+									<img src="assets/images/줄서기2.png" alt="">
 								</div>
 							</div>
 							<div class="item">
 								<div class="img-fill" style="height: 102%;">
-									<img src="assets/images/slide-03.jpg" alt="">
+									<img src="assets/images/레스토랑.png" alt="">
 								</div>
 							</div>
 						</div>

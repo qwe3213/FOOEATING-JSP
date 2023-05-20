@@ -29,6 +29,7 @@ font & reset css
 --------------------------------------------- 
 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 /* 
 ---------------------------------------------
 reset
@@ -679,6 +680,8 @@ banner
   color: #fff;
   font-size: 54px;
   font-weight: 700;
+  text-align: center;
+  margin-top: -90%;
 }
 
 #top .left-content h6 {
@@ -688,6 +691,27 @@ banner
   color: #fff;
   letter-spacing: 3px;
   margin-top: 5px;
+  text-align: center;
+}
+
+#top .wt-wrap {
+	position: absolute;
+}
+
+#top .wt-img {
+	margin-left: -12%;
+	width: 100%;
+	vertical-align: middle;
+	text-align: left;
+	
+}
+
+#top .wt-text {
+	font-family: 'Hanna', cursive;
+	position: absolute;
+	transform: translate(15%, -125%);
+	font-size: 20px;
+	text-align: center;
 }
 
 #top .left-content .main-white-button  {
@@ -1554,11 +1578,14 @@ responsive
   }
   #top .left-content {
     text-align: center;
-    padding: 25% 0px;
+    padding: 50% 0px;
   }
   #about .right-content {
     margin-left: 0px;
     margin-top: 30px;
+  }
+  #top .left-content h4 {
+  	margin-top: -55%;
   }
   #chefs .chef-item {
     margin-bottom: 30px;
