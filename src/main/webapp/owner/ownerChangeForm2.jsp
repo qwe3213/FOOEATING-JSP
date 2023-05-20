@@ -94,10 +94,10 @@ function sample4_execDaumPostcode() {
 
 $(document).ready(function(){
 	
-	    $('div').css({
-	        'font-size' : '0.7em',
-	        'color' : 'red'
-	    });
+// 	    $('div').css({
+// 	        'font-size' : '0.7em',
+// 	        'color' : 'red'
+// 	    });
 	    
 	  
 	    

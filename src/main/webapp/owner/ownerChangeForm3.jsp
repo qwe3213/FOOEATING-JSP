@@ -30,10 +30,10 @@
 <script type="text/javascript">
   $(document).ready(function(){
 
-    $('div').css({
-        'font-size' : '0.7em',
-        'color' : 'red'
-    });
+//     $('div').css({
+//         'font-size' : '0.7em',
+//         'color' : 'red'
+//     });
 	
 	  $("#fr").on("submit", function(e){
 		  let descriptions = document.fr.descriptions.value;

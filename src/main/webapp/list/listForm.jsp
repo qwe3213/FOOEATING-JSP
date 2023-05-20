@@ -54,8 +54,8 @@
         }
 
         .list {
-            border: 1px solid #ccc;
-            padding: 10px;
+/*             border: 1px solid #ccc; */
+            padding: 15px;
             text-align: center;
         }
     </style>
@@ -196,7 +196,7 @@
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
     
             <div class="list">
-            <img src="./upload/${dto.outfile}" width="100px"><br>
+            <img src="./upload/${dto.outfile}" width="150px"><br>
             ${no.count}
             
         

@@ -89,7 +89,7 @@
 				</tr>
 				</thead>
 				<tr>
-					<td><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}">${wDto.rest_name}</a></td>
+					<td><a href="./restaurantForm.fd?rest_id=${wDto.rest_id}" style="color:#73685d;">${wDto.rest_name}</a></td>
 					<td>${wDto.wait_num}</td>
 					<td>${qDto.wait_team}</td>
 				</tr>
