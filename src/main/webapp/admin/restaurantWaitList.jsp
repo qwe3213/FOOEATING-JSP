@@ -40,6 +40,7 @@
 	}
 </script>
 
+<title>대기 가게 목록</title>
 </head>
 <body>
 
