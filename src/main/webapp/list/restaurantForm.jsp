@@ -158,24 +158,24 @@
             <tr>
 
                     <th>&#127968; </th>
-                    <td>${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td>
+                    <td style="font-size: 18px;">${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</td>
 
             </tr>
             <tr>
                     <th>&#128222; </th>
-                    <td>${restForm.rest_tel}</td>
+                    <td style="font-size: 18px;">${restForm.rest_tel}</td>
             </tr>
             <tr>
                     <th>&#129348; </th>
-                    <td>${restForm.category}</td>
+                    <td style="font-size: 18px;">${restForm.category}</td>
             </tr>
             <tr>
                     <th>&#128344; </th>
-                    <td>${restForm.runtime}</td>
+                    <td style="font-size: 18px;">${restForm.runtime}</td>
             </tr>
             <tr>
                     <th>&#128198; </th>
-                    <td>${restForm.dayoff}</td>
+                    <td style="font-size: 18px;">${restForm.dayoff}</td>
             </tr>
         </table>  	
 
@@ -238,42 +238,44 @@
 </script>
 
 
-	<div class="">
-	   <input onclick="toggleDiv('menu1')" type="button" value="MENU" id="sogae" style="border-radius: 10px;">
-	   <input onclick="toggleDiv('intro')" type="button" value="INTRO" id="sogae" style="border-radius: 10px;">
-	   <input onclick="toggleDiv('review')" type="button" value="REVIEW" id="sogae" style="border-radius: 10px;">
-	   <input onclick="toggleDiv('notice')" type="button" value="NOTICE" id="sogae" style="border-radius: 10px;">
+	<div class="con">
+	   <input onclick="toggleDiv('menu1')" type="button" value="MENU" id="sogae" style="border-radius: 10px; font-weight: bold;" >
+	   <input onclick="toggleDiv('intro')" type="button" value="INTRO" id="sogae" style="border-radius: 10px; font-weight: bold;">
+	   <input onclick="toggleDiv('review')" type="button" value="REVIEW" id="sogae" style="border-radius: 10px; font-weight: bold;">
+	   <input onclick="toggleDiv('notice')" type="button" value="NOTICE" id="sogae" style="border-radius: 10px; font-weight: bold;">
 	</div>
 
-	<div id="menu1" class="rest">
-             &#128203;${menulist.menu_name }<br>
-             &#128172;${menulist.menu_descriptions }<br>
-            &#128181;${menulist.price }<br>
+	<div id="menu1" class="rest" style="margin-top: 30px;"><br>
+             <p style="font-size: 19px; margin-bottom: 10px; margin-left: 8px;">&#128203;&nbsp;&nbsp;${menulist.menu_name }</p>
+             <p style="font-size: 19px; margin-bottom: 10px; margin-left: 8px;">&#128172;&nbsp;&nbsp;${menulist.menu_descriptions }</p>
+             <p style="font-size: 19px; margin-bottom: 10px; margin-left: 8px;">&#128181;&nbsp;&nbsp;${menulist.price }</p>
     </div>    
 
-            <div id="intro" class="rest" style="margin-top: 30px;">
-            <p><b style="font-size: 20px;">&#128073; 가게 소개 &#128072;</b></p><br><br>
-            ${restForm.descriptions}<br>
+            <div id="intro" class="rest" style="margin-top: 50px;">
+            <p><b style="font-size: 20px;">&#128073;&nbsp; 가게 소개 &nbsp;&#128072;</b></p><br>
+            <p style="font-size: 19px;">${restForm.descriptions}</p><br>
             </div>
 
             <div id="review" class="rest" >
             <c:forEach var="re" items="${requestScope.re }" varStatus="no">
-            <table>
+        <table>
+            <tr><th>등록일</th> &nbsp <td>${re.regdate}</td></tr>
             <tr><th>번호</th> &nbsp <td>${no.count}</td></tr>
             <tr><th>아이디</th> &nbsp <td>${re.user_id}</td></tr>
-            <tr><th>외관사진</th> &nbsp <td>${re.file}</td></tr>                
             <tr><th>평점</th> &nbsp <td>${re.grade}</td></tr>
             <tr><th>내용</th> &nbsp <td>${re.content}</td></tr>
-            <tr><th>등록일</th> &nbsp <td>${re.regdate}</td></tr>
+            <tr><th>외관사진</th> &nbsp <td>${re.file}</td></tr>                
         </table>
+        
+      
             <hr>
         </c:forEach>
             </div>
 
-            <div id="notice" class="rest" style="margin-top: 30px;">
-            <p><b style="margin-bottom: 10px; font-size: 20px;">&#128276;&nbsp;가게 공지사항&nbsp;&#128276;</b><br></p>
+            <div id="notice" class="rest" style="margin-top: 50px;">
+            <p><b style="margin-bottom: 10px; font-size: 20px;">&#128276;&nbsp;&nbsp;가게 공지사항&nbsp;&nbsp;&#128276;</b><br></p>
 <br>
-            <td id="ntt" style="margin-top: 20px; margin-bottom: 20px;">${restForm.rest_notice}</td><br>
+            <p id="ntt" style="font-size: 19px;">${restForm.rest_notice}</p><br>
             </div>
 	<hr>
 	
@@ -302,7 +304,7 @@
 		
 <!-- FACILIES -->	
 
-		<b><p id="fc" style="font-size: 20px;">FACILITIES</p></b>
+		<b><p id="fc" style="font-size: 20px; margin-bottom: 20px;">FACILITIES</p></b>
 		
 		<div style="white-space: nowrap;">
 			
@@ -348,7 +350,7 @@
 			<p id="fict6" style="margin-left: 10px;">${restForm.convenience.split(',')[5]}</p>
 			</div>
 			</c:if>
-</div>
+		</div>
 
 <!-- FACILIES -->
 			
@@ -363,7 +365,7 @@
 	<div class="location">
 	<b style="font-size: 19px;"><th>LOCATION</th></b>
 	</div>
-	<p style="margin-top: 20px;">${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</p>
+	<p style="margin-top: 20px; font-size: 18px;">${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</p>
 		<div style="text-align: -webkit-center;">
 		<div id="map" class="myDiv" style="width:100%;height:400px; margin-top: 40px;">
 
@@ -427,15 +429,16 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 
 <!-- </aside> -->
 
-<table>
-	<span id="wait">
+<!-- <table > -->
+<div id="wait" style="position: relative; margin-left: 1650px; bottom: 1280px; border: 2px;">
+<!-- 	<span > -->
 		<c:if test="${restForm.on_off == true}">
 			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen1('${restForm.rest_id}');" id="waiting1" style="margin-right: 50px">대기하기</button>
+				<button onclick="winopen1('${restForm.rest_id}');" id="waiting11" style="margin-right: 50px">대기하기</button>
 			</c:if>
 		
 			<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen2();" id="waiting2">대기하기</button>
+				<button onclick="winopen2();" id="waiting22">대기하기</button>
 			</c:if>
 		</c:if>
 		
@@ -444,9 +447,9 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 		</c:if>
    	 
 		<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button>
-	</span>
-</table>
-
+<!-- 	</span> -->
+</div>
+<!-- </table> -->
 		
 </main>
 
