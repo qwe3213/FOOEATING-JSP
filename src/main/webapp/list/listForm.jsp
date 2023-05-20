@@ -1,34 +1,26 @@
-<%@page
-	import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
+<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.fooeating.db.RestaurantDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fooeating.db.PublicDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
+    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <!-- css파일 -->
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="assets/css/font-awesome.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
@@ -37,9 +29,8 @@
 
 <title>Category</title>
 
-
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js" /></script>
+ 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"/></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
 	
@@ -56,7 +47,6 @@
 </script>
 
 <style>
-
         .myDiv {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -70,10 +60,8 @@
         }
     </style>
 
-
 </head>
 <body>
-
 
 <!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
 <div id="preloader">
@@ -105,7 +93,7 @@
 
 <main>
 	<div id="top">
-	<div id="table_search">
+<div id="table_search">
             <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
                 <span>
                 <label for="addr_city"> <b>CITY</b></label>
@@ -132,8 +120,7 @@
 		
 
 
-
-		<script>
+ <script>
  function toggleDiv(divId) {
      var mapDiv = document.getElementById("map");
      var listDiv = document.getElementById("list");
@@ -187,23 +174,21 @@
 		}
 	}
   </script>
-
   
 <!-- 	 <input id="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px"> -->
 <!-- 	 <input id="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 <!--    <button onclick="toggleDiv('map')" image>MAP</button> -->
 <!--    <button onclick="toggleDiv('list')">LIST</button> -->
-   <span style="margin-left: 1400px; margin-bottom: 100px;">
+   <div style="text-align: right;">
    <input onclick="toggleDiv('list')" type="image" src="img/menu.png" style="width:300x; height:50px">
-   <input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px; margin-left: 15px;">
-   </span>
+   <input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
+	</div>
 
-
-		<input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png"
-			style="width: 300x; height: 50px"> <input
-			onclick="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png"
-			style="width: 300x; height: 50px">
-
+			<!-- 가게 리스트 시작-->
+		
+<!-- 		<div id="list" class="myDiv"> -->
+<!--             <script id="list" class="myDiv"></script> -->
+        
 
         
             <div id="list" class="myDiv">
@@ -211,46 +196,21 @@
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
     
             <div class="list">
-            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">
-            <img src="./upload/${dto.outfile}" width="100px"></a><br>
+            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}"><img src="./upload/${dto.outfile}" width="100px"></a><br>
             ${no.count}
             
         
             <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
             
-             
-            
             <br>
              &#128150; ${dto.like_num} &nbsp;
-			 &#128064; ${dto.reviewCount}
+            &#128064; ${dto.reviewCount}
 
-
-		<!-- 가게 리스트 시작-->
-
-		<!-- 		<div id="list" class="myDiv"> -->
-		<!--             <script id="list" class="myDiv"></script> -->
-
-
-
-		<div id="list" class="myDiv">
-			<div id="list" class="myDiv">
-				<c:forEach var="dto" items="${requestScope.listForm }"
-					varStatus="no">
-
-					<div class="list">
-						<img src="./upload/${dto.outfile}" width="150px"><br>
-						${no.count} <a
-							href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
-
-						<br> &#128150; ${dto.like_num} &nbsp; &#128064;
-						${dto.reviewCount}
-
-					</div>
-				</c:forEach>
-			</div>
-			<div style="text-align: left;">
-				<br>
-				<%
+        </div>
+        </c:forEach>
+		</div>
+            <div style="text-align: left;"> <br>
+<%
         int count = (int)request.getAttribute("count");
         int pageSize = (int)request.getAttribute("pageSize");
         int currentPage = (int)request.getAttribute("currentPage");
@@ -270,39 +230,37 @@
             
             if(startPage > pageBlock) {
     %>
-				<a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
-				<%
+                <a href="./listForm.fd?pno=<%=startPage - pageBlock%>">[이전]</a>
+    <%
             }
             for(int i = startPage; i <= endPage; i++) {
     %>
-				<a href="./listForm.fd?pno=<%=i%>">[<%=i%>]
-				</a> &nbsp;
-				<%
+                <a href="./listForm.fd?pno=<%=i%>">[<%=i%>]</a> &nbsp;
+    <%
             }
             if(endPage < pageCount) {
     %>
-				<a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
-				<%
+                <a href="./listForm.fd?pno=<%=startPage + pageBlock%>">[다음]</a>
+    <%
             }
         }
     %>
+	
+	<!-- 가게 리스트 끝 -->
+	
+ </div>
+ </div>
+	
+	
+	<!-- 카카오맵 API 시작-->
+	
 
-				<!-- 가게 리스트 끝 -->
+<!-- <div id="myDiv" style="width:100%;height:350px;display: none;"> -->
 
-			</div>
-		</div>
+<div id="map" class="myDiv" style="width:400x;height:300px;">
 
-
-		<!-- 카카오맵 API 시작-->
-
-
-		<!-- <div id="myDiv" style="width:100%;height:350px;display: none;"> -->
-
-		<div id="map" class="myDiv" style="width: 400x; height: 300px;">
-
-			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89b7b057107ea38979fda72f1c0d0480&libraries=services"></script>
-			<script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89b7b057107ea38979fda72f1c0d0480&libraries=services"></script>
+<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(35.1584952142483, 129.06199399191797)// 지도의 중심좌표
@@ -345,40 +303,40 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 });
 
 </script>
-		</div>
+</div>
 
 
-		<!-- 카카오맵 API 끝 -->
+<!-- 카카오맵 API 끝 -->
 
-	</main>
-	<!-- main -->
+</main>
+<!-- main -->
 
-	<!-- footer -->
-	<jsp:include page="../inc/footerDiv.jsp" />
-	<!-- footer -->
+<!-- footer -->
+<jsp:include page="../inc/footerDiv.jsp" />
+<!-- footer -->
+                 
+<!-- jQuery -->
+<script src="assets/js/jquery-2.1.0.min.js"></script>
 
-	<!-- jQuery -->
-	<script src="assets/js/jquery-2.1.0.min.js"></script>
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 
-	<!-- Bootstrap -->
-	<script src="assets/js/popper.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/accordions.js"></script>
+<script src="assets/js/datepicker.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script> 
+<script src="assets/js/slick.js"></script> 
+<script src="assets/js/lightbox.js"></script> 
+<script src="assets/js/isotope.js"></script> 
 
-	<!-- Plugins -->
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/accordions.js"></script>
-	<script src="assets/js/datepicker.js"></script>
-	<script src="assets/js/scrollreveal.min.js"></script>
-	<script src="assets/js/waypoints.min.js"></script>
-	<script src="assets/js/jquery.counterup.min.js"></script>
-	<script src="assets/js/imgfix.min.js"></script>
-	<script src="assets/js/slick.js"></script>
-	<script src="assets/js/lightbox.js"></script>
-	<script src="assets/js/isotope.js"></script>
-
-	<!-- Global Init -->
-	<script src="assets/js/custom.js"></script>
-	<script>
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+<script>
     $(function() {
         var selectedClass = "";
         $("p").click(function(){
