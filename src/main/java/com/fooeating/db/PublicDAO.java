@@ -217,6 +217,7 @@ public class PublicDAO {
 				dto.setRest_tel(rs.getString("rest_tel"));
 				dto.setRuntime(rs.getString("runtime"));
 				dto.setStatus(rs.getInt("status"));
+				dto.setOutfile(rs.getString("outfile"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
