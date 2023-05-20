@@ -81,9 +81,9 @@
 		
 	</div>
 	</div>
-
+	<br><br>
 <!-- 페이징처리 -->
-<div style="margin-top: 30%; text-align: center; margin-right: 23%;">
+<div style="margin: 30% 250px 0 410px; text-align: center;">
 <%
 int count = (int)request.getAttribute("count");
 int pageSize = (int)request.getAttribute("pageSize");
