@@ -187,12 +187,12 @@
 			<!-- 가게 리스트 시작-->
 		
 <!-- 		<div id="list" class="myDiv"> -->
-            <div id="list" class="myDiv">
-            <div id="list" class="myDiv">
 <!--             <script id="list" class="myDiv"></script> -->
         
 
         
+            <div id="list" class="myDiv">
+            <div id="list" class="myDiv">
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
     
             <div class="list">
@@ -208,7 +208,7 @@
 
         </div>
         </c:forEach>
-
+		</div>
             <div style="text-align: left;"> <br>
 <%
         int count = (int)request.getAttribute("count");
@@ -248,7 +248,8 @@
 	
 	<!-- 가게 리스트 끝 -->
 	
- 
+ </div>
+ </div>
 	
 	
 	<!-- 카카오맵 API 시작-->
@@ -303,7 +304,8 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 
 </script>
 </div>
-</div>
+
+
 <!-- 카카오맵 API 끝 -->
 
 </main>
