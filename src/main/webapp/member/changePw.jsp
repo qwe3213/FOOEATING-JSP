@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 변경</title>
 <link rel="stylesheet" href="css/question.css">
 <!-- <script src="./js/jquery-3.6.4.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.6.4.js" 
