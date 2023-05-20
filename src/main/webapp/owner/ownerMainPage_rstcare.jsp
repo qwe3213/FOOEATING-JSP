@@ -72,8 +72,8 @@
 	<div style="height:240px; margin-right: 35%;">
 	
 	   <div style="text-align: right;" >
- 	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none; color: #fd9991;"><b>수정</b></a>
-		<a href="./RestaurantDeleteAction.on" style="text-decoration: none; color: #fd9991;"><b>삭제</b></a><br>
+ 	    <a href="./RestaurantUpdateProAction.on" style="text-decoration: none; color: #ff4742;"><b>수정</b></a>
+		<a href="./RestaurantDeleteAction.on" style="text-decoration: none; color: #ff4742;"><b>삭제</b></a><br>
    	   </div>
    	   <div style="float: right;">
    	    <img src="./upload/${restal.outfile}" width="230px">
