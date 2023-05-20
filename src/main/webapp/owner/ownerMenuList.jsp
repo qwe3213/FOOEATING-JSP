@@ -46,7 +46,7 @@
 			<table border="1">
 				<tr>
 					<td>
-					<img src="./upload/${list.meunfile}" width="100px" height="150px"><br>
+					<img src="./upload/${list.menufile}" width="100px" height="150px"><br>
 					${list.menu_name }<br>
 					${list.price }<br>
 					${list.menu_descriptions }<br>

@@ -2546,8 +2546,8 @@ public class PublicDAO {
 					dto.setMenu_name(rs.getString(2));
 					dto.setMenu_descriptions(rs.getString(3));
 					dto.setPrice(rs.getString(4));
-					dto.setRest_id(rs.getString(5));
-					dto.setMenufile(rs.getString(6));
+					dto.setMenufile(rs.getString(5));
+					dto.setRest_id(rs.getString(6));
 					
 					menuList.add(dto);
 				} // while
