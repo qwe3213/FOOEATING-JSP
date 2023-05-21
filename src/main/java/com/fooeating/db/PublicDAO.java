@@ -1636,6 +1636,7 @@ public class PublicDAO {
 					dto.setAddr_district(rs.getString("addr_district"));
 					dto.setAddr_etc(rs.getString("addr_etc"));
 					dto.setOutfile(rs.getString("outfile"));
+					dto.setCategory(rs.getString("category"));
 
 						sql = "SELECT count(*) FROM review WHERE rest_id=?";
 						pstmt = con.prepareStatement(sql);
@@ -1775,6 +1776,7 @@ public class PublicDAO {
 					dto.setAddr_city(rs.getString("addr_city"));
 					dto.setAddr_district(rs.getString("addr_district"));
 					dto.setAddr_etc(rs.getString("addr_etc"));
+					dto.setCategory(rs.getString("category"));
 					listForm.add(dto);
 					
 				}
