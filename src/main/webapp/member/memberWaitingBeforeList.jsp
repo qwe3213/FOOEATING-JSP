@@ -11,9 +11,9 @@
 			<th style="min-width: 225.3px; width:50%;">가게명</th>
 		</tr>
 		</thead>
-		<tr>
-			<td style="min-width: 225.3px; width: 50%;"><a href="./restaurantForm.fd?rest_id=${list.rest_id}">${list.rest_name}</a></td>
-			<td style="min-width: 225.3px; width: 50%;">${list.regdate}</td>
+		<tr>${list.regdate}
+			<td style="min-width: 225.3px; width: 50%;"><a href="./restaurantForm.fd?rest_id=${list.rest_id}">${list.regdate}</a></td>
+			<td style="min-width: 225.3px; width: 50%;">${list.rest_name}</td>
 		</tr>
 		
 	</table>
