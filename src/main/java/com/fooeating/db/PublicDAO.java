@@ -1777,6 +1777,17 @@ public class PublicDAO {
 					dto.setAddr_district(rs.getString("addr_district"));
 					dto.setAddr_etc(rs.getString("addr_etc"));
 					dto.setCategory(rs.getString("category"));
+					dto.setLike_num(rs.getInt("like_num"));
+					
+					sql = "SELECT count(*) FROM review WHERE rest_id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getRest_id());
+					rs2 = pstmt.executeQuery();
+					if (rs2.next()) {
+						
+						dto.setReviewCount(rs2.getInt(1));
+					}
+					
 					listForm.add(dto);
 					
 				}
