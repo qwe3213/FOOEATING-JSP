@@ -2166,7 +2166,9 @@ public class PublicDAO {
 			
 			try {
 				con = getCon();
-				sql = "select * from waiting where user_id = ? and rest_id = ? and status = 1";
+//				sql = "select * from waiting where user_id = ? and rest_id = ? and status = 1";
+				sql = "select w.*, r.name from waiting w join restaurant r on w.rest_id"
+						+ " = r.rest_id  where w.user_id = ? and w.rest_id = ? and w.status = 1;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user_id);
 				pstmt.setString(2, rest_id);
@@ -2181,6 +2183,7 @@ public class PublicDAO {
 					dto.setStatus(rs.getInt("status"));
 					dto.setRegdate(rs.getTimestamp("regdate"));
 					dto.setPeople(rs.getInt("people"));
+					dto.setName(rs.getString("name"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

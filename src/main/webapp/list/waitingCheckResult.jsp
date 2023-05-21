@@ -13,7 +13,7 @@
 			<h2>대기가 완료되었습니다.</h2>
 			
 			사용자 : ${sessionScope.user_id}<br>
-			대기 중인 가게 : ${qdto.name}<br>
+			대기 중인 가게 : ${wdto.name}<br>
 			대기 번호 : ${wdto.wait_num} <br>
 			대기 인원 : ${wdto.people} 명
 			
