@@ -9,7 +9,7 @@
 <title>메뉴 추가</title>
 </head>
 <body>
-	<div style="text-align: center;">
+	<div style="text-align: center; margin-top: 15%;">
 		<h2>메뉴 추가</h2>
 			<form action="OwnerMenuAddAction.on" method="post" enctype="multipart/form-data" name="fr">
 				<input type="hidden" name="rest_id" value="${param.rest_id }">
@@ -25,8 +25,7 @@
 				<div style="margin-bottom: 10px;">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					메뉴 이미지 :<input type="file" name="menufile"> <br>
-				</div>
-				<hr>
+				</div><br>
 				<input type="submit" value="메뉴 추가" style="background-color: #ff4742;
 																color: #fff;
 																border: none;
@@ -34,7 +33,7 @@
 																font-size:medium;
 																font-weight: bold;" >
 			</form>
-		</div>
+		</div><br>
 
 </body>
 </html>
