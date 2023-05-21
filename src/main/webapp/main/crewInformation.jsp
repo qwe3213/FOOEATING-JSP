@@ -98,7 +98,7 @@
 				<tr>
 					<td style="text-align: center;">이도희</td>
 					<td style="text-align: center;"><img src="./img/team4jo/dh.png" width="70px" height="70px"></td>
-					<td> 아멘  </td>
+					<td> 나 이도희! css 대장임. 그러니 모든 css 나한테 맡겨!! 아멘. </td>
 			</tr>
 	</table><br><br>
 	</div>

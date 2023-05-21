@@ -32,7 +32,7 @@ public class WaitingCheckProAction implements Action {
 		if (wdto != null) {
 			System.out.printf("(이미 있을 때)user_id : %s, rest_id : %s, wait_num : %d, people : %d명\n", 
 					wdto.getUser_id(), wdto.getRest_id(), wdto.getWait_num(), wdto.getPeople());
-		} else {
+		}else {
 			// 대기번호 발급
 			dao.getWaitingNum(user_id, rest_id, people);
 			wdto = dao.getWaitingCheck(user_id, rest_id);
