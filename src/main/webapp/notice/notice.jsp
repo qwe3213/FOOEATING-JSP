@@ -53,7 +53,7 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 410px 0 410px; min-width: 650px;">
+	<div id="category" style="margin: 85px 250px 0 410px; min-width: 800px;">
 	
 	<h2> 공지사항 </h2><br>
 

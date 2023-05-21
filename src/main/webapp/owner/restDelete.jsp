@@ -22,7 +22,7 @@
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
-<title>점주 My page 가게 관리</title>
+<title>가게 관리</title>
 </head>
 <body>
 	<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
@@ -50,7 +50,7 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
+	<div id="category" style="margin: 85px 410px 0 410px; min-width: 800px;">
 		<h2> 가게 정보 삭제 </h2>
 		<br>
 		<fieldset>

@@ -65,7 +65,7 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 250px 0 410px; min-width: 850px;">
+<div id="category" style="margin: 85px 410px 0 700px; min-width: 850px;">
 	<h2>나의 가게 정보</h2>
 	
 	<fieldset>
@@ -131,7 +131,7 @@
 	  <form action ="./OwnerNoticeAction.on " method="post">
 		<textarea name="rest_notice" rows="2"placeholder="공지사항" style="width:100%"></textarea>
 		<input type="hidden" name="rest_id" value="${restal.rest_id }" >
-		<input class="btn-2" type="submit" value="저장" style="margin-bottom: 2px;">
+		<input class="btn-2" type="submit" value="저장" style="margin-bottom: 2px; float: right;">
 	  </form>
 	</div>
 	

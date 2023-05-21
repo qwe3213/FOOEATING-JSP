@@ -49,7 +49,7 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 250px 0 410px; min-width: 750px;">
+	<div id="category" style="margin: 85px 250px 0 410px; min-width: 800px;">
 	
 	<h2>직원소개</h2><br>
 	<table>

@@ -86,7 +86,7 @@
  			
  			
  			<c:forEach var="list"  items="${menuList }">
- 			<div style="width: 300px;">
+ 			<div style="width: 300px; float: left;">
 			<table style="width: 300px;">
 				<tr>
 					<td>
@@ -101,7 +101,6 @@
 			<div style="float: left; padding-right: 10px;">
 			<button class="btn-2" onclick="winopen(${list.rest_menu_num})">메뉴 수정</button>
 			</div>
-			
 			<div>
 			<form action="./OwnerMenuDelete.on" method="post"
 				onsubmit="return deleteMenu()">
@@ -110,7 +109,7 @@
 				<button class="btn-2">메뉴 삭제</button>
 			</form>
 			</div>
-			</div><br>
+			</div>
 			</c:forEach>
 			
 			<div>

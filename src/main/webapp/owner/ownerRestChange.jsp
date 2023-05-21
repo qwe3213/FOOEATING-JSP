@@ -22,7 +22,7 @@
 
 <link href="./css/sideMenu.css" rel="stylesheet">
 
-<title>점주 My page 가게 관리</title>
+<title>가게 관리</title>
 </head>
 <body>
 <!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
@@ -50,11 +50,11 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 0 0 410px;">
+	<div id="category" style="margin: 85px 410px 0 410px; min-width: 800px;">
 
 
 <fieldset>
- 			<legend>FOOEATING 가게 정보 수정</legend>
+ 			<h2>가게 정보 수정</h2><br>
  			
 	 		<form action="RestaurantUpdateAction.on" method="post" id="fr">
  			 	<b>상&nbsp;&nbsp;호&nbsp;&nbsp;명</b>  :  <input type="text" name="name" value="${dto.name}" style="margin-bottom: 3px;"><br>
@@ -62,7 +62,7 @@
  			    <b>휴&nbsp;&nbsp;무&nbsp;&nbsp;일</b>  : <input type="text" name="dayoff" value="${dto.dayoff}" style="margin-bottom: 3px;"><br>
  			    <b>영업시간</b> : <input type="text" name="runtime" value="${dto.runtime}" style="margin-bottom: 3px;"><br>
  			 	<b>가게설명</b> : <input type="text" name="descriptions" value="${dto.descriptions }" style="margin-bottom: 10px;"><br>
- 			 		 	
+ 			 	<br>
  			 	<input class="btn-2" type="submit" value="가게정보 수정">
  			 	
  		
