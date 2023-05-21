@@ -201,10 +201,10 @@
 			alert("지역을 선택하세요.");
 			return false;
 		}
-		if(fr.search.value == "") {
-			alert("검색어를 입력하세요.")
-			return false;
-		}
+// 		if(fr.search.value == "") {
+// 			alert("검색어를 입력하세요.")
+// 			return false;
+// 		}
 	}
   </script>
   

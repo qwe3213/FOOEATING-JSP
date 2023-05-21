@@ -123,10 +123,31 @@
 	<div class="container">
 	<aside id="left-sidebar"></aside>
         
-        
-
-		<h1 class="restname" style="padding-top: 80px">${restForm.name}</h1>
-		
+	
+	<div style="margin-bottom: 20px;">
+	<h1 class="restname" style="padding-top: 80px">${restForm.name}</h1>
+	
+		<div style="text-align: right; ">
+			 <!-- <table > -->
+						<c:if test="${restForm.on_off == true}">
+							<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
+								<button onclick="winopen1('${restForm.rest_id}');" id="jaebal" style="margin-right: 50px">대기하기</button>
+							</c:if>
+						
+							<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
+								<button onclick="winopen2();" id="jaebal">대기하기</button>
+							</c:if>
+						</c:if>
+						
+						<c:if test="${restForm.on_off == false}">
+							<button id="ready">영업 준비 중입니다...(T^T)</button>
+						</c:if>
+				   	 
+						<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button>
+			<!-- </table> -->
+		</div>
+		</div>	
+	
 		&#128065
 		&nbsp;${restForm.read_count}&nbsp;
 		&nbsp;&#128150&nbsp;
@@ -323,7 +344,7 @@
 		
 <!-- FACILIES -->	
 
-		<b><p id="fc" style="font-size: 20px; margin-bottom: 20px;">FACILITIES</p></b>
+		<p id="fc" style="font-size: 20px; margin-bottom: 20px;"><b>FACILITIES</b></p>
 		
 		<div style="white-space: nowrap;">
 			
@@ -382,7 +403,7 @@
 	<hr>
 	
 	<div class="location">
-	<b style="font-size: 19px;"><th>LOCATION</th></b>
+	<b style="font-size: 19px;">LOCATION</b>
 	</div>
 	<p style="margin-top: 20px; font-size: 18px;">${restForm.addr_city} ${restForm.addr_district} ${restForm.addr_etc}</p>
 		<div style="text-align: -webkit-center;">
@@ -448,27 +469,27 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 
 <!-- </aside> -->
 
-<!-- <table > -->
-<div id="wait" style="position: relative; margin-left: 1650px; bottom: 1280px; border: 2px;">
-<!-- 	<span > -->
-		<c:if test="${restForm.on_off == true}">
-			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen1('${restForm.rest_id}');" id="jaebal" style="margin-right: 50px">대기하기</button>
-			</c:if>
+<!-- <!-- <table > --> -->
+<!-- <div id="wait" style="position: relative; margin-left: 1400px; bottom: 1250px; border: 2px;"> -->
+<!-- <!-- 	<span > --> -->
+<%-- 		<c:if test="${restForm.on_off == true}"> --%>
+<%-- 			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}"> --%>
+<%-- 				<button onclick="winopen1('${restForm.rest_id}');" id="jaebal" style="margin-right: 50px">대기하기</button> --%>
+<%-- 			</c:if> --%>
 		
-			<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen2();" id="jaebal">대기하기</button>
-			</c:if>
-		</c:if>
+<%-- 			<c:if test="${wdto.user_id.equals(sessionScope.user_id)}"> --%>
+<!-- 				<button onclick="winopen2();" id="jaebal">대기하기</button> -->
+<%-- 			</c:if> --%>
+<%-- 		</c:if> --%>
 		
-		<c:if test="${restForm.on_off == false}">
-			<button id="ready">영업 준비 중입니다...(T^T)</button>
-		</c:if>
+<%-- 		<c:if test="${restForm.on_off == false}"> --%>
+<!-- 			<button id="ready">영업 준비 중입니다...(T^T)</button> -->
+<%-- 		</c:if> --%>
    	 
-		<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button>
-<!-- 	</span> -->
-</div>
-<!-- </table> -->
+<!-- 		<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button> -->
+<!-- <!-- 	</span> --> -->
+<!-- </div> -->
+<!-- <!-- </table> --> -->
 		
 </main>
 
