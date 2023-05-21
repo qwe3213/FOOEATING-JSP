@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="./css/question.css" rel="stylesheet">
 
 <h2 style="margin-bottom: 20px;">과거 대기 내역</h2>
 <c:forEach var="list" items="${queueHistory}">
@@ -16,15 +17,15 @@
 			<td style="min-width: 225.3px; width: 50%;">${list.regdate}</td>
 		</tr>
 		
-	</table>
+	</table><br>
 	<c:if test="${list.review_check == 1 }">
-	<script>
- 				var currentDate = new Date();  // 현재 날짜
+		<script>
+ 			var currentDate = new Date();  // 현재 날짜
   			var reviewDate = new Date('${list.regdate}');  // 리뷰 작성 가능한 날짜
   			var threeDaysLater = new Date(reviewDate.setDate(reviewDate.getDate() + 3));  // 리뷰 작성 가능한 날짜로부터 3일 뒤의 날짜
 
  				if (currentDate <= threeDaysLater) {
-    				document.write('<button onclick="winopen(${list.wait_num})">리뷰 작성</button>');
+    				document.write('<button class="btn-2" onclick="winopen(${list.wait_num})">리뷰 작성</button>');
   			} else {
     			// 작성 가능한 날짜 이전이므로 버튼을 비활성화하거나 보여주지 않음
   			}
