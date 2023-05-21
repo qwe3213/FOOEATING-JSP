@@ -236,7 +236,7 @@
 <%--             ${no.count} --%>
             
         
-            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}"><span id="subject">${dto.name }</span> <span style="color: black; font-size: 15px;" >${dto.category }</span> </a>
+            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}"><br><span id="subject" style="margin-bottom : 10px;">${dto.name }</span> <span style="color: black; font-size: 15px;" >${dto.category }</span> </a>
             
             <br>
              &#128150; ${dto.like_num} &nbsp;

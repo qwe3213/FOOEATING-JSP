@@ -34,7 +34,7 @@
 	function winopen(wait_num){
 		let popupX = (window.screen.width / 2) - (500 / 2);
 		let popupY= (window.screen.height /2) - (300 / 2);
-		window.open("ReviewWrite.foo?wait_num="+wait_num+"","","width=500, height=400, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open("ReviewWrite.foo?wait_num="+wait_num+"","","width=500, height=500, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 		
 	}
 	
