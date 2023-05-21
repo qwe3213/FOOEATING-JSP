@@ -50,7 +50,7 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 410px 0 410px;">
+<div id="category" style="margin: 85px 410px 0 410px; min-width: 800px;">
 
 <div>
 <h2>공지사항 작성하기</h2> <br>
@@ -63,7 +63,7 @@
 	<div style="float: left; padding: 1%;"><b>내용 : </b></div>
 	<div style="padding: 1%;"><textarea rows="15" cols="80" name="content"></textarea></div>
 	
-	<div style="text-align: left; padding: 1%;">
+	<div style="text-align: left; padding-left: 60px;">
 	<input class="btn-2" type="submit" value="작성하기"><br><br>
 	</div>
 	

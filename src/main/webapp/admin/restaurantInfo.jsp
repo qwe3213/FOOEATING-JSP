@@ -52,11 +52,10 @@
 
 	<!-- main -->
 	<main>
-		<br>
-		<br>
 		<div id="top">
 			<div id="category"
 				style="margin: 85px 50px 0 410px; min-width: 800px;">
+				<h2>가게 상세 목록</h2><br>
 				<table>
 					<tbody>
 						<tr>

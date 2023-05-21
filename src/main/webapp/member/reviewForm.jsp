@@ -126,9 +126,8 @@
 				<br>
 			</div>
 		</div>
-	</c:forEach>
+	</c:forEach><br>
 
-	
 	
 <div style=" text-align: center; margin-top: 7%;"> 	
 <!-- 페이징처리 -->
@@ -175,7 +174,8 @@ if(count != 0) {
 	}
 }
 %>
-	</div>
+	</div><br><br>
+	
 	</div>
 	</div>
 </main>

@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="css/ownerwait.css">
 <link rel="stylesheet" href="css/question.css">
 
-<title>FOOEATING - Notice</title>
+<title>공지사항</title>
 
 
 </head>
@@ -56,7 +56,7 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 410px 0 410px; min-width: 700px;">
+<div id="category" style="margin: 85px 410px 0 410px; min-width: 800px;">
 <table border="1">
 	<tr>
 		<th style="color: white; background: #fb5849;">No</th>
@@ -75,9 +75,6 @@
 
 <!-- dto 객체 저장 -->
 <c:set var="dto" value="${dto }" scope="request"/>
-
-
-
 
 
 <!-- 모두 가능 -->
@@ -101,6 +98,7 @@
 </div>
 </c:if>
 </div>
+<br><br><br><br><br>
 </div>
 </div>
 </main>

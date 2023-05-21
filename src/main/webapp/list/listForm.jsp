@@ -59,10 +59,12 @@
             padding: 10px;
             text-align: center;
         }
+
         #subject{
         font-size: x-large;
         margin-top: 20px;}
         
+
     </style>
 
 </head>
@@ -98,6 +100,7 @@
 
 <main>
 	<div id="top">
+
 <div id="table_search" style="margin-left: 150px; margin-top: 30px;">
             <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
                 <span>
@@ -130,6 +133,7 @@
                 <input type="submit" value="검색" class="btn">
             </form>
         </div>
+
 		
 
 
@@ -208,8 +212,8 @@
 <!-- 	 <input id="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 <!--    <button onclick="toggleDiv('map')" image>MAP</button> -->
 <!--    <button onclick="toggleDiv('list')">LIST</button> -->
-   <div style="text-align: right;">
-   <input onclick="toggleDiv('list')" type="image" src="img/menu.png" style="width:300x; height:50px">
+   <div style="text-align: right; margin-right: 24%; margin-bottom: 1.5%;">
+   <input onclick="toggleDiv('list')" type="image" src="img/menu.png" style="width:300x; height:50px; margin-right: 20px;">
    <input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
 	</div>
 
@@ -220,6 +224,7 @@
         
 
         
+
             <div id="list" class="myDiv">
             <div id="list" class="myDiv" style="width: 400px; height: 700px;">
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
@@ -239,6 +244,7 @@
         </c:forEach>
 		</div>
             <div style="text-align: left; font-size: x-large;" > <br>
+
 <%
         int count = (int)request.getAttribute("count");
         int pageSize = (int)request.getAttribute("pageSize");
@@ -333,7 +339,9 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 
 </script>
 </div>
+
 </div>
+
 
 <!-- 카카오맵 API 끝 -->
 

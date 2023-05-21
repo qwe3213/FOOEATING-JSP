@@ -50,13 +50,14 @@
 <!-- main -->
 <main>
 <div id="top">
-	<div id="category" style="margin: 85px 410px 0 410px; min-width: 750px;">
+	<div id="category" style="margin: 85px 250px 0 410px; min-width: 800px;">
 
 	<div style="text-align: center;">
-		<h1>푸이팅</h1>
-		<p>푸이팅은 수많은 SME와 창작자, 파트너들이 미래 기술을 활용해 글로벌 시장에서 더 큰 성장을 이룰 수 있도록
-			지원하는 글로벌 테크 플랫폼입니다.</p>
-			<img src="./img/logo.png">
+		<h1>푸이팅</h1><br>	
+		<p style="font-size:20px;"><b>푸이팅은 수많은 SME와 창작자, 파트너들이 미래 기술을 활용해 글로벌 시장에서 더 큰 성장을 이룰 수 있도록
+			지원하는 글로벌 테크 플랫폼입니다.</b></p> <br><br>
+			<img src="./img/빌딩.png" width="500px" height="500px">
+			<br><br>
 		<div>
 		<table class="type03">
 			<tr>
