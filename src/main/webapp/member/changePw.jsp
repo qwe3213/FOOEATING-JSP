@@ -105,6 +105,7 @@ function checkData() {
 </script>
 </head>
 <body>
+<div style="margin-top: 15%;">
 		<h2 style="text-align: center;">비밀번호 변경</h2>
 		
 		<!-- 로그인 세션 제어 -->
@@ -123,10 +124,10 @@ function checkData() {
 		새 비밀번호 확인<br>
 		<input type="password" name="checkNewPw" id="checkNewPw">
 		<div id="checkNewPwDiv" class="errorDiv"></div>
-		
-		<button class="btn-2" style="text-align: center; margin-top: 5%; ">비밀번호 변경</button>
+		<br>
+		<button class="btn-2" style="text-align: center; margin-top: 5%; float: right;">비밀번호 변경</button>
 		</form>
 		</div>
-		
+</div>	
 </body>
 </html>
