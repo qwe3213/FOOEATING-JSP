@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/listarray.css">
+<link rel="stylesheet" href="css/listcss.css">
 
 <title>Category</title>
 
@@ -58,6 +59,10 @@
             padding: 10px;
             text-align: center;
         }
+        #subject{
+        font-size: x-large;
+        margin-top: 20px;}
+        
     </style>
 
 </head>
@@ -93,19 +98,27 @@
 
 <main>
 	<div id="top">
-<div id="table_search">
+<div id="table_search" style="margin-left: 150px; margin-top: 30px;">
             <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
                 <span>
-                <label for="addr_city"> <b>CITY</b></label>
+                <label for="addr_city"> <b>CITY&nbsp;</b></label>
                     <select id="addr_city" name="addr_city" onchange="addrChange(this);">
-                        <option value="none">시/도를 선택해주세요.</option>
+                      <option value="none">시/도를 선택해주세요.</option>
                         <option value="서울" <c:if test="${param.addr_city.equals('서울')}">selected</c:if>>서울</option>
+                        <option value="인천" <c:if test="${param.addr_city.equals('인천')}">selected</c:if>>인천</option>
+                        <option value="대전" <c:if test="${param.addr_city.equals('대전')}">selected</c:if>>대전</option>
+                        <option value="대구" <c:if test="${param.addr_city.equals('대구')}">selected</c:if>>대구</option>
+                        <option value="광주" <c:if test="${param.addr_city.equals('광주')}">selected</c:if>>광주</option>
                         <option value="부산" <c:if test="${param.addr_city.equals('부산')}">selected</c:if>>부산</option>
-                        <option value="경상남도" <c:if test="${param.addr_city.equals('경상남도')}">selected</c:if>>경남</option>
+                        <option value="울산" <c:if test="${param.addr_city.equals('울산')}">selected</c:if>>울산</option>
+                        <option value="경북" <c:if test="${param.addr_city.equals('경북')}">selected</c:if>>경북</option>
+                        <option value="경남" <c:if test="${param.addr_city.equals('경남')}">selected</c:if>>경남</option>
+                        <option value="전남" <c:if test="${param.addr_city.equals('전남')}">selected</c:if>>전남</option>
+                        <option value="강원" <c:if test="${param.addr_city.equals('강원')}">selected</c:if>>강원</option>
                     </select>
                 </span>
                 <span>
-                <label for="addr_discrict"><b>DISTRICT</b></label>
+                <label for="addr_discrict"><b>&nbsp;DISTRICT&nbsp;</b></label>
                     <select id="addr_district" name="addr_district">
                         <option value="none">구를 선택해주세요.</option>
                         <c:if test="${param.addr_district.equals('none')}">
@@ -113,7 +126,7 @@
                         </c:if>
                     </select>
                 </span><br>
-                <input type="text" name="search" class="input_box" style="width: 300px; text-align:center; ;" placeholder="매장을 검색해 보세요"><br>
+                <input type="text" name="search" class="input_box" style="width: 490px; height:35px; text-align:center; margin-top: 10px;" placeholder="매장을 검색해 보세요">
                 <input type="submit" value="검색" class="btn">
             </form>
         </div>
@@ -143,14 +156,30 @@
  };
  
  function addrChange(e) {
-		var 서울 = ["강남", "홍대", "여의도"];
-		var 부산 = ["북구", "부산진구", "동래구"];
-		var 경상남도 = ["김해", "창원", "양산"];
+	 var 서울 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];;
+     var 부산 = ["강서구","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"];
+     var 경남 = ["창원시","김해시","진주시","양산시","거제시","통영시","사천시","밀양시","함안군","거창군","창녕군","고성군","하동군","합천군","남해군","함양군","산청군","의령군"];
+     var 대전 = ["대덕구","동구","서구","유성구","중구"];
+     var 대구 = ["남구","달서구","동구","북구","서구","수성구","중구","달성군"];
+     var 광주 = ["광산구","남구","동구","북구","서구"];
+     var 울산 = ["남구","동구","북구","중구","울주군"];
+     var 인천 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
+     var 경남 = ["창원시","김해시","진주시","양산시","거제시","통영시","사천시","밀양시","함안군","거창군","창녕군","고성군","하동군","합천군","남해군","함양군","산청군","의령군"];
+     var 경북 = ["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시","군위군","의성군","청송군","영양군","영덕군","청도군","고령군","성주군","칠곡군","예천군","봉화군","울진군","울릉군"];
+     var 전남 = ["목포시","여수시","순천시","나주시","광양시","담양군","곡성군","구례군","고흥군","보성군","화순군","장흥군","강진군","해남군","영암군","무안군","함평군","영광군","장성군","완도군","진도군","신안군"];
 		var target = document.getElementById("addr_district")
 		
 		if (e.value == "서울") var addr_d = 서울;
-		else if (e.value == "부산") var addr_d = 부산;
-		else if (e.value == "경상남도") var addr_d = 경상남도;
+        else if (e.value == "부산") var addr_d = 부산;
+        else if (e.value == "경남") var addr_d = 경남;
+        else if (e.value == "경북") var addr_d = 경북;
+        else if (e.value == "광주") var addr_d = 광주;
+        else if (e.value == "대전") var addr_d = 대전;
+        else if (e.value == "대구") var addr_d = 대구;
+        else if (e.value == "울산") var addr_d = 울산;
+        else if (e.value == "전남") var addr_d = 전남;
+        else if (e.value == "강원") var addr_d = 강원;
+        else if (e.value == "인천") var addr_d = 인천;
 		
 		target.options.length = 0;
 		
@@ -192,24 +221,24 @@
 
         
             <div id="list" class="myDiv">
-            <div id="list" class="myDiv">
+            <div id="list" class="myDiv" style="width: 400px; height: 700px;">
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
     
             <div class="list">
-            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}"><img src="./upload/${dto.outfile}" width="100px"></a><br>
-            ${no.count}
+            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}"><img src="./upload/${dto.outfile}" width="300px" height="250px"></a><br>
+<%--             ${no.count} --%>
             
         
-            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}">${dto.name }</a>
+            <a href="./restaurantForm.fd?rest_id=${dto.rest_id}&pno=${pno}"><span id="subject">${dto.name }</span> <span style="color: black; font-size: 15px;" >${dto.category }</span> </a>
             
             <br>
              &#128150; ${dto.like_num} &nbsp;
-            &#128064; ${dto.reviewCount}
+             &#9997; ${dto.reviewCount}
 
         </div>
         </c:forEach>
 		</div>
-            <div style="text-align: left;"> <br>
+            <div style="text-align: left; font-size: x-large;" > <br>
 <%
         int count = (int)request.getAttribute("count");
         int pageSize = (int)request.getAttribute("pageSize");
@@ -304,7 +333,7 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 
 </script>
 </div>
-
+</div>
 
 <!-- 카카오맵 API 끝 -->
 
