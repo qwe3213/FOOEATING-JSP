@@ -52,7 +52,7 @@ public class ListFormAction implements Action {
 //		int count = dao.getListCount(); 			// 전체 가게 수
 //		System.out.println("가게수 : " + count);
 		
-		int pageSize = 9;							// 한 페이지에 출력할 가게 수
+		int pageSize = 12;							// 한 페이지에 출력할 가게 수
 		
 		
 		String pno = request.getParameter("pno");

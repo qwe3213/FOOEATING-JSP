@@ -453,11 +453,11 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 <!-- 	<span > -->
 		<c:if test="${restForm.on_off == true}">
 			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen1('${restForm.rest_id}');" class="waiting11" style="margin-right: 50px">대기하기</button>
+				<button onclick="winopen1('${restForm.rest_id}');" id="jaebal" style="margin-right: 50px">대기하기</button>
 			</c:if>
 		
 			<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen2();" class="waiting11">대기하기</button>
+				<button onclick="winopen2();" id="jaebal">대기하기</button>
 			</c:if>
 		</c:if>
 		
