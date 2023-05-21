@@ -104,7 +104,7 @@
 <div id="table_search" style="margin-left: 150px; margin-top: 30px;">
             <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
                 <span>
-                <label for="addr_city"> <b>CITY&nbsp;</b></label>
+                <label for="addr_city" style="margin-left: 200px;"> <b>CITY&nbsp;</b></label>
                     <select id="addr_city" name="addr_city" onchange="addrChange(this);">
                       <option value="none">시/도를 선택해주세요.</option>
                         <option value="서울" <c:if test="${param.addr_city.equals('서울')}">selected</c:if>>서울</option>
@@ -129,8 +129,10 @@
                         </c:if>
                     </select>
                 </span><br>
-                <input type="text" name="search" class="input_box" style="width: 490px; height:35px; text-align:center; margin-top: 10px;" placeholder="매장을 검색해 보세요">
+                <span id="gum">
+                <input type="text" name="search" class="input_box" style="margin-left: 200px; width: 490px; height:35px; text-align:center; margin-top: 10px;" placeholder="매장을 검색해 보세요">
                 <input type="submit" value="검색" class="btn">
+                </span>
             </form>
         </div>
 
@@ -243,7 +245,7 @@
         </div>
         </c:forEach>
 		</div>
-            <div style="text-align: center; font-size: large; margin-right: 33%;" > <br>
+            <div style="text-align: center; font-size: large; margin-right: 20%;" > <br>
 
 <%
         int count = (int)request.getAttribute("count");
@@ -294,7 +296,7 @@
 
 <!-- <div id="myDiv" style="width:100%;height:350px;display: none;"> -->
 
-<div id="map" class="myDiv" style="width:400x;height:300px;">
+<div id="map" class="myDiv" style="width:100x;height:600px;">
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89b7b057107ea38979fda72f1c0d0480&libraries=services"></script>
 <script>

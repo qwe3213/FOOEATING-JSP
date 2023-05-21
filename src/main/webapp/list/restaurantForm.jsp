@@ -175,7 +175,7 @@
             </tr>
             <tr>
                     <th>&#128198; </th>
-                    <td style="font-size: 18px;">${restForm.dayoff}</td>
+                    <td style="font-size: 18px;">${restForm.dayoff} (휴무일)</td>
             </tr>
         </table>  	
 
