@@ -182,7 +182,7 @@
 
 <hr>
 <br>
-<br>
+
 
 
 
@@ -258,13 +258,32 @@
 
             <div id="review" class="rest" >
             <c:forEach var="re" items="${requestScope.re }" varStatus="no">
+            <br>
         <table>
-            <tr><th>등록일</th> &nbsp <td>${re.regdate}</td></tr>
-            <tr><th>번호</th> &nbsp <td>${no.count}</td></tr>
-            <tr><th>아이디</th> &nbsp <td>${re.user_id}</td></tr>
-            <tr><th>평점</th> &nbsp <td>${re.grade}</td></tr>
-            <tr><th>내용</th> &nbsp <td>${re.content}</td></tr>
-            <tr><th>외관사진</th> &nbsp <td>${re.file}</td></tr>                
+            <tr>
+	            <th>등록일</th>
+	            <td>${re.regdate}</td>
+	        </tr>
+            <tr>
+	            <th>번호</th>
+	            <td>${no.count}</td>
+            </tr>
+            <tr>
+	            <th>아이디</th>
+	            <td>${re.user_id}</td>
+            </tr>
+            <tr>
+	            <th>평점</th>
+	            <td>${re.grade}</td>
+            </tr>
+            <tr>
+	            <th>내용</th>
+	            <td>${re.content}</td>
+            </tr>
+            <tr>
+	            <th>외관사진</th>
+	            <td>${re.file}</td>
+            </tr>                
         </table>
         
       
@@ -434,11 +453,11 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 <!-- 	<span > -->
 		<c:if test="${restForm.on_off == true}">
 			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen1('${restForm.rest_id}');" id="waiting11" style="margin-right: 50px">대기하기</button>
+				<button onclick="winopen1('${restForm.rest_id}');" class="waiting11" style="margin-right: 50px">대기하기</button>
 			</c:if>
 		
 			<c:if test="${wdto.user_id.equals(sessionScope.user_id)}">
-				<button onclick="winopen2();" id="waiting22">대기하기</button>
+				<button onclick="winopen2();" class="waiting11">대기하기</button>
 			</c:if>
 		</c:if>
 		

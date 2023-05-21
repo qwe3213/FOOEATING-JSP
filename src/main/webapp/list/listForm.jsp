@@ -225,8 +225,8 @@
 
         
 
-            <div id="list" class="myDiv">
-            <div id="list" class="myDiv" style="width: 400px; height: 700px;">
+            <div id="list" class="myDiv" style="margin-left: 25%;">
+            <div id="list" class="myDiv" style="width: 400px;">
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
     
             <div class="list">
@@ -243,7 +243,7 @@
         </div>
         </c:forEach>
 		</div>
-            <div style="text-align: left; font-size: x-large;" > <br>
+            <div style="text-align: center; font-size: large; margin-right: 33%;" > <br>
 
 <%
         int count = (int)request.getAttribute("count");
@@ -282,6 +282,8 @@
     %>
 	
 	<!-- 가게 리스트 끝 -->
+	<br>
+	<br>
 	
  </div>
  </div>
