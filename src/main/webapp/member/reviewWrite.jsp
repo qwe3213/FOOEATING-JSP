@@ -50,7 +50,7 @@
 
 </head>
 <body>
-	
+	<div style="text-align: center; margin-top: 10%">
 		<c:if test="${empty user_id }" >
 			<c:redirect url="./MemberLogin.foo"/>
 		</c:if>
@@ -76,6 +76,6 @@
 				<input type="hidden" name="rest_id" value="${dto.rest_id }">
 				<br><button class="btn-2">리뷰 작성</button>
 		</form>
-	
+	</div>
 </body>
 </html>
