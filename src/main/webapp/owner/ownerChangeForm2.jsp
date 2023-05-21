@@ -210,7 +210,7 @@ $(document).ready(function(){
 			<option value="일식">일식</option>
 			<option value="중식">중식</option>
 			<option value="양식">양식</option>
-			<option value="디저트">디저트</option>
+			<option value="기타">기타</option>
 		</select><br>
 		<div id ="divrct"></div>
 		주소 <br>
