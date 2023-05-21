@@ -313,7 +313,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색
-geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, status) {
+geocoder.addressSearch('부산광역시 부산진구 서전로 11-1', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -328,7 +328,7 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
 
         // 인포윈도우로 장소에 대한 설명을 표시
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">롯데백화점</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">로타리국밥</div>'
         });
         infowindow.open(map, marker);
         
@@ -340,6 +340,484 @@ geocoder.addressSearch('부산 부산진구 가야대로 772', function(result, 
     } 
         map.relayout();
 });
+
+geocoder.addressSearch('부산광역시 부산진구 동천로 105 1층 칸다소바', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">칸다소바</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 동천로 47-1', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">라라관</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+
+geocoder.addressSearch('부산 부산진구 동천로108번길 11 . 1층', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">소인수분해</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 서전로58번길 18', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">옥천사세탁</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 서면로 56', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">기장손칼국수</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 전포대로199번길 40-7', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">룽위엔</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산광역시 부산진구 서전로58번길 34-1 1층', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">지즈</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산광역시 부산진구 동천로107번길 14', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">부산댁</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 서전로38번길 35-14', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">야스마루</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 전포대로186번길 28 1층 밥집', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">전포밥집</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 전포대로176번길 36 1층', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">라이커밀</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 서전로9번길 56 1층 거인통닭', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">거인통닭</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산광역시 부산진구 서전로47번길 19 1층 치히로식당', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">치히로식당</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산광역시 부산진구 전포대로175번길 45 전포역1.3번출구 경남공고.더샵센트럴스타근처', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">유남주</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 진남로 595-1 1층', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">식껍</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산 부산진구 중앙번영로 6', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">가가와</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
+geocoder.addressSearch('부산광역시 부산진구 동성로71번길 28 1층 스테이트', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">스테이트</div>'
+        });
+        infowindow.open(map, marker);
+        
+        // 지도의 중심을 결과값으로 받은 위치로 이동
+        map.setCenter(coords);
+        
+
+
+    } 
+        map.relayout();
+});
+
 
 </script>
 </div>

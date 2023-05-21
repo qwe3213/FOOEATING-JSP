@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 
@@ -24,6 +25,7 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/sideMenuright.css">
+
 
 <script src="./js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
@@ -288,7 +290,7 @@
         <table>
             <tr>
 	            <th>등록일</th>
-	            <td>${re.regdate}</td>
+	            <td><fmt:formatDate value="${re.regdate}" pattern="yyyy-MM-dd"/></td>
 	        </tr>
             <tr>
 	            <th>번호</th>
