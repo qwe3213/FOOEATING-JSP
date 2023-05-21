@@ -63,17 +63,17 @@
 			<tr>
 					<td style="text-align: center;">박언효</td>
 					<td style="text-align: center;"><img src="./img/team4jo/uh.png" width="70px" height="70px"></td>
-					<td>코드 구현의 대부분을 맡으심 그러다 보니 30초마다 빡이 치심... 탈모 조심해요 형.. </td>
+					<td>코드 구현의 대부분을 맡으심. 그러다 보니 30초마다 빡이 치심... 탈모 조심해요 형.. </td>
 			</tr>
 			<tr>
 					<td style="text-align: center;">김태령</td>
 					<td style="text-align: center;"><img src="./img/team4jo/tr.png" width="70px" height="70px"></td>
-					<td>팀장님답게 팀원을 잘 이끌어주신다(가끔) 그러나 자기 할 말만 하며 다른 사람의 의견은 듣기는 잘 들어주는데 10초 뒤 까먹는다. 걍듣지마라;; </td>
+					<td>팀장님답게 팀원을 잘 이끌어주신다.(가끔) 그러나 자기 할 말만 하며 다른 사람의 의견은 듣기는 잘 들어주는데 10초 뒤 까먹는다. 걍듣지마라;; </td>
 			</tr>
 			<tr>
 					<td style="text-align: center;">정창원</td>
 					<td style="text-align: center;"><img src="./img/team4jo/cw.png" width="70px" height="70px"></td>
-					<td>4조 중에서 제일 재미있으신 형님! 그러나 요즘 주춤하더니 기리형에게 따잇 당함.  </td>
+					<td>4조 중에서 제일 재미있으신 형님.! 그러나 요즘 주춤하더니 기리형에게 따잇 당함.  </td>
 			</tr>
 			<tr>
 					<td style="text-align: center;">이소라</td>
@@ -83,7 +83,7 @@
 			<tr>
 					<td style="text-align: center;">윤선길</td>
 					<td style="text-align: center;"><img src="./img/team4jo/sg.png" width="70px" height="70px"></td>
-					<td>하나에 꽂히면 끝까지 죽어라 팜 그 결과 제일 힘든 기능 구현 성공 및 css 개고수가 됨.  그러나 그러고 없어짐.  </td>
+					<td>하나에 꽂히면 끝까지 죽어라 팜. 그 결과 제일 힘든 기능 구현 성공 및 css 개고수가 됨.  그러나 그러고 없어짐.  </td>
 			</tr>
 			<tr>
 					<td style="text-align: center;">정하윤</td>
