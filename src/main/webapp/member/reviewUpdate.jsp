@@ -89,10 +89,10 @@
 			<div>
 				<textarea class="col-auto form-control" type="text" name="newContent" id="reviewContents" >${dto.content }</textarea>
 			</div>
-		</form>
-		<div style="text-align: center;">
+			<div style="text-align: center;">
 			<button class="btn-2">수정</button>
-		</div>
-	
+			</div>
+		</form>
+		
 </body>
 </html>
