@@ -405,8 +405,7 @@
 <%-- 			<td>${restForm.convenience.split(",")[2]}</td> --%>
 			
 		
-	<hr>
-	
+	<br><br>
 	<div class="location">
 	<b style="font-size: 19px;">LOCATION</b>
 	</div>
@@ -465,8 +464,8 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 </div>
 </div>		
 
-<br>	
-</div>		
+<br><br>
+</div>
 		
 </main>
 
