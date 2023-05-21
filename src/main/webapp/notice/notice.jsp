@@ -25,8 +25,20 @@
 
 
 <title>공지사항</title>
+<style type="text/css">
+.btnsta {
+	color: #fb5849;
+	background-color: white;
+	border: none;
+}
+
+.btnsta:hover{
+	color: black;
+}
+</style>
 </head>
 <body>
+
 
 <!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
 <div id="preloader">
@@ -86,8 +98,9 @@
 				<form action="./NoticeContentAction.foo" method="post">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<input type="hidden" name="notice_num" value="${dto.notice_num}">
-					<input class="btn-2" type="submit" value="${dto.subject} ">
+					<input class="btnsta" type="submit" value="${dto.subject} ">
 				</form>
+				
 			</td>
 			<td>${dto.regdate }</td>
 		</tr>
