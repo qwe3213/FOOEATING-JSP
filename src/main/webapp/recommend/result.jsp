@@ -269,7 +269,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/western_food/햄버거.jpg" width="250" height="250" align="left">
+							<img src="./img/food/western_food/햄버거.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">햄버거</h3>
 								<p class="questionResult" style="font-size: 20px;"> "이걸로 해장하는 사람은 신기햄버거~" </p>
@@ -283,7 +283,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/western_food/피자.jpg" width="250" height="250" align="left">
+							<img src="./img/food/western_food/피자.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">피자</h3>
 								<p class="questionResult" style="font-size: 20px;"> "한식에 치킨이 있다면... 양식엔 피자가 있지!" </p>
@@ -297,7 +297,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/western_food/스테이크.jpg" width="250" height="250" align="left">
+							<img src="./img/food/western_food/스테이크.jpeg" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">스테이크</h3>
 								<p class="questionResult" style="font-size: 20px;"> "후.. 오늘 스테이크좀 썰어 볼까?" </p>
@@ -311,7 +311,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/western_food/스파게티.jpg" width="250" height="250" align="left">
+							<img src="./img/food/western_food/스파게티.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">스파게티</h3>
 								<p class="questionResult" style="font-size: 20px;"> "지금 스파게티가 딱이겠는걸?!" </p>
@@ -386,7 +386,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/chinese_food/마라탕.jpg" width="250" height="250" align="left">
+							<img src="./img/food/chinese_food/마라탕.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">마라탕</h3>
 								<p class="questionResult" style="font-size: 20px;"> "마라 몇 단계까지 가능..? 본좌는 초보 맛.." ⌯'▾'⌯ </p>
@@ -442,7 +442,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/chinese_food/볶음밥.jpg" width="250" height="250" align="left">
+							<img src="./img/food/chinese_food/볶음밥.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">볶음밥</h3>
 								<p class="questionResult" style="font-size: 20px;"> "중식 볶음밥은 쩔지" (͒ ˃꒫˂ )͒ </p>
@@ -461,7 +461,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/japanese_food/회.jpg" width="250" height="250" align="left">
+							<img src="./img/food/japanese_food/회.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">회</h3>
 								<p class="questionResult" style="font-size: 20px;"> "오늘 끝까지 달려볼래?" </p>
@@ -475,7 +475,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/japanese_food/텐동.jpg" width="250" height="250" align="left">
+							<img src="./img/food/japanese_food/텐동.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">텐동</h3>
 								<p class="questionResult" style="font-size: 20px;"> "나는 새우텐동 먹을껀데 너는?" </p>
@@ -503,7 +503,7 @@
 					%>
 					<div class="conta2">
 						<div class="box2">
-							<img src="./img/food/japanese_food/초밥.jpg" width="250" height="250" align="left">
+							<img src="./img/food/japanese_food/초밥.png" width="250" height="250" align="left">
 							<div>
 								<h3 class="h" style="margin: 30px;">초밥</h3>
 								<p class="questionResult" style="font-size: 20px;"> "나 오늘 집에 안갈래~ (회전초밥 ㄱ?)" </p>
