@@ -1,26 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <!-- css파일 -->
-<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/css/font-awesome.css">
 <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <link rel="stylesheet" href="css/main.css">
 <link href="./css/sideMenu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/sideMenuright.css">
 
-<title> FAQ </title>
+<title>FAQ</title>
 <script src="./js/jquery-3.6.4.js"></script>
 
 <style type="text/css">
@@ -61,104 +69,237 @@
 }
 
 #list {
-    font-size: 13px;
-    color: #fb5849;
-    background-color: white;
-    padding: 12px 25px;
-    display: inline-block;
-    border-radius: 60px;
-    font-weight: 600;
-    transition: all .3s;
-    }
+	font-size: 13px;
+	color: #fb5849;
+	background-color: white;
+	padding: 12px 25px;
+	display: inline-block;
+	border-radius: 60px;
+	font-weight: 600;
+	transition: all .3s;
+}
+
 .alinkstyle {
 	color: #fff;
 	background: #ff4742;
-    border: none;
+	border: none;
 	border-radius: 10px;
 	font-size: 16px;
-    font-weight: bold;
-    display: inline-block;
-    width: 75px;
-    height: 25px;
+	font-weight: bold;
+	display: inline-block;
+	width: 75px;
+	height: 25px;
 }
 </style>
+
+<script type="text/javascript">
+	function toggleDiv(divId) {
+		var menuDiv = document.getElementById("all");
+		var introDiv = document.getElementById("account_management");
+		var reviewDiv = document.getElementById("misappropriation_management");
+		var noticeDiv = document.getElementById("waiting");
+
+		if (divId === "all") {
+			menuDiv.style.display = "block";
+			introDiv.style.display = "none";
+			reviewDiv.style.display = "none";
+			noticeDiv.style.display = "none";
+
+		} else if (divId === "account_management") {
+			noticeDiv.style.display = "none";
+			reviewDiv.style.display = "none";
+			menuDiv.style.display = "none";
+			introDiv.style.display = "block";
+		} else if (divId === "misappropriation_management") {
+			noticeDiv.style.display = "none";
+			introDiv.style.display = "none";
+			menuDiv.style.display = "none";
+			reviewDiv.style.display = "block";
+		} else if (divId === "waiting") {
+			introDiv.style.display = "none";
+			reviewDiv.style.display = "none";
+			menuDiv.style.display = "none";
+			noticeDiv.style.display = "block";
+		}
+
+	};
+
+	window.onload = function() {
+		var menuDiv = document.getElementById("all");
+		var introDiv = document.getElementById("account_management");
+		var reviewDiv = document.getElementById("misappropriation_management");
+		var noticeDiv = document.getElementById("waiting");
+
+		menuDiv.style.display = "block";
+		introDiv.style.display = "none";
+		reviewDiv.style.display = "none";
+		noticeDiv.style.display = "none";
+	};
+</script>
 
 
 
 </head>
 <body>
 
-<!-- ***** Preloader Start ***** --> <!-- !!가운데 로딩 점!! -->
-<div id="preloader">
-    <div class="jumper">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
-<!-- ***** Preloader End ***** -->
-
-
-<!-- ***** Header Area Start ***** -->
-	<jsp:include page="../inc/headerDiv.jsp" />
-<!-- ***** Header Area End ***** -->
-
-<!-- sideMune -->
-<div style="float: left;">
-	<jsp:include page="../inc/sideMenuNotice.jsp" />
-</div>
-<!-- sideMenu -->
-
-<!-- main -->
-<main>
-	<div id="top">
-		<div id="category" style="margin: 85px 0 0 410px; min-width: 75%;">
-		<div style="float: left;">
-			<h1>F A Q</h1>
-			<h3>카테고리</h3>
-		</div>
-		
-		<div>
-		<ul style="margin-top: 30px; padding-top:40px;">
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px; padding-left: 10%;">
-				<a class="alinkstyle" href="#" title="all" style="text-align: center;">전체보기</a></li>
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px">
-				<a class="alinkstyle" href="#" title="계정관리" style="text-align: center;">계정관리</a></li>
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px">
-				<a class="alinkstyle" href="#" title="도용보안" style="text-align: center;">도용보안</a></li>
-			<li style="float: left; list-style: none; margin: 15px 40px 15px 40px">
-				<a class="alinkstyle" 	href="#" title="예약" style="text-align: center;">예약</a></li>
-<!-- 				<li style="float: left; list-style: none; margin: 2%"><a href="#" title="d" style="text-align: center;">4번</a></li> -->
-		</ul>
-		</div>
-		
-		<div style="padding: 110px 10% 110px 55px">
-			<!-- 첫 번째 Modal을 여는 클래스 -->
-			<c:forEach var="dto" items="${faqList }">
-				<div id="list" style="float:left; margin: 0 2% 1% 0; width: 258px; height: 100px; ">
-					<ul>
-						<li class="${dto.category}" style="padding-bottom: 10%;">
-							<h6 class="btn" style="font-size: 16px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
-						</li>
-					</ul>
-				</div>
-				<!-- 첫 번째 Modal -->
-				<div class="modal">
-	
-					<!-- 첫 번째 Modal의 내용 -->
-					<div class="modal-content">
-						<span class="close" style="text-align: right;">&times;</span>
-						<p style="text-align: center;">${dto.content }</p>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-		
-
+	<!-- ***** Preloader Start ***** -->
+	<!-- !!가운데 로딩 점!! -->
+	<div id="preloader">
+		<div class="jumper">
+			<div></div>
+			<div></div>
+			<div></div>
 		</div>
 	</div>
-</main>
-<!-- main -->
+	<!-- ***** Preloader End ***** -->
+
+
+	<!-- ***** Header Area Start ***** -->
+	<jsp:include page="../inc/headerDiv.jsp" />
+	<!-- ***** Header Area End ***** -->
+
+	<!-- sideMune -->
+	<div style="float: left;">
+		<jsp:include page="../inc/sideMenuNotice.jsp" />
+	</div>
+	<!-- sideMenu -->
+
+	<!-- main -->
+	<main>
+
+		<!-- faq 수정본 -->
+
+		<div id="top">
+			<div id="category" style="margin: 85px 0 0 410px; min-width: 75%;">
+				<div class="con">
+					<input onclick="toggleDiv('all')" type="button" value="전체보기"
+						id="sogae" style="border-radius: 10px; font-weight: bold;">
+					<input onclick="toggleDiv('account_management')" type="button" value="계정관리"
+						id="sogae" style="border-radius: 10px; font-weight: bold;">
+					<input onclick="toggleDiv('misappropriation_management')" type="button" value="도용보안"
+						id="sogae" style="border-radius: 10px; font-weight: bold;">
+					<input onclick="toggleDiv('waiting')" type="button" value="예약"
+						id="sogae" style="border-radius: 10px; font-weight: bold;">
+				</div>
+				<br>
+
+
+
+
+
+				<!--  -->
+
+				<div id="all" class="rest" style="margin-top: 50px;">
+						<!-- 첫 번째 Modal을 여는 클래스 -->
+						<c:forEach var="dto" items="${faqList }">
+							<div id="list"
+								style="float: left; margin: 0 2% 1% 0; width: 258px; height: 100px;">
+								<ul>
+									<li class="${dto.category}" style="padding-bottom: 10%;">
+										<h6 class="btn"
+											style="font-size: 16px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
+									</li>
+								</ul>
+							</div>
+							<!-- 첫 번째 Modal -->
+							<div class="modal">
+
+								<!-- 첫 번째 Modal의 내용 -->
+								<div class="modal-content">
+									<span class="close" style="text-align: right;">&times;</span>
+									<p style="text-align: center;">${dto.content }</p>
+								</div>
+							</div>
+						</c:forEach>
+				</div>
+
+
+
+				<!--  -->
+
+				<div id="account_management" class="rest" style="margin-top: 50px;">
+					<c:forEach var="dto" items="${faqList }">
+						<c:if test="${dto.category.equals('계정관리') }">
+							<div id="list"
+								style="float: left; margin: 0 2% 1% 0; width: 258px; height: 100px;">
+								<ul>
+									<li class="${dto.category}" style="padding-bottom: 10%;">
+										<h6 class="btn"
+											style="font-size: 16px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
+									</li>
+								</ul>
+							</div>
+							<!-- 첫 번째 Modal -->
+							<div class="modal">
+
+								<!-- 첫 번째 Modal의 내용 -->
+								<div class="modal-content">
+									<span class="close" style="text-align: right;">&times;</span>
+									<p style="text-align: center;">${dto.content }</p>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+				
+				<div id="misappropriation_management" class="rest" style="margin-top: 50px;">
+					<c:forEach var="dto" items="${faqList }">
+						<c:if test="${dto.category.equals('도용보안') }">
+							<div id="list"
+								style="float: left; margin: 0 2% 1% 0; width: 258px; height: 100px;">
+								<ul>
+									<li class="${dto.category}" style="padding-bottom: 10%;">
+										<h6 class="btn"
+											style="font-size: 16px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
+									</li>
+								</ul>
+							</div>
+							<!-- 첫 번째 Modal -->
+							<div class="modal">
+
+								<!-- 첫 번째 Modal의 내용 -->
+								<div class="modal-content">
+									<span class="close" style="text-align: right;">&times;</span>
+									<p style="text-align: center;">${dto.content }</p>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+				
+				<div id="waiting" class="rest" style="margin-top: 50px;">
+					<c:forEach var="dto" items="${faqList }">
+						<c:if test="${dto.category.equals('예약') }">
+							<div id="list"
+								style="float: left; margin: 0 2% 1% 0; width: 258px; height: 100px;">
+								<ul>
+									<li class="${dto.category}" style="padding-bottom: 10%;">
+										<h6 class="btn"
+											style="font-size: 16px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
+									</li>
+								</ul>
+							</div>
+							<!-- 첫 번째 Modal -->
+							<div class="modal">
+
+								<!-- 첫 번째 Modal의 내용 -->
+								<div class="modal-content">
+									<span class="close" style="text-align: right;">&times;</span>
+									<p style="text-align: center;">${dto.content }</p>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+	</main>
+	<!-- main -->
 
 </body>
 
@@ -223,8 +364,10 @@
 </script>
 
 
+
+
 <!-- ***** Footer Start ***** -->
-	<jsp:include page="../inc/footerDiv.jsp" />
+<jsp:include page="../inc/footerDiv.jsp" />
 <!-- ***** Footer End ***** -->
 
 <!-- jQuery -->
@@ -241,27 +384,27 @@
 <script src="assets/js/scrollreveal.min.js"></script>
 <script src="assets/js/waypoints.min.js"></script>
 <script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/imgfix.min.js"></script> 
-<script src="assets/js/slick.js"></script> 
-<script src="assets/js/lightbox.js"></script> 
-<script src="assets/js/isotope.js"></script> 
+<script src="assets/js/imgfix.min.js"></script>
+<script src="assets/js/slick.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<script src="assets/js/isotope.js"></script>
 
 <!-- Global Init -->
 <script src="assets/js/custom.js"></script>
 <script>
-    $(function() {
-        var selectedClass = "";
-        $("p").click(function(){
-        selectedClass = $(this).attr("data-rel");
-        $("#portfolio").fadeTo(50, 0.1);
-            $("#portfolio div").not("."+selectedClass).fadeOut();
-        setTimeout(function() {
-          $("."+selectedClass).fadeIn();
-          $("#portfolio").fadeTo(50, 1);
-        }, 500);
-            
-        });
-    });
+	$(function() {
+		var selectedClass = "";
+		$("p").click(function() {
+			selectedClass = $(this).attr("data-rel");
+			$("#portfolio").fadeTo(50, 0.1);
+			$("#portfolio div").not("." + selectedClass).fadeOut();
+			setTimeout(function() {
+				$("." + selectedClass).fadeIn();
+				$("#portfolio").fadeTo(50, 1);
+			}, 500);
+
+		});
+	});
 </script>
 
 
