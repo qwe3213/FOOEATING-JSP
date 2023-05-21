@@ -21,7 +21,7 @@
 	</c:if>
 	
 <%-- 	<%=request.getParameter("rest_id")%><br> --%>
-	<div class="cd-popup" style="text-align: center; margin-top: 90px;">
+	<div class="cd-popup" style="text-align: center; margin-top: 25%;">
 		<h2>대기 하시겠습니까?</h2>
 			<form action="./WaitingCheckPro.fd" method="post">
 				<input type="hidden" name="rest_id" value="<%=request.getParameter("rest_id")%>">

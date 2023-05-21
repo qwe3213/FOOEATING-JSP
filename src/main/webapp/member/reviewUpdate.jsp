@@ -49,7 +49,7 @@
 
 
 </head>
-<body>
+<body style="margin-top: 10%;">
 	
 
 		<c:if test="${empty user_id }" >
@@ -90,6 +90,7 @@
 				<textarea class="col-auto form-control" type="text" name="newContent" id="reviewContents" >${dto.content }</textarea>
 			</div>
 		</form>
+		<br>
 		<div style="text-align: center;">
 			<button class="btn-2">수정</button>
 		</div>
