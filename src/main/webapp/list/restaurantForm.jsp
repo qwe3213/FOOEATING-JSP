@@ -265,7 +265,12 @@
 	   <input onclick="toggleDiv('review')" type="button" value="REVIEW" id="sogae" style="border-radius: 10px; font-weight: bold;">
 	   <input onclick="toggleDiv('notice')" type="button" value="NOTICE" id="sogae" style="border-radius: 10px; font-weight: bold;">
 	</div>
-
+	<br>
+   <div style="float: right; 
+	  margin-right: 1px;"> 
+	 <img src="./upload/${menulist.menufile}" width="250px" height="250px"> 
+     </div>
+    
 	<div id="menu1" class="rest" style="margin-top: 30px;"><br>
              <p style="font-size: 19px; margin-bottom: 10px; margin-left: 8px;">&#128203;&nbsp;&nbsp;${menulist.menu_name }</p>
              <p style="font-size: 19px; margin-bottom: 10px; margin-left: 8px;">&#128172;&nbsp;&nbsp;${menulist.menu_descriptions }</p>
@@ -317,7 +322,7 @@
 <br>
             <p id="ntt" style="font-size: 19px;">${restForm.rest_notice}</p><br>
             </div>
-	<hr>
+	<br>
 	
 
 <!-- 		<tr> -->
