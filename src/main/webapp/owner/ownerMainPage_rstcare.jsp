@@ -31,7 +31,7 @@
 		let popupY= (window.screen.height / 2) - (300 / 2);
 		
 		window.open("RestOnOffAction.on?on_off=" + onoff + "&rest_id=" + rest_id, "", 
-		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		"width=500,height=400,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
 		 ',screenY= '+ popupY);
 	}
 </script>
@@ -65,7 +65,7 @@
 <!-- main -->
 <main>
 <div id="top">
-<div id="category" style="margin: 85px 410px 0 700px; min-width: 850px;">
+<div id="category" style="margin: 85px 410px 0 410px; min-width: 850px;">
 	<h2>나의 가게 정보</h2>
 	
 	<fieldset>
