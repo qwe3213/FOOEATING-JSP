@@ -75,7 +75,7 @@
 	background: #ff4742;
     border: none;
 	border-radius: 10px;
-	font-size: medium;
+	font-size: 16px;
     font-weight: bold;
     display: inline-block;
     width: 75px;
@@ -138,7 +138,7 @@
 				<div id="list" style="float:left; margin: 0 2% 1% 0; width: 258px; height: 100px; ">
 					<ul>
 						<li class="${dto.category}" style="padding-bottom: 10%;">
-							<h6 class="btn" style="font-size: 15px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
+							<h6 class="btn" style="font-size: 16px; color: #fb5849; background-color: #fff; padding: 12px 25px; font-weight: 600; border-radius: 75px;">Q.${dto.subject }</h6>
 						</li>
 					</ul>
 				</div>
