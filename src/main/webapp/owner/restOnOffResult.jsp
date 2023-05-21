@@ -9,7 +9,7 @@
 </head>
 <body>
 	<fieldset style="text-align: center; border: none; margin-top: 50px;" >
-		<h2>가게 상태가 변경되었습니다.</h2> <br>
+		<h1>가게 상태가 변경되었습니다.</h1> <br>
 			<button onclick="opener.parent.location.reload(); window.close();" style="background-color: #ff4742;
 																						color: #fff;
 																						border: none;

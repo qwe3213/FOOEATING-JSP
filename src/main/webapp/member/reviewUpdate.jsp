@@ -56,39 +56,43 @@
 			<c:redirect url="./MemberLogin.foo"/>
 		</c:if>
 		
-		<div style="font-size: 22px; text-align: center;"><b>${dto.name }</b> </div>
+		<div style="text-align: center;"><h1>${dto.name }</h1></div>
 		
 		<form action="./ReviewUpdateAction.foo" method="post" id="myform">
 			<input type="hidden" name="user_id" value="${user_id }">
 			<input type="hidden" name="review_num" id="review_num" value="${dto.review_num }">
-			<fieldset>
-				<span class="text-bold">별점을 선택해주세요</span>
-				<input type="radio" name="grade" value="5" id="rate1"  
-					<c:if test="${dto.grade == 5 }"> checked </c:if>
-				><label
-					for="rate1">★</label>
-				<input type="radio" name="grade" value="4" id="rate2" 
-					<c:if test="${dto.grade == 4 }"> checked </c:if>
-				><label
-					for="rate2">★</label>
-				<input type="radio" name="grade" value="3" id="rate3" 
-					<c:if test="${dto.grade == 3 }"> checked </c:if>
-				><label
-					for="rate3">★</label>
-				<input type="radio" name="grade" value="2" id="rate4" 
-					<c:if test="${dto.grade == 2 }"> checked </c:if>
-				><label
-					for="rate4">★</label>
-				<input type="radio" name="grade" value="1" id="rate5" 
-					<c:if test="${dto.grade == 1 }"> checked </c:if>
-				><label
-					for="rate5">★</label>
-			</fieldset>
+			<div style="text-align: center;">
+				<fieldset>
+					<span class="text-bold">별점을 선택해주세요</span>
+					<input type="radio" name="grade" value="5" id="rate1"  
+						<c:if test="${dto.grade == 5 }"> checked </c:if>
+					><label
+						for="rate1">★</label>
+					<input type="radio" name="grade" value="4" id="rate2" 
+						<c:if test="${dto.grade == 4 }"> checked </c:if>
+					><label
+						for="rate2">★</label>
+					<input type="radio" name="grade" value="3" id="rate3" 
+						<c:if test="${dto.grade == 3 }"> checked </c:if>
+					><label
+						for="rate3">★</label>
+					<input type="radio" name="grade" value="2" id="rate4" 
+						<c:if test="${dto.grade == 2 }"> checked </c:if>
+					><label
+						for="rate4">★</label>
+					<input type="radio" name="grade" value="1" id="rate5" 
+						<c:if test="${dto.grade == 1 }"> checked </c:if>
+					><label
+						for="rate5">★</label>
+				</fieldset>
+			</div>
 			<div>
 				<textarea class="col-auto form-control" type="text" name="newContent" id="reviewContents" >${dto.content }</textarea>
 			</div>
-			<button class="btn-2">수정</button>
 		</form>
+		<div style="text-align: center;">
+			<button class="btn-2">수정</button>
+		</div>
 	
 </body>
 </html>
