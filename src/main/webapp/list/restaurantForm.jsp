@@ -32,7 +32,7 @@
 		let popupY= (window.screen.height / 2) - (300 / 2);
 		
 		window.open("WaitingCheck.fd?rest_id=" + rest_id, "", 
-		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		"width=500,height=400,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
 		 ',screenY= '+ popupY);
 	}
 	
@@ -41,7 +41,7 @@
 		let popupY= (window.screen.height / 2) - (300 / 2);
 		
 		window.open("WaitingCheckResult.fd", "", 
-		"width=500,height=300,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
+		"width=500,height=400,left="+ popupX + ',top='+ popupY + ',screenX='+ popupX + 
 		 ',screenY= '+ popupY);
 	}
 	
@@ -460,36 +460,8 @@ geocoder.addressSearch(' ${restForm.addr_city} ${restForm.addr_district} ${restF
 </div>
 </div>		
 
-
-		
+<br>	
 </div>		
-		
-<!-- <aside class="right-sidebar"> -->
-<!-- 		<div style="float: right; margin: auto; padding: auto;"></div> -->
-
-<!-- </aside> -->
-
-<!-- <!-- <table > --> -->
-<!-- <div id="wait" style="position: relative; margin-left: 1400px; bottom: 1250px; border: 2px;"> -->
-<!-- <!-- 	<span > --> -->
-<%-- 		<c:if test="${restForm.on_off == true}"> --%>
-<%-- 			<c:if test="${!wdto.rest_id.equals(restForm.rest_id) && !wdto.user_id.equals(sessionScope.user_id)}"> --%>
-<%-- 				<button onclick="winopen1('${restForm.rest_id}');" id="jaebal" style="margin-right: 50px">대기하기</button> --%>
-<%-- 			</c:if> --%>
-		
-<%-- 			<c:if test="${wdto.user_id.equals(sessionScope.user_id)}"> --%>
-<!-- 				<button onclick="winopen2();" id="jaebal">대기하기</button> -->
-<%-- 			</c:if> --%>
-<%-- 		</c:if> --%>
-		
-<%-- 		<c:if test="${restForm.on_off == false}"> --%>
-<!-- 			<button id="ready">영업 준비 중입니다...(T^T)</button> -->
-<%-- 		</c:if> --%>
-   	 
-<!-- 		<button onclick="location.href='./listForm.fd'" id="sl">가게 리스트로</button> -->
-<!-- <!-- 	</span> --> -->
-<!-- </div> -->
-<!-- <!-- </table> --> -->
 		
 </main>
 

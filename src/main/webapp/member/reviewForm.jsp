@@ -40,7 +40,7 @@
 		let popupX = (window.screen.width / 2) - (500 / 2);
 		let popupY= (window.screen.height /2) - (300 / 2);
 		
-		window.open("ReviewUpdate.foo?review_num="+review_num+"","","width=500, height=300, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open("ReviewUpdate.foo?review_num="+review_num+"","","width=500, height=400, left="+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 		
 	}
 	

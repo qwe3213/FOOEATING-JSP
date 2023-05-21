@@ -101,7 +101,7 @@
 <main>
 	<div id="top">
 
-<div id="table_search" style="margin-left: 150px; margin-top: 30px;">
+<div id="table_search" style="margin-left: 1%; margin-top: 30px;">
             <form action="./listForm.fd" method="get" id="fr" onsubmit="return checkData();">
                 <span>
                 <label for="addr_city" style="margin-left: 200px;"> <b>CITY&nbsp;</b></label>
@@ -214,7 +214,7 @@
 <!-- 	 <input id="toggleDiv('list')" type="image" src="img/갤러리%20아이콘.png" style="width:300x; height:50px"> -->
 <!--    <button onclick="toggleDiv('map')" image>MAP</button> -->
 <!--    <button onclick="toggleDiv('list')">LIST</button> -->
-   <div style="text-align: right; margin-right: 16%; margin-bottom: 1.5%;">
+   <div style="text-align: right; margin-right: 11%; margin-bottom: 1.5%;">
    <input onclick="toggleDiv('list')" type="image" src="img/menu.png" style="width:300x; height:50px; margin-right: 20px;">
    <input onclick="toggleDiv('map')" type="image" src="img/위치%20아이콘.png" style="width:300x; height:50px">
 	</div>
@@ -227,7 +227,7 @@
 
         
 
-            <div id="list" class="myDiv" style="margin-left: 17%;">
+            <div id="list" class="myDiv" style="margin-left: 12%;">
             <div id="list" class="myDiv" style="width: 400px;">
             <c:forEach var="dto" items="${requestScope.listForm }" varStatus="no">
     

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<fieldset style="text-align: center; border: none; margin-top: 50px;">
+	<fieldset style="text-align: center; border: none; margin-top: 15%;">
 		<div style="text-align: center;">
 			<h2>대기가 완료되었습니다.</h2>
 			
