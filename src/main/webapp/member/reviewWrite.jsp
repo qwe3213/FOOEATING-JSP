@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="css/question.css">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="./js/jquery-3.6.4.js"></script>
@@ -49,17 +51,10 @@
 </head>
 <body>
 	
-
-	<h1> 리뷰 작성</h1>
 		<c:if test="${empty user_id }" >
 			<c:redirect url="./MemberLogin.foo"/>
 		</c:if>
-		
-		<table border="1">
-		<tr>
-			<td colspan="2">가게명 : ${dto.rest_name }</td>
-		</tr>	
-		</table>
+		<h1>${dto.rest_name }</h1>
 		<form action="./ReviewWriteAction.foo" method="post" id="myform">
 			<fieldset>
 				<span class="text-bold">별점을 선택해주세요</span>
@@ -79,7 +74,7 @@
 			</div>
 				<input type="hidden" name="wait_num" value="${dto.wait_num }">
 				<input type="hidden" name="rest_id" value="${dto.rest_id }">
-				<button>리뷰 작성</button>
+				<br><button class="btn-2">리뷰 작성</button>
 		</form>
 	
 </body>

@@ -54,7 +54,7 @@
                     <!-- ***** 로고 End***** -->
                     <!-- ***** 메뉴 Start ***** -->
                     <ul class="nav" style="display: none; float: left;">
-                        <li class="scroll-to-section"><a href="./Main.foo" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="./Main.foo">Home</a></li>
                         <li class="scroll-to-section"><a href="./listForm.fd">Category</a></li>
                         <li class="scroll-to-section"><a href="./RecommendMain.ad">Let's Giring</a></li>
                         <li class="scroll-to-section"><a href="./NoticeList.foo">Notice</a></li>
