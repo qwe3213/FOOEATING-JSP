@@ -1,7 +1,7 @@
 <div align ="center"><b>FOOEATING</b></div>
 <div align ="center"><b>식당 테이블링 시스템</b></div>
 <br><br>
-<div align ="center"><img src ="![푸이팅메인화면](https://github.com/qwe3213/FOOEATING-JSP/assets/102210761/535aeb3d-552b-4704-8038-a980e236f174)"></div>
+<img src ="https://github.com/qwe3213/FOOEATING-JSP/assets/102210761/535aeb3d-552b-4704-8038-a980e236f174">
 <br><br>
 
 
